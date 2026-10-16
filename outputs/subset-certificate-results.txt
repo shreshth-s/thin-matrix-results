@@ -1,0 +1,15 @@
+  PASS geometric encoding saving: 0.004094413615226 > 4057/1000000
+  PASS clamped encoding saving: 0.004650791572883 > 4057/1000000
+  PASS boxes saving: 0.004057096756016 > 4057/1000000
+  PASS query saving: 0.004057095599315 > 4057/1000000
+  PASS matrix construction saving: 0.872290000000000 > 4057/1000000
+  PASS successful scan saving: 0.004860000000000 > 4057/1000000
+  PASS geometric tile fits: 0.004094413615226 > 0
+  PASS short side tile fits: 0.004650791572883 > 0
+  PASS block fits middle part: 0.004860000000000 > 0
+  PASS main base below rounded target: 0.000000061117789 > 0
+  PASS outer-boundary base below rounded target: 0.000256020642656 > 0
+  PASS middle-boundary base below rounded target: 0.079894812524591 > 0
+  PASS new rounded target below simple substitution: 0.000001857350104 > 0
+
+13 strict inequalities passed.

@@ -1,0 +1,49 @@
+Fixed-profile direct-prefix five-term APSP numerical certificate
+  c: 10.741326620000000
+  theta: 0.056740653000000
+  r: 0.038571087000000
+  e: 0.083812911000000
+  y: 0.025146880000000
+  b: 0.041906455500000
+  prime_factors_per_composite: 100000.000000000000000
+  candidate_exponent: 0.000000419064555
+  target_saving: 0.006324000000000
+  CK: 2.399226103405380
+  T: 12.140552723405380
+  G: 0.075467246110185
+  augmented_encoder_saving: 0.034684128267120
+  E_aug: 12.105868595138261
+  E_box: 12.065085477295195
+  q1: 0.424532754092257
+  q2: 0.424532753969640
+  PASS compact tail regime: 5.741326620000000 > 0
+  PASS positive prefix: 0.038571087000000 > 0
+  PASS prefix below one: 0.961428913000000 > 0
+  PASS positive switching fraction: 0.056740653000000 > 0
+  PASS switching fits suffix: 0.904688260000000 > 0
+  PASS positive rational coefficient point: 0.025146880000000 > 0
+  PASS coefficient point below one: 0.974853120000000 > 0
+  PASS stored binomial cutoff increasing: 0.740982997044525 > 0
+  PASS prefix projection tail geometric: 0.794689154976717 > 0
+  PASS ordinary suffix tail geometric: 0.589378309953434 > 0
+  PASS box tail geometric: 0.614920240607333 > 0
+  PASS positive box gain: 0.075467246110185 > 0
+  PASS box gain below one: 0.924532753889815 > 0
+  PASS positive augmented encoding gain: 0.034684128267120 > 0
+  PASS positive residual query exponent: 0.424532754092257 > 0
+  PASS positive stored query exponent: 0.424532753969640 > 0
+  PASS positive augmented encoding slope: 12.605868595138261 > 0
+  PASS positive box encoding slope: 12.565085477295195 > 0
+  PASS positive geometry slope: 11.640552723405380 > 0
+  PASS boxes after candidate enumeration: 0.006324710517093 > 1581/250000
+  PASS residual queries after candidate enumeration: 0.006324710500126 > 1581/250000
+  PASS stored queries after candidate enumeration: 0.006324710510403 > 1581/250000
+  PASS augmented encodings after candidate enumeration: 0.006324721543427 > 1581/250000
+  PASS ordinary box encodings after candidate enumeration: 0.009742873369510 > 1581/250000
+  PASS matrix formation after candidate enumeration: 0.937139897685445 > 1581/250000
+  PASS incidence bookkeeping after candidate enumeration: 0.041906036435445 > 1581/250000
+  PASS original profile tile fits: 0.003418162852417 > 0
+  PASS initial-modulus tile fits: 0.491232467551209 > 0
+  PASS middle blocks fit: 0.958093544500000 > 0
+Certified target exponent: 2.993676000000000
+PASS: 29 strict rational interval inequalities.

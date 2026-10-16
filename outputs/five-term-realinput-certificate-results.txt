@@ -1,0 +1,130 @@
+Five-term thin product, N >= D^18, |W| <= N^2/sqrt(D)
+  c: 16.251400000000000
+  theta: 0.050330000000000
+  r: 0.049970000000000
+  y: 0.020040000000000
+  T: 17.961330420419537
+  G: 0.099159055589669
+  E_aug: 17.900870197311173
+  E_box: 17.862171364829868
+  q1: 0.400820307279901
+  q2: 0.384635412689915
+  PASS compact tail regime: 11.251400000000000 > 0
+  PASS positive prefix: 0.049970000000000 > 0
+  PASS prefix below one: 0.950030000000000 > 0
+  PASS positive switching fraction: 0.050330000000000 > 0
+  PASS switching fits suffix: 0.899700000000000 > 0
+  PASS positive rational coefficient point: 0.020040000000000 > 0
+  PASS coefficient point below one: 0.979960000000000 > 0
+  PASS stored binomial cutoff increasing: 0.747022725598139 > 0
+  PASS prefix projection tail geometric: 0.868864497685458 > 0
+  PASS ordinary suffix tail geometric: 0.737728995370917 > 0
+  PASS box tail geometric: 0.751748331724583 > 0
+  PASS positive box gain: 0.099159055589669 > 0
+  PASS positive augmented encoding gain: 0.060460223108364 > 0
+  PASS box saving exceeds gamma: 0.099159055589669 > 991/10000
+  PASS residual query saving exceeds gamma: 0.099179692720099 > 991/10000
+  PASS stored query saving exceeds gamma: 0.115364587310085 > 991/10000
+  PASS residual query exponent below target: 0.000079692720099 > 0
+  PASS stored query exponent below target: 0.016264587310085 > 0
+  PASS tile fits N >= D^18: 0.038669579580463 > 0
+  PASS augmented encodings below N^2 D^-gamma: 0.000029802688827 > 0
+  PASS box encodings below N^2 D^-gamma: 0.038728635170132 > 0
+  certified: preprocessing O(N^2/D^991/10000), query O(D^4009/10000)
+Five-term thin product, N >= D^14, |W| <= N^2/sqrt(D)
+  c: 12.420851000000000
+  theta: 0.054780000000000
+  r: 0.015070800000000
+  y: 0.010000000000000
+  T: 13.929694567021998
+  G: 0.085309445790421
+  E_aug: 13.914490487392123
+  E_box: 13.844385121231578
+  q1: 0.414091364748920
+  q2: 0.414690550773412
+  PASS compact tail regime: 7.420851000000000 > 0
+  PASS positive prefix: 0.015070800000000 > 0
+  PASS prefix below one: 0.984929200000000 > 0
+  PASS positive switching fraction: 0.054780000000000 > 0
+  PASS switching fits suffix: 0.930149200000000 > 0
+  PASS positive rational coefficient point: 0.010000000000000 > 0
+  PASS coefficient point below one: 0.990000000000000 > 0
+  PASS stored binomial cutoff increasing: 0.744381789066666 > 0
+  PASS prefix projection tail geometric: 0.824881701022104 > 0
+  PASS ordinary suffix tail geometric: 0.649763402044208 > 0
+  PASS box tail geometric: 0.670529664120431 > 0
+  PASS positive box gain: 0.085309445790421 > 0
+  PASS positive augmented encoding gain: 0.015204079629875 > 0
+  PASS box saving exceeds gamma: 0.085309445790421 > 853/10000
+  PASS residual query saving exceeds gamma: 0.085908635251080 > 853/10000
+  PASS stored query saving exceeds gamma: 0.085309449226588 > 853/10000
+  PASS residual query exponent below target: 0.000608635251080 > 0
+  PASS stored query exponent below target: 0.000009449226588 > 0
+  PASS tile fits N >= D^14: 0.070305432978002 > 0
+  PASS augmented encodings below N^2 D^-gamma: 0.000209512607877 > 0
+  PASS box encodings below N^2 D^-gamma: 0.070314878768422 > 0
+  certified: preprocessing O(N^2/D^853/10000), query O(D^4147/10000)
+Real 3SUM and real min-plus/APSP/Exact Triangle with the five-term data structure
+  e: 0.081830000000000  target saving: 0.006195000000000
+  c: 10.776900000000000
+  theta: 0.056700000000000
+  r: 0.038540000000000
+  y: 0.025110000000000
+  T: 12.178629354997400
+  G: 0.075708590889701
+  E_aug: 12.143876705655800
+  E_box: 12.102920764107699
+  q1: 0.424288382414843
+  q2: 0.424291744396942
+  PASS compact tail regime: 5.776900000000000 > 0
+  PASS positive prefix: 0.038540000000000 > 0
+  PASS prefix below one: 0.961460000000000 > 0
+  PASS positive switching fraction: 0.056700000000000 > 0
+  PASS switching fits suffix: 0.904760000000000 > 0
+  PASS positive rational coefficient point: 0.025110000000000 > 0
+  PASS coefficient point below one: 0.974890000000000 > 0
+  PASS stored binomial cutoff increasing: 0.741027187818526 > 0
+  PASS prefix projection tail geometric: 0.795436181202631 > 0
+  PASS ordinary suffix tail geometric: 0.590872362405261 > 0
+  PASS box tail geometric: 0.616295151317930 > 0
+  PASS positive box gain: 0.075708590889701 > 0
+  PASS positive augmented encoding gain: 0.034752649341600 > 0
+  PASS boxes saving: 0.006195233992504 > 1239/200000
+  PASS residual queries saving: 0.006195481666993 > 1239/200000
+  PASS stored queries saving: 0.006195206555998 > 1239/200000
+  PASS augmented encodings saving: 0.006266569176186 > 1239/200000
+  PASS box encodings saving: 0.009617993873067 > 1239/200000
+  PASS explicit matrices saving: 0.918170000000000 > 1239/200000
+  PASS list formation saving: 0.959085000000000 > 1239/200000
+  PASS counting-call overhead saving: 0.040915000000000 > 1239/200000
+  PASS bucket term saving: 0.040915000000000 > 1239/200000
+  PASS unfolded tile condition: 0.003422759880563 > 0
+  certified exponents: 1.993805000000000 and 2.993805000000000
+MonoConvolution through All-Integers 3SUM at the full deterministic saving
+  PASS large light classes have polynomially bounded indices: 0.494811238040335 > 0
+  exponent (3-2eps)/(2-eps): 1.498270412680112
+  PASS MonoConvolution exponent below target: 0.000000587319888 > 0
+  PASS improves the half-saving transfer: 0.000866286813553 > 0
+Lopsided five-term clique split, aligned-cache parameters
+  PASS middle-part slack exceeds the saving: 0.038994266000000 > 0
+  PASS k=3: alpha=1 block fits (m - b alpha): 0.953953654000000 > 0
+  PASS k=3: exponent 2.992947920000000 below k: 0.007052080000000 > 0
+  PASS k=4: alpha=1 block fits (m - b alpha): 1.953953654000000 > 0
+  PASS k=4: exponent 3.992947920000000 below k: 0.007052080000000 > 0
+  PASS k=5: alpha=2 block fits (m - b alpha): 0.907907308000000 > 0
+  PASS k=5: exponent 4.985895840000000 below k: 0.014104160000000 > 0
+  PASS k=6: alpha=2 block fits (m - b alpha): 1.907907308000000 > 0
+  PASS k=6: exponent 5.985895840000000 below k: 0.014104160000000 > 0
+  PASS k=7: alpha=3 block fits (m - b alpha): 0.861860962000000 > 0
+  PASS k=7: exponent 6.978843760000000 below k: 0.021156240000000 > 0
+  PASS k=8: alpha=3 block fits (m - b alpha): 1.861860962000000 > 0
+  PASS k=8: exponent 7.978843760000000 below k: 0.021156240000000 > 0
+  PASS k=9: alpha=4 block fits (m - b alpha): 0.815814616000000 > 0
+  PASS k=9: exponent 8.971791680000000 below k: 0.028208320000000 > 0
+  PASS k=10: alpha=4 block fits (m - b alpha): 1.815814616000000 > 0
+  PASS k=10: exponent 9.971791680000000 below k: 0.028208320000000 > 0
+  PASS k=11: alpha=5 block fits (m - b alpha): 0.769768270000000 > 0
+  PASS k=11: exponent 10.964739600000000 below k: 0.035260400000000 > 0
+  PASS k=12: alpha=5 block fits (m - b alpha): 1.769768270000000 > 0
+  PASS k=12: exponent 11.964739600000000 below k: 0.035260400000000 > 0
+PASS: 89 strict rational interval inequalities.

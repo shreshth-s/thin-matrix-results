@@ -1,0 +1,85 @@
+Partial global normal-projection cache: exact numerical certificate
+Separate proof dependencies: cache encoder, first-ell partition, cyclic-fiber oracle.
+  c: 10.767898969000000
+  theta: 0.060343925615000
+  rho: 0.066059242397000
+  coefficient_y: 0.025749961000000
+  b: 0.043373850000000
+  R: 100000.000000000000000
+  S: 88618.000000000000000
+  eta: 0.000000433738500
+  u: 0.038437038393000
+  final_ring_exponent: 0.004936811607000
+  e: 0.081810888393000
+  target_saving: 0.006599000000000
+  CK: 2.401096785489803
+  T: 12.168995754489803
+  G: 0.080675446388831
+  q_cache: 0.208550804041463
+  E_source: 12.377546558531266
+  E_box: 12.088320308100972
+  q_inner: 0.389152590806696
+  q_old: 0.408473680620681
+  q_high: 0.389152590806534
+  q_stored: 0.449496516421696
+  PASS ordinary tail regime: 5.767898969000000 > 0
+  PASS positive switching threshold: 0.060343925615000 > 0
+  PASS stored coefficient cutoff increasing: 0.739656074385000 > 0
+  PASS direct inner coefficient cutoff increasing: 0.606322741051667 > 0
+  PASS positive cached degree: 0.066059242397000 > 0
+  PASS cache coefficient cutoff increasing: 0.600607424269667 > 0
+  PASS cache cutoff below total residual degree: 0.054628608833000 > 0
+  PASS low-family symmetric degree lies inside cache: 0.005715316782000 > 0
+  PASS high-family coefficient saddle remains admissible: 0.005651030418133 > 0
+  PASS positive coefficient point: 0.025749961000000 > 0
+  PASS coefficient point below one: 0.974250039000000 > 0
+  PASS ordinary scalar tail geometric: 0.590495354968899 > 0
+  PASS box tail geometric: 0.617569046894497 > 0
+  PASS positive box gain: 0.080675446388831 > 0
+  PASS box gain below one: 0.919324553611169 > 0
+  PASS positive direct query exponent: 0.389152590806696 > 0
+  PASS positive high query exponent: 0.389152590806534 > 0
+  PASS positive stored query exponent: 0.449496516421696 > 0
+  PASS positive source encoder slope: 12.877546558531266 > 0
+  PASS positive box encoder slope: 12.588320308100972 > 0
+  PASS positive geometry slope: 11.668995754489803 > 0
+  PASS positive frozen-stage count: 88618.000000000000000 > 0
+  PASS at least two remaining prime factors: 11382.000000000000000 > 1
+  PASS positive ring exponent: 0.004936811607000 > 0
+  PASS middle blocks fit: 0.956626150000000 > 0
+  PASS incidence bookkeeping after candidates: 0.043373416261500 > 6599/1000000
+  PASS phase I initial: boxes: 0.046872620971852 > 6599/1000000
+  PASS phase I initial: low residual queries: 0.026494370160739 > 6599/1000000
+  PASS phase I initial: high residual queries: 0.026494370160746 > 6599/1000000
+  PASS phase I initial: stored queries: 0.023877021782703 > 6599/1000000
+  PASS phase I initial: cached source encodings: 0.506511568463749 > 6599/1000000
+  PASS phase I initial: ordinary box encodings: 0.519056424465975 > 6599/1000000
+  PASS phase I initial: matrix formation: 0.999999566261500 > 6599/1000000
+  PASS phase I initial: tile geometry: 0.472183803494122 > 0
+  PASS phase I freeze: boxes: 0.011536507809072 > 6599/1000000
+  PASS phase I freeze: low residual queries: 0.011536497087167 > 6599/1000000
+  PASS phase I freeze: high residual queries: 0.011536497087180 > 6599/1000000
+  PASS phase I freeze: stored queries: 0.006599706923482 > 6599/1000000
+  PASS phase I freeze: cached source encodings: 0.011536816985837 > 6599/1000000
+  PASS phase I freeze: ordinary box encodings: 0.035198673480116 > 6599/1000000
+  PASS phase I freeze: matrix formation: 0.942344008672000 > 6599/1000000
+  PASS phase I freeze: tile geometry: 0.023662165671044 > 0
+  PASS phase II start: boxes: 0.011536507809072 > 6599/1000000
+  PASS phase II start: low residual queries: 0.011536497087167 > 6599/1000000
+  PASS phase II start: high residual queries: 0.011536497087180 > 6599/1000000
+  PASS phase II start: stored queries: 0.006599706923482 > 6599/1000000
+  PASS phase II start: cached source encodings: 0.011536816985837 > 6599/1000000
+  PASS phase II start: ordinary box encodings: 0.035198673480116 > 6599/1000000
+  PASS phase II start: matrix formation: 0.942344008672000 > 6599/1000000
+  PASS phase II start: tile geometry: 0.023662165671044 > 0
+  PASS phase II final: boxes: 0.006599696202072 > 6599/1000000
+  PASS phase II final: low residual queries: 0.006599685480167 > 6599/1000000
+  PASS phase II final: high residual queries: 0.006599685480180 > 6599/1000000
+  PASS phase II final: stored queries: 0.006599706923482 > 6599/1000000
+  PASS phase II final: cached source encodings: 0.006600005378837 > 6599/1000000
+  PASS phase II final: ordinary box encodings: 0.030261861873116 > 6599/1000000
+  PASS phase II final: matrix formation: 0.937407197065000 > 6599/1000000
+  PASS phase II final: tile geometry: 0.023662165671044 > 0
+Exact fixed-stage identities: PASS
+Target exponent, conditional on the separately audited algorithm: 2.993401000000000
+PASS: 58 strict rational interval inequalities.

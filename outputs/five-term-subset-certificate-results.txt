@@ -1,0 +1,49 @@
+Min-sum subset convolution through square five-term tiles and isolated recovery
+  e: 83812911/1000000000  delta: 1581/250000  lambda: 1  kappa: 17/400  rounded base target: 2995627/1000000
+  c: 10.741326620000000
+  theta: 0.056740653000000
+  r: 0.038571087000000
+  y: 0.025146880000000
+  T: 12.140552723405380
+  G: 0.075467246110185
+  E_aug: 12.105868595138261
+  E_box: 12.065085477295195
+  q1: 0.424532754092257
+  q2: 0.424532753969640
+  PASS compact tail regime: 5.741326620000000 > 0
+  PASS positive prefix: 0.038571087000000 > 0
+  PASS prefix below one: 0.961428913000000 > 0
+  PASS positive switching fraction: 0.056740653000000 > 0
+  PASS switching fits suffix: 0.904688260000000 > 0
+  PASS positive rational coefficient point: 0.025146880000000 > 0
+  PASS coefficient point below one: 0.974853120000000 > 0
+  PASS stored binomial cutoff increasing: 0.740982997044525 > 0
+  PASS prefix projection tail geometric: 0.794689154976717 > 0
+  PASS ordinary suffix tail geometric: 0.589378309953434 > 0
+  PASS box tail geometric: 0.614920240607333 > 0
+  PASS positive box gain: 0.075467246110185 > 0
+  PASS positive augmented encoding gain: 0.034684128267120 > 0
+  PASS boxes saving: 0.006325129581648 > 1581/250000
+  PASS residual queries saving: 0.006325129564681 > 1581/250000
+  PASS stored queries saving: 0.006325129574958 > 1581/250000
+  PASS augmented encodings saving on the short side: 0.006325140607982 > 1581/250000
+  PASS box encodings saving on the short side: 0.009743292434065 > 1581/250000
+  PASS folded matrix writing saving on the short side: 0.937140316750000 > 1581/250000
+  PASS input formation and residue saving: 0.993676000000000 > 0
+  PASS output updates saving: 0.036176000000000 > 0
+  PASS short side holds a square tile: 0.003418162852417 > 0
+  PASS middle part holds a block: 0.000593544500000 > 0
+  PASS outer rounding exponent below one: 0.993676000000000 > 0
+  PASS middle rounding exponent below one: 0.851200000000000 > 0
+  PASS outer-side base below rounded target: 0.000000873238469 > 0
+  PASS middle-side base below rounded target: 0.098757710935928 > 0
+  PASS improves the ten-term rectangular base: 0.001568634069756 > 0
+  PASS below Stoian Las Vegas base: 0.003081743798344 > 0
+  PASS below Stoian deterministic base: 0.004082544522390 > 0
+  certified Las Vegas base below 2995627/1000000
+  PASS candidate ratio exceeds rounded certified saving: 0.006325129634531 > 1581/250000
+Transfer of the square deterministic saving 0.00705208 into base 2 + 2^-delta
+  PASS transfer base below 2.995124: 0.000000202896301 > 0
+  PASS transfer base above 2.995123: 0.000000802004095 > 0
+  PASS transfer base below this rectangular base: 0.000505539837691 > 0
+PASS: 34 strict rational interval inequalities.

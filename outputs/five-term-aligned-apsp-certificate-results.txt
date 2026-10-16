@@ -1,0 +1,71 @@
+Aligned polynomial cache: exact numerical feasibility certificate
+Separate proof dependencies: aligned embedding; two-sided polynomial cache and query.
+Numerical checks supplement the separate embedding, cache, and query proofs.
+  c: 10.665501710000000
+  theta: 0.065297821400000
+  b: 0.046046346000000
+  R: 1000000000.000000000000000
+  S: 768979045.000000000000000
+  candidate eta: 0.000000000046046
+  u: 0.035408675172820
+  final ring exponent: 0.010637670827180
+  e: 0.081455021172820
+  CK: 2.393861212115431
+  T original geometry: 12.059362922115431
+  G: 0.086576385178390
+  q1 residual and cache overhead: 0.348125793364647
+  q2 stored: 0.478721436164647
+  E_source=T+q1: 12.407488715480078
+  E_box=T-G: 11.972786536937041
+  target saving: 0.007052080000000
+  target exponent if separate lemmas hold: 2.992947920000000
+  PASS ordinary tail regime: 5.665501710000000 > 0
+  PASS positive switching threshold: 0.065297821400000 > 0
+  PASS unweighted cache cutoff increasing: 0.434702178600000 > 0
+  PASS stored cutoff increasing: 0.734702178600000 > 0
+  PASS ordinary private-cap tail geometric: 0.586157023192953 > 0
+  PASS box private-cap tail geometric: 0.615775794955455 > 0
+  PASS positive box gain: 0.086576385178390 > 0
+  PASS box gain below one: 0.913423614821610 > 0
+  PASS positive residual query exponent: 0.348125793364647 > 0
+  PASS positive stored query exponent: 0.478721436164647 > 0
+  PASS positive source encoder slope: 12.907488715480078 > 0
+  PASS positive box encoder slope: 12.472786536937041 > 0
+  PASS positive original geometry slope: 11.559362922115431 > 0
+  PASS positive frozen-factor count: 768979045.000000000000000 > 0
+  PASS at least two cyclic factors: 231020955.000000000000000 > 1
+  PASS positive final ring exponent: 0.010637670827180 > 0
+  PASS positive candidate exponent: 0.000000000046046 > 0
+  PASS middle blocks fit: 0.953953654000000 > 0
+  PASS incidence bookkeeping after enumeration: 0.046046345953954 > 88151/12500000
+  PASS phase I initial: boxes: 0.050032872141307 > 88151/12500000
+  PASS phase I initial: residual queries: 0.030016425221161 > 88151/12500000
+  PASS phase I initial: stored queries: 0.024002973066699 > 88151/12500000
+  PASS phase I initial: two-sided polynomial cache encodings: 0.474726827569862 > 88151/12500000
+  PASS phase I initial: ordinary box encodings: 0.494743274490009 > 88151/12500000
+  PASS phase I initial: matrix formation: 0.999999999953954 > 88151/12500000
+  PASS phase I initial: original tile geometry: 0.444710402348702 > 0
+  PASS phase I freeze: boxes: 0.017689752068906 > 88151/12500000
+  PASS phase I freeze: residual queries: 0.017689752084632 > 88151/12500000
+  PASS phase I freeze: stored queries: 0.007052081235280 > 88151/12500000
+  PASS phase I freeze: two-sided polynomial cache encodings: 0.017689752346594 > 88151/12500000
+  PASS phase I freeze: ordinary box encodings: 0.053098427503688 > 88151/12500000
+  PASS phase I freeze: matrix formation: 0.946886987194724 > 88151/12500000
+  PASS phase I freeze: original tile geometry: 0.035408675434782 > 0
+  PASS phase II start: boxes: 0.017689752068906 > 88151/12500000
+  PASS phase II start: residual queries: 0.017689752084632 > 88151/12500000
+  PASS phase II start: stored queries: 0.007052081235280 > 88151/12500000
+  PASS phase II start: two-sided polynomial cache encodings: 0.017689752346594 > 88151/12500000
+  PASS phase II start: ordinary box encodings: 0.053098427503688 > 88151/12500000
+  PASS phase II start: matrix formation: 0.946886987194724 > 88151/12500000
+  PASS phase II start: original tile geometry: 0.035408675434782 > 0
+  PASS phase II final: boxes: 0.007052081241726 > 88151/12500000
+  PASS phase II final: residual queries: 0.007052081257451 > 88151/12500000
+  PASS phase II final: stored queries: 0.007052081235280 > 88151/12500000
+  PASS phase II final: two-sided polynomial cache encodings: 0.007052081519414 > 88151/12500000
+  PASS phase II final: ordinary box encodings: 0.042460756676508 > 88151/12500000
+  PASS phase II final: matrix formation: 0.936249316367544 > 88151/12500000
+  PASS phase II final: original tile geometry: 0.035408675434782 > 0
+Exact candidate/freeze/ring-stage identities: PASS
+PASS: 47 strict rational inequalities.
+Numerical target: 2.99294792, conditional on the separately audited embedding/cache/query lemmas.

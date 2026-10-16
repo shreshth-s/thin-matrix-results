@@ -1,0 +1,98 @@
+{
+  "upstream_paper": {
+    "title": "Truly Subquadratic 3SUM and Truly Subcubic APSP via Triangles in Sparse Lopsided Graphs",
+    "authors": [
+      "Josh Alman",
+      "Virginia Vassilevska Williams"
+    ],
+    "arxiv_id": "2610.06783v1",
+    "url": "https://arxiv.org/abs/2610.06783v1",
+    "html_url": "https://arxiv.org/html/2610.06783v1",
+    "source_license": "CC BY 4.0 as declared by arXiv",
+    "accessed_on": "2026-10-13",
+    "downloaded_source_included": false
+  },
+  "working_note": {
+    "path": "outputs/exponent-improvement.tex",
+    "status": "Working derivation; not formally verified or claimed novel",
+    "verification_entrypoint": "scripts/verify.py",
+    "additional_numerical_verifier": "outputs/verify_subset_convolution.py",
+    "finite_checks": [
+      "outputs/check_pruned_encoding.py",
+      "outputs/check_reductions.py",
+      "outputs/check_modular_moments.py",
+      "outputs/check_prefix_counts.py",
+      "outputs/check_3sum_counts.py",
+      "outputs/check_rectangular_reductions.py",
+      "outputs/check_subset_convolution.py",
+      "outputs/check_direct_sum_tiling.py",
+      "outputs/check_aggregated_queries.py",
+      "outputs/check_lazy_encoding.py",
+      "outputs/check_five_term.py",
+      "outputs/check_five_term_oracle.py",
+      "outputs/check_composite_fold.py",
+      "outputs/check_composite_halving.py"
+    ],
+    "deterministic_apsp_numerical_verifier": "outputs/verify_deterministic_apsp.py",
+    "five_term_apsp_numerical_verifier": "outputs/verify_five_term_apsp.py"
+  },
+  "supplied_review": {
+    "path": "reviews/2026-10-13-proof-sketch-review.md",
+    "received_on": "2026-10-13",
+    "reviewer_identity": "not provided",
+    "scope": "Pasted proof sketch and upstream paper, not the full local TeX",
+    "external_verification_artifacts_available": false
+  },
+  "subset_convolution_source": {
+    "title": "Truly Sub-3^n Min-Sum Subset Convolution and Join Ordering",
+    "authors": [
+      "Mihail Stoian"
+    ],
+    "arxiv_id": "2610.10282v1",
+    "url": "https://arxiv.org/abs/2610.10282v1",
+    "html_url": "https://arxiv.org/html/2610.10282v1",
+    "accessed_on": "2026-10-13",
+    "dependency_scope": "Restriction products and local-cover organization in Sections 2–4; join ordering under the assumptions of Section 5. The local note changes the rectangular restriction cost and cover-weight analysis.",
+    "downloaded_source_included": false
+  },
+  "rectangular_multiplication_sources": [
+    {
+      "title": "New Bounds for Matrix Multiplication: from Alpha to Omega",
+      "authors": [
+        "Virginia Vassilevska Williams",
+        "Yinzhan Xu",
+        "Zixuan Xu",
+        "Renfei Zhou"
+      ],
+      "arxiv_id": "2307.07970v2",
+      "url": "https://arxiv.org/abs/2307.07970v2",
+      "accessed_on": "2026-10-15",
+      "dependency_scope": "Table 1 endpoints (1.2, 2.535063) and (1.5, 2.794941), interpolated for the deterministic APSP exponent 2.9958892. External theorem, not certified by local numerical checks.",
+      "downloaded_source_included": false
+    },
+    {
+      "title": "Rectangular matrix multiplication from polynomial products",
+      "authors": [
+        "Przemysław Uznański"
+      ],
+      "arxiv_id": "2610.10494v2",
+      "url": "https://arxiv.org/abs/2610.10494v2",
+      "html_url": "https://arxiv.org/html/2610.10494v2",
+      "accessed_on": "2026-10-15",
+      "dependency_scope": "Optional separate exponent 2.9958323 assumes Corollary 1.2 and characteristic-zero exact bilinear recursion in Lemma 6.1. This recent external theorem is not proved by local numerical certificates or finite tests.",
+      "downloaded_source_included": false
+    }
+  ],
+  "five_term_source": {
+    "title": "Thin matrix products up to D <= N^0.172 and lossless reductions for 3SUM, Exact Triangle and APSP, with 3SUM over abelian groups and a dichotomy for coordinatewise problems",
+    "authors": [
+      "Ruhollah Majdoddin"
+    ],
+    "arxiv_id": "2610.17420v1",
+    "url": "https://arxiv.org/abs/2610.17420v1",
+    "html_url": "https://arxiv.org/html/2610.17420v1",
+    "accessed_on": "2026-10-15",
+    "dependency_scope": "Sections 3–7 five-term identity, deterministic re-indexing and squared embedding; Section 15.4 composite per-incidence certification. Local note changes encodings, query contractions, entropy bounds and explicit reduction costs. Numerical certificates and finite tests do not prove the external embedding.",
+    "downloaded_source_included": false
+  }
+}

@@ -1,0 +1,71 @@
+Cyclic-factor APSP numerical certificate
+Status: numerical inequalities only; ring algorithm is a separate proof dependency.
+  c: 10.673337630000000
+  theta: 0.059085882500000
+  r: 0.000000000000000
+  coefficient_point_y: 0.025178142000000
+  block_exponent_b: 0.043682760000000
+  factors_per_composite_R: 100000.000000000000000
+  factors_before_freezing_S: 92277.000000000000000
+  candidate_exponent_eta: 0.000000436827600
+  frozen_modulus_exponent_u: 0.040309140445200
+  final_ring_length_exponent_z: 0.003373619554800
+  tensor_exponent_e: 0.083991900445200
+  target_saving: 0.006559000000000
+  CK: 2.394417486048168
+  T: 12.067755116048168
+  G: 0.078105480242813
+  E_box: 11.989649635805354
+  q_residual: 0.401811798816911
+  q_stored: 0.441977240699185
+  PASS compact ordinary tail regime: 5.673337630000000 > 0
+  PASS positive switching fraction: 0.059085882500000 > 0
+  PASS stored binomial cutoff increasing: 0.740914117500000 > 0
+  PASS positive coefficient point: 0.025178142000000 > 0
+  PASS coefficient point below one: 0.974821858000000 > 0
+  PASS ordinary leaf tail geometric: 0.586492258101819 > 0
+  PASS box leaf tail geometric: 0.613286817495551 > 0
+  PASS positive box gain: 0.078105480242813 > 0
+  PASS box gain below one: 0.921894519757187 > 0
+  PASS positive residual query exponent: 0.401811798816911 > 0
+  PASS positive stored query exponent: 0.441977240699185 > 0
+  PASS positive ordinary encoder slope: 12.567755116048168 > 0
+  PASS positive box encoder slope: 12.489649635805354 > 0
+  PASS positive geometry slope: 11.567755116048168 > 0
+  PASS positive frozen-factor count: 92277.000000000000000 > 0
+  PASS at least two remaining factors: 7723.000000000000000 > 1
+  PASS positive final ring exponent: 0.003373619554800 > 0
+  PASS positive candidate exponent: 0.000000436827600 > 0
+  PASS middle blocks fit: 0.956317240000000 > 0
+  PASS incidence bookkeeping after enumeration: 0.043682323172400 > 6559/1000000
+  PASS phase I initial: boxes: 0.047094186120532 > 6559/1000000
+  PASS phase I initial: residual queries: 0.026130074799513 > 6559/1000000
+  PASS phase I initial: stored queries: 0.024375537441475 > 6559/1000000
+  PASS phase I initial: ordinary encodings: 0.516529472699296 > 6559/1000000
+  PASS phase I initial: box encodings: 0.519941335647427 > 6559/1000000
+  PASS phase I initial: matrix formation: 0.999999563172400 > 6559/1000000
+  PASS phase I initial: tile geometry: 0.472847149526896 > 0
+  PASS phase I freeze: boxes: 0.009933410447979 > 6559/1000000
+  PASS phase I freeze: residual queries: 0.009933386568463 > 6559/1000000
+  PASS phase I freeze: stored queries: 0.006559814772550 > 6559/1000000
+  PASS phase I freeze: ordinary encodings: 0.009934066645629 > 6559/1000000
+  PASS phase I freeze: box encodings: 0.016494294366408 > 6559/1000000
+  PASS phase I freeze: matrix formation: 0.939535852504600 > 6559/1000000
+  PASS phase I freeze: tile geometry: 0.006560883918429 > 0
+  PASS phase II start: boxes: 0.009933410447979 > 6559/1000000
+  PASS phase II start: residual queries: 0.009933386568463 > 6559/1000000
+  PASS phase II start: stored queries: 0.006559814772550 > 6559/1000000
+  PASS phase II start: ordinary encodings: 0.009934066645629 > 6559/1000000
+  PASS phase II start: box encodings: 0.016494294366408 > 6559/1000000
+  PASS phase II start: matrix formation: 0.939535852504600 > 6559/1000000
+  PASS phase II start: tile geometry: 0.006560883918429 > 0
+  PASS phase II final: boxes: 0.006559790893179 > 6559/1000000
+  PASS phase II final: residual queries: 0.006559767013663 > 6559/1000000
+  PASS phase II final: stored queries: 0.006559814772550 > 6559/1000000
+  PASS phase II final: ordinary encodings: 0.006560447090829 > 6559/1000000
+  PASS phase II final: box encodings: 0.013120674811608 > 6559/1000000
+  PASS phase II final: matrix formation: 0.936162232949800 > 6559/1000000
+  PASS phase II final: tile geometry: 0.006560883918429 > 0
+Exact prime-stage identities: PASS
+Target exponent, conditional on the separately audited ring lemma: 2.993441000000000
+PASS: 48 strict rational interval inequalities.

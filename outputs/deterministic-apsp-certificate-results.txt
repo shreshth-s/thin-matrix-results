@@ -1,0 +1,79 @@
+
+Established rectangular interpolation
+  c = 21.842998400000000
+  theta = 0.112537591700000
+  r = 0.025466625100000
+  alpha = 0.047816540000000
+  e = 0.061314111400000
+  z = 0.000373717900000
+  a = 0.030843914650000
+  b = 0.030470196750000
+  kappa = 1.304701967500000
+  q1 = 0.429905926430819
+  q2 = 0.429905926512091
+  q_lazy_upper = 0.429905903179070
+  G_alpha = 0.029844099845125
+  PASS c>10: 11.842998400000000 > 0
+  PASS positive block: 0.030470196750000 > 0
+  PASS positive z: 0.000373717900000 > 0
+  PASS prefix positive: 0.025466625100000 > 0
+  PASS pruning beyond prefix: 0.022349914900000 > 0
+  PASS pruning below box threshold: 0.064721051700000 > 0
+  PASS prefix fits: 0.861995783200000 > 0
+  PASS query sum increases: 0.741664419360726 > 0
+  PASS exponential upper-bound domain: 0.899764929235037 > 0
+  PASS boxes: 0.004110896862224 > 10277/2500000
+  PASS residual query: 0.004110896885301 > 10277/2500000
+  PASS stored query: 0.004110896880317 > 10277/2500000
+  PASS lazy reconstruction query: 0.004110898310961 > 10277/2500000
+  PASS failed scans: 0.004110896900000 > 10277/2500000
+  PASS pruned shared encodings: 0.004110899160297 > 10277/2500000
+  PASS matrix writing: 0.953734128025000 > 10277/2500000
+  PASS residue allowance: 0.969156085350000 > 10277/2500000
+  PASS input placement fits retained encodings: 15.487841333450404 > 0
+  PASS original outer geometry: 0.002654752597761 > 0
+  PASS independent product capacity: 0.789932983443956 > 0
+  PASS selector with explicit allowance: 0.004110887833450 > 10277/2500000
+  PASS interpolation lower domain: 0.104701967500000 > 0
+  PASS interpolation upper domain: 0.195298032500000 > 0
+  Certified exponent: 2.995889200000000
+
+Recent rectangular curve
+  c = 21.428730300000000
+  theta = 0.112844371900000
+  r = 0.025536047800000
+  alpha = 0.048364650000000
+  e = 0.062576917200000
+  z = 0.000320596820000
+  a = 0.031448757010000
+  b = 0.031128160190000
+  kappa = 1.373537922280000
+  q1 = 0.430836206575286
+  q2 = 0.430836206574940
+  q_lazy_upper = 0.430836189082606
+  G_alpha = 0.029496952858758
+  PASS c>10: 11.428730300000000 > 0
+  PASS positive block: 0.031128160190000 > 0
+  PASS positive z: 0.000320596820000 > 0
+  PASS prefix positive: 0.025536047800000 > 0
+  PASS pruning beyond prefix: 0.022828602200000 > 0
+  PASS pruning below box threshold: 0.064479721900000 > 0
+  PASS prefix fits: 0.861619580300000 > 0
+  PASS query sum increases: 0.741341373008696 > 0
+  PASS exponential upper-bound domain: 0.475112560289236 > 0
+  PASS boxes: 0.004167758560792 > 41677/10000000
+  PASS residual query: 0.004167758564376 > 41677/10000000
+  PASS stored query: 0.004167758564398 > 41677/10000000
+  PASS lazy reconstruction query: 0.004167759659014 > 41677/10000000
+  PASS failed scans: 0.004167758660000 > 41677/10000000
+  PASS pruned shared encodings: 0.004167759627575 > 41677/10000000
+  PASS matrix writing: 0.952826864485000 > 41677/10000000
+  PASS residue allowance: 0.968551242990000 > 41677/10000000
+  PASS input placement fits retained encodings: 15.159888778564270 > 0
+  PASS original outer geometry: 0.002642528070880 > 0
+  PASS independent product capacity: 0.786461044100595 > 0
+  PASS selector with explicit allowance: 0.004167749375717 > 41677/10000000
+  PASS recent curve domain: 0.873537922280000 > 0
+  Certified exponent: 2.995832300000000
+
+PASS: 45 strict rational inequalities.

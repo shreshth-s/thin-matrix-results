@@ -1,0 +1,251 @@
+
+Thin matrix, N >= D^18: c=21.775, theta=.11121
+  G=0.071957221327794, q=0.428041144724411, E=17.927210335665762, T=17.927210335665762
+  PASS boxes: 0.071957221327794 > 1439/20000
+  PASS queries at density D^-1/2: 0.071958855275589 > 1439/20000
+  PASS encoding: 0.072789664334238 > 1439/20000
+  PASS query exponent rounded upward: 0.000008855275589 > 0
+  PASS tile fits: 0.072789664334238 > 0
+
+Wider regime, D <= N^.129: c=9.33, theta=.135
+  G=0.000142127963963, q=0.499466417635801, E=7.749341557601637, T=7.747453005047909
+  PASS boxes: 0.000142127963963 > 1/10000
+  PASS queries: 0.000533582364199 > 1/10000
+  PASS encoding: 0.002596426894487 > 1/10000
+  PASS tile fits: 0.004484979448215 > 0
+
+Deterministic integer reduction (unfolded): c=21.915, theta=.116108
+  G=0.075919325214107, q=0.443061314146586, E=18.040523779883512, T=18.040523779883512
+  PASS boxes saving: 0.002095356953506 > 419/200000
+  PASS queries saving: 0.002095273112394 > 419/200000
+  PASS scans saving: 0.002095200000000 > 419/200000
+  PASS encoding saving: 0.002112988659880 > 419/200000
+  PASS hash selection saving: 0.106706027942396 > 419/200000
+  PASS matrix writing saving: 0.942707300000000 > 419/200000
+  PASS successful scans saving: 0.973448850000000 > 419/200000
+  PASS 3SUM rounded exponent saving: 0.001047500000000 > 1047/1000000
+
+Deterministic integer reduction with residue folding: c=21.6844, theta=.1163026
+  G=0.075128280181711, q=0.443654548410684, E=17.853872033766476, T=17.853872033766476
+  PASS boxes saving: 0.002125821041662 > 17/8000
+  PASS queries saving: 0.002125622860004 > 17/8000
+  PASS scans saving: 0.002125200000000 > 17/8000
+  PASS folded encoding saving: 0.002317406777375 > 17/8000
+  PASS folded tile fits: 0.004442606777375 > 0
+  PASS hash selection saving: 0.104582027942396 > 17/8000
+  PASS folded matrix writing saving: 0.955968475000000 > 17/8000
+  PASS successful scans saving: 0.972770850000000 > 17/8000
+  PASS 3SUM rounded exponent saving: 0.001062500000000 > 531/500000
+
+Las Vegas integer amplification (unfolded): c=21.2733, theta=.111731
+  G=0.070353140360510, q=0.429647044908948, E=17.521013690153452, T=17.521013690153452
+  PASS boxes saving: 0.003999294616934 > 3999/1000000
+  PASS queries saving: 0.003999284085106 > 3999/1000000
+  PASS encoding saving: 0.004000455769537 > 3999/1000000
+  PASS matrix writing saving: 0.943154000000000 > 3999/1000000
+  PASS successful scans saving: 0.971577000000000 > 3999/1000000
+  PASS tile fits: 0.004000455769537 > 0
+  PASS oracle preprocessing admissibility: 0.000001161152603 > 0
+
+Las Vegas integer amplification with residue folding: c=21.0477, theta=.111971
+  G=0.069613877076460, q=0.430386142770839, E=17.338290775304982, T=17.338290775304982
+  PASS boxes saving: 0.004057096756016 > 4057/1000000
+  PASS queries saving: 0.004057095599315 > 4057/1000000
+  PASS folded encoding saving: 0.004094413615226 > 4057/1000000
+  PASS folded matrix writing saving: 0.956290000000000 > 4057/1000000
+  PASS successful scans saving: 0.970860000000000 > 4057/1000000
+  PASS folded tile fits: 0.004094413615226 > 0
+  unrounded maximal cost exponent tau = 2.995942904400685
+  PASS rounded exponent exceeds tau: 0.000000095599315 > 0
+
+Las Vegas integer APSP with slot batching and prefix queries: c=200337/10000, theta=177677/1562500
+  G=0.066532840450925, q=0.435739144757128, E=16.516458077121904, T=16.516458077121904
+  r=25732677/1000000000, A0=15.083850374988135, CK=2.865215404267538, q1=0.433467199506481, q2=0.433467199279399
+  PASS prefix fraction below threshold complement: 0.860554043000000 > 0
+  PASS residual sum increases to its cutoff: 0.740426143654151 > 0
+  PASS boxes saving: 0.004465176605493 > 893/200000
+  PASS residual-query saving: 0.004465173923857 > 893/200000
+  PASS stored-query saving: 0.004465173939097 > 893/200000
+  PASS batched encoding saving: 0.004465145109158 > 893/200000
+  PASS matrix writing saving: 0.949665722500000 > 893/200000
+  PASS successful scans saving: 0.966443815000000 > 893/200000
+  PASS outer bands fit N0: 0.004465145109158 > 0
+  PASS middle-block count exceeds K: 0.774152418659097 > 0
+  unrounded maximal cost exponent tau = 2.995534854890842
+  PASS rounded exponent exceeds tau: 0.000000145109158 > 0
+
+Deterministic all-edges Exact Triangle by per-pair moments, 11 stages: c=21.62, theta=.11216
+  G=0.072011046338159, q=0.430967888193885, E=17.801737928264625, T=17.801737928264625
+  PASS boxes saving: 0.003743746437837 > 3739/1000000
+  PASS queries saving: 0.003744811060525 > 3739/1000000
+  PASS failed scans saving: 0.003740000000000 > 3739/1000000
+  PASS encoding saving: 0.004385942088113 > 3739/1000000
+  PASS selection saving, middle above outer: 0.003850000000000 > 3739/1000000
+  PASS matrix writing saving: 0.957212500000000 > 3739/1000000
+  PASS residue computation saving: 0.971475000000000 > 3739/1000000
+  PASS middle part holds a block: 0.971815000000000 > 0
+  PASS folded tile fits: 0.004725942088113 > 0
+
+Deterministic zero-weight 5-Clique, split (2,2,1), 8 stages: c=23.04, theta=.11108
+  G=0.076591189430153, q=0.427640131766371, E=18.950534836584101, T=18.950534836584101
+  PASS boxes saving: 0.003624049013367 > 181/50000
+  PASS queries saving: 0.003625265786076 > 181/50000
+  PASS failed scans saving: 0.003623200000000 > 181/50000
+  PASS encoding saving: 0.004230855648628 > 181/50000
+  PASS selection saving, middle below outer: 0.003711165800000 > 181/50000
+  PASS matrix writing saving: 0.959737825000000 > 181/50000
+  PASS residue computation saving: 0.973158550000000 > 181/50000
+  PASS middle part holds a block: 0.473611450000000 > 0
+  PASS folded tile fits: 0.004683755648628 > 0
+  PASS graph construction saving: 0.500000000000000 > 181/50000
+
+Las Vegas integer 4-Clique, split (2,1,1), small-side fold: c=99209/5000, theta=56661/500000
+  G=0.065459879909611, q=0.434538873572891, E=16.360819343757224, T=16.360819343757224
+  PASS boxes saving: 0.004514113318567 > 2257/500000
+  PASS queries saving: 0.004514199278413 > 2257/500000
+  PASS clamped encoding, large side: 0.004784918538890 > 2257/500000
+  PASS geometric encoding term: 0.388997898054502 > 2257/500000
+  PASS matrix writing, large side: 0.931040000000000 > 2257/500000
+  PASS successful scans saving: 0.965520000000000 > 2257/500000
+  PASS small side holds a tile: 0.004784918538890 > 0
+  PASS clamp regime: side ratio exceeds K: 0.768425959031224 > 0
+  PASS middle part holds a block: 0.965520000000000 > 0
+
+Hinted uMv, c > 10 parameters: c=21.775, theta=.11121
+  G=0.071957221327794, q=0.428041144724411, E=17.927210335665762, T=17.927210335665762
+  PASS phase-2 saving exceeds g: 0.071957221327794 > 1439/20000
+  PASS phase-3 clamped encoding fits: 0.000257075197037 > 0
+  PASS phase-3 geometric encoding fits: 0.000046648018569 > 0
+  PASS small side holds a tile: 0.004607135656529 > 0
+  PASS phase-4 query exponent below one: 0.571958855275589 > 0
+
+Hinted uMv, c < 10 parameters: c=8.29, theta=.3385
+  G=0.001117470068009, q=0.998197841553414, E=6.891371996884084, T=6.878019956424033
+  PASS phase-2 saving exceeds g: 0.001117470068009 > 1/1000
+  PASS phase-3 clamped encoding fits: 0.000380134625396 > 0
+  PASS phase-3 geometric encoding fits: 0.001105507697959 > 0
+  PASS small side holds a tile: 0.002857296808801 > 0
+  PASS phase-4 query exponent below one: 0.001802158446586 > 0
+
+Las Vegas integer 3SUM by bucket-pair folding: c=21.2733, theta=.111731
+  G=0.070353140360510, q=0.429647044908948, E=17.521013690153452, T=17.521013690153452
+  PASS boxes saving: 0.003999294616934 > 3999/1000000
+  PASS queries saving: 0.003999284085106 > 3999/1000000
+  PASS encoding saving: 0.004000455769537 > 3999/1000000
+  PASS matrix writing saving: 0.943154000000000 > 3999/1000000
+  PASS bucket selection saving: 0.028423000000000 > 3999/1000000
+  PASS tile fits: 0.004000455769537 > 0
+  3SUM exponent 2 - delta = 1996001/1000000
+
+Deterministic integer 3SUM by bucket-pair folding: c=21.915, theta=.116108
+  G=0.075919325214107, q=0.443061314146586, E=18.040523779883512, T=18.040523779883512
+  PASS boxes saving: 0.002097422314705 > 2097/1000000
+  PASS queries saving: 0.002097397086830 > 2097/1000000
+  PASS failed scans saving: 0.002097500000000 > 2097/1000000
+  PASS encoding saving: 0.002122108542537 > 2097/1000000
+  PASS modulus selection saving: 0.916068750000000 > 2097/1000000
+  PASS bucket prime selection saving: 0.026578750000000 > 2097/1000000
+  PASS matrix writing saving: 0.943696250000000 > 2097/1000000
+  PASS successful scan saving: 0.973421250000000 > 2097/1000000
+  PASS tile fits: 0.004219608542537 > 0
+  3SUM exponent 2 - delta = 1997903/1000000
+
+Deterministic integer 3SUM by greedy modular moments: c=22.4828, theta=.111021
+  G=0.074502382749777, q=0.427458092853864, E=18.499934675364305, T=18.499934675364305
+  PASS moment boxes saving: 0.003800286893920 > 19/5000
+  PASS moment queries saving: 0.003800294398088 > 19/5000
+  PASS moment scans saving: 0.003800340000000 > 19/5000
+  PASS moment encoding saving: 0.003806152261295 > 19/5000
+  PASS moment selector saving: 0.003802635000000 > 19/5000
+  PASS moment bucket selection saving: 0.026815835000000 > 19/5000
+  PASS moment matrix construction saving: 0.946051635000000 > 19/5000
+  PASS moment tile fits: 0.004017282261295 > 0
+  deterministic 3SUM exponent 2 - delta = 9981/5000
+
+Downstream rational consequences
+  PASS min-plus convolution, Las Vegas (1+tau)/2 below bound: 0.000000500000000 > 0
+  PASS min-plus convolution, deterministic (1+tau)/2 below bound: 0.000000600000000 > 0
+  PASS MonoConvolution deterministic 3/2 - eps/(8-2eps) below bound: 0.000002262491111 > 0
+  PASS MonoConvolution Las Vegas 3/2 - eps/(8-2eps) below bound: 0.000000375250156 > 0
+  PASS MonoConvolution greedy moments 3/2 - eps/(8-2eps) below bound: 0.000000451679095 > 0
+
+Rectangular isolated Las Vegas min-plus convolution: c=21.487, theta=.111507
+  G=0.071043040392676, q=0.428956842540002, E=17.694059023379031, T=17.694059023379031
+  PASS rectangular boxes saving: 0.003943484351370 > 3943/1000000
+  PASS rectangular queries saving: 0.003943490849588 > 3943/1000000
+  PASS rectangular encoding saving: 0.003953476962084 > 3943/1000000
+  PASS rectangular thin-matrix construction saving: 0.930613712161250 > 3943/1000000
+  PASS rectangular tile fits: 0.003953476962084 > 0
+  PASS rectangular middle part exceeds block size: 0.000000808107500 > 0
+  PASS rectangular matrix formation saving: 0.972245000000000 > 3943/1000000
+  PASS rectangular diagonal extraction saving: 0.027755000000000 > 3943/1000000
+  Las Vegas min-plus convolution exponent 2 - delta = 1996057/1000000
+
+Rectangular deterministic min-plus convolution: c=23.1026, theta=.1151488
+  G=0.079822212262128, q=0.440133314912619, E=19.001144631863485, T=19.001144631863485
+  PASS rectangular deterministic boxes saving: 0.001943037983720 > 1943/1000000
+  PASS rectangular deterministic queries saving: 0.001943040668583 > 1943/1000000
+  PASS rectangular deterministic failed scans saving: 0.001943043681280 > 1943/1000000
+  PASS rectangular deterministic encoding saving: 0.001945978936429 > 1943/1000000
+  PASS rectangular deterministic thin-matrix construction saving: 0.878317556727040 > 1943/1000000
+  PASS rectangular deterministic tile fits: 0.003889022617709 > 0
+  PASS rectangular deterministic middle part exceeds block size: 0.060341414832640 > 0
+  PASS rectangular deterministic successful scans saving: 0.060341414832640 > 1943/1000000
+  PASS rectangular deterministic prime selection saving: 0.001943878302720 > 1943/1000000
+  PASS rectangular deterministic matrix formation saving: 0.916288000000000 > 1943/1000000
+  PASS rectangular deterministic diagonal extraction saving: 0.083712000000000 > 1943/1000000
+  deterministic min-plus convolution exponent 2 - delta = 1998057/1000000
+
+Lopsided k-Clique range conditions
+  PASS Las Vegas successful scans, a <= 30, m >= 1: 0.004090000000000 > 0
+  PASS deterministic prime selection, a <= 6, omega < 2.372: 0.086871700000000 > 0
+  PASS real list length below middle part, a <= 35: 0.021200929087974 > 0
+
+All-fixed-k lopsided clique geometry
+  PASS all-k Las Vegas graph formation saving per outer exponent: 0.029140000000000 > 4057/1000000
+  PASS all-k deterministic prime selection saving per outer exponent: 0.002125660000000 > 17/8000
+  PASS all-k deterministic successful scans saving per outer exponent: 0.069640850000000 > 17/8000
+  PASS all-k deterministic graph formation saving per outer exponent: 0.096870000000000 > 17/8000
+  PASS all-k deterministic grouping ratio below one: 0.903130000000000 > 0
+
+Hinted OMv, tau <= 0.14: c=8.58, theta=.335
+  G=0.009719297599653, q=0.990939183423127, E=7.130031517674977, T=7.121040009391807
+  PASS phase-2 saving exceeds g: 0.009719297599653 > 97/10000
+  PASS encoding fits at thinness tau: 0.012825625182166 > 97/10000
+  PASS phase-3 query exponent below bound: 0.000060816576873 > 0
+  PASS phase-3 query exponent below one: 0.009060816576873 > 0
+  PASS tile fits: 0.021817133465336 > 0
+
+Hinted OMv, tau <= 0.145: c=8.29, theta=.3385
+  G=0.001117470068009, q=0.998197841553414, E=6.891371996884084, T=6.878019956424033
+  PASS phase-2 saving exceeds g: 0.001117470068009 > 1/1000
+  PASS encoding fits at thinness tau: 0.005179727253847 > 1/1000
+  PASS phase-3 query exponent below bound: 0.000802158446586 > 0
+  PASS phase-3 query exponent below one: 0.001802158446586 > 0
+  PASS tile fits: 0.018531767713898 > 0
+
+Las Vegas real-input reduction: c=20.276, theta=.104566
+  G=0.061741990979497, q=0.407385479786465, E=16.712923594504030, T=16.712923594504030
+  PASS boxes saving: 0.003680563566270 > 23/6250
+  PASS queries saving: 0.003680624519313 > 23/6250
+  PASS same-block comparisons saving: 0.003680624519313 > 23/6250
+  PASS encoding saving: 0.003709198684426 > 23/6250
+  PASS source reduction overhead saving: 0.027965687740344 > 23/6250
+  PASS list exponent less than e: 0.031646312259656 > 0
+  PASS matrix construction saving: 0.940388000000000 > 23/6250
+  PASS list construction saving: 0.972034312259656 > 23/6250
+
+Las Vegas real-input rank-prefix comparison counts: c=21.2733, theta=.111731
+  G=0.070353140360510, q=0.429647044908948, E=17.521013690153452, T=17.521013690153452
+  PASS rank-prefix boxes saving: 0.003999294616934 > 3999/1000000
+  PASS rank-prefix queries saving: 0.003999284085106 > 3999/1000000
+  PASS rank-prefix encoding saving: 0.004000455769537 > 3999/1000000
+  PASS rank-prefix source reduction overhead saving: 0.028423000000000 > 3999/1000000
+  PASS rank-prefix matrix construction saving: 0.943154000000000 > 3999/1000000
+  PASS rank-prefix list construction saving: 0.971577000000000 > 3999/1000000
+  PASS rank-prefix tile fits with polylog padding: 0.004000455769537 > 0
+  PASS rank-prefix real clique list length, a <= 35: 0.005195000000000 > 0
+  PASS all-k real clique graph formation saving per outer exponent: 0.028423000000000 > 3999/1000000
+  PASS all-k real clique list construction saving per outer exponent: 0.971577000000000 > 3999/1000000
+
+All 172 strict inequalities certified with rational intervals.

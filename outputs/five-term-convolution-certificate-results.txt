@@ -1,0 +1,64 @@
+Rectangular min-plus convolution with the five-term data structure
+  e: 0.081483674200000  beta: 0.039147920000000  alpha: 0.960852080000000  target saving: 0.006073000000000
+  c: 11.058859600000000
+  theta: 0.056385047900000
+  r: 0.038328724900000
+  y: 0.024969474300000
+  CK: 2.421268812212642
+  T: 12.480128412212642
+  G: 0.077579669343457
+  E_aug: 12.444817353350393
+  E_box: 12.402548742869184
+  q1: 0.422420330988500
+  q2: 0.422420331044804
+  PASS compact tail regime: 6.058859600000000 > 0
+  PASS positive prefix: 0.038328724900000 > 0
+  PASS prefix below one: 0.961671275100000 > 0
+  PASS positive switching fraction: 0.056385047900000 > 0
+  PASS switching fits suffix: 0.905286227200000 > 0
+  PASS positive rational coefficient point: 0.024969474300000 > 0
+  PASS coefficient point below one: 0.975030525700000 > 0
+  PASS stored binomial cutoff increasing: 0.741367648842234 > 0
+  PASS prefix projection tail geometric: 0.801170303639590 > 0
+  PASS ordinary suffix tail geometric: 0.602340607279179 > 0
+  PASS box tail geometric: 0.626854323371842 > 0
+  PASS positive box gain: 0.077579669343457 > 0
+  PASS box gain below one: 0.922420330656543 > 0
+  PASS positive augmented encoding gain: 0.035311058862248 > 0
+  PASS positive residual query exponent: 0.422420330988500 > 0
+  PASS positive stored query exponent: 0.422420331044804 > 0
+  PASS geometry slope above one half: 11.980128412212642 > 0
+  PASS outer exponent positive: 0.960852080000000 > 0
+  PASS block exponent positive: 0.039147920000000 > 0
+  PASS middle part holds a block, beta > alpha e/2: 0.000001041079444 > 0
+  PASS folded tile fits at the final modulus, 1 > e(T-1/4): 0.003444201035102 > 0
+  PASS folded tile fits at the initial modulus, 1 > bT: 0.491536641242551 > 0
+  PASS block exponent below one, 1 > b: 0.959258162900000 > 0
+Las Vegas (Lemma lem:isolation with two encoder families, isolated witness recovery)
+  PASS Las Vegas boxes saving: 0.006074003844970 > 6073/1000000
+  PASS Las Vegas residual queries saving: 0.006074003818980 > 6073/1000000
+  PASS Las Vegas stored queries saving: 0.006074003814572 > 6073/1000000
+  PASS Las Vegas augmented encodings saving: 0.006074003220190 > 6073/1000000
+  PASS Las Vegas ordinary box encodings saving: 0.009383371573486 > 6073/1000000
+  PASS Las Vegas folded matrix formation saving: 0.902131761619166 > 6073/1000000
+  PASS Las Vegas convolution matrix formation saving: 0.960852080000000 > 6073/1000000
+  PASS Las Vegas diagonal extraction saving: 0.039147920000000 > 6073/1000000
+  unrounded maximal Las Vegas cost exponent: 1.993925996779810
+  PASS Las Vegas rounded exponent exceeds the maximal cost exponent: 0.000001003220190 > 0
+Deterministic (composite incidence certification, Lambda = 100000 factors, eta = b/Lambda)
+  eta: 0.000000407418371
+  PASS deterministic boxes saving: 0.006073612376181 > 6073/1000000
+  PASS deterministic residual queries saving: 0.006073612350191 > 6073/1000000
+  PASS deterministic stored queries saving: 0.006073612345783 > 6073/1000000
+  PASS deterministic augmented encodings saving: 0.006073611751401 > 6073/1000000
+  PASS deterministic ordinary box encodings saving: 0.009382980104697 > 6073/1000000
+  PASS deterministic folded matrix formation saving: 0.902131370150377 > 6073/1000000
+  PASS deterministic incidence bookkeeping saving: 0.039146487451767 > 6073/1000000
+  PASS deterministic convolution matrix formation saving: 0.960852080000000 > 6073/1000000
+  PASS deterministic diagonal extraction saving: 0.039147920000000 > 6073/1000000
+  unrounded maximal deterministic cost exponent: 1.993926388248599
+  PASS deterministic rounded exponent exceeds the maximal cost exponent: 0.000000611751401 > 0
+  PASS improves the square-block consequence 1.996474: 0.002547000000000 > 0
+  PASS improves the rectangular Las Vegas bound 1.996057: 0.002130000000000 > 0
+Certified exponent for both guarantees: 1.993927000000000
+PASS: 44 strict rational interval inequalities.

@@ -1,0 +1,70 @@
+Deterministic cyclic 3SUM and exact counts: rational interval certificate
+Independent dependencies: fixed original buckets; exact count lifting; cyclic histogram folding.
+  c: 10.831078560000000
+  theta: 0.065042512690000
+  b: 0.044363672070000
+  R: 1000000000.000000000000000
+  S: 884889170.000000000000000
+  candidate eta: 0.000000000088727
+  folded exponent u: 0.078513865912349
+  final ring exponent: 0.010213478227651
+  T: 12.236603763130058
+  G: 0.087812697513341
+  Q residual: 0.347144789791544
+  q2 stored: 0.477229815171544
+  E source: 12.583748552921602
+  E box: 12.148791065616717
+  target saving: 0.006894500000000
+  target exponent: 1.993105500000000
+  PASS ordinary tail regime: 5.831078560000000 > 0
+  PASS positive threshold: 0.065042512690000 > 0
+  PASS unweighted cache cutoff increasing: 0.434957487310000 > 0
+  PASS stored cutoff increasing: 0.734957487310000 > 0
+  PASS ordinary private-cap tail geometric: 0.593127043427878 > 0
+  PASS box private-cap tail geometric: 0.622091330353598 > 0
+  PASS positive box gain: 0.087812697513341 > 0
+  PASS box gain below one: 0.912187302486659 > 0
+  PASS positive residual exponent: 0.347144789791544 > 0
+  PASS positive stored exponent: 0.477229815171544 > 0
+  PASS positive source-encoder slope: 13.083748552921602 > 0
+  PASS positive box-encoder slope: 12.648791065616717 > 0
+  PASS positive geometry slope: 11.736603763130058 > 0
+  PASS positive frozen count: 884889170.000000000000000 > 0
+  PASS at least two ring factors: 115110830.000000000000000 > 1
+  PASS positive candidate exponent: 0.000000000088727 > 0
+  PASS sub-buckets fit input: 0.955636327930000 > 0
+  PASS incidence/bucket bookkeeping after enumeration: 0.044363671981273 > 13789/2000000
+  PASS original-input reading after enumeration: 0.999999999911273 > 13789/2000000
+  PASS phase I initial: boxes: 0.088727344051273 > 13789/2000000
+  PASS phase I initial: residual queries: 0.044363671981273 > 13789/2000000
+  PASS phase I initial: stored queries: 0.044363671981273 > 13789/2000000
+  PASS phase I initial: polynomial source cache: 1.044363671981273 > 13789/2000000
+  PASS phase I initial: box encodings: 1.044363671981273 > 13789/2000000
+  PASS phase I initial: dense histogram formation: 1.044363671981273 > 13789/2000000
+  PASS phase I initial: tile geometry: 0.955636327930000 > 0
+  PASS phase I freeze: boxes: 0.017107992496888 > 13789/2000000
+  PASS phase I freeze: residual queries: 0.017107992503409 > 13789/2000000
+  PASS phase I freeze: stored queries: 0.006894514263519 > 13789/2000000
+  PASS phase I freeze: polynomial source cache: 0.017107992466296 > 13789/2000000
+  PASS phase I freeze: box encodings: 0.051258186302124 > 13789/2000000
+  PASS phase I freeze: dense histogram formation: 0.926592873112749 > 13789/2000000
+  PASS phase I freeze: tile geometry: 0.034150193805236 > 0
+  PASS phase II start: boxes: 0.017107992496888 > 13789/2000000
+  PASS phase II start: residual queries: 0.017107992503409 > 13789/2000000
+  PASS phase II start: stored queries: 0.006894514263519 > 13789/2000000
+  PASS phase II start: polynomial source cache: 0.017107992466296 > 13789/2000000
+  PASS phase II start: box encodings: 0.051258186302124 > 13789/2000000
+  PASS phase II start: dense histogram formation: 0.926592873112749 > 13789/2000000
+  PASS phase II start: tile geometry: 0.034150193805236 > 0
+  PASS phase II final: boxes: 0.006894514269237 > 13789/2000000
+  PASS phase II final: residual queries: 0.006894514275758 > 13789/2000000
+  PASS phase II final: stored queries: 0.006894514263519 > 13789/2000000
+  PASS phase II final: polynomial source cache: 0.006894514238645 > 13789/2000000
+  PASS phase II final: box encodings: 0.041044708074473 > 13789/2000000
+  PASS phase II final: dense histogram formation: 0.916379394885098 > 13789/2000000
+  PASS phase II final: tile geometry: 0.034150193805236 > 0
+Exact candidate/freeze/ring identities: PASS
+  PASS inherited MonoConvolution exponent below 1.4991368: 0.000000100506335 > 0
+Exact inherited MonoConvolution exponent: 11972422/7986211
+PASS: 48 strict rational interval inequalities.
+Certified numerical target: 1.9931055 (also the rounded exponent 1.993106).

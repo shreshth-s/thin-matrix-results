@@ -1,0 +1,44 @@
+Certified point (mu, 1+2mu) and square bound
+  PASS ADV+25 row kappa=0.5275 is below 1+2mu: 0.000001000000000 > 0
+  PASS omega below 2+mu: 0.155500000000000 > 0
+Main result: chord from (mu, 1+2mu) to (1, omega), source numbers only
+  PASS chord to kappa=1: chord slope below one (g nonincreasing): 0.329100529100529 > 0
+  PASS chord to kappa=1: crossover inside the chord segment: 0.467194080812102 > 0
+  PASS chord to kappa=1: block fits in the middle part at the crossover: 0.486759573187898 > 0
+  PASS chord to kappa=1: naive regime rho < b below budget: 0.479707493187898 > 0
+  PASS chord to kappa=1: tables n^(omega+gamma) below budget: 0.153753829187898 > 0
+  PASS chord to kappa=1: bridges n^(2+gamma) below budget: 0.525753829187898 > 0
+  PASS chord to kappa=1: saving eps'' exceeds target: 0.001746160812102 > 873/500000
+  chord to kappa=1: rho* = 0.532805919187898, eps'' = 0.001746160812102, exponent 2+mu-target = 2.525754000000000
+  closed form delta(2+mu-omega)/(3-omega) = 0.001746175859873
+Source-style black-box hypothesis (entries <= n^(1-mu) only, saving eps1 = delta at rho = mu)
+  PASS padding-side saving positive: 0.001113319673134 > 0
+  PASS padding side binds below the fast-MM side: 0.000632856186739 > 0
+  eps''_blackbox = min(eps1(1-mu)/(3-eps1), eps1(2+mu-omega)/(3-omega)) = 0.001113319673134  (exponent 2.526386680326866)
+Refinement A: one more ADV+25 row, omega(1,0.6,1) <= 2.092351, then chord to (1, 2.371339)
+  PASS ADV+25 kappa=0.6: chord slope below one (g nonincreasing): 0.484813793103448 > 0
+  PASS ADV+25 kappa=0.6: crossover inside the chord segment: 0.067750515564473 > 0
+  PASS ADV+25 kappa=0.6: block fits in the middle part at the crossover: 0.486203138435527 > 0
+  PASS ADV+25 kappa=0.6: naive regime rho < b below budget: 0.479151058435527 > 0
+  PASS ADV+25 kappa=0.6: tables n^(omega+gamma) below budget: 0.153197394435527 > 0
+  PASS ADV+25 kappa=0.6: bridges n^(2+gamma) below budget: 0.525197394435527 > 0
+  PASS ADV+25 kappa=0.6: saving eps'' exceeds target: 0.002302595564473 > 921/400000
+  ADV+25 kappa=0.6: rho* = 0.532249484435527, eps'' = 0.002302595564473, exponent 2+mu-target = 2.525197500000000
+  PASS ADV+25 node kappa=3/5: 1-kappa+w+allowances below budget: 0.032846384435527 > 0
+  PASS ADV+25 node kappa=1: 1-kappa+w+allowances below budget: 0.153858384435527 > 0
+Refinement B: SODA 2024 row omega(1,0.55,1) <= 2.066134 with the ADV+25 point at mu
+  PASS SODA 2024 kappa=0.55: chord slope below one (g nonincreasing): 0.505155555555556 > 0
+  PASS SODA 2024 kappa=0.55: crossover inside the chord segment: 0.017814703537471 > 0
+  PASS SODA 2024 kappa=0.55: block fits in the middle part at the crossover: 0.486138950462529 > 0
+  PASS SODA 2024 kappa=0.55: naive regime rho < b below budget: 0.479086870462529 > 0
+  PASS SODA 2024 kappa=0.55: tables n^(omega+gamma) below budget: 0.153133206462529 > 0
+  PASS SODA 2024 kappa=0.55: bridges n^(2+gamma) below budget: 0.525133206462529 > 0
+  PASS SODA 2024 kappa=0.55: saving eps'' exceeds target: 0.002366783537471 > 23667/10000000
+  SODA 2024 kappa=0.55: rho* = 0.532185296462529, eps'' = 0.002366783537471, exponent 2+mu-target = 2.525133300000000
+  PASS SODA 2024 node kappa=11/20: 1-kappa+w+allowances below budget: 0.008999196462529 > 0
+  PASS SODA 2024 node kappa=3/5: 1-kappa+w+allowances below budget: 0.032502196462529 > 0
+  PASS SODA 2024 node kappa=1: 1-kappa+w+allowances below budget: 0.153581196462529 > 0
+Comparison with chunking (saving mu*delta at rho = mu, entries polynomial in n^mu)
+  PASS uniform lopsided oracle beats chunked square products: 0.000825068093790 > 0
+  chunked chord saving = 0.000921107766083
+PASS: 31 strict rational interval inequalities.

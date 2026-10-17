@@ -1,0 +1,28 @@
+name = "thin-matrix-machine"
+version = "0.1.0"
+defaultTargets = ["ThinMatrixMachine"]
+
+[[require]]
+name = "ThreeSumApsp"
+git = "https://github.com/anthropics/formal-math"
+rev = "e1a4e6508154ea59f030480661590a9fe3018011"
+subDir = "3sum-apsp"
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "0df444a360eaa60ab8c11dca51a86af692955474"
+
+[[lean_lib]]
+name = "ThinMatrixProofs"
+srcDir = "../lean"
+roots = ["APSPAlgorithm", "APSPReduction", "AlignedCertificate", "AsymptoticCosts", "MinPlusReduction", "RealCertificate"]
+
+[[lean_lib]]
+name = "ThinMatrixMachine"
+roots = ["MachineBackend", "MachineAdapter", "DenseMarkPass", "DenseScorePass", "DenseSurvivorPass", "DenseArgminPass", "DenseAffirmativePass", "DenseMinimumUpdatePass"]
+
+[[lean_lib]]
+name = "ThinMatrixCoreAdapter"
+roots = ["CoreCompatibility", "CanonicalMachineAdapter"]
+

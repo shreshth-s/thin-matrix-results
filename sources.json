@@ -14,7 +14,7 @@
   },
   "working_note": {
     "path": "outputs/exponent-improvement.tex",
-    "status": "Working derivation; complete algorithms not formally verified or claimed novel. Scoped Lean checks are described separately in lean/README.md.",
+    "status": "Working derivation; no novelty or practical speedup claim. The TeX/PDF remain the research-note snapshot. The separate APSP Lean correctness and charged-work theorem is scoped in lean/README.md; whole-program word-RAM compilation remains conditional.",
     "verification_entrypoint": "scripts/verify.py",
     "finite_checks": [
       "outputs/check_3sum_counts.py",
@@ -143,7 +143,7 @@
   },
   "research_snapshot": {
     "commit": "378091445d21dc4a46975c8c78396424ec7e3752",
-    "scope": "Proof and numerical parameter snapshot from source main after PR #22. Results-only presentation and verification entrypoints may contain release-specific maintenance; exploratory work and supplied reviews are not included.",
+    "scope": "Proof-note and numerical parameter snapshot from source main after PR #22. Results-only maintenance and the separate APSP Lean development are later additions; exploratory history and supplied reviews are not included.",
     "description": "Source research snapshot after PR #22; no research history is bundled."
   },
   "lean_verification": {
@@ -152,6 +152,26 @@
     "toolchain": "leanprover/lean4:v4.31.0",
     "mathlib_commit": "9a9483a92959bc92bd6a60176dd1fe597298c1f8",
     "mathlib_url": "https://github.com/leanprover-community/mathlib4/tree/9a9483a92959bc92bd6a60176dd1fe597298c1f8",
-    "scope": "Selected aligned local identities and numerical feasibility statements only; not the full embeddings, cache complexity, reductions, or APSP algorithm."
+    "scope": "Exact APSP correctness and O(n^2.99294792) charged work for the complete constructed program in its binary-arithmetic and bounded indexed-array/control model. The closed final theorem includes the constructed embedding, LOW/HIGH caches, binary cyclic arithmetic, deterministic certification, parameter setup, and adaptive APSP reductions. Original hypotheses: polynomially bounded integer weights and no negative cycles. It is not a whole-program word-RAM compilation or Lean evaluator performance theorem. Other result rows and historical witnesses remain outside this formalization.",
+    "final_theorem": "ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work",
+    "final_theorem_path": "lean/BinaryAlignedAPSPTheorem.lean",
+    "verification_transcript": "lean/verification-output.txt",
+    "checked_source_configuration_sha256": "a8e81d96377a679851007e705f12741c0f2348a1ad4baf285b4997ab3d31373b",
+    "checked_modules": 135,
+    "checked_axiom_reports": 1928
+  },
+  "lean_machine_adapter": {
+    "scope_document": "machine/README.md",
+    "toolchain": "leanprover/lean4:v4.33.1",
+    "upstream_commit": "e1a4e6508154ea59f030480661590a9fe3018011",
+    "upstream_subdirectory": "3sum-apsp",
+    "upstream_url": "https://github.com/anthropics/formal-math/tree/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp",
+    "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "upstream_license": "Apache-2.0; dependency fetched separately, not vendored",
+    "scope": "Actual word-RAM compiler and APSP-host composition, conditional on a proved improved min-plus execution contract and its time bound. This adapter does not supply that implementation.",
+    "verification_transcript": "machine/verification-output.txt",
+    "checked_source_configuration_sha256": "acf249db41f66f3d466ccdc96bf1bf02ebfa5c15b84c9ae172b7a5439a81307f",
+    "checked_declarations": 60,
+    "checked_unique_declarations": 58
   }
 }

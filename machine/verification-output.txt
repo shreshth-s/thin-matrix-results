@@ -1,0 +1,103 @@
+Lean (version 4.33.1, arm64-apple-darwin24.6.0, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Core compatibility checks: True
+$ lake env lean -DwarningAsError=true MachineBackend.lean
+'Light.ThinMatrixBackend.indexedRead_meets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.ThinMatrixBackend.pointwise_meets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.ThinMatrixBackend.readTask_solved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.ThinMatrixBackend.storedCoefficientRead_solvedIn' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -DwarningAsError=true DenseMarkPass.lean
+'Light.DenseMarkPass.ends' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseMarkPass.meets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseMarkPass.meets_of_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseMarkPass.meets_boolean' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -DwarningAsError=true DenseScorePass.lean
+'Light.DenseScorePass.score_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseScorePass.ends' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseScorePass.meets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseScorePass.meets_of_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -DwarningAsError=true DenseSurvivorPass.lean
+'Light.DenseSurvivorPass.ends' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseSurvivorPass.meets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseSurvivorPass.meets_of_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -DwarningAsError=true DenseArgminPass.lean
+'Light.DenseArgminPass.scan_isArgmin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseArgminPass.ends' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseArgminPass.meets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseArgminPass.meets_linear' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -DwarningAsError=true DenseAffirmativePass.lean
+'Light.DenseAffirmativePass.ends' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseAffirmativePass.meets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseAffirmativePass.meets_of_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -DwarningAsError=true DenseMinimumUpdatePass.lean
+'Light.DenseMinimumUpdatePass.ends' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseMinimumUpdatePass.meets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseMinimumUpdatePass.meets_of_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -DwarningAsError=true MachineAdapter.lean
+'ThinMatrix.MachineAdapter.appendAPSP' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.MachineAdapter.realizedFromMinPlus' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.MachineAdapter.rationalStatementOfMinPlusExecution' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+$ lake env lean -DwarningAsError=true -R ../lean ../lean/APSPReduction.lean
+'ThinMatrix.APSPReduction.exists_simple_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.APSPReduction.exists_short_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.APSPReduction.minPlus_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.APSPReduction.squared_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.APSPReduction.apsp_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.APSPReduction.apsp_polynomial_magnitude' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.APSPReduction.apsp_product_count' depends on axioms: [propext]
+'ThinMatrix.APSPReduction.apsp_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -DwarningAsError=true -R ../lean ../lean/APSPAlgorithm.lean
+'ThinMatrix.APSPAlgorithm.optional_eq_minPlus' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.APSPAlgorithm.fastSquared_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.APSPAlgorithm.fastAPSP_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.APSPAlgorithm.fastTrace_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.APSPAlgorithm.execution_calls' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.APSPAlgorithm.execution_writes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.APSPAlgorithm.polylog_oracle_calls' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.APSPAlgorithm.polylog_formation_writes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.APSPAlgorithm.fastTrace_weight_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.APSPAlgorithm.fastAPSP_entry_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.APSPAlgorithm.execution_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -DwarningAsError=true -R ../lean ../lean/AsymptoticCosts.lean
+'ThinMatrix.AsymptoticCosts.existsUniformSlack' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.AsymptoticCosts.stageUniformSlack' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.AsymptoticCosts.scalarGeometryAllStages' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.AsymptoticCosts.cyclicGeometrySlack' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.AsymptoticCosts.scalarTileFitsEventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.AsymptoticCosts.cyclicTileFitsEventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.AsymptoticCosts.roundedLogPowBigO' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.AsymptoticCosts.completeCostBigO' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.AsymptoticCosts.costBoundOfDomination' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.AsymptoticCosts.costBoundOfEventualDomination' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -DwarningAsError=true CoreCompatibility.lean
+ThinMatrix.APSPAlgorithm.fastAPSP_correct.{u_1} {V : Type u_1} [Fintype V] [DecidableEq V]
+  (O : ThinMatrix.MinPlusReduction.TriangleOracle V V V) (hO : ThinMatrix.MinPlusReduction.OracleCorrect O)
+  (w : ThinMatrix.APSPReduction.Graph V) (W : ℕ) (hw : ThinMatrix.APSPReduction.EdgeBound w W)
+  (hno : ThinMatrix.APSPReduction.NoNegativeCycles w) :
+  ThinMatrix.APSPReduction.IsAPSP w (ThinMatrix.APSPAlgorithm.fastAPSP O w W)
+ThinMatrix.AsymptoticCosts.completeCostBigO (k : ℕ) :
+  ThinMatrix.AsymptoticCosts.completeCost k =O[Filter.atTop] fun n => ↑n ^ ThinMatrix.AsymptoticCosts.targetExponent
+'ThinMatrix.APSPAlgorithm.fastAPSP_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.AsymptoticCosts.completeCostBigO' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -DwarningAsError=true CanonicalMachineAdapter.lean
+'ThinMatrix.CanonicalMachineAdapter.rationalStatementOfLedger' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+PASS: 60 scoped declaration checks (58 unique); only standard axioms ['Classical.choice', 'Quot.sound', 'propext'].
+Source/configuration SHA-256: acf249db41f66f3d466ccdc96bf1bf02ebfa5c15b84c9ae172b7a5439a81307f
+Pinned dependency source checkouts: 10; all clean before and after.
+Scope: actual Light primitives and conditional adapters; the improved Light solver remains a premise.

@@ -1,6 +1,6 @@
 # Thin-matrix exponent improvements: results
 
-Working derivations and exact-rational certificates for improvements to the exponents displayed in Alman and Vassilevska Williams, *Truly Subquadratic 3SUM and Truly Subcubic APSP via Triangles in Sparse Lopsided Graphs* ([arXiv:2610.06783v1](https://arxiv.org/abs/2610.06783v1)), and to the five-term follow-up of Majdoddin ([arXiv:2610.17420v1](https://arxiv.org/abs/2610.17420v1)). This repository holds only the results: the proof note, its exact-rational certificates, the finite brute-force checkers, selected Lean proofs, and explanatory pages. The exploratory history behind them lives in the separate research repository.
+Working derivations and exact-rational certificates for improvements to the exponents displayed in Alman and Vassilevska Williams, *Truly Subquadratic 3SUM and Truly Subcubic APSP via Triangles in Sparse Lopsided Graphs* ([arXiv:2610.06783v1](https://arxiv.org/abs/2610.06783v1)), and to the five-term follow-up of Majdoddin ([arXiv:2610.17420v1](https://arxiv.org/abs/2610.17420v1)). This repository holds the proof note, exact-rational certificates, finite brute-force checkers, an APSP Lean development, and explanatory pages. The exploratory history lives in the separate research repository.
 
 ## Current bounds
 
@@ -59,9 +59,20 @@ For the additional Lean checks, see [lean/README.md](lean/README.md). With the p
 python3 scripts/verify_lean.py
 ```
 
+The main end-to-end statement is
+[`BinaryAlignedAPSPTheorem.correctness_and_work`](lean/BinaryAlignedAPSPTheorem.lean).
+It proves exact APSP correctness and an `O(n^2.99294792)` bound on the complete
+constructed program's charged work in the stated binary-arithmetic and bounded
+indexed-array/control model. Its graph hypotheses are polynomially bounded
+integer edge weights and no negative cycles; it assumes no fast oracle or
+desired running-time bound. The embedding, LOW/HIGH caches, exact binary cyclic
+arithmetic, deterministic certification, parameter setup, and APSP reductions
+are connected in this statement. See [lean/README.md](lean/README.md) for the
+execution model and reproduction instructions.
+
 ## Caveats
 
 - The exponents are asymptotic. The deterministic composite certification uses fixed stage counts whose constants only settle for astronomically large `n`; no practical speedup is claimed.
-- The Python certificates verify strict numerical inequalities and finite instances. The separate Lean layer covers only the statements listed in [lean/README.md](lean/README.md). The complete embeddings, cache complexity, reductions, and APSP theorem are not formalized; the full proof still requires mathematical review. The source paper reports a separate Lean formalization for some stated theorems.
+- The Python certificates verify numerical inequalities and finite instances. The Lean theorem proves correctness and charged work in its specified model, not Lean evaluator performance or a complete compiled word-RAM execution. The separate [word-RAM adapter](machine/README.md) remains conditional on an improved `Light.Solves` implementation and its time bound. Other rows and historical witnesses are outside this APSP formalization. The TeX/PDF remain the earlier research-note snapshot; the Lean scope is documented separately.
 - The `2.99294792` chain and everything after it build on Majdoddin's five-term tensor. The source paper states that its authors found better exponents than they displayed; the comparisons here are with displayed numbers and make no priority claim.
 - External numerical inputs are recorded in `sources.json` and in the bibliography of the note.

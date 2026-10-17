@@ -58,14 +58,14 @@ Majdoddin's paper uses Schönhage's five-term partial-product tensor, develops t
 | Real APSP, min-plus, Exact Triangle | as above | `O(n^2.993805)` Las Vegas | |
 | Zero/Min/Max-Weight k-Clique, integer | saving `floor(k/3)` times his Exact Triangle saving, i.e. about `0.0055 floor(k/3)` | `0.00705208 floor(k/2.046046346)` via the lopsided five-term construction | here ahead |
 | Hinted OMv | refuted for every `tau < 0.172` (Section 10) | explicit exponents for `tau <= 0.145` | here behind on the regime |
-| Verification | Python scripts and a Lean 4 formalization (Section 22) | exact rational interval certificates, finite checks, and a limited Lean layer; no full algorithm formalization | |
+| Verification | Python scripts and a Lean 4 formalization (Section 22) | exact rational certificates, finite checks, and an APSP correctness/charged-work theorem in an explicit binary/indexed-array model; compiled word-RAM adapter remains conditional | see [Lean scope](../lean/README.md) |
 
 ## Source results not touched here
 
 - Directed unweighted APSP (Thm 34): the source proves `O(n^(2 + mu - eps''))` for an unspecified constant. The record now makes it explicit: deterministic `O(n^2.525754)` from the source's displayed `mu < 0.5275` and `omega < 2.372` alone, and `O(n^2.5251975)` with the table row `omega(1,0.6,1) <= 2.092351` of Alman–Duan–Vassilevska Williams–Xu–Xu–Zhou, against Zwick's `O(n^2.5275)`.
 - 3XOR (Remark 23) is now treated: deterministic `O(n^1.9931055)` with exact counts. Knapsack and approximate Subset Sum, Tree Edit Distance, Replacement Paths, Second Shortest Simple Path, Betweenness Centrality, and the other equivalence-class members the source lists without explicit exponents: not restated here, although the known reductions would transfer the bounds above.
 - The universal trade-off theorems (Thms 24 and 25, "for every `eps < 0.1204` and every `kappa > 0`") and Table 2 of parameter trade-offs: not extended or recomputed; only the explicit points above are certified.
-- The source reports Lean certification of Theorems 19 and 22 and the Zero-Weight case of Corollary 39. The limited Lean checks here do not formalize corresponding algorithmic theorems, and the external Lean project has not been rebuilt by the local verification suite.
+- The source reports Lean certification of Theorems 19 and 22 and the Zero-Weight case of Corollary 39. The separate [machine project](../machine/README.md) rebuilds the pinned upstream components needed by its adapters; this does not independently recheck every source theorem. The main project's improved APSP theorem concerns correctness and charged work in its specified model. Whole-program word-RAM compilation remains conditional.
 
 ## Guarantee and input conventions
 

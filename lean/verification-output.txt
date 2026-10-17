@@ -1,0 +1,35 @@
+PASS canonical witness c = 1066550171/100000000
+PASS canonical witness theta = 326489107/5000000000
+PASS canonical witness b = 23023173/500000000
+PASS canonical witness delta = 88151/12500000
+PASS canonical witness R = 1000000000
+PASS canonical witness S = 768979045
+PASS t: [12059362922115430/1000000000000000, 12059362922115431/1000000000000000] contains Python rational interval
+PASS g: [86576385178389/1000000000000000, 86576385178390/1000000000000000] contains Python rational interval
+PASS q: [348125793364647/1000000000000000, 348125793364648/1000000000000000] contains Python rational interval
+PASS compact boxes agree with Lean declarations; no real-log theorem is asserted here.
+Lean 4.31.0; pinned mathlib from lake-manifest.json
+
+lean/LocalIdentities.lean
+'ThinMatrix.LocalIdentities.aligned_five_term' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.LocalIdentities.ordinary_plus_private' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.LocalIdentities.ordinary_eq_inner_sub_private' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.LocalIdentities.aligned_pencil' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.LocalIdentities.private_plus_scaled_inner' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.LocalIdentities.shared_normal_at_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/AlignedCertificate.lean
+'ThinMatrix.AlignedCertificate.witnessIdentities' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.AlignedCertificate.scalarPhaseEval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.AlignedCertificate.cyclicPhaseEval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.AlignedCertificate.checkCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.AlignedCertificate.numericalMargins' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.AlignedCertificate.allCostsOfEnclosures' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/RealCertificate.lean
+'ThinMatrix.RealCertificate.actualParameterEnclosures' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.RealCertificate.q2Identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.RealCertificate.analyticNumericalCertificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+PASS: 15 scoped declarations checked; only standard Lean axioms.
+The complete embeddings, cache costs, reductions and APSP theorem are not formalized.

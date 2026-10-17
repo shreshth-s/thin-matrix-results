@@ -6,6 +6,8 @@ import sys
 
 
 def main() -> None:
+    if not __debug__:
+        raise SystemExit("Verification requires assertions; run Python without -O/-OO or PYTHONOPTIMIZE.")
     root = Path(__file__).resolve().parents[1]
     for script, recorded in (
         ("verify_exponents.py", "certificate-results.txt"),
@@ -23,7 +25,7 @@ def main() -> None:
         ("verify_cyclic_3xor.py", "cyclic-3xor-certificate-results.txt"),
     ):
         certificate = subprocess.run(
-            [sys.executable, str(root / "outputs" / script)], cwd=root, check=True,
+            [sys.executable, "-E", str(root / "outputs" / script)], cwd=root, check=True,
             capture_output=True, text=True,
         )
         print(certificate.stdout, end="", flush=True)
@@ -47,7 +49,7 @@ def main() -> None:
         "check_fixed_bucket_counting.py",
         "check_fixed_linear_bucket_counting.py",
     ):
-        subprocess.run([sys.executable, str(root / "outputs" / script)], cwd=root, check=True)
+        subprocess.run([sys.executable, "-E", str(root / "outputs" / script)], cwd=root, check=True)
     print("PASS: all checks passed; stored certificate output reproduced.", flush=True)
 
 

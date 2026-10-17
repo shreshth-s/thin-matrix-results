@@ -14,34 +14,50 @@
   },
   "working_note": {
     "path": "outputs/exponent-improvement.tex",
-    "status": "Working derivation; not formally verified or claimed novel",
+    "status": "Working derivation; complete algorithms not formally verified or claimed novel. Scoped Lean checks are described separately in lean/README.md.",
     "verification_entrypoint": "scripts/verify.py",
-    "additional_numerical_verifier": "outputs/verify_subset_convolution.py",
     "finite_checks": [
-      "outputs/check_pruned_encoding.py",
-      "outputs/check_reductions.py",
+      "outputs/check_3sum_counts.py",
+      "outputs/check_aggregated_queries.py",
+      "outputs/check_composite_fold.py",
+      "outputs/check_composite_halving.py",
+      "outputs/check_direct_sum_tiling.py",
+      "outputs/check_exact_counting.py",
+      "outputs/check_five_term.py",
+      "outputs/check_five_term_aligned_cache.py",
+      "outputs/check_five_term_aligned_embedding.py",
+      "outputs/check_five_term_aligned_integration.py",
+      "outputs/check_five_term_cache.py",
+      "outputs/check_five_term_oracle.py",
+      "outputs/check_five_term_profile.py",
+      "outputs/check_five_term_profile_maps.py",
+      "outputs/check_five_term_ring.py",
+      "outputs/check_fixed_bucket_counting.py",
+      "outputs/check_fixed_linear_bucket_counting.py",
+      "outputs/check_lazy_encoding.py",
       "outputs/check_modular_moments.py",
       "outputs/check_prefix_counts.py",
-      "outputs/check_3sum_counts.py",
+      "outputs/check_pruned_encoding.py",
       "outputs/check_rectangular_reductions.py",
-      "outputs/check_subset_convolution.py",
-      "outputs/check_direct_sum_tiling.py",
-      "outputs/check_aggregated_queries.py",
-      "outputs/check_lazy_encoding.py",
-      "outputs/check_five_term.py",
-      "outputs/check_five_term_oracle.py",
-      "outputs/check_composite_fold.py",
-      "outputs/check_composite_halving.py"
+      "outputs/check_reductions.py",
+      "outputs/check_signed_window_counts.py",
+      "outputs/check_subset_convolution.py"
     ],
-    "deterministic_apsp_numerical_verifier": "outputs/verify_deterministic_apsp.py",
-    "five_term_apsp_numerical_verifier": "outputs/verify_five_term_apsp.py"
-  },
-  "supplied_review": {
-    "path": "reviews/2026-10-13-proof-sketch-review.md",
-    "received_on": "2026-10-13",
-    "reviewer_identity": "not provided",
-    "scope": "Pasted proof sketch and upstream paper, not the full local TeX",
-    "external_verification_artifacts_available": false
+    "numerical_verifiers": [
+      "outputs/verify_cyclic_3sum.py",
+      "outputs/verify_cyclic_3xor.py",
+      "outputs/verify_deterministic_apsp.py",
+      "outputs/verify_directed_apsp.py",
+      "outputs/verify_exponents.py",
+      "outputs/verify_five_term_aligned_apsp.py",
+      "outputs/verify_five_term_apsp.py",
+      "outputs/verify_five_term_cache_apsp.py",
+      "outputs/verify_five_term_convolution.py",
+      "outputs/verify_five_term_realinput.py",
+      "outputs/verify_five_term_ring_apsp.py",
+      "outputs/verify_five_term_subset.py",
+      "outputs/verify_subset_convolution.py"
+    ]
   },
   "subset_convolution_source": {
     "title": "Truly Sub-3^n Min-Sum Subset Convolution and Join Ordering",
@@ -53,7 +69,8 @@
     "html_url": "https://arxiv.org/html/2610.10282v1",
     "accessed_on": "2026-10-13",
     "dependency_scope": "Restriction products and local-cover organization in Sections 2–4; join ordering under the assumptions of Section 5. The local note changes the rectangular restriction cost and cover-weight analysis.",
-    "downloaded_source_included": false
+    "downloaded_source_included": false,
+    "version_note": "The proof and comparisons intentionally use v1; the later v2 revision is described on arXiv as fixing technique naming."
   },
   "rectangular_multiplication_sources": [
     {
@@ -71,6 +88,35 @@
       "downloaded_source_included": false
     },
     {
+      "title": "More Asymmetry Yields Faster Matrix Multiplication",
+      "authors": [
+        "Josh Alman",
+        "Ran Duan",
+        "Virginia Vassilevska Williams",
+        "Yinzhan Xu",
+        "Zixuan Xu",
+        "Renfei Zhou"
+      ],
+      "arxiv_id": "2404.16349v2",
+      "url": "https://arxiv.org/abs/2404.16349v2",
+      "html_url": "https://arxiv.org/html/2404.16349v2",
+      "accessed_on": "2026-10-16",
+      "dependency_scope": "Pinned Table 1 bounds used in the directed APSP refinement. External theorem, not established by local certificates or finite tests. A later version exists; these inputs intentionally match the proof bibliography.",
+      "table_1_rectangular_bounds": [
+        {
+          "k": "0.5275",
+          "upper_bound": "2.054999"
+        },
+        {
+          "k": "0.6",
+          "upper_bound": "2.092351"
+        }
+      ],
+      "square_upper_bound": "2.371339",
+      "mu_strict_upper_bound": "0.5275",
+      "downloaded_source_included": false
+    },
+    {
       "title": "Rectangular matrix multiplication from polynomial products",
       "authors": [
         "Przemysław Uznański"
@@ -79,7 +125,7 @@
       "url": "https://arxiv.org/abs/2610.10494v2",
       "html_url": "https://arxiv.org/html/2610.10494v2",
       "accessed_on": "2026-10-15",
-      "dependency_scope": "Optional separate exponent 2.9958323 assumes Corollary 1.2 and characteristic-zero exact bilinear recursion in Lemma 6.1. This recent external theorem is not proved by local numerical certificates or finite tests.",
+      "dependency_scope": "Optional separate exponent 2.9958323 assumes Corollary 1.2 and characteristic-zero exact bilinear recursion in Lemma 6.1. This recent external theorem is not proved by local numerical certificates or finite tests. This is an optional conditional statement, excluded from the unconditional results table. The preprint is unrefereed and self-described as Codex-generated; its stated bound at k=1 gives omega<=2.25.",
       "downloaded_source_included": false
     }
   ],
@@ -94,5 +140,18 @@
     "accessed_on": "2026-10-15",
     "dependency_scope": "Sections 3–7 five-term identity, deterministic re-indexing and squared embedding; Section 15.4 composite per-incidence certification. Local note changes encodings, query contractions, entropy bounds and explicit reduction costs. Numerical certificates and finite tests do not prove the external embedding.",
     "downloaded_source_included": false
+  },
+  "research_snapshot": {
+    "commit": "378091445d21dc4a46975c8c78396424ec7e3752",
+    "scope": "Proof and numerical parameter snapshot from source main after PR #22. Results-only presentation and verification entrypoints may contain release-specific maintenance; exploratory work and supplied reviews are not included.",
+    "description": "Source research snapshot after PR #22; no research history is bundled."
+  },
+  "lean_verification": {
+    "scope_document": "lean/README.md",
+    "verification_entrypoint": "scripts/verify_lean.py",
+    "toolchain": "leanprover/lean4:v4.31.0",
+    "mathlib_commit": "9a9483a92959bc92bd6a60176dd1fe597298c1f8",
+    "mathlib_url": "https://github.com/leanprover-community/mathlib4/tree/9a9483a92959bc92bd6a60176dd1fe597298c1f8",
+    "scope": "Selected aligned local identities and numerical feasibility statements only; not the full embeddings, cache complexity, reductions, or APSP algorithm."
   }
 }

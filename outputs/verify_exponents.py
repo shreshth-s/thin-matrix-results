@@ -10,6 +10,9 @@ from fractions import Fraction as F
 from functools import lru_cache
 from decimal import Decimal, localcontext
 
+if not __debug__:
+    raise SystemExit("Numerical certification requires assertions; run Python without -O/-OO or PYTHONOPTIMIZE.")
+
 
 class Interval:
     def __init__(self, lo, hi=None):

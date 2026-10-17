@@ -1,6 +1,6 @@
 # Comparison with the numbers displayed in the source paper
 
-Source: Alman and Vassilevska Williams, arXiv:2610.06783v1. Every row below pairs a number the source displays with this repository's current certified bound under the same guarantee and input type. Bounds are from `outputs/exponent-improvement.tex`; the source numbers are quoted from the paper text (theorem numbers in parentheses). The source paper states that its authors found slightly better exponents and omitted them, so this is a comparison with displayed numbers, not a priority claim. Nothing here is peer reviewed or Lean certified; the local evidence is the exact rational interval certificates and finite checks run by `python3 scripts/verify.py`.
+Source: Alman and Vassilevska Williams, arXiv:2610.06783v1. Every row below pairs a number the source displays with this repository's current certified bound under the same guarantee and input type. Bounds are from `outputs/exponent-improvement.tex`; the source numbers are quoted from the paper text (theorem numbers in parentheses). The source paper states that its authors found slightly better exponents and omitted them, so this is a comparison with displayed numbers, not a priority claim. The asymptotic algorithms are not peer reviewed or fully formalized. The local evidence consists of the exact rational interval certificates and finite checks run by `python3 scripts/verify.py`, plus the separately scoped [Lean checks](../lean/README.md).
 
 ## Source headline numbers that are improved here
 
@@ -26,7 +26,7 @@ The earlier `2.9958892` deterministic APSP construction combines per-pair modula
 
 ## Separate conditional statement, not counted as a bound
 
-Assuming Corollary 1.2 and Lemma 6.1 of [Uznański, arXiv:2610.10494v2](https://arxiv.org/abs/2610.10494v2), the ten-term construction would give deterministic `O(n^2.9958323)` for integer all-edges Exact Triangle, min-plus product, and APSP. That preprint is unrefereed and self-described as Codex-generated, and its stated bound `omega(1,k,1) <= 1 + k + 1/(4k)` evaluated at `k = 1` would give `omega <= 2.25`, far below the refereed `omega < 2.3713`. The conditional figure is recorded for completeness only; it is superseded in any case by the unconditional `2.99294792`.
+Assuming Corollary 1.2 and Lemma 6.1 of [Uznański, arXiv:2610.10494v2](https://arxiv.org/abs/2610.10494v2), the ten-term construction would give deterministic `O(n^2.9958323)` for integer all-edges Exact Triangle, min-plus product, and APSP. That preprint is unrefereed and self-described as Codex-generated, and its stated bound `omega(1,k,1) <= 1 + k + 1/(4k)` evaluated at `k = 1` would give `omega <= 2.25`, far below the `omega < 2.371339` bound in the pinned [arXiv:2404.16349v2](https://arxiv.org/abs/2404.16349v2). This comparison uses the pinned version, rather than a rounded value or a newer numerical refinement. The conditional figure is recorded for completeness only; it is superseded in any case by the unconditional `2.99294792`.
 
 ## Bounds stated here for which the source displays no number
 
@@ -43,29 +43,29 @@ Assuming Corollary 1.2 and Lemma 6.1 of [Uznański, arXiv:2610.10494v2](https://
 
 ## Comparison with Majdoddin, arXiv:2610.17420v1 (October 12, 2026)
 
-Majdoddin's paper introduces the five-term partial-product tensor that the current deterministic chain builds on, and proves lossless integer reductions of its own. Its displayed numbers and the current bounds here:
+Majdoddin's paper uses Schönhage's five-term partial-product tensor, develops the squared embedding that the current deterministic chain builds on, and proves lossless integer reductions of its own. Its displayed numbers and the current bounds here:
 
 | Problem | Majdoddin | Here | Notes |
 | --- | --- | --- | --- |
 | Thin product, `N >= D^18`, `|W| <= N^2/sqrt(D)` | `O(N^2/D^0.092)`, query `O(D^0.403)` | `O(N^2/D^0.0991)`, query `O(D^0.4009)` | both deterministic; here via the fixed-profile five-term lemma |
 | Thin product, `N >= D^14` | `O(N^2/D^0.077)`, query `O(D^0.421)` | `O(N^2/D^0.0853)`, query `O(D^0.4147)` | deterministic |
 | Thin regime limit | matrix theorem for every `eps < 0.172` | explicit points only up to `D <= N^0.145` (ten-term analysis) | Majdoddin's universal statement is wider; not reproduced here |
-| Integer 3SUM, deterministic | `n^1.9945+o(1)` | `O(n^1.9931055)` | |
-| Integer Exact Triangle, min-plus, APSP, deterministic | `n^2.9945+o(1)` | `O(n^2.99294792)` | |
+| Integer 3SUM, deterministic | `n^(1.9945+o(1))` | `O(n^1.9931055)` | |
+| Integer Exact Triangle, min-plus, APSP, deterministic | `n^(2.9945+o(1))` | `O(n^2.99294792)` | |
 | 3XOR, deterministic | `O(n^1.99451)` | `O(n^1.9931055)`, with exact counts | here ahead |
 | 3SUM over abelian groups, coordinatewise dichotomy | treated | not treated here | |
-| Real 3SUM | not restated; the source's argument with his matrix theorem keeps a quarter of the saving; keeping the whole saving for reals is left open | `O(n^1.993805)` Las Vegas, full unfolded saving via certified comparison counts | different guarantee: his remark is deterministic, this is Las Vegas |
+| Real 3SUM | not restated; substituting his matrix theorem into the source's real-input argument keeps a quarter of the saving; keeping the whole saving for reals is left open | `O(n^1.993805)` Las Vegas, full unfolded saving via certified comparison counts | the cited source reduction is Las Vegas; deterministic matrix preprocessing does not derandomize it |
 | Real APSP, min-plus, Exact Triangle | as above | `O(n^2.993805)` Las Vegas | |
 | Zero/Min/Max-Weight k-Clique, integer | saving `floor(k/3)` times his Exact Triangle saving, i.e. about `0.0055 floor(k/3)` | `0.00705208 floor(k/2.046046346)` via the lopsided five-term construction | here ahead |
 | Hinted OMv | refuted for every `tau < 0.172` (Section 10) | explicit exponents for `tau <= 0.145` | here behind on the regime |
-| Verification | Python scripts and a Lean 4 formalization (Section 22) | exact rational interval certificates and finite checks; no Lean | |
+| Verification | Python scripts and a Lean 4 formalization (Section 22) | exact rational interval certificates, finite checks, and a limited Lean layer; no full algorithm formalization | |
 
 ## Source results not touched here
 
 - Directed unweighted APSP (Thm 34): the source proves `O(n^(2 + mu - eps''))` for an unspecified constant. The record now makes it explicit: deterministic `O(n^2.525754)` from the source's displayed `mu < 0.5275` and `omega < 2.372` alone, and `O(n^2.5251975)` with the table row `omega(1,0.6,1) <= 2.092351` of Alman–Duan–Vassilevska Williams–Xu–Xu–Zhou, against Zwick's `O(n^2.5275)`.
 - 3XOR (Remark 23) is now treated: deterministic `O(n^1.9931055)` with exact counts. Knapsack and approximate Subset Sum, Tree Edit Distance, Replacement Paths, Second Shortest Simple Path, Betweenness Centrality, and the other equivalence-class members the source lists without explicit exponents: not restated here, although the known reductions would transfer the bounds above.
 - The universal trade-off theorems (Thms 24 and 25, "for every `eps < 0.1204` and every `kappa > 0`") and Table 2 of parameter trade-offs: not extended or recomputed; only the explicit points above are certified.
-- The Lean certification of the source's Theorems 19 and 22 and Corollary 39 has no counterpart here.
+- The source reports Lean certification of Theorems 19 and 22 and the Zero-Weight case of Corollary 39. The limited Lean checks here do not formalize corresponding algorithmic theorems, and the external Lean project has not been rebuilt by the local verification suite.
 
 ## Guarantee and input conventions
 

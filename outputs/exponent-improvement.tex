@@ -3319,8 +3319,9 @@ Majdoddin~\cite{M26} notes that the real-valued bounds of the source
 follow by inserting his matrix theorem into the source's argument, which
 keeps a quarter of the saving, and leaves open whether real-input
 reductions can keep the whole saving. Lemma~\ref{lem:prefix-count} keeps
-the whole unfolded saving at the price of a Las Vegas guarantee, and the
-corollary above is its five-term instance. The deterministic integer bounds
+the whole unfolded saving with a Las Vegas guarantee, matching the guarantee
+type of the source's real-input reduction; the corollary above is its
+five-term instance. The deterministic integer bounds
 of this section are also Las Vegas bounds, so for integer inputs the
 Las Vegas rows of the summary table are superseded by $2.99294792$ and
 $1.9931055$. For lopsided clique instances see
@@ -4825,7 +4826,7 @@ finite values of at most $\beta$ bits, and define
 $h(S)=\min_{A\mathbin{\dot\cup}B=S}(f(A)+g(B))$.
 We use the restriction products and local-cover organization of Mihail
 Stoian, \emph{Truly Sub-$3^n$ Min-Sum Subset Convolution and Join Ordering},
-\href{https://arxiv.org/html/2610.10282v1}{arXiv:2610.10282v1},
+\href{https://arxiv.org/html/2610.10282v1}{arXiv:2610.10282v1}~\cite{S26},
 Sections 2--4. The changed ingredient is an asymmetric restriction cost
 from rectangular tiles. This improves even the direct substitution of our
 square min-plus exponent into that paper's transfer theorem.
@@ -5220,9 +5221,9 @@ convolution, the lopsided $4$-Clique split, hinted OMv and uMv,
 MonoConvolution, and all-fixed-$k$ clique splits. Its output is in
 \texttt{certificate-results.txt}. The subset-convolution verifier adds
 13 strict inequalities, recorded in \texttt{subset-certificate-results.txt}.
-The five-term black-box certificates add 88 inequalities (thin products in
+The five-term black-box certificates add 89 inequalities (thin products in
 the source's regimes, real inputs, the MonoConvolution transfer, and the
-lopsided clique split), 44 (min-plus convolution), and 33 (subset
+lopsided clique split), 44 (min-plus convolution), and 34 (subset
 convolution); their recorded outputs are the three files named
 \texttt{five-term-*-certificate-results.txt} with the corresponding
 middle words.
@@ -5237,7 +5238,7 @@ products against naive XOR convolution, the small-bias families and their
 prefix projections, the bucket second moment and incidence bounds, the
 folded products against brute force, the level certification with a fixture
 that forces restarts, and end-to-end exact counts for sets, multisets, and
-the one-list correction, in ten tests.
+the one-list correction, in twelve tests.
 The separate \texttt{verify\_deterministic\_apsp.py} adds 45 strict
 inequalities for the two deterministic cyclic-encoding witnesses, recorded
 in \texttt{deterministic-apsp-\allowbreak certificate-\allowbreak results.txt}. The two external
@@ -5284,7 +5285,7 @@ windows, 600 sparse contractions, 1,936 retained-array lookups, 146
 complete free-pruned queries, and 146 complete lazy-prefix queries. It
 counts sparse input reads and checks full intermediate-array storage,
 as well as values against direct products. The unified command
-\texttt{python3 scripts/verify.py} reruns every checker and compares all eight
+\texttt{python3 scripts/verify.py} reruns every checker and compares all thirteen
 certificate outputs with the recorded files. These are finite oracle
 checks and numerical certificates, not a proof assistant or a full fast
 implementation.
@@ -5376,7 +5377,8 @@ for sets. All these finite checks supplement the asymptotic proof.
 
 A floating-point exploration of the generalized Schönhage identities
 $\langle k,1,n\rangle\oplus\langle1,(k-1)(n-1),1\rangle$ with the same box
-and encoding analysis, recorded in \texttt{work/tensor/shapes.py},
+and encoding analysis, recorded in \texttt{work/tensor/shapes.py} in the
+separate research repository (the script is not bundled here),
 indicates that the source's $3\times3$ shape maximizes the integer savings in
 this framework, with or without folding. That is a numerical observation
 about this parameter family, not a theorem or an optimality claim.
@@ -5421,5 +5423,11 @@ dichotomy for coordinatewise problems}. arXiv:2610.17420v1, October 12, 2026.
 Sections 3--7 supply the five-term identity and squared embedding;
 Section 15.4 supplies the composite incidence certification.
 \url{https://arxiv.org/abs/2610.17420v1}.
+\bibitem{S26} Mihail Stoian.
+\emph{Truly Sub-$3^n$ Min-Sum Subset Convolution and Join Ordering}.
+arXiv:2610.10282v1. Sections 2--4 supply the restriction-product and
+local-cover framework; the join-ordering transfer uses its Section 5
+assumptions.
+\url{https://arxiv.org/abs/2610.10282v1}.
 \end{thebibliography}
 \end{document}

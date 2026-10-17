@@ -1,16 +1,19 @@
 # Thin-matrix exponent improvements: results
 
-Certified improvements to the exponents displayed in Alman and Vassilevska Williams, *Truly Subquadratic 3SUM and Truly Subcubic APSP via Triangles in Sparse Lopsided Graphs* ([arXiv:2610.06783v1](https://arxiv.org/abs/2610.06783v1)), and to the five-term follow-up of Majdoddin ([arXiv:2610.17420v1](https://arxiv.org/abs/2610.17420v1)). This repository holds only the results: the proof note, its exact-rational certificates, the finite brute-force checkers, and two explanatory pages. The exploratory history behind them lives in the separate research repository.
+Working derivations and exact-rational certificates for improvements to the exponents displayed in Alman and Vassilevska Williams, *Truly Subquadratic 3SUM and Truly Subcubic APSP via Triangles in Sparse Lopsided Graphs* ([arXiv:2610.06783v1](https://arxiv.org/abs/2610.06783v1)), and to the five-term follow-up of Majdoddin ([arXiv:2610.17420v1](https://arxiv.org/abs/2610.17420v1)). This repository holds only the results: the proof note, its exact-rational certificates, the finite brute-force checkers, selected Lean proofs, and explanatory pages. The exploratory history behind them lives in the separate research repository.
 
 ## Current bounds
 
-All inputs are polynomially bounded integers unless stated; APSP assumes no negative cycles. Deterministic bounds are also Las Vegas bounds.
+All inputs are polynomially bounded integers unless stated; APSP assumes no negative cycles. The 3SUM and exact #3SUM rows below use sets. Deterministic bounds are also Las Vegas bounds. A dash means no separate source comparison is quoted here, not that the source leaves the problem untreated.
 
 | Problem | Source paper | Majdoddin | Here | Guarantee |
 | --- | --- | --- | --- | --- |
 | Wanted entries of an `N x D` by `D x N` product, `N >= D^18`, at most `N^2/sqrt(D)` entries | `O(N^2/D^0.063)`, query `O(D^0.437)` | `0.092`, `0.403` | `O(N^2/D^0.0991)`, query `O(D^0.4009)` | Deterministic |
-| Integer 3SUM, exact #3SUM, All-Integers 3SUM | `O(n^1.9992)` | `n^1.9945` | `O(n^1.9931055)` | Deterministic |
-| Integer Exact Triangle (all-edges), min-plus product, APSP | `O(n^2.9995)` | `n^2.9945` | `O(n^2.99294792)` | Deterministic |
+| Integer 3SUM | `O(n^1.9992)` | `n^(1.9945+o(1))` | `O(n^1.9931055)` | Deterministic |
+| Exact #3SUM | truly subquadratic; no exponent displayed | — | `O(n^1.9931055)` | Deterministic exact counts |
+| All-Integers 3SUM | — | — | `O(n^1.9931055)` | Deterministic |
+| Integer Exact Triangle (all-edges) | `O(n^2.9983)` | `n^(2.9945+o(1))` | `O(n^2.99294792)` | Deterministic |
+| Integer min-plus product and APSP | `O(n^2.9995)` | `n^(2.9945+o(1))` | `O(n^2.99294792)` | Deterministic |
 | Exact #Exact Triangle and min-plus witness counts | truly subcubic | — | `O(n^2.99294792)` | Deterministic |
 | 3XOR, exact #3XOR, per-target counts, `d = O(log n)` | truly subquadratic | `O(n^1.99451)` | `O(n^1.9931055)` | Deterministic |
 | Real 3SUM (comparisons, additions, subtractions) | `O(n^1.998)` | not restated | `O(n^1.993805)` | Las Vegas |
@@ -48,9 +51,17 @@ python3 scripts/verify.py
 
 This reruns thirteen exact-rational certificate scripts (rational interval arithmetic with explicit logarithm bounds), compares their output with the recorded `outputs/*certificate-results.txt`, and runs every finite checker in `outputs/check_*.py`, which test encodings, identities, reductions, and counting constructions on small instances against brute-force oracles. The proof compiles with any LaTeX engine; it was checked with tectonic.
 
+Assertions must be enabled: do not use Python's `-O`/`-OO` options or `PYTHONOPTIMIZE`. The runner rejects optimized execution and ignores Python environment flags in its child processes.
+
+For the additional Lean checks, see [lean/README.md](lean/README.md). With the pinned Lean toolchain and mathlib dependencies installed, run:
+
+```sh
+python3 scripts/verify_lean.py
+```
+
 ## Caveats
 
 - The exponents are asymptotic. The deterministic composite certification uses fixed stage counts whose constants only settle for astronomically large `n`; no practical speedup is claimed.
-- The certificates verify strict numerical inequalities and finite instances. They are not a proof assistant and do not replace reading the proof. The source paper's own headline results are Lean-certified; nothing here is.
+- The Python certificates verify strict numerical inequalities and finite instances. The separate Lean layer covers only the statements listed in [lean/README.md](lean/README.md). The complete embeddings, cache complexity, reductions, and APSP theorem are not formalized; the full proof still requires mathematical review. The source paper reports a separate Lean formalization for some stated theorems.
 - The `2.99294792` chain and everything after it build on Majdoddin's five-term tensor. The source paper states that its authors found better exponents than they displayed; the comparisons here are with displayed numbers and make no priority claim.
 - External numerical inputs are recorded in `sources.json` and in the bibliography of the note.

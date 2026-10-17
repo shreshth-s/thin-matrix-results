@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Check the isolated Lean 4.33.1 machine backend and its scoped proof axioms.
 
-This verifies concrete initial Light routines and conditional composition
-adapters. It does not assert that an improved min-plus solver has been supplied.
+This verifies concrete Light routines, a compiled RAM controller component,
+and conditional composition adapters. It does not assert that an improved
+min-plus solver has been supplied.
 Use --core to also recompile the canonical mathematical sources under 4.33.1.
 """
 from __future__ import annotations
@@ -63,6 +64,35 @@ BASE = {
         "Light.DenseMinimumUpdatePass.ends",
         "Light.DenseMinimumUpdatePass.meets",
         "Light.DenseMinimumUpdatePass.meets_of_pos",
+    },
+    "DenseScoreTablePass.lean": {
+        "Light.DenseScoreTablePass.ends",
+        "Light.DenseScoreTablePass.meets",
+        "Light.DenseScoreTablePass.scores_eq_sum",
+        "Light.DenseScoreTablePass.time_le_taskTime",
+        "Light.DenseScoreTablePass.task_solved",
+        "Light.DenseScoreTablePass.need_polynomial",
+        "Light.DenseScoreTablePass.solvedIn",
+        "Light.DenseScoreTablePass.Selection.ends",
+        "Light.DenseScoreTablePass.Selection.time_le_taskTime",
+        "Light.DenseScoreTablePass.Selection.task_solved",
+        "Light.DenseScoreTablePass.Selection.need_polynomial",
+        "Light.DenseScoreTablePass.Selection.solvedIn",
+        "Light.DenseScoreTablePass.Selection.isArgmin_sums",
+    },
+    "DenseCertificationFinish.lean": {
+        "Light.DenseCertificationFinish.markedAfter_value",
+        "Light.DenseCertificationFinish.ends",
+        "Light.DenseCertificationFinish.meets",
+    },
+    "ScoreSelectionMachine.lean": {
+        "ThinMatrix.ScoreSelectionMachine.need_ok",
+        "ThinMatrix.ScoreSelectionMachine.small",
+        "ThinMatrix.ScoreSelectionMachine.top_meets",
+        "ThinMatrix.ScoreSelectionMachine.main_execution",
+        "ThinMatrix.ScoreSelectionMachine.lowCell_eq",
+        "ThinMatrix.ScoreSelectionMachine.compiled_execution",
+        "ThinMatrix.ScoreSelectionMachine.compiled_time_bound",
     },
     "MachineAdapter.lean": {
         "ThinMatrix.MachineAdapter.appendAPSP",
@@ -175,6 +205,15 @@ def check_dependencies(manifest: dict) -> None:
 
 
 def verify(lake: str, include_core: bool) -> None:
+    covered_local_sources = set(BASE) | {
+        source for source in CORE if not source.startswith("../")
+    }
+    actual_local_sources = {path.name for path in ROOT.glob("*.lean")}
+    if covered_local_sources != actual_local_sources:
+        raise RuntimeError(
+            "Machine source inventory mismatch: "
+            + repr(sorted(covered_local_sources ^ actual_local_sources))
+        )
     executable = shutil.which(lake, path=RUN_ENV.get("PATH"))
     if executable is None:
         raise RuntimeError(f"Lake executable not found: {lake}")
@@ -242,7 +281,8 @@ def verify(lake: str, include_core: bool) -> None:
         f"only standard axioms {sorted(ALLOWED_AXIOMS)}.\n"
         f"Source/configuration SHA-256: {digest}\n"
         f"Pinned dependency source checkouts: {len(manifest['packages'])}; all clean before and after.\n"
-        "Scope: actual Light primitives and conditional adapters; the improved Light solver remains a premise."
+        "Scope: actual Light routines, compiled RAM score selection and conditional full-algorithm adapters; "
+        "the improved Light solver remains a premise of those adapters."
     )
     transcript.append(summary)
     log = ROOT / ".lake" / "verification-output.txt"

@@ -168,10 +168,12 @@
     "upstream_url": "https://github.com/anthropics/formal-math/tree/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp",
     "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
     "upstream_license": "Apache-2.0; dependency fetched separately, not vendored",
-    "scope": "Actual word-RAM compiler and APSP-host composition, conditional on a proved improved min-plus execution contract and its time bound. This adapter does not supply that implementation.",
+    "scope": "Actual compiled RAM score selection, closed Light score-table/selection solvers and composed certification passes. Whole-algorithm APSP-host composition remains conditional on a proved improved min-plus execution contract and its time bound; these components do not supply that complete implementation.",
+    "compiled_component_theorem": "ThinMatrix.ScoreSelectionMachine.compiled_execution",
+    "compiled_component_path": "machine/ScoreSelectionMachine.lean",
     "verification_transcript": "machine/verification-output.txt",
-    "checked_source_configuration_sha256": "acf249db41f66f3d466ccdc96bf1bf02ebfa5c15b84c9ae172b7a5439a81307f",
-    "checked_declarations": 60,
-    "checked_unique_declarations": 58
+    "checked_source_configuration_sha256": "62655b8bc093f260b3ea5fa78a39c59ca9f686e6785941769b07f4a74131c172",
+    "checked_declarations": 83,
+    "checked_unique_declarations": 81
   }
 }

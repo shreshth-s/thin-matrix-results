@@ -63,6 +63,38 @@ current-pool threshold and explicit word bounds for both products.
 in `26*I+6` steps, including safe reads before each destination overwrite.
 These are controller primitives; they do not provide the complete controller.
 
+`DenseScoreTablePass.lean` now composes the row scorer into an actual
+row-major candidate-score table. It charges nested calls, argument
+evaluation, output stores and the outer loop: `P*(22*I+33)+6` steps.
+Its `Selection` routine computes that table and calls the argmin scan,
+returning a remaining candidate minimizing the original active
+multiplicity sum in `22*P*I+62*P+37` steps, including all-zero scores.
+Both have closed `Solves`, `PolyNeed` and `SolvedIn` contracts for fixed
+finite programs, explicit word/layout bounds, append stability and memory
+framing. Caller-provided score buffers are charged as part of the instance;
+neither routine allocates additional scratch cells.
+
+`DenseCertificationFinish.lean` composes affirmative flags, pair-mark
+scatter and survivor flags into one fixed finite Light program. Its
+closed `Meets` contract proves all three outputs and framing outside
+their buffers in `115*I+47` steps. That includes 29 argument/call steps
+beyond the three kernel allowances. The supplied pool scalar is used in
+both comparisons; the enclosing controller must still compute and pass
+the current pool cardinality. Ordered layout, product word bounds and
+call depth remain explicit preconditions.
+
+`ScoreSelectionMachine.lean` compiles the closed score-selection routine
+to one fixed RAM instruction list using the pinned verified compiler.
+`ThinMatrix.ScoreSelectionMachine.compiled_execution` proves that actual
+RAM execution returns a remaining minimizing candidate, stores every score,
+and preserves memory outside the score vector and fixed compiler workspace.
+Its hypotheses describe the eight-cell metadata header, input arrays,
+word representation and admissible word size; it has no solver or execution
+premise. The complete source wrapper takes at most `62*n+59` steps, where
+`n=P*I+2*P+I`; `compiled_time_bound` gives the corresponding RAM bound
+with the fixed compiler constant. This is a compiled controller component,
+not a compiled improved min-plus or APSP implementation.
+
 The initial backend, dense passes and adapter were checked with Lean 4.33.1: 28 scoped
 declarations compiled with warnings treated as errors, with only `propext`,
 `Classical.choice` and `Quot.sound` in their printed axiom dependencies.
@@ -86,10 +118,12 @@ compatibility repairs preserve the statements of `APSPReduction`,
 `APSPAlgorithm` and `AsymptoticCosts`; all three files have also been checked
 with warnings treated as errors under both Lean 4.31 and Lean 4.33.1.
 The project toolchains and their compiled artifacts remain separate.
-The expanded check passed: 60 scoped declaration checks covering 58 unique
-names, including all three compatibility files and the canonical ledger
-adapter, with the same standard axiom allowlist. This proves the stated
-composition lemmas; the improved Light min-plus solver and its execution-cost
+The expanded check passed: 83 scoped declaration checks covering 81 unique
+names, including the compiled score-selection component, the three
+compatibility files and the canonical ledger adapter, with the same
+standard axiom allowlist. The checked source/configuration hash and full
+compiler output are in [`verification-output.txt`](verification-output.txt).
+The improved Light min-plus solver and its complete execution-cost
 domination hypothesis still have to be supplied.
 
 The adapter alone does not close the improved APSP theorem. The new backend

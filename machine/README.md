@@ -95,6 +95,52 @@ premise. The complete source wrapper takes at most `62*n+59` steps, where
 with the fixed compiler constant. This is a compiled controller component,
 not a compiled improved min-plus or APSP implementation.
 
+`DensePoolPass.lean` scans the current Boolean candidate mask in
+`19*P+10` steps and preserves all memory. Its closed task contract returns
+the exact filtered cardinality, including an empty pool; deletion lemmas
+show that clearing a selected member removes exactly one candidate.
+
+`DensePoolMinimumPass.lean` computes each incidence's minimum over **all
+remaining candidates** from the row-major cache, visiting every candidate
+for every incidence. The fixed program costs `I*(35*P+33)+6` steps and
+writes only the minima vector. Its closed public task requires a nonempty
+pool. An internal empty scan returns the explicitly charged `height+1`
+sentinel; it is not identified with the canonical empty-pool convention.
+
+`DenseSelectionRound.lean` composes aggregate-score selection, a selected-row
+minimum update and exact flag deletion in `22*P*I+62*P+26*I+87` steps.
+Its closed task returns an argmin for the original active mask and original
+remaining pool, stores every original score and preserves memory outside
+the scores, minima and remaining arrays. Its minima are
+`min(initial, chosenRow)`. This literal component does not by itself compute
+the canonical per-incidence minimum over the whole pool, or implement the
+canonical replacement of the base row by the chosen row.
+
+`CertificationFinishTask.lean` closes the three-pass certification task,
+with a physical remaining mask determining its exact mathematical current
+cardinality, polynomial needs and append stability. The separately compiled
+`CertificationFinishMachine.lean` proves actual RAM execution of that task
+from a twelve-cell header containing the exact pool scalar; its source
+wrapper costs `115*n+77`, where `n=6*I+Q+P`.
+
+`CountedCertificationFinish.lean` removes that scalar from the calling
+convention: it actually scans the remaining mask and passes the returned
+count to affirmative testing, pair marking and survivor filtering. The
+complete fixed program costs `19*P+115*I+76` steps, including the scan and
+both argument lists and calls. It has closed `Solves`, `PolyNeed` and
+`SolvedIn` contracts and preserves the mask. The cached modular counts,
+incidence ownership and input word/layout promises remain explicit.
+
+`CountedCertificationMachine.lean` compiles this counted routine to one
+fixed RAM program. Its thirteen-cell header contains the remaining-mask
+length and address, with no supplied cardinality. The execution theorem
+proves the same exact outputs and memory framing after the actual count
+and certification. The full source wrapper costs
+`19*P+115*I+108 <= 115*n+108`, including header reads, calls and the
+compiler's main entry. As with the other compiled component, word
+representation, input layout and admissible word size are explicit promises;
+no execution or solver premise is assumed.
+
 The initial backend, dense passes and adapter were checked with Lean 4.33.1: 28 scoped
 declarations compiled with warnings treated as errors, with only `propext`,
 `Classical.choice` and `Quot.sound` in their printed axiom dependencies.
@@ -118,13 +164,24 @@ compatibility repairs preserve the statements of `APSPReduction`,
 `APSPAlgorithm` and `AsymptoticCosts`; all three files have also been checked
 with warnings treated as errors under both Lean 4.31 and Lean 4.33.1.
 The project toolchains and their compiled artifacts remain separate.
-The expanded check passed: 83 scoped declaration checks covering 81 unique
-names, including the compiled score-selection component, the three
+The expanded check passed: 142 scoped declaration checks covering 140 unique
+names, including compiled score selection and dynamically counted certification, the three
 compatibility files and the canonical ledger adapter, with the same
 standard axiom allowlist. The checked source/configuration hash and full
 compiler output are in [`verification-output.txt`](verification-output.txt).
 The improved Light min-plus solver and its complete execution-cost
-domination hypothesis still have to be supplied.
+domination hypothesis still have to be supplied. In particular these routines
+have not yet been assembled into a full canonical composite-selection loop
+with an implemented equality oracle and bit-scaled min-plus caller.
+
+The next lowering target is the existing main project's
+`BinaryLowEncoder.Instruction` and its `runInstructions`/`rowBlock` loops:
+connect that explicit instruction language to actual Light code with array
+layout, transient word bounds, framing and cost domination. The main
+project's higher-order `Counted`/`Result` values carry ghost counters rather
+than a target-code syntax; those counters alone do not instantiate a
+compiler. The active binary cyclic multiplier uses `BinaryArrayFFT`, so
+lowering only the earlier Toom engine would leave that implementation gap.
 
 The adapter alone does not close the improved APSP theorem. The new backend
 must still implement and prove the shared-cache equality oracle, fast cyclic

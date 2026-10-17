@@ -168,12 +168,26 @@
     "upstream_url": "https://github.com/anthropics/formal-math/tree/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp",
     "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
     "upstream_license": "Apache-2.0; dependency fetched separately, not vendored",
-    "scope": "Actual compiled RAM score selection, closed Light score-table/selection solvers and composed certification passes. Whole-algorithm APSP-host composition remains conditional on a proved improved min-plus execution contract and its time bound; these components do not supply that complete implementation.",
+    "scope": "Actual Light pool counting, all-remaining-candidate minima, aggregate score selection, selected-row update and certification components, including fixed compiled RAM score selection and dynamically counted certification. Whole-algorithm APSP-host composition remains conditional on a proved improved min-plus execution contract and its time bound; these components do not supply that complete implementation.",
     "compiled_component_theorem": "ThinMatrix.ScoreSelectionMachine.compiled_execution",
     "compiled_component_path": "machine/ScoreSelectionMachine.lean",
     "verification_transcript": "machine/verification-output.txt",
-    "checked_source_configuration_sha256": "62655b8bc093f260b3ea5fa78a39c59ca9f686e6785941769b07f4a74131c172",
-    "checked_declarations": 83,
-    "checked_unique_declarations": 81
+    "checked_source_configuration_sha256": "4f6c2ef02607988ea8c947bc4437ab6412766497caa9d48a13ee734f17b472c8",
+    "checked_declarations": 142,
+    "checked_unique_declarations": 140,
+    "compiled_components": [
+      {
+        "theorem": "ThinMatrix.ScoreSelectionMachine.compiled_execution",
+        "path": "machine/ScoreSelectionMachine.lean"
+      },
+      {
+        "theorem": "ThinMatrix.CertificationFinishMachine.compiled_execution",
+        "path": "machine/CertificationFinishMachine.lean"
+      },
+      {
+        "theorem": "ThinMatrix.CountedCertificationMachine.compiled_execution",
+        "path": "machine/CountedCertificationMachine.lean"
+      }
+    ]
   }
 }

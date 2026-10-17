@@ -20,7 +20,7 @@ roots = ["APSPAlgorithm", "APSPReduction", "AlignedCertificate", "AsymptoticCost
 
 [[lean_lib]]
 name = "ThinMatrixMachine"
-roots = ["MachineBackend", "MachineAdapter", "DenseMarkPass", "DenseScorePass", "DenseSurvivorPass", "DenseArgminPass", "DenseAffirmativePass", "DenseMinimumUpdatePass", "DenseScoreTablePass", "DenseCertificationFinish", "ScoreSelectionMachine"]
+roots = ["MachineBackend", "MachineAdapter", "DenseMarkPass", "DenseScorePass", "DenseSurvivorPass", "DenseArgminPass", "DenseAffirmativePass", "DenseMinimumUpdatePass", "DenseScoreTablePass", "DenseCertificationFinish", "ScoreSelectionMachine", "DensePoolPass", "DenseSelectionRound", "CertificationFinishTask", "CertificationFinishMachine", "CountedCertificationFinish", "DensePoolMinimumPass", "CountedCertificationMachine"]
 
 [[lean_lib]]
 name = "ThinMatrixCoreAdapter"

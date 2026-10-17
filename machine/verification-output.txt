@@ -68,6 +68,79 @@ $ lake env lean -DwarningAsError=true ScoreSelectionMachine.lean
 'ThinMatrix.ScoreSelectionMachine.compiled_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.ScoreSelectionMachine.compiled_time_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
 
+$ lake env lean -DwarningAsError=true DensePoolPass.lean
+'Light.DensePoolPass.count_eq_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolPass.count_pos_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolPass.ends' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolPass.meets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolPass.task_solved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolPass.need_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolPass.solvedIn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolPass.task_solved_append' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolPass.count_cleared_add_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolPass.count_cleared' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolPass.cleared_read' depends on axioms: [propext]
+
+$ lake env lean -DwarningAsError=true DenseSelectionRound.lean
+'Light.DenseSelectionRound.ends' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseSelectionRound.meets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseSelectionRound.time_eq' depends on axioms: [propext]
+'Light.DenseSelectionRound.time_le_taskTime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseSelectionRound.task_solved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseSelectionRound.need_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseSelectionRound.solvedIn' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -DwarningAsError=true CertificationFinishTask.lean
+'Light.DenseCertificationTask.ends_with_free' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseCertificationTask.currentPool_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseCertificationTask.task_solved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseCertificationTask.need_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseCertificationTask.solvedIn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DenseCertificationTask.remaining_preserved' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -DwarningAsError=true CertificationFinishMachine.lean
+'ThinMatrix.CertificationFinishMachine.need_ok' depends on axioms: [propext, Quot.sound]
+'ThinMatrix.CertificationFinishMachine.small' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CertificationFinishMachine.top_meets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CertificationFinishMachine.main_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CertificationFinishMachine.lowCell_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CertificationFinishMachine.compiled_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CertificationFinishMachine.compiled_time_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -DwarningAsError=true CountedCertificationFinish.lean
+'Light.CountedCertificationFinish.finish_meets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.CountedCertificationFinish.ends' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.CountedCertificationFinish.meets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.CountedCertificationFinish.time_le_taskTime' depends on axioms: [propext, Quot.sound]
+'Light.CountedCertificationFinish.task_solved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.CountedCertificationFinish.need_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.CountedCertificationFinish.solvedIn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.CountedCertificationFinish.task_solved_append' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.CountedCertificationFinish.remaining_preserved' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -DwarningAsError=true DensePoolMinimumPass.lean
+'Light.DensePoolMinimumPass.minimum_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolMinimumPass.Column.loop_ends' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolMinimumPass.Column.ends' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolMinimumPass.Column.meets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolMinimumPass.ends' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolMinimumPass.meets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolMinimumPass.time_le_taskTime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolMinimumPass.task_solved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolMinimumPass.need_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolMinimumPass.solvedIn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Light.DensePoolMinimumPass.task_solved_append' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -DwarningAsError=true CountedCertificationMachine.lean
+'ThinMatrix.CountedCertificationMachine.need_ok' depends on axioms: [propext, Quot.sound]
+'ThinMatrix.CountedCertificationMachine.small' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CountedCertificationMachine.top_meets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CountedCertificationMachine.main_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CountedCertificationMachine.lowCell_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CountedCertificationMachine.compiled_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CountedCertificationMachine.compiled_time_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CountedCertificationMachine.sourceTime_le' depends on axioms: [propext, Quot.sound]
+
 $ lake env lean -DwarningAsError=true MachineAdapter.lean
 'ThinMatrix.MachineAdapter.appendAPSP' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.MachineAdapter.realizedFromMinPlus' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -126,7 +199,7 @@ $ lake env lean -DwarningAsError=true CanonicalMachineAdapter.lean
  Classical.choice,
  Quot.sound]
 
-PASS: 83 scoped declaration checks (81 unique); only standard axioms ['Classical.choice', 'Quot.sound', 'propext'].
-Source/configuration SHA-256: 62655b8bc093f260b3ea5fa78a39c59ca9f686e6785941769b07f4a74131c172
+PASS: 142 scoped declaration checks (140 unique); only standard axioms ['Classical.choice', 'Quot.sound', 'propext'].
+Source/configuration SHA-256: 4f6c2ef02607988ea8c947bc4437ab6412766497caa9d48a13ee734f17b472c8
 Pinned dependency source checkouts: 10; all clean before and after.
-Scope: actual Light routines, compiled RAM score selection and conditional full-algorithm adapters; the improved Light solver remains a premise of those adapters.
+Scope: actual Light routines, compiled RAM score selection/certification and conditional full-algorithm adapters; the improved Light solver remains a premise of those adapters.

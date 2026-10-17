@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check the isolated Lean 4.33.1 machine backend and its scoped proof axioms.
 
-This verifies concrete Light routines, a compiled RAM controller component,
+This verifies concrete Light routines, compiled RAM controller components,
 and conditional composition adapters. It does not assert that an improved
 min-plus solver has been supplied.
 Use --core to also recompile the canonical mathematical sources under 4.33.1.
@@ -93,6 +93,79 @@ BASE = {
         "ThinMatrix.ScoreSelectionMachine.lowCell_eq",
         "ThinMatrix.ScoreSelectionMachine.compiled_execution",
         "ThinMatrix.ScoreSelectionMachine.compiled_time_bound",
+    },
+    "DensePoolPass.lean": {
+        "Light.DensePoolPass.count_eq_card",
+        "Light.DensePoolPass.count_pos_iff",
+        "Light.DensePoolPass.ends",
+        "Light.DensePoolPass.meets",
+        "Light.DensePoolPass.task_solved",
+        "Light.DensePoolPass.need_polynomial",
+        "Light.DensePoolPass.solvedIn",
+        "Light.DensePoolPass.task_solved_append",
+        "Light.DensePoolPass.count_cleared_add_one",
+        "Light.DensePoolPass.count_cleared",
+        "Light.DensePoolPass.cleared_read",
+    },
+    "DenseSelectionRound.lean": {
+        "Light.DenseSelectionRound.ends",
+        "Light.DenseSelectionRound.meets",
+        "Light.DenseSelectionRound.time_eq",
+        "Light.DenseSelectionRound.time_le_taskTime",
+        "Light.DenseSelectionRound.task_solved",
+        "Light.DenseSelectionRound.need_polynomial",
+        "Light.DenseSelectionRound.solvedIn",
+    },
+    "CertificationFinishTask.lean": {
+        "Light.DenseCertificationTask.ends_with_free",
+        "Light.DenseCertificationTask.currentPool_le",
+        "Light.DenseCertificationTask.task_solved",
+        "Light.DenseCertificationTask.need_polynomial",
+        "Light.DenseCertificationTask.solvedIn",
+        "Light.DenseCertificationTask.remaining_preserved",
+    },
+    "CertificationFinishMachine.lean": {
+        "ThinMatrix.CertificationFinishMachine.need_ok",
+        "ThinMatrix.CertificationFinishMachine.small",
+        "ThinMatrix.CertificationFinishMachine.top_meets",
+        "ThinMatrix.CertificationFinishMachine.main_execution",
+        "ThinMatrix.CertificationFinishMachine.lowCell_eq",
+        "ThinMatrix.CertificationFinishMachine.compiled_execution",
+        "ThinMatrix.CertificationFinishMachine.compiled_time_bound",
+    },
+    "CountedCertificationFinish.lean": {
+        "Light.CountedCertificationFinish.finish_meets",
+        "Light.CountedCertificationFinish.ends",
+        "Light.CountedCertificationFinish.meets",
+        "Light.CountedCertificationFinish.time_le_taskTime",
+        "Light.CountedCertificationFinish.task_solved",
+        "Light.CountedCertificationFinish.need_polynomial",
+        "Light.CountedCertificationFinish.solvedIn",
+        "Light.CountedCertificationFinish.task_solved_append",
+        "Light.CountedCertificationFinish.remaining_preserved",
+    },
+    "DensePoolMinimumPass.lean": {
+        "Light.DensePoolMinimumPass.minimum_spec",
+        "Light.DensePoolMinimumPass.Column.loop_ends",
+        "Light.DensePoolMinimumPass.Column.ends",
+        "Light.DensePoolMinimumPass.Column.meets",
+        "Light.DensePoolMinimumPass.ends",
+        "Light.DensePoolMinimumPass.meets",
+        "Light.DensePoolMinimumPass.time_le_taskTime",
+        "Light.DensePoolMinimumPass.task_solved",
+        "Light.DensePoolMinimumPass.need_polynomial",
+        "Light.DensePoolMinimumPass.solvedIn",
+        "Light.DensePoolMinimumPass.task_solved_append",
+    },
+    "CountedCertificationMachine.lean": {
+        "ThinMatrix.CountedCertificationMachine.need_ok",
+        "ThinMatrix.CountedCertificationMachine.small",
+        "ThinMatrix.CountedCertificationMachine.top_meets",
+        "ThinMatrix.CountedCertificationMachine.main_execution",
+        "ThinMatrix.CountedCertificationMachine.lowCell_eq",
+        "ThinMatrix.CountedCertificationMachine.compiled_execution",
+        "ThinMatrix.CountedCertificationMachine.compiled_time_bound",
+        "ThinMatrix.CountedCertificationMachine.sourceTime_le",
     },
     "MachineAdapter.lean": {
         "ThinMatrix.MachineAdapter.appendAPSP",
@@ -281,7 +354,7 @@ def verify(lake: str, include_core: bool) -> None:
         f"only standard axioms {sorted(ALLOWED_AXIOMS)}.\n"
         f"Source/configuration SHA-256: {digest}\n"
         f"Pinned dependency source checkouts: {len(manifest['packages'])}; all clean before and after.\n"
-        "Scope: actual Light routines, compiled RAM score selection and conditional full-algorithm adapters; "
+        "Scope: actual Light routines, compiled RAM score selection/certification and conditional full-algorithm adapters; "
         "the improved Light solver remains a premise of those adapters."
     )
     transcript.append(summary)

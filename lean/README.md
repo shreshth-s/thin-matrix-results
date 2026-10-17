@@ -105,8 +105,9 @@ machine-certified runtime or a performance claim for Lean's evaluator.
 
 The [`machine/`](../machine/) project independently pins Lean `4.33.1`, the
 source paper's [formal-math word-RAM development](https://github.com/anthropics/formal-math/tree/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp), and its own mathlib revision.
-It contains actual Light controller primitives and compiler/host composition
-lemmas. The improved `Light.Solves` min-plus implementation, polynomial needs
+It contains actual Light pool counting, per-incidence pool minima, selection
+and certification routines, compiled controller components, and compiler/host
+composition lemmas. The improved `Light.Solves` min-plus implementation, polynomial needs
 and full time domination are still premises of its adapter. The main verifier
 does not check that project; follow its own README and verifier.
 

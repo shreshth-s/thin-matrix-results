@@ -2753,6 +2753,87 @@ lean/CompositePhaseTrace.lean
  Quot.sound]
 'ThinMatrix.CompositePhaseTrace.actual_solve_call_phase' depends on axioms: [propext, Classical.choice, Quot.sound]
 
+lean/ShiftedSourceEmbedding.lean
+'ThinMatrix.ShiftedSourceEmbedding.local_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.ShiftedSourceEmbedding.halfKernel_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.ShiftedSourceEmbedding.pairTerm_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.ShiftedSourceEmbedding.contraction_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/CroppedSourceContraction.lean
+'ThinMatrix.CroppedSourceContraction.pairTerm_mask' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CroppedSourceContraction.surviving_caps' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CroppedSourceContraction.pairTerm_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CroppedSourceContraction.contraction_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourcePotential.lean
+'ThinMatrix.HalfSourcePotential.log_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePotential.mean_log_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePotential.one_step_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePotential.uniform_log_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePotential.log_character_count_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePotential.uniform_initial_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePotential.exists_half_of_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceCoverage.lean
+'ThinMatrix.HalfSourceCoverage.character_right_xor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCoverage.dot_zero_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCoverage.nonzero_rows_of_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCoverage.character_abs_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCoverage.translated_bias' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCoverage.weight_character_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCoverage.mean_weight_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCoverage.half_mean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCoverage.affine_half_coverage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCoverage.firstIndex_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCoverage.firstIndex_minimal' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceGreedy.lean
+'ThinMatrix.HalfSourceGreedy.row_zero_iff' depends on axioms: [propext, Quot.sound]
+'ThinMatrix.HalfSourceGreedy.tilt_balance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceGreedy.child_balance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceGreedy.chosen_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceGreedy.dot_cons' depends on axioms: [propext, Quot.sound]
+'ThinMatrix.HalfSourceGreedy.terminalSigns_cons' depends on axioms: [propext, Quot.sound]
+'ThinMatrix.HalfSourceGreedy.select_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceGreedy.expectation_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceList.lean
+'ThinMatrix.HalfSourceList.build_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceList.sumSign_cons' depends on axioms: [propext]
+'ThinMatrix.HalfSourceList.tilt_powers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceList.next_contraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceList.characters_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceList.empty_potential' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceList.build_potential' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceList.translations_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceList.rationalBase_gt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceList.uniform_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceList.translations_potential_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceList.translations_sign_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceList.sumSign_get_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceList.translations_smallBias' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceList.translations_half_coverage' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/TranslatedSourcePartition.lean
+'ThinMatrix.TranslatedSourcePartition.reindex_piece' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.TranslatedSourcePartition.masks_partition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.TranslatedSourcePartition.translated_contraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/MaskedLightSources.lean
+'ThinMatrix.MaskedLightSources.xorShift' depends on axioms: [propext, Quot.sound]
+'ThinMatrix.MaskedLightSources.translated_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.MaskedLightSources.left_zero_of_weight' depends on axioms: [propext, Quot.sound]
+'ThinMatrix.MaskedLightSources.right_zero_of_weight' depends on axioms: [propext, Quot.sound]
+'ThinMatrix.MaskedLightSources.left_normal_cap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.MaskedLightSources.right_normal_cap' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceSelector.lean
+'ThinMatrix.HalfSourceSelector.pick_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelector.pick_first' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelector.pair_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelector.family_pick_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelector.invertible_pick_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
+
 lean/LocalIdentities.lean
 'ThinMatrix.LocalIdentities.aligned_five_term' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.LocalIdentities.ordinary_plus_private' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -2760,6 +2841,14 @@ lean/LocalIdentities.lean
 'ThinMatrix.LocalIdentities.aligned_pencil' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.LocalIdentities.private_plus_scaled_inner' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.LocalIdentities.shared_normal_at_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/LightSourceIdentities.lean
+'ThinMatrix.LightSourceIdentities.shifted_five_term' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.LightSourceIdentities.shifted_pencil' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.LightSourceIdentities.box_base' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.LightSourceIdentities.aligned_change_of_variables' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 
 lean/ToomCyclic.lean
 'ThinMatrix.ToomCyclic.input_natDegree_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -2774,6 +2863,9 @@ lean/ToomCyclicBit.lean
 'ThinMatrix.ToomCyclicBit.foldArray_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.ToomCyclicBit.multiply_fixed_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-PASS: 135 modules; 1928 scoped declarations checked; only standard Lean axioms.
-Source/configuration SHA-256: a8e81d96377a679851007e705f12741c0f2348a1ad4baf285b4997ab3d31373b
+lean/TranslatedCroppedEmbedding.lean
+'ThinMatrix.TranslatedCroppedEmbedding.complete_embedding' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+PASS: 146 modules; 1996 scoped declarations checked; only standard Lean axioms.
+Source/configuration SHA-256: 4638194eaa85f88dc16469f7636eda794c1a5ccc8320b413bf3f18cd3beafad5
 See lean/README.md for the exact formalization scope and remaining obligations.

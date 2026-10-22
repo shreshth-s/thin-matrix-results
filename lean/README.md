@@ -1,6 +1,6 @@
 # Lean formalization status
 
-The target is deterministic integer APSP in `O(n^2.99294792)`, for
+The current closed theorem proves deterministic integer APSP in `O(n^2.99294792)`, for
 polynomially bounded integer weights and graphs without negative cycles.
 The end-to-end theorem is
 [`ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work`](BinaryAlignedAPSPTheorem.lean).
@@ -17,6 +17,52 @@ minimum weight over every finite directed walk, with infinity for unreachable
 pairs. Successful parameter selection, coefficient/address widths, multiplier
 costs, and the oracle's correctness and charged work are proved internally.
 There is no assumed fast oracle or desired final cost inequality.
+
+## Exact-half extension in progress
+
+The requested end-to-end target is `O(n^2.9926862626)`. That theorem is
+**not yet proved in Lean**. The existing closed APSP theorem above retains
+`2.99294792`; its parameters and cost proofs have not been relabeled.
+
+The following new source components are formalized:
+
+- `LightSourceIdentities` and `ShiftedSourceEmbedding` prove the shifted
+  identity and preservation of the complete raw Walsh contraction over a
+  commutative ring, with the original source arrays and degree filters.
+- `HalfSourcePotential`, `HalfSourceGreedy`, and `HalfSourceList` construct
+  the rational greedy translation list and prove its strict small-bias bound
+  for every positive `m`. The list has `64*m^3` entries, uses base
+  `1+1/(4*m)`, and has bias strictly below `1/(2*m)`. The bitwise selector
+  compares two closed conditional scores and resolves ties toward false.
+  It does not search all completed translations or assume a small-bias oracle.
+- `HalfSourceCoverage` and `HalfSourceSelector` prove exact
+  `floor(m/2)` affine coverage, including both parities of `m`, and selection
+  of the first valid **list index**. Repeated translation values are retained.
+- `TranslatedSourcePartition`, `MaskedLightSources`,
+  `CroppedSourceContraction`, and `TranslatedCroppedEmbedding` prove the
+  original-coordinate mask partition, preservation of normal-source zeros
+  by the opposite Walsh transform, safe cropping of both opposite sources,
+  and the complete scaled contraction after summing all translation pairs.
+  The latter theorem uses the repository's constructed good maps and
+  transpose locators, with explicit normal-coordinate weight and selector
+  validity hypotheses. It does not assert equality of individual cropped
+  residuals or HIGH boxes with their uncropped counterparts.
+
+The remaining obligations are substantial: instantiate the inverse-map
+weight interface for every good set; lower the rational list and masks to
+the binary execution model with their bit costs; construct and analyze the
+cropped root, residual, and jointly capped HIGH encoders; prove the grouped
+completion algorithm and its independent batch fit; formalize its
+Coppersmith--Winograd rectangular multiplication dependency; establish the
+new real-entropy certificate and every rounded phase cost; and connect that
+backend to the existing APSP caller. In particular, the characteristic-zero
+rectangular endpoint from SODA 2024 is an external theorem in the TeX and
+has no corresponding proof in this Lean library. No axiom or assumed fast
+oracle has been introduced for it.
+
+The finite identities and list construction are mathematical correctness
+proofs, not the missing complete execution-cost proof. `pair_count` records
+all `4096*m^6` translation-index pairs, rather than claiming they are free.
 
 ## Reproduce
 
@@ -39,7 +85,7 @@ numerical interval-generator inputs. The successful transcript is
 [`verification-output.txt`](verification-output.txt). Build products and
 dependency downloads are excluded from the repository.
 
-The recorded frozen-source run compiled 135 modules and checked 1,928 axiom
+The recorded frozen-source run compiled 146 modules and checked 1,996 axiom
 reports, all containing only the standard axioms above. The transcript records
 the source/configuration hash; `sources.json` records the same digest.
 

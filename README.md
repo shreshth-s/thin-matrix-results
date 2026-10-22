@@ -83,9 +83,15 @@ arithmetic, deterministic certification, parameter setup, and APSP reductions
 are connected in this statement. See [lean/README.md](lean/README.md) for the
 execution model and reproduction instructions.
 
+The extension to `2.9926862626` is in progress. Lean now includes the explicit
+shrinking-bias list, exact-half coverage, first-index selectors, shifted
+embedding, and translated/cropped source identities. The new grouped
+completion, rectangular algorithm, and complete execution-cost proof remain
+unfinished; see [the exact scope](lean/README.md#exact-half-extension-in-progress).
+
 ## Caveats
 
 - The exponents are asymptotic. The deterministic composite certification uses fixed stage counts whose constants only settle for astronomically large `n`; no practical speedup is claimed.
-- The Python certificates verify numerical inequalities and finite instances. The Lean theorem proves correctness and charged work in its specified model, not Lean evaluator performance or a complete compiled word-RAM execution. The separate [word-RAM development](machine/README.md) includes compiled controller components and actual pool/minimum scans; its complete APSP adapter remains conditional on an improved `Light.Solves` implementation and its time bound. The new `2.9926862626` source construction, other rows, and historical witnesses are outside this APSP formalization. The TeX/PDF reflect the current research note; the Lean scope is documented separately.
+- The Python certificates verify numerical inequalities and finite instances. The Lean theorem proves correctness and charged work in its specified model, not Lean evaluator performance or a complete compiled word-RAM execution. The separate [word-RAM development](machine/README.md) includes compiled controller components and actual pool/minimum scans; its complete APSP adapter remains conditional on an improved `Light.Solves` implementation and its time bound. The complete `2.9926862626` APSP theorem, other rows, and historical witnesses remain outside this APSP formalization; the new finite source components are documented separately. The TeX/PDF reflect the current research note.
 - The `2.99294792` chain and everything after it build on Majdoddin's five-term tensor. The source paper states that its authors found better exponents than they displayed; the comparisons here are with displayed numbers and make no priority claim.
 - External numerical inputs are recorded in `sources.json` and in the bibliography of the note.

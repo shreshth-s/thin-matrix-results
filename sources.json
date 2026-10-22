@@ -14,7 +14,7 @@
   },
   "working_note": {
     "path": "outputs/exponent-improvement.tex",
-    "status": "Working derivation with current deterministic integer APSP exponent 2.9926862626; no novelty or practical speedup claim. The new source construction has rational certificates and finite checks, not a Lean proof. The separate older APSP Lean scope is documented in lean/README.md; whole-program word-RAM compilation remains conditional.",
+    "status": "Working derivation with current deterministic integer APSP exponent 2.9926862626; no novelty or practical speedup claim. Lean proves new finite source components, including the explicit exact-half translation list, but the complete faster APSP theorem and execution costs remain unfinished. The closed older APSP Lean scope is documented in lean/README.md; whole-program word-RAM compilation remains conditional.",
     "verification_entrypoint": "scripts/verify.py",
     "finite_checks": [
       "outputs/check_3sum_counts.py",
@@ -167,9 +167,24 @@
     "final_theorem": "ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work",
     "final_theorem_path": "lean/BinaryAlignedAPSPTheorem.lean",
     "verification_transcript": "lean/verification-output.txt",
-    "checked_source_configuration_sha256": "a8e81d96377a679851007e705f12741c0f2348a1ad4baf285b4997ab3d31373b",
-    "checked_modules": 135,
-    "checked_axiom_reports": 1928
+    "checked_source_configuration_sha256": "4638194eaa85f88dc16469f7636eda794c1a5ccc8320b413bf3f18cd3beafad5",
+    "checked_modules": 146,
+    "checked_axiom_reports": 1996,
+    "extension_target": "2.9926862626",
+    "extension_status": "In progress: exact rational bitwise list construction, strict small bias, exact-half coverage and first-index selection, shifted embedding, original-coordinate mask partition, normal-source zeros and safe opposite-source cropping. Source composition exposes its normal-coordinate weight and selector validity hypotheses. Grouped completion, the rectangular algorithm, lowered execution costs and the new end-to-end theorem remain unproved.",
+    "extension_modules": [
+      "CroppedSourceContraction",
+      "HalfSourceCoverage",
+      "HalfSourceGreedy",
+      "HalfSourceList",
+      "HalfSourcePotential",
+      "HalfSourceSelector",
+      "LightSourceIdentities",
+      "MaskedLightSources",
+      "ShiftedSourceEmbedding",
+      "TranslatedCroppedEmbedding",
+      "TranslatedSourcePartition"
+    ]
   },
   "lean_machine_adapter": {
     "scope_document": "machine/README.md",

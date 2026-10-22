@@ -217,6 +217,6 @@ The earlier counting construction uses a different guarantee. Its integer #3SUM 
 
 ## Review boundaries
 
-The research note builds on the source papers' algebraic identities, embeddings and box lemmas. The separate [Lean development](../lean/README.md) proves the constructed embedding, complete LOW/HIGH caches, deterministic reductions, and exact APSP correctness with an `O(n^2.99294792)` charged-work bound in its stated binary/indexed-array model. Whole-program word-RAM compilation remains a separate conditional adapter. The new `2.9926862626` result and the other result rows are outside that APSP formalization; no practical speedup or literature priority is claimed.
+The research note builds on the source papers' algebraic identities, embeddings and box lemmas. The separate [Lean development](../lean/README.md) proves the constructed embedding, complete LOW/HIGH caches, deterministic reductions, and exact APSP correctness with an `O(n^2.99294792)` charged-work bound in its stated binary/indexed-array model. Whole-program word-RAM compilation remains a separate conditional adapter. The new exact-half source components have scoped Lean proofs, but the complete `2.9926862626` theorem and the other result rows remain outside that APSP formalization; no practical speedup or literature priority is claimed.
 
 The separate fixed-bucket signed-window construction supersedes this older integer #3SUM guarantee with deterministic exact `O(n^1.9931055)` counts. Its 48-check certificate also covers the inherited MonoConvolution exponent.

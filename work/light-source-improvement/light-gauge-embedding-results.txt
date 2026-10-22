@@ -1,0 +1,5 @@
+PASS light-gauge original cyclic embedding: {'L': 2, 'm': 1, 'q': 2, 'budget': 0, 'good_sets': 2, 'gauge_pairs': 4, 'coefficients': 128, 'nonzero_source_entries': 444, 'cropped_nonzeros': 222}
+PASS light-gauge original cyclic embedding: {'L': 3, 'm': 2, 'q': 2, 'budget': 1, 'good_sets': 3, 'gauge_pairs': 16, 'coefficients': 288, 'nonzero_source_entries': 8788, 'cropped_nonzeros': 2198}
+PASS complete normalized coefficients: 416
+Masks depend only on own good-set block and original normal middle coordinate.
+Both middle coordinates are translated identically on both inputs.

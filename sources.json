@@ -14,7 +14,7 @@
   },
   "working_note": {
     "path": "outputs/exponent-improvement.tex",
-    "status": "Working derivation; no novelty or practical speedup claim. The TeX/PDF remain the research-note snapshot. The separate APSP Lean correctness and charged-work theorem is scoped in lean/README.md; whole-program word-RAM compilation remains conditional.",
+    "status": "Working derivation with current deterministic integer APSP exponent 2.9926862626; no novelty or practical speedup claim. The new source construction has rational certificates and finite checks, not a Lean proof. The separate older APSP Lean scope is documented in lean/README.md; whole-program word-RAM compilation remains conditional.",
     "verification_entrypoint": "scripts/verify.py",
     "finite_checks": [
       "outputs/check_3sum_counts.py",
@@ -41,7 +41,15 @@
       "outputs/check_rectangular_reductions.py",
       "outputs/check_reductions.py",
       "outputs/check_signed_window_counts.py",
-      "outputs/check_subset_convolution.py"
+      "outputs/check_subset_convolution.py",
+      "work/light-source-improvement/check_exact_small_bias.py",
+      "work/light-source-improvement/check_small_bias_potential.py",
+      "work/light-source-improvement/check_light_gauge_embedding.py",
+      "work/light-source-improvement/check_light_source_gauges.py",
+      "work/light-source-improvement/check_strict_light_gauge_backend.py",
+      "work/cropped-source-improvement/check_rectangular_chunks.py",
+      "work/half-source-improvement/check_half_bias.py",
+      "work/half-source-improvement/check_half_embedding.py"
     ],
     "numerical_verifiers": [
       "outputs/verify_cyclic_3sum.py",
@@ -56,8 +64,11 @@
       "outputs/verify_five_term_realinput.py",
       "outputs/verify_five_term_ring_apsp.py",
       "outputs/verify_five_term_subset.py",
-      "outputs/verify_subset_convolution.py"
-    ]
+      "outputs/verify_subset_convolution.py",
+      "outputs/verify_light_source_apsp.py",
+      "outputs/verify_half_source_apsp.py"
+    ],
+    "structured_source_verification_entrypoint": "scripts/verify_structured_sources.py"
   },
   "subset_convolution_source": {
     "title": "Truly Sub-3^n Min-Sum Subset Convolution and Join Ordering",
@@ -68,7 +79,7 @@
     "url": "https://arxiv.org/abs/2610.10282v1",
     "html_url": "https://arxiv.org/html/2610.10282v1",
     "accessed_on": "2026-10-13",
-    "dependency_scope": "Restriction products and local-cover organization in Sections 2–4; join ordering under the assumptions of Section 5. The local note changes the rectangular restriction cost and cover-weight analysis.",
+    "dependency_scope": "Restriction products and local-cover organization in Sections 2\u20134; join ordering under the assumptions of Section 5. The local note changes the rectangular restriction cost and cover-weight analysis.",
     "downloaded_source_included": false,
     "version_note": "The proof and comparisons intentionally use v1; the later v2 revision is described on arXiv as fixing technique naming."
   },
@@ -84,7 +95,7 @@
       "arxiv_id": "2307.07970v2",
       "url": "https://arxiv.org/abs/2307.07970v2",
       "accessed_on": "2026-10-15",
-      "dependency_scope": "Table 1 endpoints (1.2, 2.535063) and (1.5, 2.794941), interpolated for the deterministic APSP exponent 2.9958892. External theorem, not certified by local numerical checks.",
+      "dependency_scope": "Table 1 endpoints (1.2, 2.535063) and (1.5, 2.794941), interpolated for the deterministic APSP exponent 2.9958892. External theorem, not certified by local numerical checks. Proposition 5.1 and Theorem 3.2 also supply the level-one specialization with aspect (861/500,1,15), exponent 16.7220002 and fixed positive 1e-7 allowance used by the light-source and exact-half results.",
       "downloaded_source_included": false
     },
     {
@@ -119,7 +130,7 @@
     {
       "title": "Rectangular matrix multiplication from polynomial products",
       "authors": [
-        "Przemysław Uznański"
+        "Przemys\u0142aw Uzna\u0144ski"
       ],
       "arxiv_id": "2610.10494v2",
       "url": "https://arxiv.org/abs/2610.10494v2",
@@ -138,13 +149,13 @@
     "url": "https://arxiv.org/abs/2610.17420v1",
     "html_url": "https://arxiv.org/html/2610.17420v1",
     "accessed_on": "2026-10-15",
-    "dependency_scope": "Sections 3–7 five-term identity, deterministic re-indexing and squared embedding; Section 15.4 composite per-incidence certification. Local note changes encodings, query contractions, entropy bounds and explicit reduction costs. Numerical certificates and finite tests do not prove the external embedding.",
+    "dependency_scope": "Sections 3\u20137 five-term identity, deterministic re-indexing and squared embedding; Section 15.4 composite per-incidence certification. Local note changes encodings, query contractions, entropy bounds and explicit reduction costs. Numerical certificates and finite tests do not prove the external embedding.",
     "downloaded_source_included": false
   },
   "research_snapshot": {
-    "commit": "378091445d21dc4a46975c8c78396424ec7e3752",
-    "scope": "Proof-note and numerical parameter snapshot from source main after PR #22. Results-only maintenance and the separate APSP Lean development are later additions; exploratory history and supplied reviews are not included.",
-    "description": "Source research snapshot after PR #22; no research history is bundled."
+    "commit": "78e91f53f313b66cb538fedb7e3c8ced8e63e94c",
+    "scope": "Exact-half and light-source mathematical derivations and certificates, with results-only documentation corrections preserved. The selected positive-result checkers and their import dependencies are included; exploratory searches and supplied reviews are omitted.",
+    "description": "Verified research result 2.9926862626; separately scoped Lean and machine artifacts preserved."
   },
   "lean_verification": {
     "scope_document": "lean/README.md",

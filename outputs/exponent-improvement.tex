@@ -53,9 +53,16 @@ A partial cache of direct inner projections, partitioning each residual
 query by its first cached positions, improves it to $O(n^{2.993401})$.
 Changing the local identity, re-embedding the inputs with Walsh transforms,
 and caching the remaining residual terms as polynomials gives
-$O(n^{2.99294792})$ deterministic time. A separate signed-window
+$O(n^{2.99294792})$ deterministic time. Deterministic middle translations
+then restrict the rare source symbols; grouped completion across middle
+blocks, asymmetric rectangular multiplication, and a separate jointly
+capped box encoder improve the bound to $O(n^{2.9926863})$.
+A shrinking-bias source construction and a small numerical refinement
+give $O(n^{2.9926862626})$; the original geometry/query bottleneck remains.
+A separate signed-window
 bit-refinement reduction gives deterministic exact all-edges witness
-counts, including min-plus multiplicities, in the same time. Applied to
+counts, including min-plus multiplicities, in $O(n^{2.99294792})$ time
+with its earlier witness. Applied to
 fixed original 3SUM buckets with cyclic histogram products, it gives
 deterministic 3SUM and exact \#3SUM in $O(n^{1.9931055})$ time.
 Rank-prefix hashing with complementary certification gives real 3SUM and
@@ -105,9 +112,9 @@ $|W|\le N^2/\sqrt D$ & $O(N^2/D^{0.0001})$ & Deterministic; fixed query density 
 Integer 3SUM and exact \#3SUM & $O(n^{1.9931055})$ & Deterministic; fixed buckets and signed-window count refinement \\
 Integer 3SUM & $O(n^{1.9931055})$ & Las Vegas, inherited from the deterministic bound \\
 Integer all-edges Exact Triangle, APSP/min-plus & $O(n^{2.9958892})$ & Deterministic; per-pair moments, lazy encodings, SODA 2024 multiplication \\
-Integer all-edges Exact Triangle, APSP/min-plus & $O(n^{2.99294792})$ & Deterministic; Walsh embedding, polynomial caches, cyclic coefficient queries, composite certification \\
+Integer all-edges Exact Triangle, APSP/min-plus & $O(n^{2.9926862626})$ & Deterministic; exact-half structured sources \\
 Integer \#Exact Triangle, min-plus witness counts & $O(n^{2.99294792})$ & Deterministic exact counts \\
-Integer APSP/min-plus & $O(n^{2.99294792})$ & Las Vegas, inherited from the deterministic bound \\
+Integer APSP/min-plus & $O(n^{2.9926862626})$ & Las Vegas, inherited from the deterministic bound \\
 Real 3SUM & $O(n^{1.993805})$ & Las Vegas expected time; certified comparison counts \\
 Integer min-plus convolution & $O(n^{1.993927})$ & Deterministic, hence also Las Vegas \\
 Directed APSP, weights $(\log n)^{O(1)}$ & $O(n^{2.525754})$ & Deterministic; Zwick's $O(n^{2.5275})$; $2.5251975$ with one extra table row \\
@@ -3224,6 +3231,562 @@ has not been established.
 % check_five_term_aligned_integration.py: 530 normalized original-product
 % coefficients, including all targets in a signed cyclic q=3 fixture.
 
+\subsection*{Light sources and shared completion of residual queries}
+\label{sec:light-source}
+
+The following construction improves Corollary~\ref{cor:aligned-cache-apsp}
+by changing the source encoder and completing requested residual values
+jointly across middle blocks. It retains the full-grid geometry, the
+complete-output normalization, and the composite-incidence reduction.
+In this subsection write
+\[
+ \begin{gathered}
+ D=4^m,\quad L=\lceil cm\rceil,\quad k=L-m,\quad
+ K=\binom Lm,\quad N_0=4^k,\\
+ C_K=\frac{c\HH(1/c)}{\ln4},\qquad T=c-1+C_K,\qquad
+ Q=\frac{2\HH(\theta)}{\ln4},\\
+ G=\frac{c\HH(1/c)-c\HH((1-\theta)/c)-\theta\ln4}{\ln2},
+ \qquad q_2=Q+2\theta,\qquad t=\lceil2\theta m\rceil .
+ \end{gathered}
+\]
+Here $Q$ without a subscript is an entropy exponent; physical good sets
+will have subscripts. Formal polynomials use $z$, cyclic coefficients
+use $x$ in $\mathcal R_q$, and the cache dimension exponent is $\zeta$.
+
+\begin{lemma}[Shifted private factor and light source decomposition]
+\label{lem:light-source}
+The embedding of Lemma~\ref{lem:aligned-walsh-embedding} also applies to
+the four ordinary pairs
+\[
+ (x_1+p_2,s+v),\quad (x_1,s-v),\quad
+ (x_2-p_2,s+v-w),\quad (x_2,s-v+w)
+\]
+and private pair $(-x_1-x_2+p_1,2s)$. Their sum is
+$I=2p_1s+p_2w$. For $\rho=51/100$, each original product decomposes
+deterministically into $\operatorname{poly}(m)$ products whose source
+arrays have at most $\lfloor\rho m\rfloor$ normal $p_2$ letters.
+In each product one may additionally set to zero every source entry
+with more than $\lfloor\rho m\rfloor$ opposite $w$ letters, before
+both the residual and high-box encoders. The complete degree-summed
+output still equals $4^L$ times that product entry.
+\end{lemma}
+\begin{proof}
+Expansion proves the shifted identity. The source definitions
+(A2)--(A5) are unchanged: every complete contraction has $I$ at the
+$m$ normal distinguished positions, which force all $m$ normal
+$p_1,p_2$ letters. Thus outside normal forms reduce to the same
+$x_1,x_2$ as before. The proof of (A6), including its weights,
+degree filter, and transpose locator, applies.
+
+Here is a deterministic construction of the required translations.
+Put $\epsilon=1/50$, $J=10000m$, $r=101/100$, and
+$C=(r+r^{-1})/2=20201/20200$. For a list
+$\delta_1,\ldots,\delta_J\in\mathbb F_2^m$, allowing repetitions, set
+\[
+ S_a=\sum_{j=1}^J(-1)^{a\cdot\delta_j},\qquad
+ \Phi=\sum_{a\ne0}(r^{S_a}+r^{-S_a}).
+\]
+A uniform independent list has expectation $2(2^m-1)C^J$.
+The exact rational inequality $r^{200}>4C^{10000}$ gives
+$\mathbb E\Phi<r^{\epsilon J}$. Reveal the $Jm$ bits one at a time,
+choosing a bit that does not increase the conditional expectation.
+For each character its factor for the current list entry is $r$,
+$r^{-1}$, or $C$, according as its sign is determined positive,
+determined negative, or still unbiased. Enumerating all $2^m-1$
+characters computes both choices exactly. Common denominators and
+numerators have $O(m)$ bits, with fixed constants, so construction
+costs $2^m\operatorname{poly}(m)$ bit operations. The resulting
+$\Phi<r^{\epsilon J}$ forces $|S_a|<\epsilon J$ for every $a\ne0$.
+
+For every good set $Q_n$ and middle half-index $h$, invertibility of
+$\Gamma_{Q_n}$ and this bias bound imply
+\[
+ J^{-1}\sum_j
+ \operatorname{wt}\bigl(\Gamma_{Q_n}^{-1}(h+\delta_j)\bigr)
+ \le (1+\epsilon)m/2=\rho m.
+\]
+Let $\iota(Q_n,h)$ be the first list index attaining weight at most
+$\lfloor\rho m\rfloor$. Indices resolve repetitions in the list.
+For a left row with normal block $Q_L$ and right column with
+normal block $Q_R$, define, for each pair of list indices $(r,s)$,
+\[
+\begin{aligned}
+ X^{rs}_{(Q_L,i),(h'_1,h'_2)}
+ &=X_{(Q_L,i),(h'_1+\delta_r,h'_2+\delta_s)}
+   {\bf1}\{\iota(Q_L,h'_1+\delta_r)=r\},\\
+ Y^{rs}_{(h'_1,h'_2),(Q_R,j)}
+ &=Y_{(h'_1+\delta_r,h'_2+\delta_s),(Q_R,j)}
+   {\bf1}\{\iota(Q_R,h'_2+\delta_s)=s\}.
+\end{aligned}
+\]
+Both inputs use the same global middle translation. Masks are evaluated
+at the original middle indices and depend only on the input's own
+normal good set. Each original summand belongs to exactly one pair,
+so $XY=\sum_{r,s}X^{rs}Y^{rs}$, coefficientwise over $\mathcal R_q$.
+The masks commute with the opposite-outer-index Walsh transform.
+In (A3)--(A4), a surviving normal $p_2$ set therefore has size at most
+$\lfloor\rho m\rfloor$.
+
+Let the two normal $p_2$ counts in a complete contraction be $a,b$,
+and the additional outside opposite $w$ counts be $e_L,e_R\ge0$.
+The two degree runs are $b+e_L-a$ and $b-a-e_R$. Their equality
+forces $e_L=e_R=0$; hence the opposite $w$ counts are $b,a$, both
+at most $\lfloor\rho m\rfloor$. Every discarded coordinate vanishes
+termwise in the complete contraction. Crop both inputs before
+\emph{all} encoders: individual residuals and boxes may change.
+Only their complete sum is divided coefficientwise by $4^L$.
+The $J^2$ products, mask preparation, translations, Walsh transforms,
+and output summation cost polynomial factors in $m$ per original
+coefficient. The bias-list construction is below the $D$ input-formation
+budget. Sharing across outer bands is preserved.
+\end{proof}
+
+\begin{lemma}[An exact half-weight source cap]
+\label{lem:half-source}
+Lemma~\ref{lem:light-source} also holds with $\rho=1/2$. An ordered
+list of $J_m=64m^3$ translations can be constructed deterministically
+in $2^m\operatorname{poly}(m)$ bit operations so that, for every
+invertible $A\in\mathbb F_2^{m\times m}$ and $h\in\mathbb F_2^m$,
+some list index $j$ has
+$\operatorname{wt}(A(h+\delta_j))\le\lfloor m/2\rfloor$.
+\end{lemma}
+\begin{proof}
+Allow the bias to shrink with the tensor parameter $m$. Set
+\[
+ \epsilon_m=\frac1{2m},\qquad r_m=1+\frac1{4m},\qquad
+ C_m=\frac{r_m+r_m^{-1}}2,\qquad J_m=64m^3 .
+\]
+For $x=1/(4m)\le1/4$ the elementary logarithm inequalities give
+\[
+ \ln r_m\ge x-x^2/2\ge\frac7{32m},\qquad
+ \ln C_m\le C_m-1=\frac{x^2}{2(1+x)}\le\frac1{32m^2}.
+\]
+Therefore
+\[
+ J_m(\epsilon_m\ln r_m-\ln C_m)\ge5m
+ >\ln(2(2^m-1)).
+\]
+The last inequality follows from $2(2^m-1)<4^m$ and $\ln4<2$.
+The same two-sided character potential as in
+Lemma~\ref{lem:light-source} has initial expectation strictly below
+$r_m^{\epsilon_m J_m}$. Exact conditional expectations produce a
+list with every nonzero character bias strictly below $\epsilon_m$.
+Here common rational numerators and denominators have
+$O(J_m\log(m+1))$ bits, rather than the earlier $O(m)$ bound.
+There are $J_m m$ choices and $2^m-1$ characters, so all bit costs
+are still $2^m\operatorname{poly}(m)$.
+
+The rows of an invertible $A$ are nonzero characters. Thus, uniformly
+in $A,h$,
+\[
+ J_m^{-1}\sum_j\operatorname{wt}(A(h+\delta_j))
+ <m/2+\epsilon_m m/2=m/2+1/4.
+\]
+If every integer weight exceeded $\lfloor m/2\rfloor$, their
+average would be at least $\lfloor m/2\rfloor+1$, a contradiction
+for either parity of $m$. Use the first valid \emph{list index}
+in the two original-coordinate masks. The same translated-product
+decomposition, Walsh commutation, and same-degree argument permit
+cropping both opposite sources to $\lfloor m/2\rfloor$ before
+both encoders. Complete outputs retain their normalization by $4^L$.
+The $J_m^2=O(m^6)$ products, their masks, and their output sums
+contribute only fixed polylogarithmic factors. The larger rational
+bit lengths are confined to the separately charged list construction;
+the matrix coefficients still have $O(\log n)$ bits.
+\end{proof}
+
+\begin{lemma}[Grouped completion with asymmetric row chunks]
+\label{lem:light-completion}
+Suppose $B$ middle-block products have the same outer size $N$, inner
+size $D$, cyclic width $q$, good-set layout, folded locator, modulus,
+and padding. Suppose an exact rectangular algorithm
+multiplies dimensions $s^a\times s$ by $s\times s^\kappa$ in
+$O(s^w)$ operations, where $\kappa\ge a\ge1$ and $w$ includes a fixed
+positive allowance above a proved exponent bound. Write
+\[
+ \alpha=w-\kappa-1\ge0,\qquad \beta=w-\kappa-a\ge0,\qquad
+ \gamma(r)=\frac{\HH((\rho-r)/(c-1))}{\ln4}.
+\]
+Use either $\rho=51/100$ from Lemma~\ref{lem:light-source} or
+$\rho=1/2$ from Lemma~\ref{lem:half-source}.
+Assume $c>5$, $0<2\theta<\rho$, and
+\[
+ \zeta>0,\quad \zeta<(c-1)\gamma(2\theta),\qquad
+ \frac{2\ln((1-\theta)/\theta)}{\ln4}
+       +\frac{\zeta\gamma'(\theta)}{2\gamma(\theta)^2}>0.
+                                                               \tag{L1}
+\]
+Under the original geometry $N\ge KN_0$ and the strict batch fit
+$Bq\ge D^{\kappa\zeta+\xi}$ for some fixed $\xi>0$, requested residual
+values for $M_0$ original output incidences across the common shape can
+be obtained with costs
+\[
+ \softO\left(qBN(D^{E_{\rm root}}+D^{E_{\rm res}})
+                    +BqM_0D^{q_1}\right),                    \tag{L2}
+\]
+where
+\[
+\begin{aligned}
+ E_{\rm root}&=2C_K+(2c-1)\log_4 3+Q-T,\\
+ E_{\rm res}&=T+Q-\left(\frac1{2\gamma(\theta)}-1-\alpha\right)\zeta,
+ &q_1&=Q+\beta\zeta .
+\end{aligned}
+\]
+The incidence list may depend on the middle block if $M_0$ bounds
+its union over blocks. Duplicate requested rows may be shared.
+\end{lemma}
+\begin{proof}
+For the shifted identity put
+$H(z)=-x_1-x_2+(1+z)p_1$. Then
+\[
+ P+zI=H(z)(2s)+zp_2w.
+\]
+The residual remains (A10)--(A11), with the same physical channel
+set in both inputs and a single shift by its size. Work modulo
+$z^t$ throughout.
+
+Fix distinguished sets $Q_n,Q_o$ of size $m$ and channels
+$C_n\subseteq Q_n$, $C_o\subseteq Q_o$ with total size below $t$.
+Contract these positions first. Normal nonchannel forms have three
+raw supports $x_1,x_2,p_1$, normal channels are $p_2$, and opposite
+distinguished forms are the singletons $2s,w$. Every root has
+$3^{2k}$ remaining raw coordinates, each formed using at most $3^m$
+explicit Walsh-source lookups. Across all groups, even zero ones,
+the cost per band per block is at most
+\[
+ \softO\left(qK^2
+       \sum_{h<t}\binom{2m}{h}\,3^{2k+m}\right).
+\]
+There are $\softO(N/D^T)$ bands. This proves the root term in (L2)
+and pays for all root writes and intermediate distinguished
+contractions.
+
+The remaining normal rare count is at most
+$\lfloor\rho m\rfloor-|C_n|$, and the opposite rare count at most
+$\lfloor\rho m\rfloor-|C_o|$. For the opposite half use the forward
+integer evaluation map $(s,v,w)\mapsto(s+v,s-v,-w)$; after permuting
+ordinary labels its four forms have the normal pattern
+$(y_1+w',y_1,y_2-w',y_2)$. This map preserves the rare support.
+Every one of its $3^{2k}$-entry layers is paid by the root bound;
+no inverse or division by two is used.
+
+Choose the half with the larger channel count, breaking ties
+deterministically. For any suffix length $\ell\le k$, a raw word
+with at most $r_0$ rare positions has a cyclic window of length
+$\ell$ containing at most $\lfloor r_0\ell/k\rfloor$ of them,
+by averaging the $k$ windows. Assign the raw source coordinate to
+its first such window \emph{before} transformation. This is a
+disjoint linear partition. Keep all $k$ components, and sum their
+reconstructed values on each input before multiplying the two
+residual polynomials.
+
+In each component, transform the other $2k-\ell$ coordinates to
+their four ordinary outputs. In the suffix keep raw coordinates
+with at most $\lfloor r_0\ell/k\rfloor$ rare letters. For each
+nonrare pair-bit string of length $\ell$ create a separate group.
+A raw suffix with $j$ rare letters belongs to $2^j$ such strings;
+copy it to every one of those groups. The exact length of a group
+vector is
+\[
+ s_\ell=\sum_{j\le\lfloor r_0\ell/k\rfloor}\binom{\ell}{j}.
+\]
+Thus each prefix has $2^\ell s_\ell$ explicitly stored entries,
+including all duplication. An ordinary suffix output chooses its
+pair-bit group and an activity set $A$; its selector is
+${\bf1}\{J\subseteq A\}$ for each rare support $J$, with the fixed
+signs absorbed in the stored vector. The selector is independent
+of the middle block and of the formal and cyclic coefficient.
+To charge intermediate transforms explicitly, the raw suffix volume is
+$V_\ell=\sum_{j\le\lfloor r_0\ell/k\rfloor}
+\binom{\ell}{j}2^{\ell-j}\le2^\ell s_\ell$.
+After $d$ prefix transforms a full allocated layer has
+$4^d3^{2k-\ell-d}V_\ell$ entries, at most
+$4^{2k-\ell}2^\ell s_\ell$. Thus every layer, including its
+initialization and zeros, fits the final duplicated group volume.
+The source partition scans and the opposite forward map were
+already charged in root formation.
+
+For channel fractions $x=|C_n|/m$, $y=|C_o|/m$, choose
+$\ell=\zeta m/\gamma(\max(x,y))+O(1)$. More precisely use the actual
+$k$ and rare budget with a rational upper entropy enclosure of
+error $O(m^{-2})$, and round the quotient down. Binary logarithm
+enclosures compute this in polynomial time in $m$; the common
+padding dimension is $s_*=\operatorname{poly}(m)D^\zeta$.
+Condition (L1) ensures $\ell\le k$ with strict slack.
+The number of groups before band sharing is bounded by
+\[
+ \softO\left(
+ D^{2T+\max_{x+y\le2\theta}
+  \{(\HH(x)+\HH(y))/\ln4-\zeta/(2\gamma(\max(x,y)))\}}\right).
+                                                               \tag{L3}
+\]
+The factor $2^{-\ell}$ comes from replacing $4^\ell$ suffix
+outputs by $2^\ell$ pair-bit groups; the $s_*$ entries per group
+are charged separately, not omitted.
+
+At fixed $x+y=2r$, entropy concavity and decreasing $\gamma$
+make the expression in braces largest at $x=y=r$. Since $\gamma$
+is positive, decreasing, and concave, $1/\gamma$ is convex.
+Consequently $2\HH(r)/\ln4-\zeta/(2\gamma(r))$ is concave.
+Its positive endpoint derivative in (L1) makes its maximum on
+$[0,\theta]$ equal to $Q-\zeta/(2\gamma(\theta))$.
+Ceilings in $L,t$ change these bounds only by polynomial factors.
+
+For $P_*$ groups and a total of $M_*$ requested selector rows,
+form separately for each group an $r\times s_*$ selector and an
+$s_*\times Bq$ data matrix. Chunk rows into size $s_*^a$ and
+columns into size $s_*^\kappa$. Even a short final row chunk is
+charged: there are
+$O((1+r/s_*^a)Bq/s_*^\kappa)$ products per group. Their total cost is
+\[
+ \softO\bigl(Bq[P_*s_*^{1+\alpha}+M_*s_*^\beta]\bigr). \tag{L4}
+\]
+This dominates data formation $BqP_*s_*$, selector formation
+$M_*s_*$, and every output write $BqM_*$. It never concatenates
+unrelated groups for free. Formal coefficients, degree runs,
+window components, and translations contribute polynomial factors.
+Each output incidence fixes its own two distinguished sets; hence
+$M_*\le\softO(M_0D^Q)$, without another factor $K^2$.
+Substitution of (L3), the $\softO(N/D^T)$ bands, and (L4)
+gives (L2). Complete cyclic vectors are recovered for both inputs
+before their residual products, so the factor $q$ is retained.
+\end{proof}
+
+\begin{lemma}[A separate jointly capped high-box encoder]
+\label{lem:light-box}
+For the shifted and cropped sources above, the high-box bases have
+encoder exponent $E_{\rm box}=T-G$. The stored-box preprocessing
+and query exponents remain $G$ and $q_2$.
+\end{lemma}
+\begin{proof}
+Use private $H(0)=-x_1-x_2+p_1$ on the normal side and $2s$ on
+the opposite side. Retain at most $m$ private-or-star positions
+per half and at most $2m-t$ jointly. Expanding a star into an
+ordinary or private position preserves both caps, so all high-box
+states have the required base leaves. Their count is
+\[
+ S_{\rm box}=
+ \sum_{\substack{j,l\le m\\j+l\le2m-t}}
+       \binom Lj\binom Ll4^{2L-j-l}
+ =\softO(D^{2T-G}).
+\]
+Indeed $\binom Lj4^{-j}$ increases up to $m$ for $c>5$ and is
+log-concave. For each sum $j+l$ the maximum is balanced; the
+largest sum is $2m-t$, so the exponent is
+$2c-2+2\theta+2c\HH((1-\theta)/c)/\ln4=2T-G$.
+All-ordinary completions pay for every intermediate array; the
+root volume $12^L$ is below the $16^L$ all-ordinary leaves already
+included. Sharing over $\softO(N/D^T)$ bands gives
+$\softO(qND^{T-G})$ per block. All bases and intermediate boxes
+store their full cyclic vectors. The unchanged high-box recurrence
+costs $\softO(qN^2D^{-G})$ per block, and a requested coefficient
+uses $\softO(D^{q_2})$ stored scalar reads. Cropping is applied
+before these encoders as required by Lemma~\ref{lem:light-source}.
+\end{proof}
+
+\begin{lemma}[A rectangular endpoint for the grouped completion]
+\label{lem:light-cw}
+There is a fixed exact characteristic-zero algorithm with exponent
+$w=16.7220002$ for aspect $(a,1,\kappa)$, where
+$a=861/500$ and $\kappa=15$. Thus Lemma~\ref{lem:light-completion}
+may use $\alpha=0.7220002$ and $\beta=0.0000002$.
+\end{lemma}
+\begin{proof}
+Specialize Proposition 5.1 and Theorem 3.2 of \cite{VXXZ24}
+to level one of the big Coppersmith--Winograd tensor with parameter
+$q_{\rm CW}=16$. Put probabilities
+$(ap,p,\kappa p,d_0,e_0,f_0)$ on its six types
+$(011)$, $(101)$, $(110)$, $(002)$, $(020)$, $(200)$, where
+\[
+ p=\frac{4000}{75249},\quad e_0=\frac1{18},\quad
+ f_0=\frac{646603}{10^9},\quad d_0=e_0-p-f_0>0.
+\]
+They are positive and sum to one. Their marginals are
+\[
+\begin{aligned}
+ X&=(ap+d_0+e_0,(\kappa+1)p,f_0),\\
+ Y&=(p+d_0+f_0,(\kappa+a)p,e_0),\\
+ Z&=(\kappa p+e_0+f_0,(a+1)p,d_0).
+\end{aligned}
+\]
+The index-two marginals determine the three corners; the index-one
+marginals uniquely determine the other three probabilities.
+Thus the compatibility entropy penalty is zero. Choose the theorem's
+$A_1=1$, $A_2=A_3=0$; at level one the complete split distributions
+are point masses, so their penalty is zero as well. The extraction
+rate is $\min\{H(X),H(Y),H(Z)\}$, where $H$ here is ternary entropy.
+The constituent dimensions are
+$\langle16^{pN},16^{\kappa pN},16^{apN}\rangle$.
+Cyclic permutation and the asymptotic sum inequality give
+\[
+ \omega(a,1,\kappa)\le
+ \frac{\ln18-\min\{H(X),H(Y),H(Z)\}}{p\ln16}.
+\]
+For this rational witness $Y=(1,16,1)/18$, and
+$H(Y)+p(\kappa+a)\ln16=\ln18$ exactly. Rational logarithm
+enclosures give $H(X),H(Z)>H(Y)$, so the infimum is at most
+$\kappa+a=16.722$. The verifier separately checks all three
+marginal inequalities using $w-10^{-7}$; the remaining fixed
+$10^{-7}$ allowance permits choosing a finite exact algorithm.
+This does not assert a finite algorithm attaining the infimum.
+
+The characteristic-zero tensor construction uses rational
+degenerations, interpolation, and bilinear arithmetic. Choose its
+finite base size and interpolation once, within that fixed allowance,
+then recurse. Intermediate coefficient growth is at most a constant
+per recursion level; input integers of $O(\log n)$ bits therefore
+retain $O(\log n)$ bits. Clearing the fixed rational denominators
+and exact recovery cost polynomial logarithmic factors. The same
+argument applies to the scalar coefficient matrices in (L4);
+their complete cyclic and formal coefficient counts have already
+been charged.
+\end{proof}
+
+\begin{corollary}[Deterministic APSP with light structured sources]
+\label{cor:light-source-apsp}
+For polynomially bounded integer weights, all-edges Exact Triangle,
+min-plus product, and APSP without negative cycles admit deterministic
+$O(n^{2.9926863})$ algorithms.
+\end{corollary}
+\begin{proof}
+Use the composite-incidence construction of
+Theorem~\ref{thm:cyclic-factor-apsp} with
+\[
+\begin{gathered}
+ c=10.422903143551736,\quad \theta=0.0656840679765022,\quad
+ b=0.04884094,\\
+ R=10^{14},\quad S=76777119351634,\quad
+ \eta=b/R,\quad u=S\eta,\quad v=b-u,\quad e=b+u,\\
+ \rho=51/100,\qquad \zeta=1/4,\qquad \delta=0.0073137.
+\end{gathered}
+\]
+These are exact rational constants. In the first phase let the
+folded exponent $x$ range over $[0,u]$ with cyclic exponent $y=0$;
+in the second fix $x=u$ and let $y$ range over $[0,v]$.
+The common middle-block count, outer dimension, inner dimension,
+and cyclic width are, up to the already charged logarithmic factors,
+\[
+ B=n^{1-b},\qquad N=n^{1+x/2},\qquad D=n^{b+x},\qquad q=n^y.
+\]
+For each fixed candidate, mask, bit level and restart, the folded
+location and requested coefficient depend only on the original outer
+pair and the common modulus, not on the middle block. The union of
+requested original pairs has size at most $n^2$, so (L2) applies
+with $M_0\le n^2$. Each such call is charged separately in the
+prime-stage bound. Residues are folded at their actual locations;
+no extra modulus factor is inserted in the query count.
+
+Use Lemmas~\ref{lem:light-source}--\ref{lem:light-cw}, with all
+three encoder charges $E_{\rm root},E_{\rm res},E_{\rm box}$ kept
+separately. After charging every candidate prime by $n^\eta$,
+the savings against cubic time are
+\[
+\begin{array}{ll}
+ \text{stored-box construction:}&b-x-y+(b+x)G-\eta,\\
+ \text{residual completion and products:}&b-y-(b+x)q_1-\eta,\\
+ \text{stored coefficient queries:}&b-(b+x)q_2-\eta,\\
+ \text{each encoder }E_i:&1+b-x/2-y-(b+x)E_i-\eta,\\
+ \text{input and Walsh formation:}&1-3x/2-y-\eta,\\
+ \text{incidence bookkeeping:}&b-\eta.
+\end{array}                                                   \tag{L5}
+\]
+The independent feasibility margins are
+\[
+ 1+x/2-(b+x)T>0,\qquad
+ 1-b+y-\kappa(b+x)\zeta>0.                                    \tag{L6}
+\]
+The first retains the original full-grid exponent $T$, even though
+the new encoders are cheaper. The second supplies the strict batch
+fit for (L4); it is not implied by geometry.
+
+The exact-rational verifier
+\texttt{verify\_light\_source\_apsp.py} checks 61 strict inequalities
+and the exact small-bias potential inequality. These include all
+source feasibility conditions, (L1), the three rectangular marginal
+bounds with positive allowance, (L5)--(L6) at both endpoints of both
+phases, and the exact prime-stage identities. Every phase expression
+is affine, so its endpoint checks cover the full phase.
+For interpretation only, the exponents are approximately
+\[
+\begin{array}{lll}
+ T=11.7993263169,&G=0.08470894353,&q_1=0.34960703849,\\
+ E_{\rm res}=11.6676126746,&E_{\rm box}=11.7146173734,
+ &E_{\rm root}=9.0305563991,\\
+ q_2=0.48097512444.&&
+\end{array}
+\]
+The minimum runtime margin above $\delta$ exceeds
+$3.25\cdot10^{-8}$, and the minimum geometric margin exceeds
+$1.38\cdot10^{-7}$. All cyclic coefficients are charged in
+formation, encoders, completion, and residual products; stored boxes
+alone permit single-coefficient reads. Walsh weights, fixed local
+maps, $O(m)$ formal degrees, residual coefficients, and polynomially
+many translations preserve polynomial coefficient norms.
+Exact arithmetic therefore has the bit costs charged above.
+
+As before, the fixed $R$ requires sufficiently large inputs to
+supply all distinct candidate primes. Factors such as
+$(\log n)^{O(R)}$, bit scaling, restarts, APSP squaring, padding,
+and the deterministic translation construction fit within the
+strict runtime margin. The resulting pre-absorption bound is
+$\softO(n^{2.9926863-\epsilon_*})$ for a fixed $\epsilon_*>0$,
+hence the stated ordinary $O(n^{2.9926863})$ bound. Earlier
+certificates and their separately parameterized counting, clique,
+real-input, 3SUM, and subset-convolution consequences remain valid.
+This corollary does not substitute its witness into those reductions.
+\end{proof}
+
+\begin{corollary}[Exact-half sources and a refined numerical witness]
+\label{cor:half-source-apsp}
+For polynomially bounded integer weights, all-edges Exact Triangle,
+min-plus product, and APSP without negative cycles admit deterministic
+$O(n^{2.9926862626})$ algorithms.
+\end{corollary}
+\begin{proof}
+Apply Lemma~\ref{lem:half-source} and the same grouped completion,
+jointly capped boxes, and rectangular endpoint, with
+\[
+\begin{gathered}
+ c=10.42290323194818,\qquad\theta=0.06568406426999,\qquad
+ b=0.04884094420,\\
+ R=10^{14},\qquad S=76777127384957,\qquad
+ \eta=b/R,\quad u=S\eta,\quad v=b-u,\quad e=b+u,\\
+ \rho=1/2,\qquad \zeta=11/50,\qquad \delta=0.0073137374.
+\end{gathered}
+\]
+Retain $a=861/500$, $\kappa=15$, $w=16.7220002$ and the fixed
+$10^{-7}$ matrix-algorithm allowance of Lemma~\ref{lem:light-cw}.
+In particular $\alpha=0.7220002$ and $\beta=0.0000002$ are unchanged.
+Only the source parameter in
+$\gamma(r)=\HH((\rho-r)/(c-1))/\ln4$ and the explicit rational
+witness change. All three encoder terms and every complete cyclic
+coefficient remain charged.
+
+The verifier \texttt{verify\_half\_source\_apsp.py} checks 61 strict
+rational inequalities. It verifies (L1), suffix feasibility, the
+rectangular endpoint with its allowance, all three encoders, both
+queries, input formation, bookkeeping, and both endpoints of
+both phases in (L5)--(L6). The exact identity $\rho=1/2$ and the
+positive uniform potential margin use Lemma~\ref{lem:half-source},
+in place of the earlier fixed-bias condition $\rho>1/2$.
+The minimum runtime margin above $\delta$ exceeds $8.43\cdot10^{-11}$,
+and the original geometry margin exceeds $2.19\cdot10^{-10}$.
+At the last cyclic endpoint the box, residual-query, and stored-query
+savings each exceed $0.0073137374843$; the residual encoder's saving
+exceeds $0.0075728$. The additional polynomial factors in $m$ from
+the shrinking-bias list, together with all earlier rounding, exact
+bit arithmetic, prime stages and APSP squaring, fit within these
+fixed positive gaps.
+
+This is a small numerical refinement of the preceding corollary,
+accompanied by a stronger source-support lemma. Much of the change
+from the displayed $2.9926863$ is slack in that earlier target.
+The original $G,q_2,T$ and $q_1\ge Q$ remain in force; no escape
+from the geometry/query cost family's bottleneck is claimed.
+The earlier witnesses and separately parameterized downstream
+statements retain their own certificates.
+\end{proof}
+
 \subsection*{Two black-box uses of the five-term data structure}
 Lemma~\ref{lem:five-profile} is a statement about an arbitrary
 $N\times D$ by $D\times N$ integer product with $N\ge KN_0$. Two earlier
@@ -3323,7 +3886,7 @@ the whole unfolded saving with a Las Vegas guarantee, matching the guarantee
 type of the source's real-input reduction; the corollary above is its
 five-term instance. The deterministic integer bounds
 of this section are also Las Vegas bounds, so for integer inputs the
-Las Vegas rows of the summary table are superseded by $2.99294792$ and
+Las Vegas rows of the summary table are superseded by $2.9926862626$ and
 $1.9931055$. For lopsided clique instances see
 Corollaries~\ref{cor:chunked-clique} and~\ref{cor:lopsided-five-clique}.
 
@@ -3573,7 +4136,8 @@ Metricity, min-plus product verification, Diameter, Radius, Median, the
 Wiener index, and directed Minimum Weight Cycle with nonnegative weights
 (the minimum over edges $(u,v)$ of $w(u,v)+d(v,u)$) each need a constant
 number of $n\times n$ integer min-plus products or one APSP plus $O(n^2)$
-work. They inherit $O(n^{2.99294792})$ deterministic time, which is also a
+work. By Corollary~\ref{cor:half-source-apsp} they inherit
+$O(n^{2.9926862626})$ deterministic time, which is also a
 Las Vegas bound, and with real weights $O(n^{2.993805})$ Las Vegas
 expected time; the source displays $O(n^{2.9995})$. Exact Triangle with real
 weights is covered by the source's Lemma 36(a) together with the min-plus
@@ -5285,7 +5849,7 @@ windows, 600 sparse contractions, 1,936 retained-array lookups, 146
 complete free-pruned queries, and 146 complete lazy-prefix queries. It
 counts sparse input reads and checks full intermediate-array storage,
 as well as values against direct products. The unified command
-\texttt{python3 scripts/verify.py} reruns every checker and compares all thirteen
+\texttt{python3 scripts/verify.py} reruns every checker and compares all fifteen
 certificate outputs with the recorded files. These are finite oracle
 checks and numerical certificates, not a proof assistant or a full fast
 implementation.
@@ -5349,6 +5913,45 @@ for 2,011,348 retained and intermediate entries. The finite checks
 supplement the Walsh embedding and polynomial-cache proofs; they do
 not replace those proofs or independently establish the asymptotic bound.
 
+The light-source \texttt{verify\_light\_source\_apsp.py} checks 61
+strict rational inequalities for Corollary~\ref{cor:light-source-apsp}
+and the exact rational small-bias potential inequality. Its recorded
+output is \texttt{light-source-\allowbreak apsp-\allowbreak certificate-\allowbreak results.txt}.
+It retains all three encoder charges, both phase endpoints, original
+geometry, the independent batch fit, source-type derivative guard,
+suffix fit, and the positive rectangular-algorithm allowance.
+In the full research checkout, \texttt{scripts/verify.py} also reproduces
+the seven original research suites under \texttt{work/}: shifted sources, structured
+completion, adaptive lengths, cropped sources, jointly capped boxes,
+light-source translations, and the next-pass appendix. These include
+complete integer and cyclic products, explicit duplicated selector
+vectors, row/column chunk padding, exact conditional-expectation
+construction, and a strict backend that reconstructs omitted leaves.
+The results-only checkout retains the supporting checkers and their
+import dependencies, run by \texttt{scripts/verify\_structured\_sources.py}.
+Recorded outputs are compared byte for byte. Scoped ceiling checks
+in those suites describe only their stated cost families.
+These finite tests and rational certificates supplement the proofs
+in Section~\ref{sec:light-source}; they do not establish the external
+matrix-multiplication theorem or formally verify the asymptotic argument.
+
+The exact-half refinement has its own 61-inequality certificate,
+\texttt{verify\_half\_source\_apsp.py}, with recorded output in
+\texttt{half-source-\allowbreak apsp-\allowbreak certificate-\allowbreak results.txt}.
+In the full research checkout,
+\texttt{work/\allowbreak half-\allowbreak source-\allowbreak improvement/\allowbreak verify.py} checks
+22,656 exact conditional choices for $m=1,\ldots,4$ and 2,922
+affine half-weight coverage cases. Its embedding checker uses the
+actually constructed ordered lists and first valid indices, and
+verifies 416 complete normalized signed cyclic coefficients.
+It omits only translation indices whose masks are identically
+zero on the fixture. The results-only checkout runs these two finite
+checkers through \texttt{scripts/verify\_structured\_sources.py}.
+The earlier strict grouped-residual and joint-box
+checks already use the finite cap $\lfloor m/2\rfloor$ and remain
+in the standard suite. These checks supplement the all-$m$ potential
+argument in Lemma~\ref{lem:half-source}.
+
 The signed-window reduction has two additional finite checkers.
 \texttt{check\_exact\_counting.py} runs ten tests using actual residue-folded
 cyclic products as the modular oracle, checking common-prime selection,
@@ -5378,7 +5981,7 @@ for sets. All these finite checks supplement the asymptotic proof.
 A floating-point exploration of the generalized Schönhage identities
 $\langle k,1,n\rangle\oplus\langle1,(k-1)(n-1),1\rangle$ with the same box
 and encoding analysis, recorded in \texttt{work/tensor/shapes.py} in the
-separate research repository (the script is not bundled here),
+full research repository,
 indicates that the source's $3\times3$ shape maximizes the integer savings in
 this framework, with or without folding. That is a numerical observation
 about this parameter family, not a theorem or an optimality claim.
@@ -5403,7 +6006,9 @@ arXiv:1407.6756. Its Theorem 1.4 and Section 2 give the reduction from 3SUM
 to offline set disjointness whose digit split is used above.
 \bibitem{VXXZ24} Virginia Vassilevska Williams, Yinzhan Xu, Zixuan Xu,
 and Renfei Zhou. \emph{New Bounds for Matrix Multiplication: from Alpha to Omega}.
-SODA 2024; arXiv:2307.07970v2. Table 1 supplies the rectangular endpoints.
+SODA 2024; arXiv:2307.07970v2. Table 1 supplies the earlier rectangular
+endpoints; Proposition 5.1 and Theorem 3.2 supply the level-one
+specialization in Lemma~\ref{lem:light-cw}.
 \url{https://arxiv.org/abs/2307.07970v2}.
 \bibitem{ADVXXZ25} Josh Alman, Ran Duan, Virginia Vassilevska Williams,
 Yinzhan Xu, Zixuan Xu, and Renfei Zhou. \emph{More Asymmetry Yields Faster

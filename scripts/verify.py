@@ -17,6 +17,8 @@ def main() -> None:
         ("verify_five_term_ring_apsp.py", "five-term-ring-apsp-certificate-results.txt"),
         ("verify_five_term_cache_apsp.py", "five-term-cache-apsp-certificate-results.txt"),
         ("verify_five_term_aligned_apsp.py", "five-term-aligned-apsp-certificate-results.txt"),
+        ("verify_light_source_apsp.py", "light-source-apsp-certificate-results.txt"),
+        ("verify_half_source_apsp.py", "half-source-apsp-certificate-results.txt"),
         ("verify_cyclic_3sum.py", "cyclic-3sum-certificate-results.txt"),
         ("verify_five_term_realinput.py", "five-term-realinput-certificate-results.txt"),
         ("verify_five_term_convolution.py", "five-term-convolution-certificate-results.txt"),
@@ -50,6 +52,8 @@ def main() -> None:
         "check_fixed_linear_bucket_counting.py",
     ):
         subprocess.run([sys.executable, "-E", str(root / "outputs" / script)], cwd=root, check=True)
+    subprocess.run([sys.executable, "-E", str(root / "scripts/verify_structured_sources.py")],
+                   cwd=root, check=True)
     print("PASS: all checks passed; stored certificate output reproduced.", flush=True)
 
 

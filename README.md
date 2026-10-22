@@ -2,6 +2,18 @@
 
 Working derivations and exact-rational certificates for improvements to the exponents displayed in Alman and Vassilevska Williams, *Truly Subquadratic 3SUM and Truly Subcubic APSP via Triangles in Sparse Lopsided Graphs* ([arXiv:2610.06783v1](https://arxiv.org/abs/2610.06783v1)), and to the five-term follow-up of Majdoddin ([arXiv:2610.17420v1](https://arxiv.org/abs/2610.17420v1)). This repository holds the proof note, exact-rational certificates, finite brute-force checkers, an APSP Lean development, and explanatory pages. The exploratory history lives in the separate research repository.
 
+The current research-note bound for deterministic integer APSP, min-plus product,
+and all-edges Exact Triangle is **`O(n^2.9926862626)`**. The source algorithm uses
+small-bias middle translations, exact-half rare-symbol caps, grouped residual
+completion shared across middle blocks, and jointly capped box encodings.
+The change from the earlier `2.9926863` witness is a small numerical refinement;
+the original geometry/query bottleneck remains. The two new certificates each
+check 61 strict inequalities, and the published finite checks include complete
+signed cyclic products. No unrestricted bound below `2.99` is proved here.
+The separate Lean development retains its `2.99294792` exponent; it does not
+formalize the new source construction. Counting, 3SUM, clique and other
+separately parameterized results keep their existing witnesses.
+
 ## Current bounds
 
 All inputs are polynomially bounded integers unless stated; APSP assumes no negative cycles. The 3SUM and exact #3SUM rows below use sets. Deterministic bounds are also Las Vegas bounds. A dash means no separate source comparison is quoted here, not that the source leaves the problem untreated.
@@ -12,8 +24,8 @@ All inputs are polynomially bounded integers unless stated; APSP assumes no nega
 | Integer 3SUM | `O(n^1.9992)` | `n^(1.9945+o(1))` | `O(n^1.9931055)` | Deterministic |
 | Exact #3SUM | truly subquadratic; no exponent displayed | — | `O(n^1.9931055)` | Deterministic exact counts |
 | All-Integers 3SUM | — | — | `O(n^1.9931055)` | Deterministic |
-| Integer Exact Triangle (all-edges) | `O(n^2.9983)` | `n^(2.9945+o(1))` | `O(n^2.99294792)` | Deterministic |
-| Integer min-plus product and APSP | `O(n^2.9995)` | `n^(2.9945+o(1))` | `O(n^2.99294792)` | Deterministic |
+| Integer Exact Triangle (all-edges) | `O(n^2.9983)` | `n^(2.9945+o(1))` | `O(n^2.9926862626)` | Deterministic |
+| Integer min-plus product and APSP | `O(n^2.9995)` | `n^(2.9945+o(1))` | `O(n^2.9926862626)` | Deterministic |
 | Exact #Exact Triangle and min-plus witness counts | truly subcubic | — | `O(n^2.99294792)` | Deterministic |
 | 3XOR, exact #3XOR, per-target counts, `d = O(log n)` | truly subquadratic | `O(n^1.99451)` | `O(n^1.9931055)` | Deterministic |
 | Real 3SUM (comparisons, additions, subtractions) | `O(n^1.998)` | not restated | `O(n^1.993805)` | Las Vegas |
@@ -38,6 +50,7 @@ The note [outputs/exponent-improvement.tex](outputs/exponent-improvement.tex) ([
 - direct bucket-pair reductions for 3SUM and certified comparison counts for real inputs;
 - conditional modular moments and per-pair certificates for deterministic selection;
 - the five-term tensor of Majdoddin with fixed-profile slots, two separately charged encoders, prefix queries, a cyclic or group-algebra coefficient ring, polynomial caches, and a Walsh re-embedded local identity;
+- deterministic small-bias and exact-half source caps, shared rectangular completion, and a separate jointly capped box encoder;
 - composite incidence certification, read on square and lopsided instances;
 - rectangular five-term tiles for convolution and subset convolution, and the explicit directed APSP transfer.
 
@@ -49,7 +62,7 @@ Python 3.10 or newer, standard library only:
 python3 scripts/verify.py
 ```
 
-This reruns thirteen exact-rational certificate scripts (rational interval arithmetic with explicit logarithm bounds), compares their output with the recorded `outputs/*certificate-results.txt`, and runs every finite checker in `outputs/check_*.py`, which test encodings, identities, reductions, and counting constructions on small instances against brute-force oracles. The proof compiles with any LaTeX engine; it was checked with tectonic.
+This reruns fifteen exact-rational certificate scripts (rational interval arithmetic with explicit logarithm bounds), compares their output with the recorded `outputs/*certificate-results.txt`, and runs every finite checker in `outputs/check_*.py`, which test encodings, identities, reductions, and counting constructions on small instances against brute-force oracles. It also runs eight structured-source checks and compares their saved outputs byte for byte; the required import dependencies are included under `work/`. The proof was compiled with tectonic.
 
 Assertions must be enabled: do not use Python's `-O`/`-OO` options or `PYTHONOPTIMIZE`. The runner rejects optimized execution and ignores Python environment flags in its child processes.
 
@@ -73,6 +86,6 @@ execution model and reproduction instructions.
 ## Caveats
 
 - The exponents are asymptotic. The deterministic composite certification uses fixed stage counts whose constants only settle for astronomically large `n`; no practical speedup is claimed.
-- The Python certificates verify numerical inequalities and finite instances. The Lean theorem proves correctness and charged work in its specified model, not Lean evaluator performance or a complete compiled word-RAM execution. The separate [word-RAM development](machine/README.md) includes compiled controller components and actual pool/minimum scans; its complete APSP adapter remains conditional on an improved `Light.Solves` implementation and its time bound. Other rows and historical witnesses are outside this APSP formalization. The TeX/PDF remain the earlier research-note snapshot; the Lean scope is documented separately.
+- The Python certificates verify numerical inequalities and finite instances. The Lean theorem proves correctness and charged work in its specified model, not Lean evaluator performance or a complete compiled word-RAM execution. The separate [word-RAM development](machine/README.md) includes compiled controller components and actual pool/minimum scans; its complete APSP adapter remains conditional on an improved `Light.Solves` implementation and its time bound. The new `2.9926862626` source construction, other rows, and historical witnesses are outside this APSP formalization. The TeX/PDF reflect the current research note; the Lean scope is documented separately.
 - The `2.99294792` chain and everything after it build on Majdoddin's five-term tensor. The source paper states that its authors found better exponents than they displayed; the comparisons here are with displayed numbers and make no priority claim.
 - External numerical inputs are recorded in `sources.json` and in the bibliography of the note.

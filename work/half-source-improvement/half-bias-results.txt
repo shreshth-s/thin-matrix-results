@@ -1,0 +1,5 @@
+PASS m=1: entries=64, exact bit choices=64, invertible maps=1, affine half-weight cases=2
+PASS m=2: entries=512, exact bit choices=1024, invertible maps=6, affine half-weight cases=24
+PASS m=3: entries=1728, exact bit choices=5184, invertible maps=168, affine half-weight cases=1344
+PASS m=4: entries=4096, exact bit choices=16384, invertible maps=97, affine half-weight cases=1552
+PASS exact half-weight construction: 22656 rational bit choices.

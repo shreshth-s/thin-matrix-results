@@ -1,0 +1,2 @@
+PASS exact rational row ceilings and padded shared products: 60 cases, 140 products, 14875 explicit padded entries
+Finite algebra only; the fast-MM exponent remains an external theorem dependency.

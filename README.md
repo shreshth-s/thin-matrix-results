@@ -83,11 +83,13 @@ arithmetic, deterministic certification, parameter setup, and APSP reductions
 are connected in this statement. See [lean/README.md](lean/README.md) for the
 execution model and reproduction instructions.
 
-The extension to `2.9926862626` is in progress. Lean now includes the explicit
-shrinking-bias list, exact-half coverage, first-index selectors, shifted
-embedding, and translated/cropped source identities. The new grouped
-completion, rectangular algorithm, and complete execution-cost proof remain
-unfinished; see [the exact scope](lean/README.md#exact-half-extension-in-progress).
+The extension to `2.9926862626` is in progress. In addition to the new source
+and modular-count identities, Lean now constructs exact rational rectangular
+matrix-power decompositions at aspect `(861/500,1,15)` and rank exponent
+`16.7220001`. The proof includes equal-copy recursion, strict finite-base
+selection, and common-denominator and coefficient-height bounds. A retained
+recursive binary evaluator, efficient graph batches and the complete APSP
+execution-cost proof remain unfinished; see [the exact scope](lean/README.md#exact-half-extension-in-progress).
 
 ## Caveats
 

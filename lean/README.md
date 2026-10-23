@@ -39,11 +39,10 @@ rounded plan. Full binary setup/control pricing, efficient batching and the
 fast rectangular algorithm/caller complexity remain unproved. See the final
 checkpoint below for exact cost and runtime limits. The latest setup repair
 retains translation numerator arithmetic and binary character-sum updates in
-that same executed program; it does not close the remaining speed proof. The current
-rectangular milestone is exact rational extraction from the CW16 polynomial
-degeneration, with a computable integer bilinear evaluator and explicit
-integer-arithmetic and retained-value bit bounds. The rectangular exponent
-and complete binary execution cost remain unproved. The current extension also
+that same executed program; it does not close the remaining speed proof. The earlier
+rectangular milestones include exact rational extraction from the CW16 polynomial
+degeneration, with a computable dense integer bilinear evaluator and explicit
+integer-arithmetic and retained-value bit bounds. The extension also
 proves the six CW block identities and constructs finite independent copies by
 coordinate filtering and collision cleanup, tied to that exact decomposition.
 Exact finite hash-fiber counts and a quantitative bound for the actual
@@ -55,7 +54,9 @@ satisfies the Behrend density bound, yielding an unconditional finite
 cleanup bound with explicit length-dependent loss. The actual rational target
 marginal entropy bounds now absorb this loss and prove the exponential
 independent-copy rate, including exact integral scales and floor boundaries.
-Rectangular asymptotic sum and the required fast execution remain unproved.
+The level-one equal-copy rank conversion is now proved; see
+[the current checkpoint](#equal-copy-recursion-and-rectangular-rank-checkpoint).
+The required fast binary execution and APSP cost integration remain unproved.
 
 The following new source components are formalized:
 
@@ -435,9 +436,10 @@ untracked dependency sources. It fails if the source changes during the run
 and prints a SHA-256 identifying the checked sources, configuration and
 numerical interval-generator inputs. The successful transcript is
 [`verification-output.txt`](verification-output.txt). Build products and
-dependency downloads are excluded from the repository.
+dependency downloads are excluded from the repository. The stored compiler
+transcript normalizes trailing whitespace; diagnostics and axiom reports are retained.
 
-The recorded frozen-source run compiled 332 modules and checked 3,684 axiom
+The recorded frozen-source run compiled 343 modules and checked 3,726 axiom
 reports, all containing only the standard axioms above. The transcript records
 the source/configuration hash; `sources.json` records the same digest.
 
@@ -1956,3 +1958,87 @@ independent of the matrix input size. This requires fixing the base and its
 rational data before that size varies. It does not make the current
 2^floor(M/2) bucket search fast when M varies, does not give an algorithm
 uniform in an input epsilon, and does not prove the missing recursion.
+
+
+## Equal-copy recursion and rectangular rank checkpoint
+
+The latest endpoint is `CWRectangularRanks.exists_fixed_base`. It closes the
+level-one rank conversion that was missing after target entropy extraction.
+There is one positive integral CW base and an explicit family of exact
+rational decompositions of rectangular matrix powers at aspect
+`(861/500,1,15)`. Its term count is at most
+
+    t * Q^(16.7220001*k),
+
+where Q is the fixed inner-dimension base and t is its fixed number of
+independent copies. The coordinate permutation is proved, not inferred from
+a numerical aspect ratio. `aspect` proves the exact integer identities
+`rows^500=inner^861` and `columns=inner^15` at every power, including zero.
+This leaves `1e-7` below the manuscript's `16.7220002` endpoint.
+
+The construction is finite and explicit:
+
+- `FiniteDirectSum` routes r requests into exactly `ceil(r/t)` groups of t
+  slots by quotient and remainder. The routing is injective and padded slots
+  do not contribute. Its coefficient theorem includes zero and incomplete
+  groups.
+- `FiniteBilinearSubstitution` proves that simultaneous lower products can
+  replace the scalar products of the upper decomposition. `EqualCopyRecursion`
+  then supplies the coefficients of t simultaneous tensor powers recursively,
+  using exactly `t*ceil(r/t)^k` terms. Restricting to one actual copy gives a
+  single tensor power. No division of a rank is assumed.
+- `FiniteDependentCopies` and `CWHomogeneousCopies` connect this construction
+  to the actual extracted CW coordinate sets and rational interpolation terms.
+  Finite equivalences choose labels for one fixed base; no input-dependent
+  multiplication oracle is introduced.
+- `CWEntropyCertificate` proves the strict comparison for all three actual
+  marginal entropies, using rational atanh partial sums and proved analytic
+  tails. `CWFiniteBase` combines it with the previously proved extraction
+  rate and absorbs interpolation, extraction loss, and the last partial
+  batch into a single sufficiently large integral base.
+- `FiniteMatrixPowers` identifies the resulting tensor powers with actual
+  matrix tensors and justifies their cyclic orientation.
+- `EqualCopyCoefficientGrowth` proves coefficient magnitude at most `(r*H)^k`
+  and a common denominator `d^k`. `FiniteRationalCoefficients` constructs d
+  and H from the fixed rational base itself, with no supplied height or
+  denominator premise. `CWRectangularRanks.coefficient_invariants` transfers
+  both facts to the same final rectangular coefficients.
+
+The independent Python and executable Lean fixtures each check 168 routing
+cases, four recursion depths, 2,232 coefficient bounds/denominators and
+24 simultaneous dot-product outputs with signed rational coefficients.
+The fixture's five-term/two-copy base forces an incomplete final batch.
+The full-sized CW witness is handled symbolically, not materialized in a
+runtime fixture. Run the bounded executable fixture with:
+
+```sh
+lake env lean --run scripts/check_equal_copy_recursion.lean
+```
+
+### Remaining execution obligations
+
+The new endpoint is an exact rational **rank construction**. Evaluating each
+expanded dense coefficient form separately would not attain its rank
+exponent. The following work is still needed for the requested closed APSP
+statement:
+
+1. Implement the retained recursive evaluator that shares the upper linear
+   forms, groups the resulting products and recombines stored child outputs.
+   Prove its arithmetic and control recurrence from those executed loops.
+   A scalar multiplication count alone does not price those operations.
+2. Clear the fixed base denominators once and lower that evaluator to binary
+   cells. The new `d^k` invariant prevents unconstrained denominator growth,
+   but actual retained-input, partial-sum and output widths, exact recovery,
+   padding, copies and addresses still need their own execution proofs.
+3. Replace elementary completion in compatible graph batches with this
+   proved evaluator; retain shared setup, the strict independent batch fit,
+   all phase endpoints and the optimized rounded plan. Finish the adaptive
+   callback and complete APSP work bound.
+
+The old `BinaryAlignedAPSPTheorem.correctness_and_work` remains unchanged at
+`2.99294792`. No theorem in its import closure uses these extension modules.
+The requested end-to-end `2.9926862626` theorem is **not yet proved**. The
+mathematical manuscript and its numerical certificate have not been relabeled
+as a completed Lean execution theorem.
+
+Frozen verification for this checkpoint: 343 modules, 3,726 axiom reports; only the standard Lean axioms. Full numerical/finite suite and the bounded Lean recursion fixture passed. Source/configuration SHA-256: `90abb7bb63b1b39806411c302dcf50cee30f65083b0e852955829321dd93421b`.

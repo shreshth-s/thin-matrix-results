@@ -68,6 +68,7 @@ def source_snapshot(root: Path) -> dict[str, str]:
         "scripts/check_cw_type_regularity.lean", "outputs/check_cw_type_regularity.py",
         "scripts/check_modular_behrend.lean", "outputs/check_modular_behrend.py",
         "scripts/check_cw_entropy_rate.lean", "outputs/check_cw_entropy_rate.py",
+        "scripts/check_equal_copy_recursion.lean", "outputs/check_equal_copy_recursion.py",
     )]
     return {
         str(path.relative_to(root)): hashlib.sha256(path.read_bytes()).hexdigest()

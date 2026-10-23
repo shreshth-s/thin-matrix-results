@@ -4274,6 +4274,10 @@ lean/CWEntropySurvival.lean
 'ThinMatrix.CWEntropySurvival.size_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.CWEntropySurvival.exponential_survival' depends on axioms: [propext, Classical.choice, Quot.sound]
 
+lean/CWEntropyCertificate.lean
+'ThinMatrix.CWEntropyCertificate.marginal_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWEntropyCertificate.rate_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+
 lean/CWEntropyFloors.lean
 'ThinMatrix.CWEntropyFloors.floor_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.CWEntropyFloors.scale_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -4287,6 +4291,41 @@ lean/CWExtractionExample.lean
 'ThinMatrix.CWExtractionExample.selected_card' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.CWExtractionExample.dimensions' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.CWExtractionExample.exact_decomposition' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/CWTargetExtractionRate.lean
+'ThinMatrix.CWTargetExtractionRate.copy_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWTargetExtractionRate.dimensions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWTargetExtractionRate.exponential_extraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWTargetExtractionRate.exists_positive_base' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/FiniteDirectSum.lean
+'ThinMatrix.FiniteDirectSum.batch_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.FiniteDirectSum.slot_injective' depends on axioms: [propext, Quot.sound]
+
+lean/FiniteBilinearSubstitution.lean
+'ThinMatrix.FiniteBilinearSubstitution.total_substitute' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/EqualCopyRecursion.lean
+'ThinMatrix.EqualCopyRecursion.budget_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.EqualCopyRecursion.terms_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.EqualCopyRecursion.single_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/FiniteDependentCopies.lean
+'ThinMatrix.FiniteDependentCopies.uniform' depends on axioms: [propext, Quot.sound]
+
+lean/CWHomogeneousCopies.lean
+'ThinMatrix.CWHomogeneousCopies.directSum_reindex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWHomogeneousCopies.terms_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWHomogeneousCopies.recursive_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWHomogeneousCopies.recursive_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/CWFiniteBase.lean
+'ThinMatrix.CWFiniteBase.growth_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWFiniteBase.gap_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWFiniteBase.linear_absorbed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWFiniteBase.rounded_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWFiniteBase.eventual_base' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWFiniteBase.exists_positive_base' depends on axioms: [propext, Classical.choice, Quot.sound]
 
 lean/CWInterpolationCosts.lean
 'ThinMatrix.CWInterpolationCosts.scalar_sum_work' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -4310,11 +4349,36 @@ lean/CWInterpolationWidths.lean
 'ThinMatrix.CWInterpolationWidths.product_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.CWInterpolationWidths.collect_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-lean/CWTargetExtractionRate.lean
-'ThinMatrix.CWTargetExtractionRate.copy_card' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.CWTargetExtractionRate.dimensions' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.CWTargetExtractionRate.exponential_extraction' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.CWTargetExtractionRate.exists_positive_base' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean/FiniteMatrixPowers.lean
+'ThinMatrix.FiniteMatrixPowers.tensor_matrix' depends on axioms: [propext]
+'ThinMatrix.FiniteMatrixPowers.total_rotate' depends on axioms: [propext, Quot.sound]
+
+lean/EqualCopyCoefficientGrowth.lean
+'ThinMatrix.EqualCopyCoefficientGrowth.sum_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.EqualCopyCoefficientGrowth.sum_cleared' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.EqualCopyCoefficientGrowth.batch_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.EqualCopyCoefficientGrowth.batch_cleared' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.EqualCopyCoefficientGrowth.substitute_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.EqualCopyCoefficientGrowth.substitute_cleared' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.EqualCopyCoefficientGrowth.terms_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.EqualCopyCoefficientGrowth.terms_cleared' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/FiniteRationalCoefficients.lean
+'ThinMatrix.FiniteRationalCoefficients.denominator_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.FiniteRationalCoefficients.height_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.FiniteRationalCoefficients.entry_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.FiniteRationalCoefficients.entry_cleared' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.FiniteRationalCoefficients.bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.FiniteRationalCoefficients.cleared' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.FiniteRationalCoefficients.recursive_invariants' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/CWRectangularRanks.lean
+'ThinMatrix.CWRectangularRanks.terms_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWRectangularRanks.dimensions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWRectangularRanks.aspect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWRectangularRanks.coefficient_invariants' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWRectangularRanks.growth_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWRectangularRanks.exists_fixed_base' depends on axioms: [propext, Classical.choice, Quot.sound]
 
 lean/RetainedPrefixEncoder.lean
 'ThinMatrix.RetainedPrefixEncoder.run_value' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -4966,6 +5030,6 @@ lean/ToomCyclicBit.lean
 'ThinMatrix.ToomCyclicBit.foldArray_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.ToomCyclicBit.multiply_fixed_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-PASS: 332 modules; 3684 scoped declarations checked; only standard Lean axioms.
-Source/configuration SHA-256: b031d74d6cb353cc4500d521a2953e6e2c4153400ce7617570810e9923d18e0b
+PASS: 343 modules; 3726 scoped declarations checked; only standard Lean axioms.
+Source/configuration SHA-256: 90abb7bb63b1b39806411c302dcf50cee30f65083b0e852955829321dd93421b
 See lean/README.md for the exact formalization scope and remaining obligations.

@@ -1,0 +1,6 @@
+PASS: 168 padded-routing cases, including empty and incomplete batches.
+PASS: depth 0, 2 terms, 12 coefficient checks, six independent dot products.
+PASS: depth 1, 6 terms, 60 coefficient checks, six independent dot products.
+PASS: depth 2, 18 terms, 324 coefficient checks, six independent dot products.
+PASS: depth 3, 54 terms, 1836 coefficient checks, six independent dot products.
+SCOPE: executes the coefficient recursion and exact bounded products; no binary multiplier or APSP runtime claim.

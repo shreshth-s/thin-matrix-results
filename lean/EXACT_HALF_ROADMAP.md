@@ -16,18 +16,18 @@ and bounded indexed-control model; native Lean evaluation is not that model.
 
 The current `BinaryAlignedAPSPTheorem.correctness_and_work` proves
 `299294792/100000000`. Its transitive local import closure contains 129
-modules and **none of the 121 modules recorded as exact-half extensions**.
+modules and **none of the 208 modules recorded as exact-half extensions**.
 Thus no exact-half result is currently on the closed theorem's proof path.
 The existing graph/controller correctness framework is reusable, but its
-concrete callback and cost specialization still use the old backend. After
-the eight physical LOW/HIGH modules, all 121 extension modules remain outside
-that closure. The full local import graph is recorded in
+concrete callback and cost specialization still use the old backend. All
+208 extension modules remain outside that closure. The full local import graph is recorded in
 `exact-half-dependency-audit.json`; import closure is an overapproximation of
 declaration dependencies, and exclusion is decisive for this audit.
 
-The current four-step remaining plan is in [Current physical-word and executed HIGH
-checkpoint](#current-physical-word-and-executed-high-checkpoint). Earlier checkpoint
-sections below retain their historical scope and pending obligations.
+The current rank result is in [Equal-copy recursion and rectangular rank
+checkpoint](#equal-copy-recursion-and-rectangular-rank-checkpoint), followed by
+[the remaining execution obligations](#remaining-execution-obligations).
+Earlier checkpoint sections below retain their historical scope and pending obligations.
 
 ## What is discharged and what is not
 
@@ -1837,3 +1837,87 @@ independent of the matrix input size. This requires fixing the base and its
 rational data before that size varies. It does not make the current
 2^floor(M/2) bucket search fast when M varies, does not give an algorithm
 uniform in an input epsilon, and does not prove the missing recursion.
+
+
+## Equal-copy recursion and rectangular rank checkpoint
+
+The latest endpoint is `CWRectangularRanks.exists_fixed_base`. It closes the
+level-one rank conversion that was missing after target entropy extraction.
+There is one positive integral CW base and an explicit family of exact
+rational decompositions of rectangular matrix powers at aspect
+`(861/500,1,15)`. Its term count is at most
+
+    t * Q^(16.7220001*k),
+
+where Q is the fixed inner-dimension base and t is its fixed number of
+independent copies. The coordinate permutation is proved, not inferred from
+a numerical aspect ratio. `aspect` proves the exact integer identities
+`rows^500=inner^861` and `columns=inner^15` at every power, including zero.
+This leaves `1e-7` below the manuscript's `16.7220002` endpoint.
+
+The construction is finite and explicit:
+
+- `FiniteDirectSum` routes r requests into exactly `ceil(r/t)` groups of t
+  slots by quotient and remainder. The routing is injective and padded slots
+  do not contribute. Its coefficient theorem includes zero and incomplete
+  groups.
+- `FiniteBilinearSubstitution` proves that simultaneous lower products can
+  replace the scalar products of the upper decomposition. `EqualCopyRecursion`
+  then supplies the coefficients of t simultaneous tensor powers recursively,
+  using exactly `t*ceil(r/t)^k` terms. Restricting to one actual copy gives a
+  single tensor power. No division of a rank is assumed.
+- `FiniteDependentCopies` and `CWHomogeneousCopies` connect this construction
+  to the actual extracted CW coordinate sets and rational interpolation terms.
+  Finite equivalences choose labels for one fixed base; no input-dependent
+  multiplication oracle is introduced.
+- `CWEntropyCertificate` proves the strict comparison for all three actual
+  marginal entropies, using rational atanh partial sums and proved analytic
+  tails. `CWFiniteBase` combines it with the previously proved extraction
+  rate and absorbs interpolation, extraction loss, and the last partial
+  batch into a single sufficiently large integral base.
+- `FiniteMatrixPowers` identifies the resulting tensor powers with actual
+  matrix tensors and justifies their cyclic orientation.
+- `EqualCopyCoefficientGrowth` proves coefficient magnitude at most `(r*H)^k`
+  and a common denominator `d^k`. `FiniteRationalCoefficients` constructs d
+  and H from the fixed rational base itself, with no supplied height or
+  denominator premise. `CWRectangularRanks.coefficient_invariants` transfers
+  both facts to the same final rectangular coefficients.
+
+The independent Python and executable Lean fixtures each check 168 routing
+cases, four recursion depths, 2,232 coefficient bounds/denominators and
+24 simultaneous dot-product outputs with signed rational coefficients.
+The fixture's five-term/two-copy base forces an incomplete final batch.
+The full-sized CW witness is handled symbolically, not materialized in a
+runtime fixture. Run the bounded executable fixture with:
+
+```sh
+lake env lean --run scripts/check_equal_copy_recursion.lean
+```
+
+### Remaining execution obligations
+
+The new endpoint is an exact rational **rank construction**. Evaluating each
+expanded dense coefficient form separately would not attain its rank
+exponent. The following work is still needed for the requested closed APSP
+statement:
+
+1. Implement the retained recursive evaluator that shares the upper linear
+   forms, groups the resulting products and recombines stored child outputs.
+   Prove its arithmetic and control recurrence from those executed loops.
+   A scalar multiplication count alone does not price those operations.
+2. Clear the fixed base denominators once and lower that evaluator to binary
+   cells. The new `d^k` invariant prevents unconstrained denominator growth,
+   but actual retained-input, partial-sum and output widths, exact recovery,
+   padding, copies and addresses still need their own execution proofs.
+3. Replace elementary completion in compatible graph batches with this
+   proved evaluator; retain shared setup, the strict independent batch fit,
+   all phase endpoints and the optimized rounded plan. Finish the adaptive
+   callback and complete APSP work bound.
+
+The old `BinaryAlignedAPSPTheorem.correctness_and_work` remains unchanged at
+`2.99294792`. No theorem in its import closure uses these extension modules.
+The requested end-to-end `2.9926862626` theorem is **not yet proved**. The
+mathematical manuscript and its numerical certificate have not been relabeled
+as a completed Lean execution theorem.
+
+Frozen verification for this checkpoint: 343 modules, 3,726 axiom reports; only the standard Lean axioms. Full numerical/finite suite and the bounded Lean recursion fixture passed. Source/configuration SHA-256: `90abb7bb63b1b39806411c302dcf50cee30f65083b0e852955829321dd93421b`.

@@ -1,0 +1,19 @@
+PASS: 0 requests, 1 terms, 3 columns, chunks 1x1, seed -7; 0 outputs.
+PASS: 0 requests, 1 terms, 3 columns, chunks 1x1, seed 65537; 0 outputs.
+PASS: 3 requests, 1 terms, 0 columns, chunks 2x1, seed -7; 0 outputs.
+PASS: 3 requests, 1 terms, 0 columns, chunks 2x1, seed 65537; 0 outputs.
+PASS: 1 requests, 1 terms, 1 columns, chunks 2x1, seed -7; 1 outputs.
+PASS: 1 requests, 1 terms, 1 columns, chunks 2x1, seed 65537; 1 outputs.
+PASS: 5 requests, 1 terms, 3 columns, chunks 2x1, seed -7; 15 outputs.
+PASS: 5 requests, 1 terms, 3 columns, chunks 2x1, seed 65537; 15 outputs.
+PASS: 3 requests, 2 terms, 5 columns, chunks 3x2, seed -7; 15 outputs.
+PASS: 3 requests, 2 terms, 5 columns, chunks 3x2, seed 65537; 15 outputs.
+PASS: 5 requests, 2 terms, 6 columns, chunks 2x1, seed -7; 30 outputs.
+PASS: 5 requests, 2 terms, 6 columns, chunks 2x1, seed 65537; 30 outputs.
+PASS: 5 requests, 3 terms, 7 columns, chunks 2x3, seed -7; 35 outputs.
+PASS: 5 requests, 3 terms, 7 columns, chunks 2x3, seed 65537; 35 outputs.
+PASS: 2 requests, 3 terms, 1 columns, chunks 4x2, seed -7; 2 outputs.
+PASS: 2 requests, 3 terms, 1 columns, chunks 4x2, seed 65537; 2 outputs.
+PASS: 90 prepared-group outputs against independent raw-tensor sums, including empty and duplicate requests.
+PASS: 196 shared rectangular outputs and 90 prepared-group outputs; duplicate request rows, empty rows/columns, partial chunks and full scalar budgets.
+SCOPE: matrix-level shared completion; production graph routing, global address pricing, rounded fit and full APSP proof remain.

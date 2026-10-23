@@ -1,0 +1,48 @@
+PASS: radix 1, depth 0; 1 complete forward/inverse addresses and budgets.
+PASS: radix 1, depth 1; 1 complete forward/inverse addresses and budgets.
+PASS: radix 1, depth 2; 1 complete forward/inverse addresses and budgets.
+PASS: radix 1, depth 3; 1 complete forward/inverse addresses and budgets.
+PASS: radix 2, depth 0; 1 complete forward/inverse addresses and budgets.
+PASS: radix 2, depth 1; 2 complete forward/inverse addresses and budgets.
+PASS: radix 2, depth 2; 4 complete forward/inverse addresses and budgets.
+PASS: radix 2, depth 3; 8 complete forward/inverse addresses and budgets.
+PASS: radix 3, depth 0; 1 complete forward/inverse addresses and budgets.
+PASS: radix 3, depth 1; 3 complete forward/inverse addresses and budgets.
+PASS: radix 3, depth 2; 9 complete forward/inverse addresses and budgets.
+PASS: radix 3, depth 3; 27 complete forward/inverse addresses and budgets.
+PASS: radix 6, depth 0; 1 complete forward/inverse addresses and budgets.
+PASS: radix 6, depth 1; 6 complete forward/inverse addresses and budgets.
+PASS: radix 6, depth 2; 36 complete forward/inverse addresses and budgets.
+PASS: radix 6, depth 3; 216 complete forward/inverse addresses and budgets.
+PASS: base 2, middle dimension 1, selected depth 1; binary setup budget.
+PASS: base 2, middle dimension 2, selected depth 2; binary setup budget.
+PASS: base 2, middle dimension 3, selected depth 2; binary setup budget.
+PASS: base 2, middle dimension 4, selected depth 3; binary setup budget.
+PASS: base 2, middle dimension 15, selected depth 4; binary setup budget.
+PASS: base 2, middle dimension 16, selected depth 5; binary setup budget.
+PASS: base 2, middle dimension 17, selected depth 5; binary setup budget.
+PASS: base 2, middle dimension 65535, selected depth 16; binary setup budget.
+PASS: base 2, middle dimension 65536, selected depth 17; binary setup budget.
+PASS: base 2, middle dimension 65537, selected depth 17; binary setup budget.
+PASS: base 3, middle dimension 1, selected depth 1; binary setup budget.
+PASS: base 3, middle dimension 2, selected depth 1; binary setup budget.
+PASS: base 3, middle dimension 3, selected depth 2; binary setup budget.
+PASS: base 3, middle dimension 4, selected depth 2; binary setup budget.
+PASS: base 3, middle dimension 15, selected depth 3; binary setup budget.
+PASS: base 3, middle dimension 16, selected depth 3; binary setup budget.
+PASS: base 3, middle dimension 17, selected depth 3; binary setup budget.
+PASS: base 3, middle dimension 65535, selected depth 11; binary setup budget.
+PASS: base 3, middle dimension 65536, selected depth 11; binary setup budget.
+PASS: base 3, middle dimension 65537, selected depth 11; binary setup budget.
+PASS: base 16, middle dimension 1, selected depth 1; binary setup budget.
+PASS: base 16, middle dimension 2, selected depth 1; binary setup budget.
+PASS: base 16, middle dimension 3, selected depth 1; binary setup budget.
+PASS: base 16, middle dimension 4, selected depth 1; binary setup budget.
+PASS: base 16, middle dimension 15, selected depth 1; binary setup budget.
+PASS: base 16, middle dimension 16, selected depth 2; binary setup budget.
+PASS: base 16, middle dimension 17, selected depth 2; binary setup budget.
+PASS: base 16, middle dimension 65535, selected depth 4; binary setup budget.
+PASS: base 16, middle dimension 65536, selected depth 5; binary setup budget.
+PASS: base 16, middle dimension 65537, selected depth 5; binary setup budget.
+PASS: 318 tensor addresses; 30 depth selections; 90 product/inverse checks.
+SCOPE: these are setup/address routines, not the full APSP theorem or complete evaluator address integration.

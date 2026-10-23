@@ -16,18 +16,18 @@ and bounded indexed-control model; native Lean evaluation is not that model.
 
 The current `BinaryAlignedAPSPTheorem.correctness_and_work` proves
 `299294792/100000000`. Its transitive local import closure contains 129
-modules and **none of the 223 modules recorded as exact-half extensions**.
+modules and **none of the 230 modules recorded as exact-half extensions**.
 Thus no exact-half result is currently on the closed theorem's proof path.
 The existing graph/controller correctness framework is reusable, but its
 concrete callback and cost specialization still use the old backend. All
-223 extension modules remain outside that closure. The full local import graph is recorded in
+230 extension modules remain outside that closure. The full local import graph is recorded in
 `exact-half-dependency-audit.json`; import closure is an overapproximation of
 declaration dependencies, and exclusion is decisive for this audit.
 
-The current result is in [Padded matrix execution
-checkpoint](#padded-matrix-execution-checkpoint). It extends the retained
-evaluator with arbitrary finite matrix dimensions, selected-depth padding,
-exact cropping and integer size bounds.
+The current result is in [Shared rectangular completion
+checkpoint](#shared-rectangular-completion-checkpoint). It adds charged binary
+depth selection and address codecs, a uniform scalar bound for the actual CW
+program, and retained row/column chunks with exact grouped completion.
 Earlier checkpoint sections below retain their historical scope and pending obligations.
 
 ## Current proof boundaries
@@ -37,12 +37,12 @@ Earlier checkpoint sections below retain their historical scope and pending obli
 | Original graph to modular counts | `GraphFoldedCountCorrect.finite_modCount` executes the new sources, LOW/HIGH join, exact normalization, band/block schedule and coefficient collection. It constructs its own finite fallback plan. | Replace the fallback `L=m,t=0` and exhaustive elementary completion with the optimized rounded plan and compatible shared batches. Finite correctness alone gives no improved running time. |
 | Exact-half sources and retained graph preparation | Constructed good maps, rational/binary translation list, first-valid list indices, original-coordinate masks, cropped sources and the complete embedding are proved. Retained translation numerator arithmetic and character-state costs have been added. | Lift shared setup out of repeated schedules and close all remaining construction, selector, address and control costs on that executed path. |
 | Rectangular base mathematics | The CW degeneration, independent-copy extraction, quantitative density/entropy bounds, positive fixed base and equal-copy rank conversion are proved. | The fixed positive-scale base is proved symbolically; it has not been materialized in runtime fixtures. The asymptotic program must retain this fixed base outside variable-size graph schedules. |
-| Retained rectangular execution | `CWRetainedArithmetic.exists_arithmetic_program` prices shared recursive forms, padded child batches and recombination. The binary path derives intermediate widths and complete arithmetic costs, clears denominators and recovers exact matrix entries at tensor-power dimensions. | Padding/truncation and integer size bounds are now proved. Native depth-selection and recursive address pricing, and a combined uniform rectangular resource theorem, remain. |
-| Shared graph batches and rounded costs | Finite graph values and numerical strict inequalities exist. | Prove actual shape compatibility, independent batch fit, efficient request routing, optimized rounded entropy bounds and every aggregate phase charge. |
+| Retained rectangular execution | The actual CW base now gives `CWBinaryScalarBound.exists_uniform_scalar_program`, including binary depth selection, arbitrary matrix dimensions, retained scalar arithmetic and exact recovery. Binary product and tensor-power address codecs have proved values and costs. | Refine every actual indexed access to the codecs, derive global retained-storage/address bounds, and combine address/control work with the scalar theorem. |
+| Shared graph batches and rounded costs | `RectangularBatch` retains input chunks outside the Cartesian product and proves every original output. `SharedGroupedCompletion` proves selector sums, request order and complete output columns. The finite chunk-count inequality explicitly requires independent long-side fit. | Connect the adapter to the production `PrefixCompletionProgram` matrix bank and window scheduler, assemble compatible middle-block columns, prove their rounded independent fit, efficient request routing, optimized entropy bounds and every aggregate phase charge. |
 | Full APSP caller | The older concrete backend and adaptive theorem are closed at `2.99294792`. | Instantiate the caller with the improved backend and derive its complete `2.9926862626` cost from original graph hypotheses. None of the extension modules is yet in the closed theorem's import closure. |
 
 The current remaining obligations are listed at the end of the
-[padded matrix execution checkpoint](#padded-matrix-execution-checkpoint).
+[shared rectangular completion checkpoint](#shared-rectangular-completion-checkpoint).
 
 ## Original completion sequence (historical)
 
@@ -2087,3 +2087,93 @@ outputs. Its actual dimensions must establish the independent strict batch
 fit before the rectangular bound enters the phase ledger.
 
 Frozen verification for this checkpoint: 358 modules, 3,824 axiom reports; only standard Lean axioms. The padded Lean runtime fixture passed on 80 original entries. The numerical/finite Python suite is unchanged from its preceding successful run. Source/configuration SHA-256: `9148e2d054b2c9a5dc21b66077e068aaf037e4c36e1c51c3a2e0acf10f3b0f4a`.
+
+## Shared rectangular completion checkpoint
+
+Seven new modules connect the retained CW program to concrete selector/data
+chunks. They do not yet connect that program to the optimized graph schedule.
+
+- `BinaryMatrixSetup` reuses the actual binary padding loop. For positive
+  middle size D and fixed base q >= 2, it selects k with
+  `D < q^k <= q*D` and `k <= size(D)+1`. Selection costs at most
+  `1400*(size(D)+3)*(size(q)+size(D)+6)^2`. The integer aspect conditions
+  `(n-1)^den <= D^num` and `p <= D^z` prove all padded dimensions fit.
+- `BinaryMatrixAddress` implements binary product-index construction and
+  quotient/remainder splitting, and proves agreement with the stored layout.
+  `BinaryPowerAddress` constructs strides and both directions of every
+  tensor-power address. Their bound is
+  `8192*(k+1)^2*((k+1)*size(q)+2)^2`, including recomputed strides.
+  These codecs have not yet replaced every native indexed operation.
+- `BinaryRecursiveUniform` derives uniform scalar-bit and indexed-control
+  bounds from the actual recursion. `CWBinaryScalarBound` combines the
+  scalar bound with the actual fixed positive CW base and charged size
+  selection. Its `exists_uniform_scalar_program` proves, for all admissible
+  original matrix inputs of magnitude at most H,
+  `C*(size(D)+size(H)+6)^3*D^16.7220001` scalar bit operations.
+  C is fixed independently of the variable input sizes. This retains the
+  positive allowance before the manuscript's `16.7220002`; it is not the
+  complete scalar-plus-address resource theorem.
+- `RectangularBatch` copies each row chunk and column chunk once, outside
+  their Cartesian product, executes the actual padded recursive program,
+  and restores every original output position. Short chunks and empty outer
+  axes are included. Its exact control identity charges chunk creation,
+  product storage and every output write separately from scalar bits.
+- `SharedGroupedCompletion` constructs the selector/data matrices and proves
+  all requested sums, retaining duplicates and every coefficient column.
+  Its grouped adapter agrees pointwise with
+  `BinaryPreparedGroupedProgram.runGroup`. Intermediate data bounds are
+  derived from the original source magnitude.
+
+The finite chunk-count theorem states
+
+    ceil(N/A) * ceil(P/C) * A * C <= 2*(N+A)*P
+
+under the independent condition `C <= P`. A large number of request rows
+does not establish this long-side condition. In the graph application P
+must come from genuinely compatible middle-block/coefficient columns.
+
+The runtime checks cover 318 complete forward/inverse tensor addresses,
+90 product/split addresses, and 30 depth selections, including powers of two
+and the 16-bit boundary. The shared-completion fixture checks 196 matrix
+outputs against independent dense selector sums and 90 prepared-group
+outputs against independent raw-tensor contractions. It covers signed data,
+duplicate and empty requests, empty columns, partial chunks and the returned
+scalar budgets. The fixture uses a small rational bilinear base; the actual
+positive-scale CW base is proved symbolically, not materialized for testing.
+
+```sh
+lake env lean --run scripts/check_matrix_addresses.lean
+lake env lean --run scripts/check_shared_rectangular.lean
+```
+
+### Remaining integration boundary
+
+The production graph does not call `BinaryPreparedGroupedProgram.runGroup`.
+Its path is `GraphPrefixCompletion` -> `WindowCompletionProgram` ->
+`PrefixCompletionProgram`, whose elementary row contractions read the
+`PrefixCompletionMatrices` bank. Thus agreement with the earlier grouped
+routine is a useful local adapter theorem, not evidence that the production
+callback has been replaced. The next connection must batch equal prefix,
+pair-bit, shape and locator keys, concatenate compatible middle blocks,
+route original request indices, and scatter all formal/cyclic columns.
+The current pair lookup is also a fully charged linear scan; an efficient
+routing replacement must be constructed and proved.
+
+The full target still requires:
+
+1. Global setup and address/control accounting for the same executed
+   program, including all retained storage and indexed accesses.
+2. The optimized rounded plan and production shared batching, with shared
+   setup across the outer schedule and the independent strict
+   `Bq >= D^(kappa*zeta+xi)` fit. `FiniteFoldedPlan.produce` still uses
+   the finite correctness fallback `L=m,t=0`.
+3. Rounded entropy and all phase, candidate, restart and output costs,
+   followed by instantiation of the adaptive APSP caller.
+
+The closed theorem remains `BinaryAlignedAPSPTheorem.correctness_and_work`
+at **2.99294792**. None of these extension modules is in its import closure.
+The requested **2.9926862626** theorem is still unproved. The canonical
+mathematical manuscript, its numerical witnesses and the published main
+branches have not been changed by this local checkpoint.
+
+Frozen verification for this checkpoint: 365 modules, 3,875 axiom reports, only standard Lean axioms. Both new Lean runtime fixtures and the full numerical/finite Python suites in the results and research repositories passed. Source/configuration SHA-256: `62c3838b62e284166edaca506c5cd5eea57b08ec8af8dd5b9dd97fba201a4611`.

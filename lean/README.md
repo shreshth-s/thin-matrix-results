@@ -35,8 +35,8 @@ the actual new LOW/HIGH program, exhaustive band/block schedule and binary
 coefficient collection return the original graph-incidence modular counts.
 A finite fallback plan is constructed internally (`L=m,t=0`), so no valid-plan
 or answer premise is supplied at that endpoint. It is not the optimized
-rounded plan. Full binary setup/control pricing, efficient batching and the
-uniform rectangular resource theorem and caller complexity remain unproved. See the final
+rounded plan. Global binary setup/address pricing, efficient graph batching,
+the combined rectangular resource theorem and caller complexity remain unproved. See the final
 checkpoint below for exact cost and runtime limits. The latest setup repair
 retains translation numerator arithmetic and binary character-sum updates in
 that same executed program; it does not close the remaining speed proof. The earlier
@@ -59,8 +59,12 @@ are now proved, including binary primitives, intermediate widths, exact
 denominator recovery and matrix coordinates at tensor-power dimensions; see
 [the current checkpoint](#retained-recursive-execution-checkpoint).
 Arbitrary-size padding and integer size bounds are now proved; see the
-[padded matrix checkpoint](#padded-matrix-execution-checkpoint). Complete size-selection/address
-pricing and APSP cost integration remain unproved.
+[padded matrix checkpoint](#padded-matrix-execution-checkpoint). Binary depth
+selection, tensor address codecs, a uniform scalar bound for the actual CW
+program, and a shared rectangular completion adapter are now proved; see the
+[shared completion checkpoint](#shared-rectangular-completion-checkpoint).
+Integrating all address costs, the optimized graph schedule and the final
+APSP bound remains unfinished.
 
 The following new source components are formalized:
 
@@ -443,7 +447,7 @@ numerical interval-generator inputs. The successful transcript is
 dependency downloads are excluded from the repository. The stored compiler
 transcript normalizes trailing whitespace; diagnostics and axiom reports are retained.
 
-The recorded frozen-source run compiled 358 modules and checked 3,824 axiom
+The recorded frozen-source run compiled 365 modules and checked 3,875 axiom
 reports, all containing only the standard axioms above. The transcript records
 the source/configuration hash; `sources.json` records the same digest.
 
@@ -2207,3 +2211,93 @@ outputs. Its actual dimensions must establish the independent strict batch
 fit before the rectangular bound enters the phase ledger.
 
 Frozen verification for this checkpoint: 358 modules, 3,824 axiom reports; only standard Lean axioms. The padded Lean runtime fixture passed on 80 original entries. The numerical/finite Python suite is unchanged from its preceding successful run. Source/configuration SHA-256: `9148e2d054b2c9a5dc21b66077e068aaf037e4c36e1c51c3a2e0acf10f3b0f4a`.
+
+## Shared rectangular completion checkpoint
+
+Seven new modules connect the retained CW program to concrete selector/data
+chunks. They do not yet connect that program to the optimized graph schedule.
+
+- `BinaryMatrixSetup` reuses the actual binary padding loop. For positive
+  middle size D and fixed base q >= 2, it selects k with
+  `D < q^k <= q*D` and `k <= size(D)+1`. Selection costs at most
+  `1400*(size(D)+3)*(size(q)+size(D)+6)^2`. The integer aspect conditions
+  `(n-1)^den <= D^num` and `p <= D^z` prove all padded dimensions fit.
+- `BinaryMatrixAddress` implements binary product-index construction and
+  quotient/remainder splitting, and proves agreement with the stored layout.
+  `BinaryPowerAddress` constructs strides and both directions of every
+  tensor-power address. Their bound is
+  `8192*(k+1)^2*((k+1)*size(q)+2)^2`, including recomputed strides.
+  These codecs have not yet replaced every native indexed operation.
+- `BinaryRecursiveUniform` derives uniform scalar-bit and indexed-control
+  bounds from the actual recursion. `CWBinaryScalarBound` combines the
+  scalar bound with the actual fixed positive CW base and charged size
+  selection. Its `exists_uniform_scalar_program` proves, for all admissible
+  original matrix inputs of magnitude at most H,
+  `C*(size(D)+size(H)+6)^3*D^16.7220001` scalar bit operations.
+  C is fixed independently of the variable input sizes. This retains the
+  positive allowance before the manuscript's `16.7220002`; it is not the
+  complete scalar-plus-address resource theorem.
+- `RectangularBatch` copies each row chunk and column chunk once, outside
+  their Cartesian product, executes the actual padded recursive program,
+  and restores every original output position. Short chunks and empty outer
+  axes are included. Its exact control identity charges chunk creation,
+  product storage and every output write separately from scalar bits.
+- `SharedGroupedCompletion` constructs the selector/data matrices and proves
+  all requested sums, retaining duplicates and every coefficient column.
+  Its grouped adapter agrees pointwise with
+  `BinaryPreparedGroupedProgram.runGroup`. Intermediate data bounds are
+  derived from the original source magnitude.
+
+The finite chunk-count theorem states
+
+    ceil(N/A) * ceil(P/C) * A * C <= 2*(N+A)*P
+
+under the independent condition `C <= P`. A large number of request rows
+does not establish this long-side condition. In the graph application P
+must come from genuinely compatible middle-block/coefficient columns.
+
+The runtime checks cover 318 complete forward/inverse tensor addresses,
+90 product/split addresses, and 30 depth selections, including powers of two
+and the 16-bit boundary. The shared-completion fixture checks 196 matrix
+outputs against independent dense selector sums and 90 prepared-group
+outputs against independent raw-tensor contractions. It covers signed data,
+duplicate and empty requests, empty columns, partial chunks and the returned
+scalar budgets. The fixture uses a small rational bilinear base; the actual
+positive-scale CW base is proved symbolically, not materialized for testing.
+
+```sh
+lake env lean --run scripts/check_matrix_addresses.lean
+lake env lean --run scripts/check_shared_rectangular.lean
+```
+
+### Remaining integration boundary
+
+The production graph does not call `BinaryPreparedGroupedProgram.runGroup`.
+Its path is `GraphPrefixCompletion` -> `WindowCompletionProgram` ->
+`PrefixCompletionProgram`, whose elementary row contractions read the
+`PrefixCompletionMatrices` bank. Thus agreement with the earlier grouped
+routine is a useful local adapter theorem, not evidence that the production
+callback has been replaced. The next connection must batch equal prefix,
+pair-bit, shape and locator keys, concatenate compatible middle blocks,
+route original request indices, and scatter all formal/cyclic columns.
+The current pair lookup is also a fully charged linear scan; an efficient
+routing replacement must be constructed and proved.
+
+The full target still requires:
+
+1. Global setup and address/control accounting for the same executed
+   program, including all retained storage and indexed accesses.
+2. The optimized rounded plan and production shared batching, with shared
+   setup across the outer schedule and the independent strict
+   `Bq >= D^(kappa*zeta+xi)` fit. `FiniteFoldedPlan.produce` still uses
+   the finite correctness fallback `L=m,t=0`.
+3. Rounded entropy and all phase, candidate, restart and output costs,
+   followed by instantiation of the adaptive APSP caller.
+
+The closed theorem remains `BinaryAlignedAPSPTheorem.correctness_and_work`
+at **2.99294792**. None of these extension modules is in its import closure.
+The requested **2.9926862626** theorem is still unproved. The canonical
+mathematical manuscript, its numerical witnesses and the published main
+branches have not been changed by this local checkpoint.
+
+Frozen verification for this checkpoint: 365 modules, 3,875 axiom reports, only standard Lean axioms. Both new Lean runtime fixtures and the full numerical/finite Python suites in the results and research repositories passed. Source/configuration SHA-256: `62c3838b62e284166edaca506c5cd5eea57b08ec8af8dd5b9dd97fba201a4611`.

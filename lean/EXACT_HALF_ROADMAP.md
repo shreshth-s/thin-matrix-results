@@ -16,35 +16,39 @@ and bounded indexed-control model; native Lean evaluation is not that model.
 
 The current `BinaryAlignedAPSPTheorem.correctness_and_work` proves
 `299294792/100000000`. Its transitive local import closure contains 129
-modules and **none of the 208 modules recorded as exact-half extensions**.
+modules and **none of the 221 modules recorded as exact-half extensions**.
 Thus no exact-half result is currently on the closed theorem's proof path.
 The existing graph/controller correctness framework is reusable, but its
 concrete callback and cost specialization still use the old backend. All
-208 extension modules remain outside that closure. The full local import graph is recorded in
+221 extension modules remain outside that closure. The full local import graph is recorded in
 `exact-half-dependency-audit.json`; import closure is an overapproximation of
 declaration dependencies, and exclusion is decisive for this audit.
 
-The current rank result is in [Equal-copy recursion and rectangular rank
-checkpoint](#equal-copy-recursion-and-rectangular-rank-checkpoint), followed by
-[the remaining execution obligations](#remaining-execution-obligations).
+The current result is in [Retained recursive execution
+checkpoint](#retained-recursive-execution-checkpoint). It supersedes the
+evaluator and binary-primitive obligations of the earlier rank checkpoint.
 Earlier checkpoint sections below retain their historical scope and pending obligations.
 
-## What is discharged and what is not
+## Current proof boundaries
 
-| Dependency | Established connection | Missing connection to the target |
+| Dependency | Established connection | Remaining obligation |
 | --- | --- | --- |
-| Original graph and adaptive caller | `BinaryAlignedAPSP.run_correct`; the old callback is a concrete exact modular-count producer. `BinaryTriangleExecution.prepareOracleFromPrimes` accepts a backend with correctness. | Actual input-to-source construction is now implemented for one physical block and band pair using the existing parameter interface. A complete count-producing backend and its cost on adaptive histories remain absent. |
-| Good maps, affine list, masks, source identity | `ExactHalfCroppedEmbedding.complete_embedding` uses constructed maps, binary-score translations and first-valid list indices; exact cap `m/2`, including `m=0`, and all translation-pair incidences. | `ExactHalfWeightTable` computes the same inverse weights without executing inverse rows. `ExactHalfGraphSources` now forms the actual masked Walsh stores from binary callback inputs. Complete list state/control, inverse-table and selector binary address pricing and outer sharing/aggregation remain. |
-| Translation arithmetic | Binary numerator circuits refine the shared-denominator greedy list, with polynomial bit widths and `2^m poly(m)` numerator work. | Character-sum/sign state, enumeration, storage and control are excluded from this bound; it is not full construction work. |
-| Distinguished roots | `BinaryResidualArray` connects actual binary raw-source tries and constructed mask layouts to every retained coefficient of the shifted cropped contraction; input widths and concrete arithmetic/copy bounds are closed. | `CompleteResidualArray` now computes sufficient `F=mN+1` with binary operations, proves the entire output polynomial equals this root, and transports the existing rare-support theorem. `GraphResidualFamilies.fromInputs` now enumerates every good-set pair and strict joint channel key for both inputs, all translation incidences and every run, deriving source magnitudes and summing actual root arithmetic/control work. `GraphRootWindows.fromInputs` now copies complete blocks into window rows and executes all lossless partitions. |
-| Root rare support and first window | `DistinguishedResidualSupport` and `ExactHalfResidualWindow` prove actual-mask normal cropping is redundant and the selected window crop is lossless. `BinaryWindowPartition` executes the partition for supplied retained arrays. | The full-polynomial/physical-root and rare-support connections are now proved. `ResidualWindowSource`, `ResidualWindowSupport` and `RetainedRootWindows` now execute the exact layout copy, binary channel counts and lossless partition. The opposite forward map and window-to-suffix permutation now consume the actual retained windows. Capped shared prefix encoding now consumes those arrays. Actual folded requests now pass through elementary completion, complete window summation and matching retained-mask/band selection. Two-input full products and explicit weighted channel/run/translation sums are now executed for one mask pair. The all-mask executor now selects the actual physical request masks and identifies the original source formula with equal signed degrees. Physical-word reindexing is now proved; LOW/HIGH count assembly, complete binary control lowering and efficient family/batch integration remain. |
-| Residual ordinary transforms | `CroppedGroupedSuffix` proves the ordinary suffix identity; grouped preparation/completion executes it on supplied sources and requests. | `GraphWindowPermutations.fromInputs` now executes the opposite map and physical window permutation on every retained graph-derived window. `GraphPrefixProgram.fromInputs` now constructs capped groups and shared prefix traces. Its tensor-query identity is proved through the actual opposite transform/permutation to original window coefficients. Actual request rows and copied completion matrices execute for every folded request across all windows of a selected root, with binary accumulation and band/mask selection. Full products and explicit weighted channel/run/translation sums now have finite bounds for one mask pair. The shifted LOW identity is connected through exhaustive mask aggregation, physical locators and shared-degree recombination. Global LOW/HIGH count assembly and efficient family/batch scheduling remain; these elementary costs do not establish the phase exponent. |
-| Grouped completion | `BinaryPreparedGroupedProgram.correctness_and_costs` closes preparation plus **elementary** completion from integer coefficient arrays and request lists, preserving multiplicity and all columns. | Required fast rectangular completion is absent. Its scalar count cannot be substituted for the target rectangular exponent. Binary control pricing and source/batch integration remain. |
-| Cropped HIGH | `BinaryCroppedHighBoxes.correctness_and_work` connects actual raw stores, jointly capped shifted encoders, cyclic products and box recurrence. | GraphHighFamily now executes HIGH on actual retained graph-source stores, derives their bounds, prepares requests once and retains all translation/run/request/cyclic accumulations. ShiftedPhysicalHigh identifies the result with physical-word shifted forms. Joining HIGH with the completed LOW result under the same degree runs, locators, caps and normalization remains. FFT composition is kernel-checked; runtime fixtures use elementary cyclic bases. |
-| Shape, batch fit, entropy and phase costs | Finite storage identities and numerical conditional inequalities exist; old rounded entropy/phase bounds close only the old algorithm. | Actual batch compatibility and strict `B*q >= D^(15*zeta+xi)`; request unions and multiplicities, all cyclic/formal columns, rounded exact-half entropy inequalities, and each implemented phase's aggregate work. |
-| Rectangular mathematics | Numerical witness and finite tensor expansion identities exist. | Formal CW extraction/degeneration and asymptotic sum machinery, yielding a uniform exact finite arithmetic algorithm with controlled coefficients and binary costs. |
+| Original graph to modular counts | `GraphFoldedCountCorrect.finite_modCount` executes the new sources, LOW/HIGH join, exact normalization, band/block schedule and coefficient collection. It constructs its own finite fallback plan. | Replace the fallback `L=m,t=0` and exhaustive elementary completion with the optimized rounded plan and compatible shared batches. Finite correctness alone gives no improved running time. |
+| Exact-half sources and retained graph preparation | Constructed good maps, rational/binary translation list, first-valid list indices, original-coordinate masks, cropped sources and the complete embedding are proved. Retained translation numerator arithmetic and character-state costs have been added. | Lift shared setup out of repeated schedules and close all remaining construction, selector, address and control costs on that executed path. |
+| Rectangular base mathematics | The CW degeneration, independent-copy extraction, quantitative density/entropy bounds, positive fixed base and equal-copy rank conversion are proved. | The fixed positive-scale base is proved symbolically; it has not been materialized in runtime fixtures. The asymptotic program must retain this fixed base outside variable-size graph schedules. |
+| Retained rectangular execution | `CWRetainedArithmetic.exists_arithmetic_program` prices shared recursive forms, padded child batches and recombination. The binary path derives intermediate widths and complete arithmetic costs, clears denominators and recovers exact matrix entries at tensor-power dimensions. | Arbitrary-size next-power padding/truncation, recursive address pricing, and a combined uniform rectangular resource theorem. |
+| Shared graph batches and rounded costs | Finite graph values and numerical strict inequalities exist. | Prove actual shape compatibility, independent batch fit, efficient request routing, optimized rounded entropy bounds and every aggregate phase charge. |
+| Full APSP caller | The older concrete backend and adaptive theorem are closed at `2.99294792`. | Instantiate the caller with the improved backend and derive its complete `2.9926862626` cost from original graph hypotheses. None of the extension modules is yet in the closed theorem's import closure. |
 
-## Ordered completion path
+The three current groups of remaining work are listed at the end of the
+[retained recursive execution checkpoint](#what-still-prevents-the-requested-apsp-theorem).
+
+## Original completion sequence (historical)
+
+The sequence below records the initial integration audit. Later checkpoints
+in this document discharge several of its obligations, including the finite
+LOW/HIGH join and original-count connection. Use the current boundaries above
+and the latest checkpoint for present status.
 
 1. **Value boundary now connected for one physical block and band pair.**
    `ExactHalfGraphSources.execute` consumes the callback's binary integer tables
@@ -1921,3 +1925,104 @@ mathematical manuscript and its numerical certificate have not been relabeled
 as a completed Lean execution theorem.
 
 Frozen verification for this checkpoint: 343 modules, 3,726 axiom reports; only the standard Lean axioms. Full numerical/finite suite and the bounded Lean recursion fixture passed. Source/configuration SHA-256: `90abb7bb63b1b39806411c302dcf50cee30f65083b0e852955829321dd93421b`.
+
+
+## Retained recursive execution checkpoint
+
+The rank construction now feeds an actual retained program. The new endpoint
+`CWRetainedArithmetic.exists_arithmetic_program` selects the same positive
+fixed CW base, stores its three coefficient arrays once, and proves that its
+recursive simultaneous tensor-power products use at most
+
+    C * (k + 1) * Q^(16.7220001 * k)
+
+ring operations plus indexed-control annotations. Here Q and C are fixed
+before the input size varies. The exponent includes the input and output
+axis volumes, whose largest exponent is 16.722. It does not assume that a
+rank bound prices evaluation of dense expanded forms.
+
+`RecursiveTable` gives explicit product layouts and stored vectors.
+`RecursiveBilinearStep`, `RetainedEqualCopy` and `RetainedEqualCopyCosts`
+construct and price the actual loops. At each level the program stores each
+upper linear form once per suffix coordinate, pads the last request batch,
+executes each child once, and recombines its stored outputs. The exact
+arithmetic recurrence is
+
+    A(0) = t
+    A(k+1) = ceil(r/t) * A(k) + 2*r*t*(i^(k+1)+j^(k+1)+o^(k+1)).
+
+A separate exact control recurrence charges dot-product input lists, table
+construction/projection, padding and output writes. The bound uses
+`M=max(1,ceil(r/t),i,j,o)` and proves `A(k)+control(k) <= C*(k+1)*M^k`.
+The actual CW extraction supplies `M <= Q^16.7220001`; no lower bound on
+matrix tensor rank is assumed to dominate the axis sizes.
+
+The binary path is implemented separately using the existing stored signed
+bit cells. `BinaryRecursiveDot` prices every multiplication and accumulation,
+including partial sums. `BinaryRetainedEqualCopy.run_correct` proves the
+recursive program's value, and `BinaryRetainedBounds.run_linear_bits` derives
+its bit budget from the original input magnitude B and fixed base data:
+
+    W <= (4*k+1)*size(F) + 2*size(B) + 2.
+
+The fixed F bounds the local coefficient height and all local fan-ins.
+`BinaryRecursiveCost` constructs these constants from the stored base;
+intermediate magnitude or desired-cost premises are not required. Its
+`execute_bits` theorem includes coefficient encoding, denominator powering,
+recursive binary arithmetic and division of every complete output.
+
+`ClearedRecursiveBase` clears all three rational coefficient arrays with a
+single positive fixed denominator d. It proves that the complete depth-k
+integer numerator equals `d^(3*k)` times the requested product. The exponent
+3 accounts for all three forms; it is not the denominator of just one path.
+`BinaryRecursiveRecovery` constructs that power with binary multiplication
+and performs binary floor division only after the full numerator has been
+assembled. Exact recovery, signed values and zero outputs are proved.
+Fixed-base rational-data construction is outside the priced variable-size
+recursion; a public implementation must retain that base rather than rebuild
+it inside graph batches.
+
+`MatrixPowerReindex` proves both inverses of the word/pair coordinate map.
+`BinaryMatrixPowers.execute_correct` adapts ordinary matrix arrays to and from
+this program and proves every output is the direct row/column inner product.
+`cw_correct` uses the actual extracted CW coefficient base, without a
+rectangular multiplication oracle. The adapter retains every input and output
+slot and has a separate exact indexed-control count.
+
+The Lean runtime fixture checks 202 outputs against dense tensor contractions,
+with independently computed exact-rational and integer-numerator paths. It
+also checks the actual ring/control recurrences and complete binary bit budget.
+It covers depth zero through three, signed rational bases, incomplete batches,
+empty rank, zero targets and values across the 16-bit boundary. A further 172
+ordinary matrix output entries exercise both coordinate adapters. The independent
+Python fixture checks the same 202 tensor outputs and exact recovery, without
+using the Lean implementation or expanded recursive coefficient forms.
+
+```sh
+lake env lean --run scripts/check_retained_recursion.lean
+python3 outputs/check_retained_recursion.py
+```
+
+### What still prevents the requested APSP theorem
+
+1. The multiplier currently accepts tensor-power dimensions. Construct and
+   prove the arbitrary-size next-power padding/truncation adapter, including
+   its size bounds. Price the recursive layout/index arithmetic and combine
+   setup, copies, scalar bit costs and indexed control into the uniform
+   rectangular interface used by the graph algorithm. The current counters
+   do not themselves lower recursive address calculations to binary circuits.
+2. Replace elementary graph completion with compatible shared rectangular
+   batches, lift repeated setup out of the outer schedules, and prove the
+   strict independent batch fit for the optimized rounded parameters. The
+   constructed `FiniteFoldedPlan.produce` still uses `L=m,t=0`; it is a finite
+   correctness fallback, not the optimized asymptotic schedule.
+3. Prove every optimized phase's aggregate cost, retain all translations,
+   requests and restart/candidate costs, then connect the backend to the
+   adaptive APSP caller and its complete work theorem.
+
+These are substantive remaining proofs. In particular, this checkpoint does
+not update `BinaryAlignedAPSPTheorem.correctness_and_work`: the closed APSP
+exponent remains **2.99294792**, and the requested **2.9926862626** theorem is
+still unfinished. The mathematical TeX/PDF and numerical witnesses are unchanged.
+
+Frozen verification for this checkpoint: 356 modules, 3,806 axiom reports; only standard Lean axioms. The full Python suite and the actual Lean runtime fixture passed. Source/configuration SHA-256: `0f62323de659fbe349e6e14b14e048fb36512d8e7b951f997ad7a09b12d69e69`.

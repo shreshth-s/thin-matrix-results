@@ -1,0 +1,30 @@
+PASS: rational dot/incomplete batch, depth 0, seed 0, 2 outputs; 2 ring operations; 238 binary steps.
+PASS: rational dot/incomplete batch, depth 0, seed 3, 2 outputs; 2 ring operations; 212 binary steps.
+PASS: rational dot/incomplete batch, depth 0, seed -65537, 2 outputs; 2 ring operations; 10624 binary steps.
+PASS: rational dot/incomplete batch, depth 1, seed 0, 2 outputs; 106 ring operations; 13869 binary steps.
+PASS: rational dot/incomplete batch, depth 1, seed 3, 2 outputs; 106 ring operations; 16083 binary steps.
+PASS: rational dot/incomplete batch, depth 1, seed -65537, 2 outputs; 106 ring operations; 65828 binary steps.
+PASS: rational dot/incomplete batch, depth 2, seed 0, 2 outputs; 498 ring operations; 80385 binary steps.
+PASS: rational dot/incomplete batch, depth 2, seed 3, 2 outputs; 498 ring operations; 82643 binary steps.
+PASS: rational dot/incomplete batch, depth 2, seed -65537, 2 outputs; 498 ring operations; 230804 binary steps.
+PASS: rational dot/incomplete batch, depth 3, seed 0, 2 outputs; 1834 ring operations; 318457 binary steps.
+PASS: rational dot/incomplete batch, depth 3, seed 3, 2 outputs; 1834 ring operations; 320443 binary steps.
+PASS: rational dot/incomplete batch, depth 3, seed -65537, 2 outputs; 1834 ring operations; 683524 binary steps.
+PASS: rectangular/multiple outputs, depth 0, seed 2, 2 outputs; 2 ring operations; 212 binary steps.
+PASS: rectangular/multiple outputs, depth 0, seed -3, 2 outputs; 2 ring operations; 206 binary steps.
+PASS: empty rank/zero tensor, depth 0, seed 0, 2 outputs; 2 ring operations; 238 binary steps.
+PASS: rectangular/multiple outputs, depth 1, seed 2, 12 outputs; 1626 ring operations; 63694 binary steps.
+PASS: rectangular/multiple outputs, depth 1, seed -3, 12 outputs; 1626 ring operations; 66935 binary steps.
+PASS: empty rank/zero tensor, depth 1, seed 0, 2 outputs; 0 ring operations; 0 binary steps.
+PASS: rectangular/multiple outputs, depth 2, seed 2, 72 outputs; 29938 ring operations; 1717858 binary steps.
+PASS: rectangular/multiple outputs, depth 2, seed -3, 72 outputs; 29938 ring operations; 1735476 binary steps.
+PASS: empty rank/zero tensor, depth 2, seed 0, 2 outputs; 0 ring operations; 0 binary steps.
+PASS: 202 outputs checked against independent dense tensors, including zero rank, signed rational bases, incomplete batches and the 16-bit boundary.
+PASS: matrix coordinates, depth 0, seed 2, 2 output entries.
+PASS: matrix coordinates, depth 0, seed -3, 2 output entries.
+PASS: matrix coordinates, depth 1, seed 2, 12 output entries.
+PASS: matrix coordinates, depth 1, seed -3, 12 output entries.
+PASS: matrix coordinates, depth 2, seed 2, 72 output entries.
+PASS: matrix coordinates, depth 2, seed -3, 72 output entries.
+PASS: 172 ordinary matrix output entries after the executable coordinate adapters.
+SCOPE: bounded runtime fixtures for the retained arithmetic and binary programs; full APSP execution costs remain separate.

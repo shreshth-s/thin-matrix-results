@@ -36,7 +36,7 @@ coefficient collection return the original graph-incidence modular counts.
 A finite fallback plan is constructed internally (`L=m,t=0`), so no valid-plan
 or answer premise is supplied at that endpoint. It is not the optimized
 rounded plan. Full binary setup/control pricing, efficient batching and the
-fast rectangular algorithm/caller complexity remain unproved. See the final
+uniform rectangular resource theorem and caller complexity remain unproved. See the final
 checkpoint below for exact cost and runtime limits. The latest setup repair
 retains translation numerator arithmetic and binary character-sum updates in
 that same executed program; it does not close the remaining speed proof. The earlier
@@ -54,9 +54,11 @@ satisfies the Behrend density bound, yielding an unconditional finite
 cleanup bound with explicit length-dependent loss. The actual rational target
 marginal entropy bounds now absorb this loss and prove the exponential
 independent-copy rate, including exact integral scales and floor boundaries.
-The level-one equal-copy rank conversion is now proved; see
-[the current checkpoint](#equal-copy-recursion-and-rectangular-rank-checkpoint).
-The required fast binary execution and APSP cost integration remain unproved.
+The level-one equal-copy rank conversion and retained recursive evaluation
+are now proved, including binary primitives, intermediate widths, exact
+denominator recovery and matrix coordinates at tensor-power dimensions; see
+[the current checkpoint](#retained-recursive-execution-checkpoint).
+Arbitrary-size padding/address pricing and APSP cost integration remain unproved.
 
 The following new source components are formalized:
 
@@ -439,7 +441,7 @@ numerical interval-generator inputs. The successful transcript is
 dependency downloads are excluded from the repository. The stored compiler
 transcript normalizes trailing whitespace; diagnostics and axiom reports are retained.
 
-The recorded frozen-source run compiled 343 modules and checked 3,726 axiom
+The recorded frozen-source run compiled 356 modules and checked 3,806 axiom
 reports, all containing only the standard axioms above. The transcript records
 the source/configuration hash; `sources.json` records the same digest.
 
@@ -2042,3 +2044,104 @@ mathematical manuscript and its numerical certificate have not been relabeled
 as a completed Lean execution theorem.
 
 Frozen verification for this checkpoint: 343 modules, 3,726 axiom reports; only the standard Lean axioms. Full numerical/finite suite and the bounded Lean recursion fixture passed. Source/configuration SHA-256: `90abb7bb63b1b39806411c302dcf50cee30f65083b0e852955829321dd93421b`.
+
+
+## Retained recursive execution checkpoint
+
+The rank construction now feeds an actual retained program. The new endpoint
+`CWRetainedArithmetic.exists_arithmetic_program` selects the same positive
+fixed CW base, stores its three coefficient arrays once, and proves that its
+recursive simultaneous tensor-power products use at most
+
+    C * (k + 1) * Q^(16.7220001 * k)
+
+ring operations plus indexed-control annotations. Here Q and C are fixed
+before the input size varies. The exponent includes the input and output
+axis volumes, whose largest exponent is 16.722. It does not assume that a
+rank bound prices evaluation of dense expanded forms.
+
+`RecursiveTable` gives explicit product layouts and stored vectors.
+`RecursiveBilinearStep`, `RetainedEqualCopy` and `RetainedEqualCopyCosts`
+construct and price the actual loops. At each level the program stores each
+upper linear form once per suffix coordinate, pads the last request batch,
+executes each child once, and recombines its stored outputs. The exact
+arithmetic recurrence is
+
+    A(0) = t
+    A(k+1) = ceil(r/t) * A(k) + 2*r*t*(i^(k+1)+j^(k+1)+o^(k+1)).
+
+A separate exact control recurrence charges dot-product input lists, table
+construction/projection, padding and output writes. The bound uses
+`M=max(1,ceil(r/t),i,j,o)` and proves `A(k)+control(k) <= C*(k+1)*M^k`.
+The actual CW extraction supplies `M <= Q^16.7220001`; no lower bound on
+matrix tensor rank is assumed to dominate the axis sizes.
+
+The binary path is implemented separately using the existing stored signed
+bit cells. `BinaryRecursiveDot` prices every multiplication and accumulation,
+including partial sums. `BinaryRetainedEqualCopy.run_correct` proves the
+recursive program's value, and `BinaryRetainedBounds.run_linear_bits` derives
+its bit budget from the original input magnitude B and fixed base data:
+
+    W <= (4*k+1)*size(F) + 2*size(B) + 2.
+
+The fixed F bounds the local coefficient height and all local fan-ins.
+`BinaryRecursiveCost` constructs these constants from the stored base;
+intermediate magnitude or desired-cost premises are not required. Its
+`execute_bits` theorem includes coefficient encoding, denominator powering,
+recursive binary arithmetic and division of every complete output.
+
+`ClearedRecursiveBase` clears all three rational coefficient arrays with a
+single positive fixed denominator d. It proves that the complete depth-k
+integer numerator equals `d^(3*k)` times the requested product. The exponent
+3 accounts for all three forms; it is not the denominator of just one path.
+`BinaryRecursiveRecovery` constructs that power with binary multiplication
+and performs binary floor division only after the full numerator has been
+assembled. Exact recovery, signed values and zero outputs are proved.
+Fixed-base rational-data construction is outside the priced variable-size
+recursion; a public implementation must retain that base rather than rebuild
+it inside graph batches.
+
+`MatrixPowerReindex` proves both inverses of the word/pair coordinate map.
+`BinaryMatrixPowers.execute_correct` adapts ordinary matrix arrays to and from
+this program and proves every output is the direct row/column inner product.
+`cw_correct` uses the actual extracted CW coefficient base, without a
+rectangular multiplication oracle. The adapter retains every input and output
+slot and has a separate exact indexed-control count.
+
+The Lean runtime fixture checks 202 outputs against dense tensor contractions,
+with independently computed exact-rational and integer-numerator paths. It
+also checks the actual ring/control recurrences and complete binary bit budget.
+It covers depth zero through three, signed rational bases, incomplete batches,
+empty rank, zero targets and values across the 16-bit boundary. A further 172
+ordinary matrix output entries exercise both coordinate adapters. The independent
+Python fixture checks the same 202 tensor outputs and exact recovery, without
+using the Lean implementation or expanded recursive coefficient forms.
+
+```sh
+lake env lean --run scripts/check_retained_recursion.lean
+python3 outputs/check_retained_recursion.py
+```
+
+### What still prevents the requested APSP theorem
+
+1. The multiplier currently accepts tensor-power dimensions. Construct and
+   prove the arbitrary-size next-power padding/truncation adapter, including
+   its size bounds. Price the recursive layout/index arithmetic and combine
+   setup, copies, scalar bit costs and indexed control into the uniform
+   rectangular interface used by the graph algorithm. The current counters
+   do not themselves lower recursive address calculations to binary circuits.
+2. Replace elementary graph completion with compatible shared rectangular
+   batches, lift repeated setup out of the outer schedules, and prove the
+   strict independent batch fit for the optimized rounded parameters. The
+   constructed `FiniteFoldedPlan.produce` still uses `L=m,t=0`; it is a finite
+   correctness fallback, not the optimized asymptotic schedule.
+3. Prove every optimized phase's aggregate cost, retain all translations,
+   requests and restart/candidate costs, then connect the backend to the
+   adaptive APSP caller and its complete work theorem.
+
+These are substantive remaining proofs. In particular, this checkpoint does
+not update `BinaryAlignedAPSPTheorem.correctness_and_work`: the closed APSP
+exponent remains **2.99294792**, and the requested **2.9926862626** theorem is
+still unfinished. The mathematical TeX/PDF and numerical witnesses are unchanged.
+
+Frozen verification for this checkpoint: 356 modules, 3,806 axiom reports; only standard Lean axioms. The full Python suite and the actual Lean runtime fixture passed. Source/configuration SHA-256: `0f62323de659fbe349e6e14b14e048fb36512d8e7b951f997ad7a09b12d69e69`.

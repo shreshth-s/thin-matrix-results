@@ -87,9 +87,13 @@ The extension to `2.9926862626` is in progress. In addition to the new source
 and modular-count identities, Lean now constructs exact rational rectangular
 matrix-power decompositions at aspect `(861/500,1,15)` and rank exponent
 `16.7220001`. The proof includes equal-copy recursion, strict finite-base
-selection, and common-denominator and coefficient-height bounds. A retained
-recursive binary evaluator, efficient graph batches and the complete APSP
-execution-cost proof remain unfinished; see [the exact scope](lean/README.md#exact-half-extension-in-progress).
+selection, and common-denominator and coefficient-height bounds. The retained
+recursive evaluator now has correctness and arithmetic/control recurrences;
+its binary implementation has derived intermediate widths, bit costs and exact
+denominator recovery. Ordinary matrix coordinates at tensor-power dimensions
+are connected to the actual CW base. Arbitrary-size padding/address pricing,
+efficient graph batches and the complete APSP execution-cost proof remain
+unfinished; see [the latest scope](lean/EXACT_HALF_ROADMAP.md#retained-recursive-execution-checkpoint).
 
 ## Caveats
 

@@ -1,0 +1,20 @@
+Bounded independent prefix-completion fixture; 180-second process-group deadline.
+PASS: all completion labels P=0, ell=0, all caps; duplicate requests and columns
+PASS: all completion labels P=0, ell=1, all caps; duplicate requests and columns
+PASS: all completion labels P=0, ell=2, all caps; duplicate requests and columns
+PASS: all completion labels P=1, ell=0, all caps; duplicate requests and columns
+PASS: all completion labels P=1, ell=1, all caps; duplicate requests and columns
+PASS: all completion labels P=1, ell=2, all caps; duplicate requests and columns
+PASS: all completion labels P=2, ell=0, all caps; duplicate requests and columns
+PASS: all completion labels P=2, ell=1, all caps; duplicate requests and columns
+PASS: all completion labels P=2, ell=2, all caps; duplicate requests and columns
+PASS: binary width boundary 65536
+PASS: empty coefficient vector
+PASS: zero residual dimension and clamped window
+PASS: zero window length
+PASS: both opposite orientations and all cyclic windows
+PASS: actual folded requests n=0,2,5 with signed targets and all cyclic residues; physical band tags and residual projection
+PASS: actual retained L=3,m=2 root through completion; independent physical coefficient reference
+PASS: bounded completion suite finished; no full graph or production FFT attempt.
+Exit code: 0; elapsed: 7.595 seconds.
+Source/configuration SHA-256: 90a252a00a23149720a530e36e222598e506e0d322f835735df0ee25ffa6c739

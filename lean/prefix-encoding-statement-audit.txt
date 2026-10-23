@@ -1,0 +1,250 @@
+ThinMatrix.RetainedCappedGroups.datum_value {P ell C : ℕ} (X : ThinMatrix.RetainedCappedGroups.Source P ell C)
+  (p k : ThinMatrix.CappedBitPreparation.Key ell) (u : ThinMatrix.CroppedGroupedSuffix.Word P) (c : Fin C) :
+  ThinMatrix.BinaryCell.view ((ThinMatrix.RetainedCappedGroups.datum X p k u).value.get c) =
+    ThinMatrix.CroppedGroupedSuffix.signed (Vector.get p) (ThinMatrix.CappedBitPreparation.support k) *
+      ThinMatrix.OppositeWindowLayer.value X
+        (Fin.append u (ThinMatrix.CroppedGroupedSuffix.word (Vector.get p) (ThinMatrix.CappedBitPreparation.support k)))
+        c
+ThinMatrix.RetainedCappedGroups.cells_eq {P ell r C : ℕ} (xs : ThinMatrix.RetainedCappedGroups.Prepared P ell r C) :
+  ThinMatrix.RetainedCappedGroups.cells xs = 2 ^ ell * ThinMatrix.CappedSubsetList.count ell r * 3 ^ P * C
+ThinMatrix.RetainedPrefixEncoder.run_value {C n : ℕ} (X : ThinMatrix.PrefixCellTree.Data C n) (q : Fin n → Fin 4)
+  (c : Fin C) :
+  ThinMatrix.BinaryCell.view
+      (ThinMatrix.RetainedPrefixEncoder.output (ThinMatrix.RetainedPrefixEncoder.run n X).value q c) =
+    ThinMatrix.EncoderCorrectness.tensorSum (fun x => 3) (fun i => ThinMatrix.BinaryPrefixContraction.form (q i))
+      fun w => ThinMatrix.BinaryCell.view (ThinMatrix.PrefixCellTree.read X w c)
+ThinMatrix.RetainedPrefixEncoder.run_bits {C n : ℕ} (X : ThinMatrix.PrefixCellTree.Data C n) (A : ℕ)
+  (ha : ThinMatrix.PrefixCellTree.Bound X A) :
+  (ThinMatrix.RetainedPrefixEncoder.run n X).bitSteps ≤ ThinMatrix.RetainedPrefixEncoder.bitBudget n C A
+ThinMatrix.RetainedPrefixEncoder.run_control {C n : ℕ} (X : ThinMatrix.PrefixCellTree.Data C n) :
+  (ThinMatrix.RetainedPrefixEncoder.run n X).control ≤ ThinMatrix.RetainedPrefixEncoder.controlBudget n C
+ThinMatrix.CappedPrefixProgram.traceCells_bound {P ell r C : ℕ}
+  (xs : ThinMatrix.CappedPrefixProgram.Prepared P ell r C) :
+  ThinMatrix.CappedPrefixProgram.traceCells xs ≤
+    (P + 1) * 4 ^ P * (2 ^ ell * ThinMatrix.CappedSubsetList.count ell r) * C
+ThinMatrix.CappedPrefixProgram.query_cropped {P ell C : ℕ} (r : ℕ) (X : ThinMatrix.RetainedCappedGroups.Source P ell C)
+  (p : Fin (2 ^ ell)) (q : Fin P → Fin 4) (active : Finset (Fin ell)) (c : Fin C) :
+  ThinMatrix.CappedPrefixProgram.query (ThinMatrix.CappedPrefixProgram.execute r X).value p q active c =
+    ThinMatrix.EncoderCorrectness.tensorSum (fun x => 3)
+      (Fin.append (fun i => ThinMatrix.BinaryPrefixContraction.form (q i)) fun i =>
+        ThinMatrix.CroppedGroupedSuffix.localForm (Vector.get ((ThinMatrix.GroupedPreparation.pairKeys ell).get p) i)
+          (decide (i ∈ active)))
+      (ThinMatrix.CappedPrefixProgram.cropSuffix r fun w => ThinMatrix.OppositeWindowLayer.value X w c)
+ThinMatrix.CappedPrefixProgram.query_exact {P ell C : ℕ} (r : ℕ) (X : ThinMatrix.RetainedCappedGroups.Source P ell C)
+  (hs :
+    ∀ (w : ThinMatrix.CroppedGroupedSuffix.Word (P + ell)) (c : Fin C),
+      r < (ThinMatrix.CroppedGroupedSuffix.rare fun i => w (Fin.natAdd P i)).card →
+        ThinMatrix.OppositeWindowLayer.value X w c = 0)
+  (p : Fin (2 ^ ell)) (q : Fin P → Fin 4) (active : Finset (Fin ell)) (c : Fin C) :
+  ThinMatrix.CappedPrefixProgram.query (ThinMatrix.CappedPrefixProgram.execute r X).value p q active c =
+    ThinMatrix.EncoderCorrectness.tensorSum (fun x => 3)
+      (Fin.append (fun i => ThinMatrix.BinaryPrefixContraction.form (q i)) fun i =>
+        ThinMatrix.CroppedGroupedSuffix.localForm (Vector.get ((ThinMatrix.GroupedPreparation.pairKeys ell).get p) i)
+          (decide (i ∈ active)))
+      fun w => ThinMatrix.OppositeWindowLayer.value X w c
+ThinMatrix.GraphPrefixProgram.fromInputs_bits {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR ell : ℕ) :
+  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell).encoded.bitSteps ≤
+    ThinMatrix.GraphPrefixProgram.bitBudget ell
+      (ThinMatrix.GraphWindowPermutations.fromInputs f p block input bandL bandR ell).transformed.source.windows.value
+      (2 ^ (p.L - p.m) * (2 ^ p.m * (4 ^ p.m * 2 ^ (p.L + p.m))))
+ThinMatrix.GraphPrefixProgram.fromInputs_control {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR ell : ℕ) :
+  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell).encoded.control ≤
+    ThinMatrix.GraphPrefixProgram.controlBudget ell
+      (ThinMatrix.GraphWindowPermutations.fromInputs f p block input bandL bandR ell).transformed.source.windows.value
+ThinMatrix.GraphPrefixProgram.fromInputs_left_query {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR ell : ℕ)
+  (u v : Fin (ThinMatrix.ExactHalfSourcePlan.J p.m)) (run : Fin (2 * p.m + 1))
+  (i j : Fin (ThinMatrix.GoodMapEmbedding.goodSlots p.L p.m).card)
+  (c : Fin (ThinMatrix.ResidualFamilyKeys.channelCount p.m p.t))
+  (slot : Fin (ThinMatrix.RetainedRootWindows.slots (p.L - p.m)))
+  (pair : Fin (2 ^ ThinMatrix.WindowPrefixProgram.length (p.L - p.m) ell))
+  (q : Fin (ThinMatrix.WindowPrefixProgram.prefixLength (p.L - p.m) ell) → Fin 4)
+  (active : Finset (Fin (ThinMatrix.WindowPrefixProgram.length (p.L - p.m) ell))) (col : Fin ((p.m + 1) * f.cyclic)) :
+  have prior := ThinMatrix.GraphWindowPermutations.fromInputs f p block input bandL bandR ell;
+  have X :=
+    (Vector.get (((Vector.get (((Vector.get prior.permuted.value u).get v).get run).1 i).get j).get c)
+        slot).coefficients;
+  ThinMatrix.CappedPrefixProgram.query
+      (Vector.get
+          (((Vector.get
+                    (((Vector.get
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell).encoded.value
+                                u).get
+                            v).get
+                        run).1
+                    i).get
+                j).get
+            c)
+          slot).encoded
+      pair q active col =
+    ThinMatrix.EncoderCorrectness.tensorSum (fun x => 3)
+      (Fin.append (fun a => ThinMatrix.BinaryPrefixContraction.form (q a)) fun a =>
+        ThinMatrix.CroppedGroupedSuffix.localForm
+          (Vector.get
+            ((ThinMatrix.GroupedPreparation.pairKeys (ThinMatrix.WindowPrefixProgram.length (p.L - p.m) ell)).get pair)
+            a)
+          (decide (a ∈ active)))
+      fun w => ThinMatrix.OppositeWindowLayer.value X (fun a => w (Fin.cast ⋯ a)) col
+ThinMatrix.GraphPrefixProgram.fromInputs_right_query {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR ell : ℕ)
+  (u v : Fin (ThinMatrix.ExactHalfSourcePlan.J p.m)) (run : Fin (2 * p.m + 1))
+  (i j : Fin (ThinMatrix.GoodMapEmbedding.goodSlots p.L p.m).card)
+  (c : Fin (ThinMatrix.ResidualFamilyKeys.channelCount p.m p.t))
+  (slot : Fin (ThinMatrix.RetainedRootWindows.slots (p.L - p.m)))
+  (pair : Fin (2 ^ ThinMatrix.WindowPrefixProgram.length (p.L - p.m) ell))
+  (q : Fin (ThinMatrix.WindowPrefixProgram.prefixLength (p.L - p.m) ell) → Fin 4)
+  (active : Finset (Fin (ThinMatrix.WindowPrefixProgram.length (p.L - p.m) ell))) (col : Fin ((p.m + 1) * f.cyclic)) :
+  have prior := ThinMatrix.GraphWindowPermutations.fromInputs f p block input bandL bandR ell;
+  have X :=
+    (Vector.get (((Vector.get (((Vector.get prior.permuted.value u).get v).get run).2 i).get j).get c)
+        slot).coefficients;
+  ThinMatrix.CappedPrefixProgram.query
+      (Vector.get
+          (((Vector.get
+                    (((Vector.get
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell).encoded.value
+                                u).get
+                            v).get
+                        run).2
+                    i).get
+                j).get
+            c)
+          slot).encoded
+      pair q active col =
+    ThinMatrix.EncoderCorrectness.tensorSum (fun x => 3)
+      (Fin.append (fun a => ThinMatrix.BinaryPrefixContraction.form (q a)) fun a =>
+        ThinMatrix.CroppedGroupedSuffix.localForm
+          (Vector.get
+            ((ThinMatrix.GroupedPreparation.pairKeys (ThinMatrix.WindowPrefixProgram.length (p.L - p.m) ell)).get pair)
+            a)
+          (decide (a ∈ active)))
+      fun w => ThinMatrix.OppositeWindowLayer.value X (fun a => w (Fin.cast ⋯ a)) col
+ThinMatrix.GraphPrefixTensor.fromInputs_left_original_query {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR ell : ℕ) (u v : Fin (ThinMatrix.ExactHalfSourcePlan.J p.m)) (run : Fin (2 * p.m + 1))
+  (i j : Fin (ThinMatrix.GoodMapEmbedding.goodSlots p.L p.m).card)
+  (c : Fin (ThinMatrix.ResidualFamilyKeys.channelCount p.m p.t))
+  (slot : Fin (ThinMatrix.RetainedRootWindows.slots (p.L - p.m)))
+  (pair : Fin (2 ^ ThinMatrix.WindowPrefixProgram.length (p.L - p.m) ell))
+  (q : Fin (ThinMatrix.WindowPrefixProgram.prefixLength (p.L - p.m) ell) → Fin 4)
+  (active : Finset (Fin (ThinMatrix.WindowPrefixProgram.length (p.L - p.m) ell))) (col : Fin ((p.m + 1) * f.cyclic)) :
+  have window :=
+    ((Vector.get
+              (((Vector.get
+                          (ThinMatrix.GraphRootWindows.fromInputs f p block input bandL bandR
+                                (min ell (p.L - p.m))).windows.value
+                          u).get
+                      v).get
+                  run).1
+              i).get
+          j).get
+      c;
+  ThinMatrix.CappedPrefixProgram.query
+      (Vector.get
+          (((Vector.get
+                    (((Vector.get
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell).encoded.value
+                                u).get
+                            v).get
+                        run).1
+                    i).get
+                j).get
+            c)
+          slot).encoded
+      pair q active col =
+    ThinMatrix.EncoderCorrectness.tensorSum (fun x => 3)
+      (ThinMatrix.GraphPrefixTensor.originalForms ell (decide (window.counts.2 ≤ window.counts.1)) slot
+        (Fin.append (fun a => ThinMatrix.BinaryPrefixContraction.form (q a)) fun a =>
+          ThinMatrix.CroppedGroupedSuffix.localForm
+            (Vector.get
+              ((ThinMatrix.GroupedPreparation.pairKeys (ThinMatrix.WindowPrefixProgram.length (p.L - p.m) ell)).get
+                pair)
+              a)
+            (decide (a ∈ active))))
+      fun w => ThinMatrix.BinaryWindowPartition.sourceValue (window.windows.components.get slot) w col
+ThinMatrix.GraphPrefixTensor.fromInputs_right_original_query {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR ell : ℕ) (u v : Fin (ThinMatrix.ExactHalfSourcePlan.J p.m)) (run : Fin (2 * p.m + 1))
+  (i j : Fin (ThinMatrix.GoodMapEmbedding.goodSlots p.L p.m).card)
+  (c : Fin (ThinMatrix.ResidualFamilyKeys.channelCount p.m p.t))
+  (slot : Fin (ThinMatrix.RetainedRootWindows.slots (p.L - p.m)))
+  (pair : Fin (2 ^ ThinMatrix.WindowPrefixProgram.length (p.L - p.m) ell))
+  (q : Fin (ThinMatrix.WindowPrefixProgram.prefixLength (p.L - p.m) ell) → Fin 4)
+  (active : Finset (Fin (ThinMatrix.WindowPrefixProgram.length (p.L - p.m) ell))) (col : Fin ((p.m + 1) * f.cyclic)) :
+  have window :=
+    ((Vector.get
+              (((Vector.get
+                          (ThinMatrix.GraphRootWindows.fromInputs f p block input bandL bandR
+                                (min ell (p.L - p.m))).windows.value
+                          u).get
+                      v).get
+                  run).2
+              i).get
+          j).get
+      c;
+  ThinMatrix.CappedPrefixProgram.query
+      (Vector.get
+          (((Vector.get
+                    (((Vector.get
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell).encoded.value
+                                u).get
+                            v).get
+                        run).2
+                    i).get
+                j).get
+            c)
+          slot).encoded
+      pair q active col =
+    ThinMatrix.EncoderCorrectness.tensorSum (fun x => 3)
+      (ThinMatrix.GraphPrefixTensor.originalForms ell (decide (window.counts.2 ≤ window.counts.1)) slot
+        (Fin.append (fun a => ThinMatrix.BinaryPrefixContraction.form (q a)) fun a =>
+          ThinMatrix.CroppedGroupedSuffix.localForm
+            (Vector.get
+              ((ThinMatrix.GroupedPreparation.pairKeys (ThinMatrix.WindowPrefixProgram.length (p.L - p.m) ell)).get
+                pair)
+              a)
+            (decide (a ∈ active))))
+      fun w => ThinMatrix.BinaryWindowPartition.sourceValue (window.windows.components.get slot) w col
+ThinMatrix.GraphPrefixTensor.originalForms_value {k : ℕ} (ell : ℕ) (normal : Bool)
+  (slot : Fin (ThinMatrix.RetainedRootWindows.slots k))
+  (f :
+    Fin (ThinMatrix.WindowPrefixProgram.prefixLength k ell + ThinMatrix.WindowPrefixProgram.length k ell) → Fin 3 → ℤ)
+  (i : Fin (2 * k)) (a : Fin 3) :
+  ThinMatrix.GraphPrefixTensor.originalForms ell normal slot f i a =
+    have b := Fin.cast ⋯ ((Equiv.symm (ThinMatrix.RetainedWindowPermutation.order k (min ell k) normal slot)) i);
+    if k ≤ ↑i then ∑ j, f b j * ThinMatrix.OppositeWindowLayer.matrix j a else f b a
+'ThinMatrix.GraphPrefixTensor.fromInputs_left_original_query' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphPrefixTensor.fromInputs_right_original_query' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.GraphPrefixProgram.fromInputs_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphPrefixProgram.fromInputs_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work : ∀
+  (w : (n : ℕ) → ThinMatrix.StoredMinPlusAPSP.OptionalTable n) (W : ℕ → ℕ) (degree : ℕ),
+  (∀ (n : ℕ), ThinMatrix.APSPReduction.EdgeBound (ThinMatrix.StoredMinPlusAPSP.decode (w n)) (W n)) →
+    (∀ (n : ℕ), W n ≤ n ^ degree) →
+      (∀ (n : ℕ), ThinMatrix.APSPReduction.NoNegativeCycles (ThinMatrix.StoredMinPlusAPSP.decode (w n))) →
+        (∀ (n : ℕ),
+            ThinMatrix.APSPReduction.IsAPSP (ThinMatrix.StoredMinPlusAPSP.decode (w n))
+              (ThinMatrix.StoredMinPlusAPSP.decode
+                (ThinMatrix.BinaryAPSPCaller.viewOptional
+                  (ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                        (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).core.value))) ∧
+          (fun n =>
+              ↑(ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                    (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).work) =O[Filter.atTop]
+            fun n => ↑n ^ (299294792 / 100000000) :=
+fun w W degree hw hW hno =>
+  ⟨fun n =>
+    ThinMatrix.BinaryAlignedAPSP.run_correct (w n) (W n) (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)
+      (hw n) (hno n),
+    ThinMatrix.BinaryAlignedAPSPTheorem.run_work_bigO w W degree hw hW⟩
+'ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]

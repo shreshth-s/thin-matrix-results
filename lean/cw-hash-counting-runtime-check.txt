@@ -1,0 +1,11 @@
+PASS: M=3, n=0: 9 actual samples, 3 single fibers, 0 shared-pair fibers.
+PASS: M=3, n=1: 27 actual samples, 18 single fibers, 72 shared-pair fibers.
+PASS: M=5, n=1: 125 actual samples, 30 single fibers, 120 shared-pair fibers.
+PASS: M=7, n=1: 343 actual samples, 42 single fibers, 168 shared-pair fibers.
+PASS: M=5, n=2: 625 actual samples, 10 single fibers, 10 shared-pair fibers.
+PASS: cleanup M=3, n=0, |B|=1, T=1, P=0: totals 1/0, best kept 1.
+PASS: cleanup M=3, n=0, |B|=0, T=1, P=0: totals 0/0, best kept 0.
+PASS: cleanup M=5, n=2, |B|=2, T=2, P=2: totals 100/20, best kept 1.
+SCOPE: exact finite hash counts and actual cleanup; no execution-cost or entropy-scale assertion.
+
+Exit code: 0.

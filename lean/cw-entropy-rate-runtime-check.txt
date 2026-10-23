@@ -1,0 +1,7 @@
+PASS: 343 actual ternary coefficient cases and exact entropy-weight inequalities.
+PASS: 18 scaled target marginal histograms, from actual block colors and counts.
+PASS: 12 floor boundary cases and actual zero-scale target cardinalities.
+PASS: 1555 actual bounded CW words and marginal histograms.
+SCOPE: actual finite arithmetic and zero scale; real entropy/rate proofs are kernel-checked. No positive-scale target word is materialized.
+
+Exit code: 0.

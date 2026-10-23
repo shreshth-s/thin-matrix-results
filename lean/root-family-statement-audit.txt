@@ -1,0 +1,196 @@
+ThinMatrix.ResidualFamilyKeys.masks_cover {L m : ℕ} (store : ThinMatrix.RowIndexing.GoodIndexStore L m)
+  (Q : ThinMatrix.RowIndexing.GoodSlot L m) :
+  ∃! i, ThinMatrix.SourceFormation.cubeSupport ((ThinMatrix.ResidualFamilyKeys.masks store).value.get i).bits.get = ↑Q
+ThinMatrix.ResidualFamilyKeys.prepare_channel_cover {L m : ℕ} (store : ThinMatrix.RowIndexing.GoodIndexStore L m)
+  (t : ℕ) (c : ThinMatrix.ResidualFamilyKeys.Channel m) (hc : ThinMatrix.CappedBitPreparation.ones c < t) :
+  ∃! i, (ThinMatrix.ResidualFamilyKeys.prepare store t).value.channels.get i = c
+ThinMatrix.ResidualFamilyKeys.channelCount_sum (m t : ℕ) :
+  ThinMatrix.ResidualFamilyKeys.channelCount m t = ∑ h ∈ Finset.range t, (2 * m).choose h
+ThinMatrix.ResidualFamilyKeys.decode_control (n x : ℕ) :
+  (ThinMatrix.ResidualFamilyKeys.decode n x).control = ThinMatrix.ResidualFamilyKeys.decodeBudget n
+ThinMatrix.RetainedResidualFamily.produce_root {L m C : ℕ} [NeZero C]
+  (raw : ThinMatrix.BinarySourceFormation.RawStore L C) (a b : ThinMatrix.ResidualFamilyKeys.Mask L m)
+  (c : ThinMatrix.ResidualFamilyKeys.Channel m)
+  (w :
+    ThinMatrix.CroppedGroupedSuffix.Word
+      ((ThinMatrix.ResidualLayout.remaining a.bits).length + (ThinMatrix.ResidualLayout.remaining b.bits).length)) :
+  ThinMatrix.ResidualPolynomialDegree.decode
+      (Vector.get (ThinMatrix.RetainedResidualFamily.produce raw a b c).value.rows
+        ((ThinMatrix.StoredGroupedCompletion.rawIndex
+            ((ThinMatrix.ResidualLayout.remaining
+                  (ThinMatrix.RetainedResidualFamily.produce raw a b c).value.normalMask.bits).length +
+              (ThinMatrix.ResidualLayout.remaining
+                  (ThinMatrix.RetainedResidualFamily.produce raw a b c).value.oppositeMask.bits).length))
+          w)) =
+    ThinMatrix.DistinguishedResidualSupport.root (ThinMatrix.ResidualLayout.equivalence a.bits)
+      (ThinMatrix.ResidualRootBridge.transport (ThinMatrix.ResidualLayout.equivalence b.bits) ⋯ ⋯)
+      (ThinMatrix.RetainedResidualFamily.normalKey a c).get
+      (fun i => (ThinMatrix.RetainedResidualFamily.oppositeKey b c).get ((finCongr ⋯).symm i)) Polynomial.X (m / 2)
+      (ThinMatrix.ResidualRootBridge.rawPolynomial raw)
+      (fun i => w (Fin.castAdd (ThinMatrix.ResidualLayout.remaining b.bits).length i)) fun i =>
+      w (Fin.natAdd (ThinMatrix.ResidualLayout.remaining a.bits).length ((finCongr ⋯).symm i))
+ThinMatrix.RetainedResidualFamily.produce_bound {L m C : ℕ} (raw : ThinMatrix.BinarySourceFormation.RawStore L C)
+  (a b : ThinMatrix.ResidualFamilyKeys.Mask L m) (c : ThinMatrix.ResidualFamilyKeys.Channel m) (A : ℕ)
+  (ha : ThinMatrix.BinaryResidualLeaf.RawBound raw A)
+  (i :
+    Fin
+      (3 ^
+        ((ThinMatrix.ResidualLayout.remaining a.bits).length + (ThinMatrix.ResidualLayout.remaining b.bits).length))) :
+  ThinMatrix.BinaryResidualPolynomial.Bound (2 ^ m * (4 ^ m * A))
+    (Vector.get (ThinMatrix.RetainedResidualFamily.produce raw a b c).value.rows i)
+ThinMatrix.RetainedResidualFamily.coefficient_cells {L m C t : ℕ} (keys : ThinMatrix.ResidualFamilyKeys.Prepared L m t)
+  (raw : ThinMatrix.BinarySourceFormation.RawStore L C) :
+  (List.map
+        (fun row =>
+          (List.map
+              (fun groups =>
+                (List.map
+                    (fun e =>
+                      (List.map (fun b => (List.map (fun r => r.toArray.size) (Vector.toList b)).sum)
+                          (Vector.toList e.rows)).sum)
+                    groups.toList).sum)
+              row.toList).sum)
+        (Vector.toList (ThinMatrix.RetainedResidualFamily.execute keys raw).value)).sum =
+    (ThinMatrix.GoodMapEmbedding.goodSlots L m).card ^ 2 * ThinMatrix.ResidualFamilyKeys.channelCount m t *
+      (3 ^ (2 * (L - m)) * (m + 1) * C)
+ThinMatrix.ExactHalfSourceBounds.graph_left {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR : ℕ)
+  (u v : Fin (ThinMatrix.ExactHalfSourcePlan.J p.m)) (run : Fin (2 * p.m + 1)) :
+  ThinMatrix.BinaryResidualLeaf.RawBound
+    (Vector.get
+      ((Vector.get (ThinMatrix.ExactHalfGraphSources.execute f p block input bandL bandR).sources.value u).get v).1 run)
+    (2 ^ (p.L + p.m))
+ThinMatrix.ExactHalfSourceBounds.graph_right {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR : ℕ)
+  (u v : Fin (ThinMatrix.ExactHalfSourcePlan.J p.m)) (run : Fin (2 * p.m + 1)) :
+  ThinMatrix.BinaryResidualLeaf.RawBound
+    (Vector.get
+      ((Vector.get (ThinMatrix.ExactHalfGraphSources.execute f p block input bandL bandR).sources.value u).get v).2 run)
+    (2 ^ (p.L + p.m))
+ThinMatrix.ExactHalfSourceBounds.graph_left_normal_cap {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR : ℕ) (u v : Fin (ThinMatrix.ExactHalfSourcePlan.J p.m)) (run : Fin (2 * p.m + 1))
+  (normal : Fin p.L → ThinMatrix.WalshEmbedding.NormalLetter)
+  (opposite : Fin p.L → ThinMatrix.WalshEmbedding.OppositeLetter) (coeff : Fin f.cyclic)
+  (hc : p.m / 2 < ThinMatrix.WalshEmbedding.ones (ThinMatrix.WalshEmbedding.normalP2Bits normal)) :
+  ThinMatrix.BinaryCell.view
+      (ThinMatrix.BinarySourceFormation.readRaw
+        (Vector.get
+          ((Vector.get (ThinMatrix.ExactHalfGraphSources.execute f p block input bandL bandR).sources.value u).get v).1
+          run)
+        normal opposite coeff) =
+    0
+ThinMatrix.ExactHalfSourceBounds.graph_right_normal_cap {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR : ℕ) (u v : Fin (ThinMatrix.ExactHalfSourcePlan.J p.m)) (run : Fin (2 * p.m + 1))
+  (normal : Fin p.L → ThinMatrix.WalshEmbedding.NormalLetter)
+  (opposite : Fin p.L → ThinMatrix.WalshEmbedding.OppositeLetter) (coeff : Fin f.cyclic)
+  (hc : p.m / 2 < ThinMatrix.WalshEmbedding.ones (ThinMatrix.WalshEmbedding.normalP2Bits normal)) :
+  ThinMatrix.BinaryCell.view
+      (ThinMatrix.BinarySourceFormation.readRaw
+        (Vector.get
+          ((Vector.get (ThinMatrix.ExactHalfGraphSources.execute f p block input bandL bandR).sources.value u).get v).2
+          run)
+        normal opposite coeff) =
+    0
+ThinMatrix.GraphResidualFamilies.fromInputs {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR : ℕ) :
+  ThinMatrix.GraphResidualFamilies.Prepared f p ↑block
+ThinMatrix.GraphResidualFamilies.fromInputs_left_entry {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR : ℕ) (u v : Fin (ThinMatrix.ExactHalfSourcePlan.J p.m)) (run : Fin (2 * p.m + 1))
+  (i j : Fin (ThinMatrix.GoodMapEmbedding.goodSlots p.L p.m).card)
+  (c : Fin (ThinMatrix.ResidualFamilyKeys.channelCount p.m p.t)) :
+  ((Vector.get
+              (((Vector.get (ThinMatrix.GraphResidualFamilies.fromInputs f p block input bandL bandR).roots.value u).get
+                      v).get
+                  run).1
+              i).get
+          j).get
+      c =
+    (ThinMatrix.RetainedResidualFamily.produce
+        (Vector.get
+          ((Vector.get (ThinMatrix.GraphResidualFamilies.fromInputs f p block input bandL bandR).source.sources.value
+                  u).get
+              v).1
+          run)
+        ((ThinMatrix.GraphResidualFamilies.fromInputs f p block input bandL bandR).keys.value.masks.get i)
+        ((ThinMatrix.GraphResidualFamilies.fromInputs f p block input bandL bandR).keys.value.masks.get j)
+        ((ThinMatrix.GraphResidualFamilies.fromInputs f p block input bandL bandR).keys.value.channels.get c)).value
+ThinMatrix.GraphResidualFamilies.fromInputs_right_entry {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR : ℕ) (u v : Fin (ThinMatrix.ExactHalfSourcePlan.J p.m)) (run : Fin (2 * p.m + 1))
+  (i j : Fin (ThinMatrix.GoodMapEmbedding.goodSlots p.L p.m).card)
+  (c : Fin (ThinMatrix.ResidualFamilyKeys.channelCount p.m p.t)) :
+  ((Vector.get
+              (((Vector.get (ThinMatrix.GraphResidualFamilies.fromInputs f p block input bandL bandR).roots.value u).get
+                      v).get
+                  run).2
+              i).get
+          j).get
+      c =
+    (ThinMatrix.RetainedResidualFamily.produce
+        (Vector.get
+          ((Vector.get (ThinMatrix.GraphResidualFamilies.fromInputs f p block input bandL bandR).source.sources.value
+                  u).get
+              v).2
+          run)
+        ((ThinMatrix.GraphResidualFamilies.fromInputs f p block input bandL bandR).keys.value.masks.get i)
+        ((ThinMatrix.GraphResidualFamilies.fromInputs f p block input bandL bandR).keys.value.masks.get j)
+        ((ThinMatrix.GraphResidualFamilies.fromInputs f p block input bandL bandR).keys.value.channels.get c)).value
+ThinMatrix.GraphResidualFamilies.fromInputs_bits {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR : ℕ) :
+  (ThinMatrix.GraphResidualFamilies.fromInputs f p block input bandL bandR).keys.bitSteps +
+      (ThinMatrix.GraphResidualFamilies.fromInputs f p block input bandL bandR).roots.bitSteps ≤
+    ThinMatrix.GraphResidualFamilies.bitBudget p.L p.m f.cyclic p.t (ThinMatrix.GoodMapEmbedding.goodSlots p.L p.m).card
+      (2 ^ (p.L + p.m))
+ThinMatrix.GraphResidualFamilies.fromInputs_control {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR : ℕ) :
+  (ThinMatrix.GraphResidualFamilies.fromInputs f p block input bandL bandR).keys.control +
+      (ThinMatrix.GraphResidualFamilies.fromInputs f p block input bandL bandR).roots.control ≤
+    ThinMatrix.ResidualFamilyKeys.prepareBudget p.L p.m p.t (ThinMatrix.GoodMapEmbedding.goodSlots p.L p.m).card +
+      ThinMatrix.GraphResidualFamilies.controlBudget p.L p.m f.cyclic p.t
+        (ThinMatrix.GoodMapEmbedding.goodSlots p.L p.m).card
+ThinMatrix.GraphResidualFamilies.fromInputs_entries {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR : ℕ) :
+  ThinMatrix.GraphResidualFamilies.rootEntries
+      (ThinMatrix.GraphResidualFamilies.fromInputs f p block input bandL bandR).roots.value =
+    (2 * if p.m = 0 then 1 else 4096 * p.m ^ 6) * (2 * p.m + 1) *
+        (ThinMatrix.GoodMapEmbedding.goodSlots p.L p.m).card ^ 2 *
+      ThinMatrix.ResidualFamilyKeys.channelCount p.m p.t
+ThinMatrix.GraphResidualFamilies.rootCells_eq {L m C t : ℕ} (xs : ThinMatrix.GraphResidualFamilies.Roots L m C t) :
+  ThinMatrix.GraphResidualFamilies.rootCells xs =
+    2 * ThinMatrix.ExactHalfSourcePlan.J m ^ 2 * (2 * m + 1) * (ThinMatrix.GoodMapEmbedding.goodSlots L m).card ^ 2 *
+        ThinMatrix.ResidualFamilyKeys.channelCount m t *
+      (3 ^ (2 * (L - m)) * (m + 1) * C)
+ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work (w : (n : ℕ) → ThinMatrix.StoredMinPlusAPSP.OptionalTable n)
+  (W : ℕ → ℕ) (degree : ℕ)
+  (hw : ∀ (n : ℕ), ThinMatrix.APSPReduction.EdgeBound (ThinMatrix.StoredMinPlusAPSP.decode (w n)) (W n))
+  (hW : ∀ (n : ℕ), W n ≤ n ^ degree)
+  (hno : ∀ (n : ℕ), ThinMatrix.APSPReduction.NoNegativeCycles (ThinMatrix.StoredMinPlusAPSP.decode (w n))) :
+  (∀ (n : ℕ),
+      ThinMatrix.APSPReduction.IsAPSP (ThinMatrix.StoredMinPlusAPSP.decode (w n))
+        (ThinMatrix.StoredMinPlusAPSP.decode
+          (ThinMatrix.BinaryAPSPCaller.viewOptional
+            (ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                  (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).core.value))) ∧
+    (fun n =>
+        ↑(ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+              (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).work) =O[Filter.atTop]
+      fun n => ↑n ^ (299294792 / 100000000)
+'ThinMatrix.GraphResidualFamilies.fromInputs_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphResidualFamilies.fromInputs_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphResidualFamilies.fromInputs_left_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphResidualFamilies.fromInputs_entries' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.RetainedResidualFamily.produce_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]

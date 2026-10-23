@@ -1,0 +1,13 @@
+Bounded independent low-recombination fixture; 180-second process-group deadline.
+PASS: each shared integer degree run occurs exactly once, m=0..8
+PASS: actual masked Walsh source stores against subset/parity reference; zero and ordinary residual dimensions
+PASS: actual translated run stores, both orientations, selected translation pairs, every word and cyclic coefficient
+PASS: empty strict channels, zero dimension, duplicate requests and rejected bands
+PASS: actual physical locators and ordinary forms with zero distinguished dimension
+PASS: all actual mask pairs and shared runs; independent degree-matched physical pencil
+PASS: nonzero rare-letter channels, shared degree filtering, all formal/cyclic coefficients
+PASS: bounded LOW recombination suite finished; no full graph or production FFT evaluation.
+Exit code: 0; elapsed: 35.986 seconds.
+Independent nonzero degree-matched reference: L=m=2, t=3, q=3, full masks, labels 0 gives residues [-6272, 21952, -15680].
+Runtime scope: actual ExactHalfBandSources stores are checked for selected translation pairs against independent subset/parity formulas. Separately, the exhaustive mask/run/root/window/completion collector is checked on synthetic signed raw inputs with explicit degree filters and actual physical locators. The graph-wide specialization is kernel checked, not runtime evaluated.
+Source/configuration SHA-256: d1fca8d872a5579f0e045182af3ca75f18bda5eb1658f1ffe87d6011bc1f20bb

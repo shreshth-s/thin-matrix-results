@@ -1,0 +1,90 @@
+ThinMatrix.CWCoordinatePermutations.exists_permute.{u_1} {A : Type u_1} [DecidableEq A] (n : ℕ)
+  (u v : ThinMatrix.PolynomialDegeneration.PowerIndex A n)
+  (h : ∀ (a : A), ThinMatrix.CWTypeCounts.count a n u = ThinMatrix.CWTypeCounts.count a n v) :
+  ∃ e, (ThinMatrix.CWCoordinatePermutations.permute n e) u = v
+ThinMatrix.CWTypeRegularity.x_regular (n : ℕ) (reference w : ThinMatrix.CWBlockWords.Word n)
+  (hw : w ∈ ThinMatrix.CWFilteredHashCounts.fullClass n reference) :
+  (ThinMatrix.CWTypeRegularity.fiber n reference ThinMatrix.CWSixBlocks.cx (ThinMatrix.CWBlockWords.wx n w)).card =
+    ThinMatrix.CWTypeRegularity.degree n reference ThinMatrix.CWSixBlocks.cx
+ThinMatrix.CWTypeRegularity.y_regular (n : ℕ) (reference w : ThinMatrix.CWBlockWords.Word n)
+  (hw : w ∈ ThinMatrix.CWFilteredHashCounts.fullClass n reference) :
+  (ThinMatrix.CWTypeRegularity.fiber n reference ThinMatrix.CWSixBlocks.cy (ThinMatrix.CWBlockWords.wy n w)).card =
+    ThinMatrix.CWTypeRegularity.degree n reference ThinMatrix.CWSixBlocks.cy
+ThinMatrix.CWTypeRegularity.z_regular (n : ℕ) (reference w : ThinMatrix.CWBlockWords.Word n)
+  (hw : w ∈ ThinMatrix.CWFilteredHashCounts.fullClass n reference) :
+  (ThinMatrix.CWTypeRegularity.fiber n reference ThinMatrix.CWSixBlocks.cz (ThinMatrix.CWBlockWords.wz n w)).card =
+    ThinMatrix.CWTypeRegularity.degree n reference ThinMatrix.CWSixBlocks.cz
+ThinMatrix.CWTypeCollisionCount.collision_identity (n : ℕ) (reference : ThinMatrix.CWBlockWords.Word n) :
+  (ThinMatrix.CWQuantitativeCleanup.allCollisions n reference).card =
+    (ThinMatrix.CWFilteredHashCounts.fullClass n reference).card *
+      (ThinMatrix.CWTypeCollisionCount.totalDegree n reference - 3)
+ThinMatrix.CWTypeCardinalities.fullClass_card (n : ℕ) (reference : ThinMatrix.CWBlockWords.Word n) :
+  (ThinMatrix.CWFilteredHashCounts.fullClass n reference).card =
+    Nat.multinomial Finset.univ fun b => ThinMatrix.CWTypeCounts.count b n reference
+ThinMatrix.CWTypeCardinalities.marginalClass_card (n : ℕ) (x : ThinMatrix.CWBlockWords.Colors n) :
+  (ThinMatrix.CWTypeCardinalities.marginalClass n x).card =
+    Nat.multinomial Finset.univ fun a => ThinMatrix.CWTypeCounts.count a n x
+ThinMatrix.CWTypeCardinalities.x_factorization (n : ℕ) (reference : ThinMatrix.CWBlockWords.Word n) :
+  ThinMatrix.CWTypeCardinalities.marginalCount n reference ThinMatrix.CWSixBlocks.cx *
+      ThinMatrix.CWTypeRegularity.degree n reference ThinMatrix.CWSixBlocks.cx =
+    ThinMatrix.CWTypeCardinalities.jointCount n reference
+ThinMatrix.CWTypeCardinalities.y_factorization (n : ℕ) (reference : ThinMatrix.CWBlockWords.Word n) :
+  ThinMatrix.CWTypeCardinalities.marginalCount n reference ThinMatrix.CWSixBlocks.cy *
+      ThinMatrix.CWTypeRegularity.degree n reference ThinMatrix.CWSixBlocks.cy =
+    ThinMatrix.CWTypeCardinalities.jointCount n reference
+ThinMatrix.CWTypeCardinalities.z_factorization (n : ℕ) (reference : ThinMatrix.CWBlockWords.Word n) :
+  ThinMatrix.CWTypeCardinalities.marginalCount n reference ThinMatrix.CWSixBlocks.cz *
+      ThinMatrix.CWTypeRegularity.degree n reference ThinMatrix.CWSixBlocks.cz =
+    ThinMatrix.CWTypeCardinalities.jointCount n reference
+ThinMatrix.CWMultinomialSurvival.exact_collision_count (n : ℕ) (reference : ThinMatrix.CWBlockWords.Word n) :
+  (ThinMatrix.CWQuantitativeCleanup.allCollisions n reference).card =
+    ThinMatrix.CWTypeCardinalities.jointCount n reference * (ThinMatrix.CWMultinomialSurvival.degreeSum n reference - 3)
+ThinMatrix.CWTypePrimeChoice.selected_spec (n : ℕ) (reference : ThinMatrix.CWBlockWords.Word n) :
+  Nat.Prime (ThinMatrix.CWTypePrimeChoice.selected n reference) ∧
+    2 * ThinMatrix.CWMultinomialSurvival.degreeSum n reference < ThinMatrix.CWTypePrimeChoice.selected n reference ∧
+      ThinMatrix.CWTypePrimeChoice.selected n reference ≤ 4 * ThinMatrix.CWMultinomialSurvival.degreeSum n reference
+ThinMatrix.CWTypePrimeChoice.selected_density_survival (n : ℕ) (hn : 0 < n) (reference : ThinMatrix.CWBlockWords.Word n)
+  (B : Finset (ZMod (ThinMatrix.CWTypePrimeChoice.selected n reference))) (hB : ThreeAPFree ↑B) :
+  ∃ r,
+    ↑(ThinMatrix.CWTypePrimeChoice.smallestMarginal n reference) * ↑B.card /
+        (24 * ↑(ThinMatrix.CWTypePrimeChoice.selected n reference)) ≤
+      ↑(ThinMatrix.CWQuantitativeCleanup.survivors (ThinMatrix.CWTypePrimeChoice.selected n reference) n reference B
+            r).card
+def ThinMatrix.CWTypePrimeChoice.selected : (n : ℕ) → ThinMatrix.CWBlockWords.Word n → ℕ :=
+fun n reference => Nat.find ⋯
+def ThinMatrix.CWQuantitativeCleanup.survivors : (M : ℕ) →
+  [Fact (Nat.Prime M)] →
+    (n : ℕ) →
+      ThinMatrix.CWBlockWords.Word n →
+        Finset (ZMod M) → ThinMatrix.CWHashFibers.Sample (ZMod M) n → Finset (ThinMatrix.CWBlockWords.Word n) :=
+fun M [Fact (Nat.Prime M)] n reference B r => ThinMatrix.CWHashedCandidates.kept n reference r.1 r.2.1 r.2.2 B
+ThinMatrix.CWIndependentCopies.exact_decomposition (n : ℕ) (reference : ThinMatrix.CWBlockWords.Word n)
+  (X Y Z : Finset (ThinMatrix.CWBlockWords.Colors n)) :
+  ThinMatrix.FiniteTrilinear.total (ThinMatrix.CWIndependentCopies.terms n reference X Y Z) =
+    ThinMatrix.CWIndependentCopies.directSum n reference X Y Z
+ThinMatrix.GraphFoldedCountCorrect.finite_modCount {n h r : ℕ} (hh : 0 < h)
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (i : Fin (ThinMatrix.EndToEndAPSP.incidenceSize n h)) :
+  (ThinMatrix.BinaryCell.view (ThinMatrix.GraphFoldedCountCorrect.output f input h i)).toNat =
+    (ThinMatrix.EndToEndAPSP.flatInstance (ThinMatrix.BinaryFoldedFormation.viewTable input.left)
+          (ThinMatrix.BinaryFoldedFormation.viewTable input.right)
+          (ThinMatrix.BinaryFoldedFormation.viewTable input.target)).modCount
+      r i
+ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work (w : (n : ℕ) → ThinMatrix.StoredMinPlusAPSP.OptionalTable n)
+  (W : ℕ → ℕ) (degree : ℕ)
+  (hw : ∀ (n : ℕ), ThinMatrix.APSPReduction.EdgeBound (ThinMatrix.StoredMinPlusAPSP.decode (w n)) (W n))
+  (hW : ∀ (n : ℕ), W n ≤ n ^ degree)
+  (hno : ∀ (n : ℕ), ThinMatrix.APSPReduction.NoNegativeCycles (ThinMatrix.StoredMinPlusAPSP.decode (w n))) :
+  (∀ (n : ℕ),
+      ThinMatrix.APSPReduction.IsAPSP (ThinMatrix.StoredMinPlusAPSP.decode (w n))
+        (ThinMatrix.StoredMinPlusAPSP.decode
+          (ThinMatrix.BinaryAPSPCaller.viewOptional
+            (ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                  (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).core.value))) ∧
+    (fun n =>
+        ↑(ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+              (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).work) =O[Filter.atTop]
+      fun n => ↑n ^ (299294792 / 100000000)
+'ThinMatrix.CWTypeCollisionCount.collision_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWTypePrimeChoice.selected_density_survival' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]

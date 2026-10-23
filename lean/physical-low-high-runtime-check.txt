@@ -1,0 +1,12 @@
+Bounded physical LOW/HIGH fixture; deadline 180 seconds.
+PASS: physical word inverse and ordinary forms, zero and one-dimensional masks, every physical word/label/orientation
+PASS: physical word inverse and outside p1 annihilation, all actual L=2,m=1 mask pairs and physical words/labels
+PASS: zero-dimensional executed HIGH queries, duplicate/rejected requests, cyclic sums and finite work
+PASS: all-outside executed HIGH queries against independent physical leaf threshold sum
+PASS: all thresholds/crops for L=m=1, actual binary HIGH recurrence, key scans and all cyclic coefficients
+PASS: zero raw coefficients preserve executable request/selection work
+PASS: counted retained collection: empty dimensions, signed sums and duplicate request values
+PASS: bounded physical LOW/HIGH suite finished; no full graph or production FFT evaluation.
+Exit code: 0; elapsed: 5.990 seconds.
+Independent signed L=m=1, cap=0, q=3 physical HIGH references for t=0,1,2: [[16,16,-32],[-48,-48,96],[16,16,-32]]. Direct Python literal tensor and cyclic enumeration; nonzero references confirm these cases are nonvacuous.
+Source/configuration SHA-256: eb366ccc35697f6e75c444968ddb9c7d63b2665c0ef6fa0939e3d9ccbb0fc9fb

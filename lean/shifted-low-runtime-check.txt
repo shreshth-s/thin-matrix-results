@@ -1,0 +1,12 @@
+Bounded independent shifted-low fixture; 180-second process-group deadline.
+PASS: empty channel list, zero physical/residual dimensions and threshold one
+PASS: nonempty ordinary residual, opposite forms and every cyclic residue; m=0
+PASS: shifted private p1 baseline and weighted degree-one functional; m=1
+PASS: distinct physical masks, retained windows/forms and shifted LOW; L=2,m=1
+PASS: joint strict channels, nonzero rare letters, full product degrees and cyclic residues; m=2
+PASS: bounded shifted-LOW suite finished; duplicate and rejected requests retained in every case.
+Exit code: 0; elapsed: 8.007 seconds.
+Independent nonzero reference audit: L=m=2, t=3, q=3, full masks, label 0 gives residues [-6272, 21952, -15680].
+An initial reference-only attempt used partial list reads at zero polynomial tails and reached its 180-second deadline. It was terminated and is not counted as passing; the corrected reference uses explicit zero defaults. The successful run above is the corrected fixture.
+Full graph/family entry points are kernel checked only. No previous expensive graph/FFT runtime attempt was repeated.
+Source/configuration SHA-256: b70a80234bcd5dd03f97f5a4c8ff716d7fe0323898433f9ca90a3884b9ce4bcc

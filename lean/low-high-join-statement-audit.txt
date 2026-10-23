@@ -1,0 +1,1622 @@
+theorem ThinMatrix.GraphPhysicalQueries.matched_embedding : ∀ {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR ell : ℕ) (request : Fin (ThinMatrix.FoldedBackendExecution.windowQuerySize n)),
+  have graph := ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell;
+  have q := ThinMatrix.LowRequestLocator.physical graph input.target request;
+  ThinMatrix.PhysicalLowHighGeometry.embedding
+      (ThinMatrix.GraphPhysicalLow.mask graph (ThinMatrix.RootRequestSelection.rowRank q.row))
+      (ThinMatrix.GraphPhysicalLow.mask graph (ThinMatrix.RootRequestSelection.rowRank q.column)) =
+    (ThinMatrix.CroppedHighQueries.geometry graph.permuted.transformed.source.roots.source.shape q).embedding :=
+fun {n h r} f p block input bandL bandR ell request =>
+  id
+    (And.casesOn (ThinMatrix.LowRequestLocator.fromInputs_masks f p block input bandL bandR ell request) fun ha hb =>
+      id
+        (id
+          (id
+            (id
+              (Eq.mpr
+                (id
+                  (congrFun'
+                    (congrArg Eq
+                      (ThinMatrix.CompleteThinProduct.physicalEmbedding.congr_simp
+                        (ThinMatrix.PhysicalSupportProducts.support
+                          (ThinMatrix.GraphPhysicalLow.mask
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                            (ThinMatrix.RootRequestSelection.rowRank
+                              (ThinMatrix.LowRequestLocator.physical
+                                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                  input.target request).row)))
+                        (↑(ThinMatrix.RowIndexing.rowUnrank
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                              ell).permuted.transformed.source.roots.source.shape.layout
+                              (ThinMatrix.LowRequestLocator.physical
+                                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                  input.target request).row).1)
+                        ha
+                        (ThinMatrix.PhysicalSupportProducts.support
+                          (ThinMatrix.GraphPhysicalLow.mask
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                            (ThinMatrix.RootRequestSelection.rowRank
+                              (ThinMatrix.LowRequestLocator.physical
+                                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                  input.target request).column)))
+                        (↑(ThinMatrix.RowIndexing.rowUnrank
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                              ell).permuted.transformed.source.roots.source.shape.layout
+                              (ThinMatrix.LowRequestLocator.physical
+                                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                  input.target request).column).1)
+                        hb
+                        (ThinMatrix.PhysicalLowHighGeometry.support_size
+                          (ThinMatrix.GraphPhysicalLow.mask
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                            (ThinMatrix.RootRequestSelection.rowRank
+                              (ThinMatrix.LowRequestLocator.physical
+                                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                  input.target request).row)))
+                        (ThinMatrix.PhysicalLowHighGeometry.support_size
+                          (ThinMatrix.GraphPhysicalLow.mask
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                            (ThinMatrix.RootRequestSelection.rowRank
+                              (ThinMatrix.LowRequestLocator.physical
+                                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                  input.target request).column)))))
+                    ((ThinMatrix.CompleteThinProduct.physicalSupport
+                          ↑(ThinMatrix.RowIndexing.rowUnrank
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                                ell).permuted.transformed.source.roots.source.shape.layout
+                                (ThinMatrix.LowRequestLocator.physical
+                                    (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                    input.target request).row).1
+                          ↑(ThinMatrix.RowIndexing.rowUnrank
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                                ell).permuted.transformed.source.roots.source.shape.layout
+                                (ThinMatrix.LowRequestLocator.physical
+                                    (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                    input.target request).column).1).orderEmbOfFin
+                      (ThinMatrix.CompleteThinProduct.physicalSupport_card
+                        (↑(ThinMatrix.RowIndexing.rowUnrank
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                              ell).permuted.transformed.source.roots.source.shape.layout
+                              (ThinMatrix.LowRequestLocator.physical
+                                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                  input.target request).row).1)
+                        (↑(ThinMatrix.RowIndexing.rowUnrank
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                              ell).permuted.transformed.source.roots.source.shape.layout
+                              (ThinMatrix.LowRequestLocator.physical
+                                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                  input.target request).column).1)
+                        (ThinMatrix.BinaryBackendExecution.queryGeometry._proof_1
+                          (ThinMatrix.RowIndexing.rowUnrank
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                            ell).permuted.transformed.source.roots.source.shape.layout
+                            (ThinMatrix.LowRequestLocator.physical
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                                request).row))
+                        (ThinMatrix.BinaryBackendExecution.queryGeometry._proof_1
+                          (ThinMatrix.RowIndexing.rowUnrank
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                            ell).permuted.transformed.source.roots.source.shape.layout
+                            (ThinMatrix.LowRequestLocator.physical
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                                request).column))))))
+                (Eq.refl
+                  (ThinMatrix.CompleteThinProduct.physicalEmbedding
+                    (↑(ThinMatrix.RowIndexing.rowUnrank
+                          (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                          ell).permuted.transformed.source.roots.source.shape.layout
+                          (ThinMatrix.LowRequestLocator.physical
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                              request).row).1)
+                    (↑(ThinMatrix.RowIndexing.rowUnrank
+                          (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                          ell).permuted.transformed.source.roots.source.shape.layout
+                          (ThinMatrix.LowRequestLocator.physical
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                              request).column).1)
+                    (ha ▸
+                      ThinMatrix.PhysicalLowHighGeometry.support_size
+                        (ThinMatrix.GraphPhysicalLow.mask
+                          (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                          (ThinMatrix.RootRequestSelection.rowRank
+                            (ThinMatrix.LowRequestLocator.physical
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                                request).row)))
+                    (hb ▸
+                      ThinMatrix.PhysicalLowHighGeometry.support_size
+                        (ThinMatrix.GraphPhysicalLow.mask
+                          (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                          (ThinMatrix.RootRequestSelection.rowRank
+                            (ThinMatrix.LowRequestLocator.physical
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                                request).column))))))))))
+'ThinMatrix.GraphPhysicalQueries.matched_embedding' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem ThinMatrix.GraphLowHighJoin.joined_fromInputs : ∀ {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR ell : ℕ) (request : Fin (ThinMatrix.FoldedBackendExecution.windowQuerySize n)) (residue : Fin f.cyclic),
+  have graph := ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell;
+  have q := ThinMatrix.LowRequestLocator.physical graph input.target request;
+  ThinMatrix.BinaryCell.view
+        ((ThinMatrix.RootProductCollection.output
+              (ThinMatrix.GraphLowMaskAssembly.execute graph input.target bandL bandR).value request).get
+          residue) +
+      ThinMatrix.BinaryCell.view
+        ((ThinMatrix.CountedCyclicCollection.output
+              (ThinMatrix.GraphHighFamily.execute graph input.target bandL bandR).2.value request).get
+          residue) =
+    if q.bandL = bandL ∧ q.bandR = bandR then
+      ∑ u,
+        ∑ v,
+          ∑ run ∈ Finset.Icc (-↑p.m) ↑p.m, ThinMatrix.GraphLowHighJoin.inner graph input.target request u v run residue
+    else 0 :=
+fun {n h r} f p block input bandL bandR ell request residue =>
+  id
+    (Eq.mpr
+      (id
+        (congrArg
+          (fun _a =>
+            _a +
+                ThinMatrix.BinaryCell.view
+                  ((ThinMatrix.CountedCyclicCollection.output
+                        (ThinMatrix.GraphHighFamily.execute
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                              bandL bandR).2.value
+                        request).get
+                    residue) =
+              if
+                  (ThinMatrix.LowRequestLocator.physical
+                          (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                          request).bandL =
+                      bandL ∧
+                    (ThinMatrix.LowRequestLocator.physical
+                          (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                          request).bandR =
+                      bandR then
+                ∑ u,
+                  ∑ v,
+                    ∑ run ∈ Finset.Icc (-↑p.m) ↑p.m,
+                      ThinMatrix.GraphLowHighJoin.inner
+                        (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target request
+                        u v run residue
+              else 0)
+          (ThinMatrix.GraphLowHighJoin.low_fromInputs f p block input bandL bandR ell request residue)))
+      (Eq.mpr
+        (id
+          (congrArg
+            (fun _a =>
+              (if
+                      (ThinMatrix.LowRequestLocator.physical
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                              request).bandL =
+                          bandL ∧
+                        (ThinMatrix.LowRequestLocator.physical
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                              request).bandR =
+                          bandR then
+                    ∑ u,
+                      ∑ v,
+                        ∑ run ∈ Finset.Icc (-↑p.m) ↑p.m,
+                          ThinMatrix.GraphLowHighJoin.low
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                            request u v run residue
+                  else 0) +
+                  _a =
+                if
+                    (ThinMatrix.LowRequestLocator.physical
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                            request).bandL =
+                        bandL ∧
+                      (ThinMatrix.LowRequestLocator.physical
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                            request).bandR =
+                        bandR then
+                  ∑ u,
+                    ∑ v,
+                      ∑ run ∈ Finset.Icc (-↑p.m) ↑p.m,
+                        ThinMatrix.GraphLowHighJoin.inner
+                          (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                          request u v run residue
+                else 0)
+            (ThinMatrix.GraphLowHighJoin.high_fromInputs f p block input bandL bandR ell request residue)))
+        (if h_1 :
+            (ThinMatrix.LowRequestLocator.physical
+                    (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                    request).bandL =
+                bandL ∧
+              (ThinMatrix.LowRequestLocator.physical
+                    (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                    request).bandR =
+                bandR then
+          Eq.mpr (id (congr (congrArg Eq (congr (congrArg HAdd.hAdd (if_pos h_1)) (if_pos h_1))) (if_pos h_1)))
+            (of_eq_true
+              (Eq.trans
+                (congrFun'
+                  (congrArg Eq
+                    (Eq.trans ThinMatrix.GraphLowHighJoin.joined_fromInputs._simp_1_1
+                      (Finset.sum_congr (Eq.refl Finset.univ) fun x a =>
+                        Eq.trans ThinMatrix.GraphLowHighJoin.joined_fromInputs._simp_1_1
+                          (Finset.sum_congr (Eq.refl Finset.univ) fun x_1 a =>
+                            Eq.trans ThinMatrix.GraphLowHighJoin.joined_fromInputs._simp_1_1
+                              (Finset.sum_congr (Eq.refl (Finset.Icc (-↑p.m) ↑p.m)) fun x_2 a =>
+                                congrFun
+                                  (ThinMatrix.GraphLowHighJoin.one_run
+                                    (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                    input.target request x x_1 x_2)
+                                  residue)))))
+                  (∑ x,
+                    ∑ x_1,
+                      ∑ x_2 ∈ Finset.Icc (-↑p.m) ↑p.m,
+                        ThinMatrix.GraphLowHighJoin.inner
+                          (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                          request x x_1 x_2 residue))
+                (eq_self
+                  (∑ x,
+                    ∑ x_1,
+                      ∑ x_2 ∈ Finset.Icc (-↑p.m) ↑p.m,
+                        ThinMatrix.GraphLowHighJoin.inner
+                          (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                          request x x_1 x_2 residue))))
+        else
+          Eq.mpr (id (congr (congrArg Eq (congr (congrArg HAdd.hAdd (if_neg h_1)) (if_neg h_1))) (if_neg h_1)))
+            (Eq.refl (0 + 0)))))
+'ThinMatrix.GraphLowHighJoin.joined_fromInputs' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem ThinMatrix.CroppedPhysicalContraction.contraction.{u_1} : ∀ {R : Type u_1} [inst : CommRing R] {L m k : ℕ}
+  (cap : ℕ) (X : ThinMatrix.WalshEmbedding.RawLeftInput L m k R) (Y : ThinMatrix.WalshEmbedding.RawRightInput L m k R)
+  (good : Finset (Finset (Fin L))) (gamma : ThinMatrix.WalshEmbedding.Cube L → ThinMatrix.WalshEmbedding.Cube m)
+  (delta : ThinMatrix.WalshEmbedding.Cube L → ThinMatrix.WalshEmbedding.Cube k) (QL QR : Finset (Fin L))
+  (hQL : QL.card = m) (hQR : QR.card = m) (iL iR jL jR : ThinMatrix.WalshEmbedding.Cube L),
+  (∑ run ∈ Finset.Icc (-↑m) ↑m,
+      ThinMatrix.TensorContraction.bilinear
+        (ThinMatrix.CompleteThinProduct.absorbedInput (ThinMatrix.CompleteThinProduct.physicalEmbedding QL QR hQL hQR)
+          (ThinMatrix.CompleteThinProduct.sourceOutside iL iR jL jR)
+          (fun a =>
+            ThinMatrix.CroppedSourceContraction.crop cap
+              (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a.1 a.2)
+          (ThinMatrix.PhysicalShiftedForms.lift true))
+        (ThinMatrix.CompleteThinProduct.absorbedInput (ThinMatrix.CompleteThinProduct.physicalEmbedding QL QR hQL hQR)
+          (ThinMatrix.CompleteThinProduct.sourceOutside iL iR jL jR)
+          (fun b =>
+            ThinMatrix.CroppedSourceContraction.crop cap
+              (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b.1 b.2)
+          (ThinMatrix.PhysicalShiftedForms.lift false))
+        fun a b =>
+        ∏ i,
+          ThinMatrix.CompleteThinProduct.fullKernel
+            (fun j =>
+              ThinMatrix.PhysicalShiftedForms.lift true
+                ((ThinMatrix.CompleteThinProduct.physicalEmbedding QL QR hQL hQR) j))
+            (fun j =>
+              ThinMatrix.PhysicalShiftedForms.lift false
+                ((ThinMatrix.CompleteThinProduct.physicalEmbedding QL QR hQL hQR) j))
+            i a b) =
+    ThinMatrix.CroppedSourceContraction.contraction cap X Y good gamma delta QL QR iL iR jL jR :=
+fun {R} [CommRing R] {L m k} cap X Y good gamma delta QL QR hQL hQR iL iR jL jR =>
+  id
+    (Finset.sum_congr rfl fun run a =>
+      id
+        (Eq.mpr
+          (id
+            (congrFun'
+              (congrArg Eq
+                (Finset.sum_congr (Eq.refl Finset.univ) fun x a =>
+                  Finset.sum_congr (Eq.refl Finset.univ) fun x_1 a =>
+                    congr
+                      (congrArg HMul.hMul
+                        (congr
+                          (congrArg HMul.hMul
+                            (congrArg
+                              (HMul.hMul
+                                (ThinMatrix.CroppedSourceContraction.crop cap
+                                  (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) x.1 x.2))
+                              (ThinMatrix.CroppedPhysicalContraction.physical_outsideF QL QR hQL hQR iL iR jL jR x)))
+                          (congrArg
+                            (HMul.hMul
+                              (ThinMatrix.CroppedSourceContraction.crop cap
+                                (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) x_1.1 x_1.2))
+                            (ThinMatrix.CroppedPhysicalContraction.physical_outsideG QL QR hQL hQR iL iR jL jR x_1))))
+                      (ThinMatrix.CroppedPhysicalContraction.physical_inner QL QR hQL hQR x x_1)))
+              (∑ nL,
+                ∑ nR,
+                  ∑ oL,
+                    ∑ oR,
+                      ThinMatrix.CroppedSourceContraction.pairTerm cap X Y good gamma delta QL QR iL iR jL jR run nL nR
+                        oL oR)))
+          (Eq.mpr
+            (id
+              (congrFun'
+                (congrArg Eq
+                  (Eq.trans
+                    (Eq.trans
+                      (Finset.sum_congr (Eq.refl Finset.univ) fun x a =>
+                        Eq.trans
+                          (Fintype.sum_prod_type fun x_1 =>
+                            ThinMatrix.CroppedSourceContraction.crop cap
+                                    (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) x.1 x.2 *
+                                  ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR x *
+                                (ThinMatrix.CroppedSourceContraction.crop cap
+                                    (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) x_1.1 x_1.2 *
+                                  ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR x_1) *
+                              ThinMatrix.CompleteThinProduct.sourceInner QL QR x x_1)
+                          (Finset.sum_congr (Eq.refl Finset.univ) fun x_1 a =>
+                            Finset.sum_congr (Eq.refl Finset.univ) fun x_2 a =>
+                              Eq.refl
+                                (ThinMatrix.CroppedSourceContraction.crop cap
+                                        (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) x.1 x.2 *
+                                      ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR x *
+                                    (ThinMatrix.CroppedSourceContraction.crop cap
+                                        (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) x_1 x_2 *
+                                      ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (x_1, x_2)) *
+                                  ThinMatrix.CompleteThinProduct.sourceInner QL QR x (x_1, x_2))))
+                      (Fintype.sum_prod_type fun x =>
+                        ∑ x_1,
+                          ∑ x_2,
+                            ThinMatrix.CroppedSourceContraction.crop cap
+                                    (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) x.1 x.2 *
+                                  ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR x *
+                                (ThinMatrix.CroppedSourceContraction.crop cap
+                                    (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) x_1 x_2 *
+                                  ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (x_1, x_2)) *
+                              ThinMatrix.CompleteThinProduct.sourceInner QL QR x (x_1, x_2)))
+                    (Finset.sum_congr (Eq.refl Finset.univ) fun x a =>
+                      Finset.sum_congr (Eq.refl Finset.univ) fun x_1 a =>
+                        Finset.sum_congr (Eq.refl Finset.univ) fun x_2 a =>
+                          Finset.sum_congr (Eq.refl Finset.univ) fun x_3 a =>
+                            Eq.refl
+                              (ThinMatrix.CroppedSourceContraction.crop cap
+                                      (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) x x_1 *
+                                    ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (x, x_1) *
+                                  (ThinMatrix.CroppedSourceContraction.crop cap
+                                      (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) x_2 x_3 *
+                                    ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (x_2, x_3)) *
+                                ThinMatrix.CompleteThinProduct.sourceInner QL QR (x, x_1) (x_2, x_3)))))
+                (∑ nL,
+                  ∑ nR,
+                    ∑ oL,
+                      ∑ oR,
+                        ThinMatrix.CroppedSourceContraction.pairTerm cap X Y good gamma delta QL QR iL iR jL jR run nL
+                          nR oL oR)))
+            (Finset.sum_congr rfl fun a a_1 =>
+              Eq.mpr
+                (id
+                  (congrArg
+                    (fun _a =>
+                      _a =
+                        ∑ nR,
+                          ∑ oL,
+                            ∑ oR,
+                              ThinMatrix.CroppedSourceContraction.pairTerm cap X Y good gamma delta QL QR iL iR jL jR
+                                run a nR oL oR)
+                    Finset.sum_comm))
+                (Finset.sum_congr rfl fun b a_2 =>
+                  Eq.mpr
+                    (id
+                      (congrArg
+                        (fun _a =>
+                          _a =
+                            ∑ oL,
+                              ∑ oR,
+                                ThinMatrix.CroppedSourceContraction.pairTerm cap X Y good gamma delta QL QR iL iR jL jR
+                                  run a b oL oR)
+                        Finset.sum_comm))
+                    (Finset.sum_congr rfl fun c a_3 =>
+                      Finset.sum_congr rfl fun e a_4 =>
+                        Eq.mpr
+                          (id
+                            (congrArg
+                              (fun _a =>
+                                ThinMatrix.CroppedSourceContraction.crop cap
+                                          (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e *
+                                        ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) *
+                                      (ThinMatrix.CroppedSourceContraction.crop cap
+                                          (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b c *
+                                        ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c)) *
+                                    ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) =
+                                  _a)
+                              (ThinMatrix.CroppedSourceContraction.pairTerm.eq_1 cap X Y good gamma delta QL QR iL iR jL
+                                jR run a b c e)))
+                          (Eq.mpr
+                            (id
+                              (congrArg
+                                (fun _a =>
+                                  ThinMatrix.CroppedSourceContraction.crop cap
+                                            (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e *
+                                          ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) *
+                                        (ThinMatrix.CroppedSourceContraction.crop cap
+                                            (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b c *
+                                          ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c)) *
+                                      ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) =
+                                    _a *
+                                        ThinMatrix.CroppedSourceContraction.crop cap
+                                          (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e *
+                                      ThinMatrix.CroppedSourceContraction.crop cap
+                                        (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b c)
+                                (ThinMatrix.CroppedPhysicalContraction.half_factor QL QR iL iR jL jR (a, e) (b, c))))
+                            (Mathlib.Tactic.Ring.of_eq
+                              (Mathlib.Tactic.Ring.Common.mul_congr
+                                (Mathlib.Tactic.Ring.Common.mul_congr
+                                  (Mathlib.Tactic.Ring.Common.mul_congr
+                                    (Mathlib.Tactic.Ring.Common.atom_pf
+                                      (ThinMatrix.CroppedSourceContraction.crop cap
+                                        (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e)
+                                      rfl
+                                      (Eq.mpr
+                                        (id
+                                          (congrArg
+                                            (fun _a =>
+                                              ThinMatrix.CroppedSourceContraction.crop cap
+                                                      (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a
+                                                      e ^
+                                                    Nat.rawCast 1 *
+                                                  Nat.rawCast 1 =
+                                                ThinMatrix.CroppedSourceContraction.crop cap
+                                                      (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a
+                                                      e ^
+                                                    Nat.rawCast 1 *
+                                                  _a)
+                                            (Eq.symm rfl)))
+                                        (Eq.refl
+                                          (ThinMatrix.CroppedSourceContraction.crop cap
+                                                (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e ^
+                                              Nat.rawCast 1 *
+                                            Nat.rawCast 1))))
+                                    (Mathlib.Tactic.Ring.Common.atom_pf
+                                      (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e)) rfl
+                                      (Eq.mpr
+                                        (id
+                                          (congrArg
+                                            (fun _a =>
+                                              ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                                    Nat.rawCast 1 *
+                                                  Nat.rawCast 1 =
+                                                ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR
+                                                      (a, e) ^
+                                                    Nat.rawCast 1 *
+                                                  _a)
+                                            (Eq.symm rfl)))
+                                        (Eq.refl
+                                          (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                              Nat.rawCast 1 *
+                                            Nat.rawCast 1))))
+                                    (Mathlib.Tactic.Ring.Common.add_mul
+                                      (Mathlib.Tactic.Ring.Common.mul_add
+                                        (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                          (ThinMatrix.CroppedSourceContraction.crop cap
+                                            (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e)
+                                          (Nat.rawCast 1)
+                                          (Mathlib.Tactic.Ring.Common.mul_pf_right
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e))
+                                            (Nat.rawCast 1)
+                                            (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                              (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                                (Mathlib.Meta.NormNum.IsNat.of_raw R 1)
+                                                (Mathlib.Meta.NormNum.IsNat.of_raw R 1) (Eq.refl 1)))))
+                                        (Mathlib.Tactic.Ring.Common.mul_zero
+                                          (ThinMatrix.CroppedSourceContraction.crop cap
+                                                (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e ^
+                                              Nat.rawCast 1 *
+                                            Nat.rawCast 1))
+                                        (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                          (ThinMatrix.CroppedSourceContraction.crop cap
+                                                  (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e ^
+                                                Nat.rawCast 1 *
+                                              (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                                  Nat.rawCast 1 *
+                                                Nat.rawCast 1) +
+                                            0)))
+                                      (Mathlib.Tactic.Ring.Common.zero_mul
+                                        (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                              Nat.rawCast 1 *
+                                            Nat.rawCast 1 +
+                                          0))
+                                      (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                        (ThinMatrix.CroppedSourceContraction.crop cap
+                                                (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e ^
+                                              Nat.rawCast 1 *
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                                Nat.rawCast 1 *
+                                              Nat.rawCast 1) +
+                                          0))))
+                                  (Mathlib.Tactic.Ring.Common.mul_congr
+                                    (Mathlib.Tactic.Ring.Common.atom_pf
+                                      (ThinMatrix.CroppedSourceContraction.crop cap
+                                        (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b c)
+                                      rfl
+                                      (Eq.mpr
+                                        (id
+                                          (congrArg
+                                            (fun _a =>
+                                              ThinMatrix.CroppedSourceContraction.crop cap
+                                                      (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run)
+                                                      b c ^
+                                                    Nat.rawCast 1 *
+                                                  Nat.rawCast 1 =
+                                                ThinMatrix.CroppedSourceContraction.crop cap
+                                                      (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run)
+                                                      b c ^
+                                                    Nat.rawCast 1 *
+                                                  _a)
+                                            (Eq.symm rfl)))
+                                        (Eq.refl
+                                          (ThinMatrix.CroppedSourceContraction.crop cap
+                                                (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b c ^
+                                              Nat.rawCast 1 *
+                                            Nat.rawCast 1))))
+                                    (Mathlib.Tactic.Ring.Common.atom_pf
+                                      (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c)) rfl
+                                      (Eq.mpr
+                                        (id
+                                          (congrArg
+                                            (fun _a =>
+                                              ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                                    Nat.rawCast 1 *
+                                                  Nat.rawCast 1 =
+                                                ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR
+                                                      (b, c) ^
+                                                    Nat.rawCast 1 *
+                                                  _a)
+                                            (Eq.symm rfl)))
+                                        (Eq.refl
+                                          (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                              Nat.rawCast 1 *
+                                            Nat.rawCast 1))))
+                                    (Mathlib.Tactic.Ring.Common.add_mul
+                                      (Mathlib.Tactic.Ring.Common.mul_add
+                                        (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                          (ThinMatrix.CroppedSourceContraction.crop cap
+                                            (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b c)
+                                          (Nat.rawCast 1)
+                                          (Mathlib.Tactic.Ring.Common.mul_pf_right
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c))
+                                            (Nat.rawCast 1)
+                                            (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                              (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                                (Mathlib.Meta.NormNum.IsNat.of_raw R 1)
+                                                (Mathlib.Meta.NormNum.IsNat.of_raw R 1) (Eq.refl 1)))))
+                                        (Mathlib.Tactic.Ring.Common.mul_zero
+                                          (ThinMatrix.CroppedSourceContraction.crop cap
+                                                (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b c ^
+                                              Nat.rawCast 1 *
+                                            Nat.rawCast 1))
+                                        (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                          (ThinMatrix.CroppedSourceContraction.crop cap
+                                                  (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b
+                                                  c ^
+                                                Nat.rawCast 1 *
+                                              (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                                  Nat.rawCast 1 *
+                                                Nat.rawCast 1) +
+                                            0)))
+                                      (Mathlib.Tactic.Ring.Common.zero_mul
+                                        (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                              Nat.rawCast 1 *
+                                            Nat.rawCast 1 +
+                                          0))
+                                      (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                        (ThinMatrix.CroppedSourceContraction.crop cap
+                                                (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b c ^
+                                              Nat.rawCast 1 *
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                                Nat.rawCast 1 *
+                                              Nat.rawCast 1) +
+                                          0))))
+                                  (Mathlib.Tactic.Ring.Common.add_mul
+                                    (Mathlib.Tactic.Ring.Common.mul_add
+                                      (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                        (ThinMatrix.CroppedSourceContraction.crop cap
+                                          (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e)
+                                        (Nat.rawCast 1)
+                                        (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                          (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e))
+                                          (Nat.rawCast 1)
+                                          (Mathlib.Tactic.Ring.Common.mul_pf_right
+                                            (ThinMatrix.CroppedSourceContraction.crop cap
+                                              (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b c)
+                                            (Nat.rawCast 1)
+                                            (Mathlib.Tactic.Ring.Common.mul_pf_right
+                                              (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c))
+                                              (Nat.rawCast 1)
+                                              (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                                (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                                  (Mathlib.Meta.NormNum.IsNat.of_raw R 1)
+                                                  (Mathlib.Meta.NormNum.IsNat.of_raw R 1) (Eq.refl 1)))))))
+                                      (Mathlib.Tactic.Ring.Common.mul_zero
+                                        (ThinMatrix.CroppedSourceContraction.crop cap
+                                              (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e ^
+                                            Nat.rawCast 1 *
+                                          (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                              Nat.rawCast 1 *
+                                            Nat.rawCast 1)))
+                                      (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                        (ThinMatrix.CroppedSourceContraction.crop cap
+                                                (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e ^
+                                              Nat.rawCast 1 *
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                                Nat.rawCast 1 *
+                                              (ThinMatrix.CroppedSourceContraction.crop cap
+                                                    (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b
+                                                    c ^
+                                                  Nat.rawCast 1 *
+                                                (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR
+                                                      (b, c) ^
+                                                    Nat.rawCast 1 *
+                                                  Nat.rawCast 1))) +
+                                          0)))
+                                    (Mathlib.Tactic.Ring.Common.zero_mul
+                                      (ThinMatrix.CroppedSourceContraction.crop cap
+                                              (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b c ^
+                                            Nat.rawCast 1 *
+                                          (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                              Nat.rawCast 1 *
+                                            Nat.rawCast 1) +
+                                        0))
+                                    (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                      (ThinMatrix.CroppedSourceContraction.crop cap
+                                              (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e ^
+                                            Nat.rawCast 1 *
+                                          (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                              Nat.rawCast 1 *
+                                            (ThinMatrix.CroppedSourceContraction.crop cap
+                                                  (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b
+                                                  c ^
+                                                Nat.rawCast 1 *
+                                              (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                                  Nat.rawCast 1 *
+                                                Nat.rawCast 1))) +
+                                        0))))
+                                (Mathlib.Tactic.Ring.Common.atom_pf
+                                  (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c)) rfl
+                                  (Eq.mpr
+                                    (id
+                                      (congrArg
+                                        (fun _a =>
+                                          ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) ^
+                                                Nat.rawCast 1 *
+                                              Nat.rawCast 1 =
+                                            ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) ^
+                                                Nat.rawCast 1 *
+                                              _a)
+                                        (Eq.symm rfl)))
+                                    (Eq.refl
+                                      (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) ^ Nat.rawCast 1 *
+                                        Nat.rawCast 1))))
+                                (Mathlib.Tactic.Ring.Common.add_mul
+                                  (Mathlib.Tactic.Ring.Common.mul_add
+                                    (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                      (ThinMatrix.CroppedSourceContraction.crop cap
+                                        (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e)
+                                      (Nat.rawCast 1)
+                                      (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                        (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e))
+                                        (Nat.rawCast 1)
+                                        (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                          (ThinMatrix.CroppedSourceContraction.crop cap
+                                            (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b c)
+                                          (Nat.rawCast 1)
+                                          (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c))
+                                            (Nat.rawCast 1)
+                                            (Mathlib.Tactic.Ring.Common.mul_pf_right
+                                              (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c))
+                                              (Nat.rawCast 1)
+                                              (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                                (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                                  (Mathlib.Meta.NormNum.IsNat.of_raw R 1)
+                                                  (Mathlib.Meta.NormNum.IsNat.of_raw R 1) (Eq.refl 1))))))))
+                                    (Mathlib.Tactic.Ring.Common.mul_zero
+                                      (ThinMatrix.CroppedSourceContraction.crop cap
+                                            (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e ^
+                                          Nat.rawCast 1 *
+                                        (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                            Nat.rawCast 1 *
+                                          (ThinMatrix.CroppedSourceContraction.crop cap
+                                                (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b c ^
+                                              Nat.rawCast 1 *
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                                Nat.rawCast 1 *
+                                              Nat.rawCast 1)))))
+                                    (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                      (ThinMatrix.CroppedSourceContraction.crop cap
+                                              (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e ^
+                                            Nat.rawCast 1 *
+                                          (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                              Nat.rawCast 1 *
+                                            (ThinMatrix.CroppedSourceContraction.crop cap
+                                                  (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b
+                                                  c ^
+                                                Nat.rawCast 1 *
+                                              (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                                  Nat.rawCast 1 *
+                                                (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) ^
+                                                    Nat.rawCast 1 *
+                                                  Nat.rawCast 1)))) +
+                                        0)))
+                                  (Mathlib.Tactic.Ring.Common.zero_mul
+                                    (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) ^ Nat.rawCast 1 *
+                                        Nat.rawCast 1 +
+                                      0))
+                                  (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                    (ThinMatrix.CroppedSourceContraction.crop cap
+                                            (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e ^
+                                          Nat.rawCast 1 *
+                                        (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                            Nat.rawCast 1 *
+                                          (ThinMatrix.CroppedSourceContraction.crop cap
+                                                (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b c ^
+                                              Nat.rawCast 1 *
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                                Nat.rawCast 1 *
+                                              (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) ^
+                                                  Nat.rawCast 1 *
+                                                Nat.rawCast 1)))) +
+                                      0))))
+                              (Mathlib.Tactic.Ring.Common.mul_congr
+                                (Mathlib.Tactic.Ring.Common.mul_congr
+                                  (Mathlib.Tactic.Ring.Common.mul_congr
+                                    (Mathlib.Tactic.Ring.Common.mul_congr
+                                      (Mathlib.Tactic.Ring.Common.atom_pf
+                                        (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e)) rfl
+                                        (Eq.mpr
+                                          (id
+                                            (congrArg
+                                              (fun _a =>
+                                                ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR
+                                                        (a, e) ^
+                                                      Nat.rawCast 1 *
+                                                    Nat.rawCast 1 =
+                                                  ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR
+                                                        (a, e) ^
+                                                      Nat.rawCast 1 *
+                                                    _a)
+                                              (Eq.symm rfl)))
+                                          (Eq.refl
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                                Nat.rawCast 1 *
+                                              Nat.rawCast 1))))
+                                      (Mathlib.Tactic.Ring.Common.atom_pf
+                                        (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c)) rfl
+                                        (Eq.mpr
+                                          (id
+                                            (congrArg
+                                              (fun _a =>
+                                                ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR
+                                                        (b, c) ^
+                                                      Nat.rawCast 1 *
+                                                    Nat.rawCast 1 =
+                                                  ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR
+                                                        (b, c) ^
+                                                      Nat.rawCast 1 *
+                                                    _a)
+                                              (Eq.symm rfl)))
+                                          (Eq.refl
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                                Nat.rawCast 1 *
+                                              Nat.rawCast 1))))
+                                      (Mathlib.Tactic.Ring.Common.add_mul
+                                        (Mathlib.Tactic.Ring.Common.mul_add
+                                          (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e))
+                                            (Nat.rawCast 1)
+                                            (Mathlib.Tactic.Ring.Common.mul_pf_right
+                                              (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c))
+                                              (Nat.rawCast 1)
+                                              (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                                (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                                  (Mathlib.Meta.NormNum.IsNat.of_raw R 1)
+                                                  (Mathlib.Meta.NormNum.IsNat.of_raw R 1) (Eq.refl 1)))))
+                                          (Mathlib.Tactic.Ring.Common.mul_zero
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                                Nat.rawCast 1 *
+                                              Nat.rawCast 1))
+                                          (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                                  Nat.rawCast 1 *
+                                                (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR
+                                                      (b, c) ^
+                                                    Nat.rawCast 1 *
+                                                  Nat.rawCast 1) +
+                                              0)))
+                                        (Mathlib.Tactic.Ring.Common.zero_mul
+                                          (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                                Nat.rawCast 1 *
+                                              Nat.rawCast 1 +
+                                            0))
+                                        (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                          (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                                Nat.rawCast 1 *
+                                              (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                                  Nat.rawCast 1 *
+                                                Nat.rawCast 1) +
+                                            0))))
+                                    (Mathlib.Tactic.Ring.Common.atom_pf
+                                      (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c)) rfl
+                                      (Eq.mpr
+                                        (id
+                                          (congrArg
+                                            (fun _a =>
+                                              ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) ^
+                                                    Nat.rawCast 1 *
+                                                  Nat.rawCast 1 =
+                                                ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) ^
+                                                    Nat.rawCast 1 *
+                                                  _a)
+                                            (Eq.symm rfl)))
+                                        (Eq.refl
+                                          (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) ^
+                                              Nat.rawCast 1 *
+                                            Nat.rawCast 1))))
+                                    (Mathlib.Tactic.Ring.Common.add_mul
+                                      (Mathlib.Tactic.Ring.Common.mul_add
+                                        (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                          (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e))
+                                          (Nat.rawCast 1)
+                                          (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c))
+                                            (Nat.rawCast 1)
+                                            (Mathlib.Tactic.Ring.Common.mul_pf_right
+                                              (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c))
+                                              (Nat.rawCast 1)
+                                              (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                                (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                                  (Mathlib.Meta.NormNum.IsNat.of_raw R 1)
+                                                  (Mathlib.Meta.NormNum.IsNat.of_raw R 1) (Eq.refl 1))))))
+                                        (Mathlib.Tactic.Ring.Common.mul_zero
+                                          (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                              Nat.rawCast 1 *
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                                Nat.rawCast 1 *
+                                              Nat.rawCast 1)))
+                                        (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                          (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                                Nat.rawCast 1 *
+                                              (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                                  Nat.rawCast 1 *
+                                                (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) ^
+                                                    Nat.rawCast 1 *
+                                                  Nat.rawCast 1)) +
+                                            0)))
+                                      (Mathlib.Tactic.Ring.Common.zero_mul
+                                        (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) ^
+                                              Nat.rawCast 1 *
+                                            Nat.rawCast 1 +
+                                          0))
+                                      (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                        (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                              Nat.rawCast 1 *
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                                Nat.rawCast 1 *
+                                              (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) ^
+                                                  Nat.rawCast 1 *
+                                                Nat.rawCast 1)) +
+                                          0))))
+                                  (Mathlib.Tactic.Ring.Common.atom_pf
+                                    (ThinMatrix.CroppedSourceContraction.crop cap
+                                      (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e)
+                                    rfl
+                                    (Eq.mpr
+                                      (id
+                                        (congrArg
+                                          (fun _a =>
+                                            ThinMatrix.CroppedSourceContraction.crop cap
+                                                    (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a
+                                                    e ^
+                                                  Nat.rawCast 1 *
+                                                Nat.rawCast 1 =
+                                              ThinMatrix.CroppedSourceContraction.crop cap
+                                                    (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a
+                                                    e ^
+                                                  Nat.rawCast 1 *
+                                                _a)
+                                          (Eq.symm rfl)))
+                                      (Eq.refl
+                                        (ThinMatrix.CroppedSourceContraction.crop cap
+                                              (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e ^
+                                            Nat.rawCast 1 *
+                                          Nat.rawCast 1))))
+                                  (Mathlib.Tactic.Ring.Common.add_mul
+                                    (Mathlib.Tactic.Ring.Common.mul_add
+                                      (Mathlib.Tactic.Ring.Common.mul_pf_right
+                                        (ThinMatrix.CroppedSourceContraction.crop cap
+                                          (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e)
+                                        (Nat.rawCast 1)
+                                        (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                          (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e))
+                                          (Nat.rawCast 1)
+                                          (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c))
+                                            (Nat.rawCast 1)
+                                            (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                              (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c))
+                                              (Nat.rawCast 1)
+                                              (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                                (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                                  (Mathlib.Meta.NormNum.IsNat.of_raw R 1)
+                                                  (Mathlib.Meta.NormNum.IsNat.of_raw R 1) (Eq.refl 1)))))))
+                                      (Mathlib.Tactic.Ring.Common.mul_zero
+                                        (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                            Nat.rawCast 1 *
+                                          (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                              Nat.rawCast 1 *
+                                            (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) ^
+                                                Nat.rawCast 1 *
+                                              Nat.rawCast 1))))
+                                      (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                        (ThinMatrix.CroppedSourceContraction.crop cap
+                                                (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e ^
+                                              Nat.rawCast 1 *
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                                Nat.rawCast 1 *
+                                              (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                                  Nat.rawCast 1 *
+                                                (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) ^
+                                                    Nat.rawCast 1 *
+                                                  Nat.rawCast 1))) +
+                                          0)))
+                                    (Mathlib.Tactic.Ring.Common.zero_mul
+                                      (ThinMatrix.CroppedSourceContraction.crop cap
+                                              (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e ^
+                                            Nat.rawCast 1 *
+                                          Nat.rawCast 1 +
+                                        0))
+                                    (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                      (ThinMatrix.CroppedSourceContraction.crop cap
+                                              (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e ^
+                                            Nat.rawCast 1 *
+                                          (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                              Nat.rawCast 1 *
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                                Nat.rawCast 1 *
+                                              (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) ^
+                                                  Nat.rawCast 1 *
+                                                Nat.rawCast 1))) +
+                                        0))))
+                                (Mathlib.Tactic.Ring.Common.atom_pf
+                                  (ThinMatrix.CroppedSourceContraction.crop cap
+                                    (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b c)
+                                  rfl
+                                  (Eq.mpr
+                                    (id
+                                      (congrArg
+                                        (fun _a =>
+                                          ThinMatrix.CroppedSourceContraction.crop cap
+                                                  (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b
+                                                  c ^
+                                                Nat.rawCast 1 *
+                                              Nat.rawCast 1 =
+                                            ThinMatrix.CroppedSourceContraction.crop cap
+                                                  (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b
+                                                  c ^
+                                                Nat.rawCast 1 *
+                                              _a)
+                                        (Eq.symm rfl)))
+                                    (Eq.refl
+                                      (ThinMatrix.CroppedSourceContraction.crop cap
+                                            (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b c ^
+                                          Nat.rawCast 1 *
+                                        Nat.rawCast 1))))
+                                (Mathlib.Tactic.Ring.Common.add_mul
+                                  (Mathlib.Tactic.Ring.Common.mul_add
+                                    (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                      (ThinMatrix.CroppedSourceContraction.crop cap
+                                        (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e)
+                                      (Nat.rawCast 1)
+                                      (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                        (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e))
+                                        (Nat.rawCast 1)
+                                        (Mathlib.Tactic.Ring.Common.mul_pf_right
+                                          (ThinMatrix.CroppedSourceContraction.crop cap
+                                            (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b c)
+                                          (Nat.rawCast 1)
+                                          (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c))
+                                            (Nat.rawCast 1)
+                                            (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                              (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c))
+                                              (Nat.rawCast 1)
+                                              (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                                (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                                  (Mathlib.Meta.NormNum.IsNat.of_raw R 1)
+                                                  (Mathlib.Meta.NormNum.IsNat.of_raw R 1) (Eq.refl 1))))))))
+                                    (Mathlib.Tactic.Ring.Common.mul_zero
+                                      (ThinMatrix.CroppedSourceContraction.crop cap
+                                            (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e ^
+                                          Nat.rawCast 1 *
+                                        (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                            Nat.rawCast 1 *
+                                          (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                              Nat.rawCast 1 *
+                                            (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) ^
+                                                Nat.rawCast 1 *
+                                              Nat.rawCast 1)))))
+                                    (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                      (ThinMatrix.CroppedSourceContraction.crop cap
+                                              (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e ^
+                                            Nat.rawCast 1 *
+                                          (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                              Nat.rawCast 1 *
+                                            (ThinMatrix.CroppedSourceContraction.crop cap
+                                                  (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b
+                                                  c ^
+                                                Nat.rawCast 1 *
+                                              (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                                  Nat.rawCast 1 *
+                                                (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) ^
+                                                    Nat.rawCast 1 *
+                                                  Nat.rawCast 1)))) +
+                                        0)))
+                                  (Mathlib.Tactic.Ring.Common.zero_mul
+                                    (ThinMatrix.CroppedSourceContraction.crop cap
+                                            (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b c ^
+                                          Nat.rawCast 1 *
+                                        Nat.rawCast 1 +
+                                      0))
+                                  (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                    (ThinMatrix.CroppedSourceContraction.crop cap
+                                            (ThinMatrix.WalshEmbedding.rawLeftSource X good gamma delta run) a e ^
+                                          Nat.rawCast 1 *
+                                        (ThinMatrix.CroppedPhysicalContraction.outsideF QL QR iL iR jL jR (a, e) ^
+                                            Nat.rawCast 1 *
+                                          (ThinMatrix.CroppedSourceContraction.crop cap
+                                                (ThinMatrix.WalshEmbedding.rawRightSource Y good gamma delta run) b c ^
+                                              Nat.rawCast 1 *
+                                            (ThinMatrix.CroppedPhysicalContraction.outsideG QL QR iL iR jL jR (b, c) ^
+                                                Nat.rawCast 1 *
+                                              (ThinMatrix.CompleteThinProduct.sourceInner QL QR (a, e) (b, c) ^
+                                                  Nat.rawCast 1 *
+                                                Nat.rawCast 1)))) +
+                                      0))))))))))))
+'ThinMatrix.CroppedPhysicalContraction.contraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem ThinMatrix.GraphLowHighScale.fromInputs_scale : ∀ {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR ell : ℕ) (request : Fin (ThinMatrix.FoldedBackendExecution.windowQuerySize n)) (residue : Fin f.cyclic),
+  have graph := ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell;
+  have q := ThinMatrix.LowRequestLocator.physical graph input.target request;
+  ThinMatrix.BinaryCell.view
+        ((ThinMatrix.RootProductCollection.output
+              (ThinMatrix.GraphLowMaskAssembly.execute graph input.target bandL bandR).value request).get
+          residue) +
+      ThinMatrix.BinaryCell.view
+        ((ThinMatrix.CountedCyclicCollection.output
+              (ThinMatrix.GraphHighFamily.execute graph input.target bandL bandR).2.value request).get
+          residue) =
+    4 ^ p.L *
+      if q.bandL = bandL ∧ q.bandR = bandR then ThinMatrix.GraphLowHighScale.entry graph input.target request residue
+      else 0 :=
+fun {n h r} f p block input bandL bandR ell request residue =>
+  id
+    (Eq.mpr
+      (id
+        (congrArg
+          (fun _a =>
+            _a =
+              4 ^ p.L *
+                if
+                    (ThinMatrix.LowRequestLocator.physical
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                            request).bandL =
+                        bandL ∧
+                      (ThinMatrix.LowRequestLocator.physical
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                            request).bandR =
+                        bandR then
+                  ThinMatrix.GraphLowHighScale.entry
+                    (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target request
+                    residue
+                else 0)
+          (ThinMatrix.GraphLowHighJoin.joined_fromInputs f p block input bandL bandR ell request residue)))
+      (if h_1 :
+          (ThinMatrix.LowRequestLocator.physical
+                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                  request).bandL =
+              bandL ∧
+            (ThinMatrix.LowRequestLocator.physical
+                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                  request).bandR =
+              bandR then
+        Eq.mpr (id (congr (congrArg Eq (if_pos h_1)) (congrArg (HMul.hMul (4 ^ p.L)) (if_pos h_1))))
+          (have he :=
+            congrArg (fun z => z residue)
+              (ThinMatrix.GraphLowHighScale.summed_inner
+                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target request);
+          Eq.mp
+            (congrFun'
+              (congrArg Eq
+                (Eq.trans
+                  (ThinMatrix.CyclicRing.sum_coeff Finset.univ
+                    (fun i =>
+                      ∑ v,
+                        ∑ run ∈ Finset.Icc (-↑p.m) ↑p.m,
+                          ThinMatrix.GraphLowHighJoin.inner
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                            request i v run)
+                    residue)
+                  (Finset.sum_congr (Eq.refl Finset.univ) fun x a =>
+                    Eq.trans
+                      (ThinMatrix.CyclicRing.sum_coeff Finset.univ
+                        (fun i =>
+                          ∑ run ∈ Finset.Icc (-↑p.m) ↑p.m,
+                            ThinMatrix.GraphLowHighJoin.inner
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                              request x i run)
+                        residue)
+                      (Finset.sum_congr (Eq.refl Finset.univ) fun x_1 a =>
+                        ThinMatrix.CyclicRing.sum_coeff (Finset.Icc (-↑p.m) ↑p.m)
+                          (ThinMatrix.GraphLowHighJoin.inner
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                            request x x_1)
+                          residue))))
+              (OfNat.ofNat 4 ^ p.L *
+                ThinMatrix.GraphLowHighScale.entry
+                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target request
+                  residue))
+            (Eq.mp
+              (congrArg
+                (fun _a =>
+                  (∑ u,
+                        ∑ v,
+                          ∑ run ∈ Finset.Icc (-↑p.m) ↑p.m,
+                            ThinMatrix.GraphLowHighJoin.inner
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                              request u v run)
+                      residue =
+                    _a)
+                (ThinMatrix.SourceCoordinates.intCast_mul_coeff (OfNat.ofNat 4 ^ p.L)
+                  (ThinMatrix.GraphLowHighScale.entry
+                    (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target request)
+                  residue))
+              (Eq.mp
+                (congrArg
+                  (fun _a =>
+                    (∑ u,
+                          ∑ v,
+                            ∑ run ∈ Finset.Icc (-↑p.m) ↑p.m,
+                              ThinMatrix.GraphLowHighJoin.inner
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                                request u v run)
+                        residue =
+                      (_a *
+                          ThinMatrix.GraphLowHighScale.entry
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                            request)
+                        residue)
+                  (Eq.symm (Int.cast_pow (OfNat.ofNat 4) p.L)))
+                (Eq.mp
+                  (congrArg
+                    (fun _a =>
+                      (∑ u,
+                            ∑ v,
+                              ∑ run ∈ Finset.Icc (-↑p.m) ↑p.m,
+                                ThinMatrix.GraphLowHighJoin.inner
+                                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                  input.target request u v run)
+                          residue =
+                        (_a ^ p.L *
+                            ThinMatrix.GraphLowHighScale.entry
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                              request)
+                          residue)
+                    (Eq.symm (Int.cast_ofNat 4)))
+                  he))))
+      else
+        Eq.mpr (id (congr (congrArg Eq (if_neg h_1)) (congrArg (HMul.hMul (4 ^ p.L)) (if_neg h_1))))
+          (Eq.mpr (id (congrArg (fun _a => 0 = _a) (mul_zero (4 ^ p.L)))) (Eq.refl 0))))
+'ThinMatrix.GraphLowHighScale.fromInputs_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem ThinMatrix.BinaryLowHighNormalize.table_value : ∀ {M q : ℕ} (L : ℕ)
+  (low high : Vector (Vector ThinMatrix.BinaryCell.Cell q) M) (i : Fin M) (r : Fin q),
+  ThinMatrix.BinaryCell.view
+      (ThinMatrix.BinaryLowHighNormalize.output (ThinMatrix.BinaryLowHighNormalize.table L low high).2.value i r) =
+    (ThinMatrix.BinaryCell.view ((low.get i).get r) + ThinMatrix.BinaryCell.view ((high.get i).get r)) / 4 ^ L :=
+fun {M q} L low high i r =>
+  of_eq_true
+    (Eq.trans
+      (congrFun'
+        (congrArg Eq
+          (Eq.trans
+            (congrArg ThinMatrix.BinaryCell.view
+              (congrArg ThinMatrix.BinaryLowHighNormalize.cellValue
+                (Eq.trans
+                  (congrFun'
+                    (congrArg Vector.get
+                      (ThinMatrix.BinaryGroupedPreparation.tabulate_get low
+                        (fun i =>
+                          ThinMatrix.BinaryGroupedPreparation.tabulate (low.get i) fun i_1 =>
+                            ThinMatrix.BinaryLowHighNormalize.cell (ThinMatrix.BinaryLowHighNormalize.power4 L).value
+                              ((low.get i).get i_1) ((high.get i).get i_1))
+                        i))
+                    r)
+                  (ThinMatrix.BinaryGroupedPreparation.tabulate_get (low.get i)
+                    (fun i_1 =>
+                      ThinMatrix.BinaryLowHighNormalize.cell (ThinMatrix.BinaryLowHighNormalize.power4 L).value
+                        ((low.get i).get i_1) ((high.get i).get i_1))
+                    r))))
+            (ThinMatrix.BinaryLowHighNormalize.cell_value L ((low.get i).get r) ((high.get i).get r))))
+        ((ThinMatrix.BinaryCell.view ((low.get i).get r) + ThinMatrix.BinaryCell.view ((high.get i).get r)) / 4 ^ L))
+      (eq_self
+        ((ThinMatrix.BinaryCell.view ((low.get i).get r) + ThinMatrix.BinaryCell.view ((high.get i).get r)) / 4 ^ L)))
+'ThinMatrix.BinaryLowHighNormalize.table_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem ThinMatrix.BinaryLowHighNormalize.table_bits : ∀ {M q : ℕ} (L A B : ℕ)
+  (low high : Vector (Vector ThinMatrix.BinaryCell.Cell q) M),
+  (∀ (i : Fin M) (r : Fin q), (ThinMatrix.BinaryCell.view ((low.get i).get r)).natAbs ≤ A) →
+    (∀ (i : Fin M) (r : Fin q), (ThinMatrix.BinaryCell.view ((high.get i).get r)).natAbs ≤ B) →
+      (ThinMatrix.BinaryLowHighNormalize.table L low high).1.bitSteps +
+          (ThinMatrix.BinaryLowHighNormalize.table L low high).2.bitSteps ≤
+        L * ThinMatrix.BackendScalarBits.backendScalarUnit (2 * L + 3) +
+          M * (q * ThinMatrix.BinaryLowHighNormalize.cellBudget L A B) :=
+fun {M q} L A B low high hl hh =>
+  have hr := fun i =>
+    ThinMatrix.BinaryGroupedPreparation.tabulate_bits (low.get i)
+      (fun i_1 =>
+        ThinMatrix.BinaryLowHighNormalize.cell (ThinMatrix.BinaryLowHighNormalize.power4 L).value ((low.get i).get i_1)
+          ((high.get i).get i_1))
+      fun r =>
+      ThinMatrix.BinaryLowHighNormalize.cell_bits L A B ((low.get i).get r) ((high.get i).get r) (hl i r) (hh i r);
+  Nat.add_le_add (ThinMatrix.BinaryLowHighNormalize.power4_bits L)
+    (ThinMatrix.BinaryGroupedPreparation.tabulate_bits low
+      (fun i =>
+        ThinMatrix.BinaryLowHighNormalize.row (ThinMatrix.BinaryLowHighNormalize.power4 L).value (low.get i)
+          (high.get i))
+      hr)
+'ThinMatrix.BinaryLowHighNormalize.table_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem ThinMatrix.BinaryLowHighNormalize.table_control : ∀ {M q : ℕ} (L : ℕ)
+  (low high : Vector (Vector ThinMatrix.BinaryCell.Cell q) M),
+  (ThinMatrix.BinaryLowHighNormalize.table L low high).1.control +
+      (ThinMatrix.BinaryLowHighNormalize.table L low high).2.control ≤
+    8 * L + 1 + M * (44 * q + 40) + 8 :=
+fun {M q} L low high =>
+  have hr := fun i =>
+    have he :=
+      ThinMatrix.BinaryGroupedPreparation.tabulate_control (low.get i)
+        (fun j =>
+          ThinMatrix.BinaryLowHighNormalize.cell (ThinMatrix.BinaryLowHighNormalize.power4 L).value ((low.get i).get j)
+            ((high.get i).get j))
+        fun x =>
+        le_refl
+          (ThinMatrix.BinaryLowHighNormalize.cell (ThinMatrix.BinaryLowHighNormalize.power4 L).value ((low.get i).get x)
+              ((high.get i).get x)).control;
+    Eq.mpr
+      (id
+        (congrArg
+          (LE.le
+            (ThinMatrix.BinaryGroupedPreparation.tabulate (low.get i) fun i_1 =>
+                ThinMatrix.BinaryLowHighNormalize.cell (ThinMatrix.BinaryLowHighNormalize.power4 L).value
+                  ((low.get i).get i_1) ((high.get i).get i_1)).control)
+          (congrFun' (congrArg HAdd.hAdd (Nat.mul_comm 44 q)) 8)))
+      he;
+  have he :=
+    ThinMatrix.BinaryGroupedPreparation.tabulate_control low
+      (fun i =>
+        ThinMatrix.BinaryLowHighNormalize.row (ThinMatrix.BinaryLowHighNormalize.power4 L).value (low.get i)
+          (high.get i))
+      hr;
+  Eq.mpr
+    (id
+      (congrFun'
+        (congrArg LE.le
+          (congrFun' (congrArg HAdd.hAdd (ThinMatrix.BinaryLowHighNormalize.power4_control L))
+            (ThinMatrix.BinaryGroupedPreparation.tabulate low fun i =>
+                ThinMatrix.BinaryLowHighNormalize.row (ThinMatrix.BinaryLowHighNormalize.power4 L).value (low.get i)
+                  (high.get i)).control))
+        (8 * L + 1 + M * (44 * q + 40) + 8)))
+    (Eq.mpr
+      (id
+        (congr
+          (congrArg LE.le
+            (Nat.add_assoc (8 * L) 1
+              (ThinMatrix.BinaryGroupedPreparation.tabulate low fun i =>
+                  ThinMatrix.BinaryLowHighNormalize.row (ThinMatrix.BinaryLowHighNormalize.power4 L).value (low.get i)
+                    (high.get i)).control))
+          (Eq.trans
+            (Eq.trans (congrFun' (congrArg HAdd.hAdd (Nat.add_assoc (8 * L) 1 (M * (44 * q + 40)))) 8)
+              (Nat.add_assoc (8 * L) (1 + M * (44 * q + 40)) 8))
+            (congrArg (HAdd.hAdd (8 * L)) (Nat.add_assoc 1 (M * (44 * q + 40)) 8)))))
+      (Eq.mp
+        (congr
+          (congrArg LE.le
+            (Nat.add_assoc (8 * L) 1
+              (ThinMatrix.BinaryGroupedPreparation.tabulate low fun i =>
+                  ThinMatrix.BinaryLowHighNormalize.row (ThinMatrix.BinaryLowHighNormalize.power4 L).value (low.get i)
+                    (high.get i)).control))
+          (Eq.trans
+            (congrArg (HAdd.hAdd (8 * L + 1))
+              (congrFun' (congrArg HAdd.hAdd (congrArg (HMul.hMul M) (Nat.add_assoc (44 * q) 8 32))) 8))
+            (Nat.add_assoc (8 * L) 1 (M * (44 * q + 40) + 8))))
+        (Nat.add_le_add_left he (8 * L + 1))))
+'ThinMatrix.BinaryLowHighNormalize.table_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem ThinMatrix.GraphNormalizedBand.fromInputs_value : ∀ {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR ell : ℕ) (request : Fin (ThinMatrix.FoldedBackendExecution.windowQuerySize n)) (residue : Fin f.cyclic),
+  have graph := ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell;
+  have q := ThinMatrix.LowRequestLocator.physical graph input.target request;
+  ThinMatrix.BinaryCell.view (ThinMatrix.GraphNormalizedBand.output graph input.target bandL bandR request residue) =
+    if q.bandL = bandL ∧ q.bandR = bandR then ThinMatrix.GraphLowHighScale.entry graph input.target request residue
+    else 0 :=
+fun {n h r} f p block input bandL bandR ell request residue =>
+  id
+    (Eq.mpr
+      (id
+        (congrFun'
+          (congrArg Eq
+            (Eq.trans
+              (ThinMatrix.BinaryLowHighNormalize.table_value p.L
+                (Vector.ofFn
+                  (ThinMatrix.RootProductCollection.output
+                    (ThinMatrix.GraphLowMaskAssembly.execute
+                        (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target bandL
+                        bandR).value))
+                (Vector.ofFn
+                  (ThinMatrix.CountedCyclicCollection.output
+                    (ThinMatrix.GraphHighFamily.execute
+                          (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target bandL
+                          bandR).2.value))
+                request residue)
+              (congrFun'
+                (congrArg HDiv.hDiv
+                  (congr
+                    (congrArg HAdd.hAdd
+                      (congrArg ThinMatrix.BinaryCell.view
+                        (congrFun'
+                          (congrArg Vector.get
+                            (Vector.get_ofFn
+                              (ThinMatrix.RootProductCollection.output
+                                (ThinMatrix.GraphLowMaskAssembly.execute
+                                    (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                    input.target bandL bandR).value)
+                              request))
+                          residue)))
+                    (congrArg ThinMatrix.BinaryCell.view
+                      (congrFun'
+                        (congrArg Vector.get
+                          (Vector.get_ofFn
+                            (ThinMatrix.CountedCyclicCollection.output
+                              (ThinMatrix.GraphHighFamily.execute
+                                    (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                    input.target bandL bandR).2.value)
+                            request))
+                        residue))))
+                (4 ^ p.L))))
+          (if
+              (ThinMatrix.LowRequestLocator.physical
+                      (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                      request).bandL =
+                  bandL ∧
+                (ThinMatrix.LowRequestLocator.physical
+                      (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                      request).bandR =
+                  bandR then
+            ThinMatrix.GraphLowHighScale.entry
+              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target request residue
+          else 0)))
+      (Eq.mpr
+        (id
+          (congrArg
+            (fun _a =>
+              _a / 4 ^ p.L =
+                if
+                    (ThinMatrix.LowRequestLocator.physical
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                            request).bandL =
+                        bandL ∧
+                      (ThinMatrix.LowRequestLocator.physical
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                            request).bandR =
+                        bandR then
+                  ThinMatrix.GraphLowHighScale.entry
+                    (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target request
+                    residue
+                else 0)
+            (ThinMatrix.GraphLowHighScale.fromInputs_scale f p block input bandL bandR ell request residue)))
+        (Int.mul_ediv_cancel_left
+          (if
+              (ThinMatrix.LowRequestLocator.physical
+                      (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                      request).bandL =
+                  bandL ∧
+                (ThinMatrix.LowRequestLocator.physical
+                      (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                      request).bandR =
+                  bandR then
+            ThinMatrix.GraphLowHighScale.entry
+              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target request residue
+          else 0)
+          (pow_ne_zero p.L (of_decide_eq_true (id (Eq.refl true)))))))
+'ThinMatrix.GraphNormalizedBand.fromInputs_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem ThinMatrix.GraphNormalizedBand.fromInputs_divisible : ∀ {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR ell : ℕ) (request : Fin (ThinMatrix.FoldedBackendExecution.windowQuerySize n)) (residue : Fin f.cyclic),
+  have graph := ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell;
+  4 ^ p.L ∣
+    ThinMatrix.BinaryCell.view
+        ((ThinMatrix.RootProductCollection.output
+              (ThinMatrix.GraphLowMaskAssembly.execute graph input.target bandL bandR).value request).get
+          residue) +
+      ThinMatrix.BinaryCell.view
+        ((ThinMatrix.CountedCyclicCollection.output
+              (ThinMatrix.GraphHighFamily.execute graph input.target bandL bandR).2.value request).get
+          residue) :=
+fun {n h r} f p block input bandL bandR ell request residue =>
+  id
+    (Eq.mpr
+      (id
+        (congrArg (fun _a => 4 ^ p.L ∣ _a)
+          (ThinMatrix.GraphLowHighScale.fromInputs_scale f p block input bandL bandR ell request residue)))
+      (dvd_mul_right (4 ^ p.L)
+        (if
+            (ThinMatrix.LowRequestLocator.physical
+                    (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                    request).bandL =
+                bandL ∧
+              (ThinMatrix.LowRequestLocator.physical
+                    (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                    request).bandR =
+                bandR then
+          ThinMatrix.GraphLowHighScale.entry (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+            input.target request residue
+        else 0)))
+'ThinMatrix.GraphNormalizedBand.fromInputs_divisible' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem ThinMatrix.GraphNormalizedBand.fromInputs_bits : ∀ {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR ell : ℕ),
+  have graph := ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell;
+  ThinMatrix.GraphNormalizedBand.bitSteps graph input.target bandL bandR ≤
+    ThinMatrix.GraphNormalizedBand.bitBudget graph input.target :=
+fun {n h r} f p block input bandL bandR ell =>
+  let graph := ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell;
+  have hl := ThinMatrix.GraphLowMaskAssembly.execute_bits f p block input bandL bandR ell;
+  have hn :=
+    ThinMatrix.BinaryLowHighNormalize.table_bits p.L (ThinMatrix.GraphNormalizedBand.lowMagnitude p.L p.m p.t f.cyclic)
+      (ThinMatrix.GraphNormalizedBand.highMagnitude p.L p.m p.t f.cyclic)
+      (Vector.ofFn
+        (ThinMatrix.RootProductCollection.output
+          (ThinMatrix.GraphLowMaskAssembly.execute graph input.target bandL bandR).value))
+      (Vector.ofFn
+        (ThinMatrix.CountedCyclicCollection.output
+          (ThinMatrix.GraphHighFamily.execute graph input.target bandL bandR).2.value))
+      (fun i r_1 =>
+        Eq.mpr
+          (id
+            (congrFun'
+              (congrArg LE.le
+                (congrArg Int.natAbs
+                  (congrArg ThinMatrix.BinaryCell.view
+                    (congrFun'
+                      (congrArg Vector.get
+                        (Vector.get_ofFn
+                          (ThinMatrix.RootProductCollection.output
+                            (ThinMatrix.GraphLowMaskAssembly.execute
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                                bandL bandR).value)
+                          i))
+                      r_1))))
+              ((ThinMatrix.GoodMapEmbedding.goodSlots p.L p.m).card *
+                ((ThinMatrix.GoodMapEmbedding.goodSlots p.L p.m).card *
+                  ThinMatrix.GraphLowMaskAssembly.pairMagnitude p.L p.m p.t f.cyclic))))
+          (ThinMatrix.GraphLowMaskAssembly.execute_bound f p block input bandL bandR ell i r_1))
+      fun i r_1 =>
+      Eq.mpr
+        (id
+          (congrFun'
+            (congrArg LE.le
+              (congrArg Int.natAbs
+                (congrArg ThinMatrix.BinaryCell.view
+                  (congrFun'
+                    (congrArg Vector.get
+                      (Vector.get_ofFn
+                        (ThinMatrix.CountedCyclicCollection.output
+                          (ThinMatrix.GraphHighFamily.execute
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                                bandL bandR).2.value)
+                        i))
+                    r_1))))
+            (ThinMatrix.ExactHalfSourcePlan.J p.m *
+              (ThinMatrix.ExactHalfSourcePlan.J p.m *
+                ((2 * p.m + 1) * ThinMatrix.GraphHighRun.magnitude p.L p.m p.t f.cyclic)))))
+        (ThinMatrix.GraphHighFamily.fromInputs_bound f p block input bandL bandR ell i r_1);
+  id
+    (id
+      (id
+        (id
+          (id
+            (id
+              (id
+                (Decidable.byContradiction fun a =>
+                  ThinMatrix.GraphNormalizedBand.fromInputs_bits._proof_1_3 f p block input bandL bandR ell hl hn
+                    a)))))))
+'ThinMatrix.GraphNormalizedBand.fromInputs_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem ThinMatrix.GraphNormalizedBand.execute_control : ∀ {n h r b ell : ℕ}
+  {f : ThinMatrix.CompactBlocks.PhysicalFactorization r} {p : ThinMatrix.BinaryFoldedFactory.Plan f}
+  (graph : ThinMatrix.GraphPrefixProgram.Prepared f p b ell) (target : ThinMatrix.BinaryFoldedFormation.BinaryTable n)
+  (bandL bandR : ℕ),
+  ThinMatrix.GraphNormalizedBand.control graph target bandL bandR ≤
+    ThinMatrix.GraphNormalizedBand.controlBudget graph :=
+fun {n h r b ell} {f} {p} graph target bandL bandR =>
+  have hl := ThinMatrix.GraphLowMaskAssembly.execute_control graph target bandL bandR;
+  have hn :=
+    ThinMatrix.BinaryLowHighNormalize.table_control p.L
+      (Vector.ofFn
+        (ThinMatrix.RootProductCollection.output
+          (ThinMatrix.GraphLowMaskAssembly.execute graph target bandL bandR).value))
+      (Vector.ofFn
+        (ThinMatrix.CountedCyclicCollection.output
+          (ThinMatrix.GraphHighFamily.execute graph target bandL bandR).2.value));
+  id
+    (id
+      (id
+        (id
+          (Decidable.byContradiction fun a =>
+            ThinMatrix.GraphNormalizedBand.execute_control._proof_1_1 graph target bandL bandR hl hn a))))
+'ThinMatrix.GraphNormalizedBand.execute_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem ThinMatrix.GraphNormalizedBand.fromInputs_highWork : ∀ {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR ell : ℕ),
+  have graph := ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell;
+  ThinMatrix.GraphNormalizedBand.highWork graph input.target bandL bandR ≤
+    ThinMatrix.GraphHighFamily.budget f p input.target :=
+fun {n h r} f p block input bandL bandR ell =>
+  ThinMatrix.GraphHighFamily.fromInputs_work f p block input bandL bandR ell
+'ThinMatrix.GraphNormalizedBand.fromInputs_highWork' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem ThinMatrix.ExactHalfCroppedEmbedding.complete_embedding.{u_1} : ∀ {R : Type u_1} [inst : CommRing R] (L m : ℕ),
+  m ≤ L →
+    ∀ (X : ThinMatrix.WalshEmbedding.RawLeftInput L m (L - m) R)
+      (Y : ThinMatrix.WalshEmbedding.RawRightInput L m (L - m) R) (QL QR : Finset (Fin L)),
+      QL ∈ ThinMatrix.GoodMapEmbedding.goodSlots L m →
+        QR ∈ ThinMatrix.GoodMapEmbedding.goodSlots L m →
+          ∀ (iL iR : ThinMatrix.WalshEmbedding.Cube L) (aL aR : ThinMatrix.WalshEmbedding.Cube (L - m)),
+            ∑ r,
+                ∑ s,
+                  ThinMatrix.CroppedSourceContraction.contraction (m / 2)
+                    (ThinMatrix.MaskedLightSources.leftInput X (ThinMatrix.ExactHalfCroppedEmbedding.scanPick L m)
+                      (ThinMatrix.ExactHalfCroppedEmbedding.shifts m).get r s)
+                    (ThinMatrix.MaskedLightSources.rightInput Y (ThinMatrix.ExactHalfCroppedEmbedding.scanPick L m)
+                      (ThinMatrix.ExactHalfCroppedEmbedding.shifts m).get r s)
+                    (ThinMatrix.GoodMapEmbedding.goodSlots L m)
+                    (ThinMatrix.GoodMapEmbedding.cubeMap (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).1)
+                    (ThinMatrix.GoodMapEmbedding.cubeMap (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).2) QL QR
+                    iL iR
+                    (ThinMatrix.WalshEmbedding.transposeMap
+                      (ThinMatrix.GoodMapEmbedding.boolColumns (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).2)
+                      aR)
+                    (ThinMatrix.WalshEmbedding.transposeMap
+                      (ThinMatrix.GoodMapEmbedding.boolColumns (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).2)
+                      aL) =
+              4 ^ L *
+                ∑ h,
+                  ∑ k,
+                    X QL (ThinMatrix.WalshEmbedding.outsideBits QL iL) aL h k *
+                      Y QR (ThinMatrix.WalshEmbedding.outsideBits QR iR) h k aR :=
+fun {R} [CommRing R] L m hm X Y QL QR hQL hQR iL iR aL aR =>
+  ThinMatrix.TranslatedCroppedEmbedding.complete_embedding L m (ThinMatrix.ExactHalfCroppedEmbedding.shifts m).length
+    (m / 2) hm X Y (ThinMatrix.ExactHalfCroppedEmbedding.shifts m).get
+    (ThinMatrix.ExactHalfCroppedEmbedding.scanPick L m) (ThinMatrix.ExactHalfCroppedEmbedding.scanPick L m)
+    (ThinMatrix.ExactHalfCroppedEmbedding.weight L m)
+    (fun Q x => ThinMatrix.ExactHalfCroppedEmbedding.scanPick_valid L m Q)
+    (fun Q x => ThinMatrix.ExactHalfCroppedEmbedding.scanPick_valid L m Q)
+    (ThinMatrix.ExactHalfCroppedEmbedding.normal_weight L m) QL QR hQL hQR iL iR aL aR
+'ThinMatrix.ExactHalfCroppedEmbedding.complete_embedding' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work : ∀
+  (w : (n : ℕ) → ThinMatrix.StoredMinPlusAPSP.OptionalTable n) (W : ℕ → ℕ) (degree : ℕ),
+  (∀ (n : ℕ), ThinMatrix.APSPReduction.EdgeBound (ThinMatrix.StoredMinPlusAPSP.decode (w n)) (W n)) →
+    (∀ (n : ℕ), W n ≤ n ^ degree) →
+      (∀ (n : ℕ), ThinMatrix.APSPReduction.NoNegativeCycles (ThinMatrix.StoredMinPlusAPSP.decode (w n))) →
+        (∀ (n : ℕ),
+            ThinMatrix.APSPReduction.IsAPSP (ThinMatrix.StoredMinPlusAPSP.decode (w n))
+              (ThinMatrix.StoredMinPlusAPSP.decode
+                (ThinMatrix.BinaryAPSPCaller.viewOptional
+                  (ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                        (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).core.value))) ∧
+          (fun n =>
+              ↑(ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                    (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).work) =O[Filter.atTop]
+            fun n => ↑n ^ (299294792 / 100000000) :=
+fun w W degree hw hW hno =>
+  ⟨fun n =>
+    ThinMatrix.BinaryAlignedAPSP.run_correct (w n) (W n) (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)
+      (hw n) (hno n),
+    ThinMatrix.BinaryAlignedAPSPTheorem.run_work_bigO w W degree hw hW⟩
+'ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]

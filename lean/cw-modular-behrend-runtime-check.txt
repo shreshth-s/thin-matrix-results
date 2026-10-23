@@ -1,0 +1,8 @@
+PASS: actual interval selector for N=0..12; 8191 candidate subsets.
+PASS: actual modular buckets for M=0..25, including empty and singleton cases.
+PASS: actual cleanup n=0, selected M=7, constructed |B|=2: 49 samples, totals 2/0, best kept 1.
+PASS: actual cleanup n=1, selected M=7, constructed |B|=2: 343 samples, totals 14/0, best kept 1.
+PASS: actual cleanup n=2, selected M=11, constructed |B|=4: 14641 samples, totals 968/88, best kept 1.
+SCOPE: actual exhaustive bucket construction and cleanup; real Behrend inequalities are kernel-checked, not runtime float checks; no generation-cost assertion.
+
+Exit code: 0.

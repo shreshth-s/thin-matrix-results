@@ -1,0 +1,26 @@
+PASS: explicit good-code decoder through L=7, exact retained bits and control recurrence
+PASS: strict joint channel coverage, uniqueness and enumeration costs through m=5, including t=0
+PASS: complete retained family versus independent dense coefficients: L=0, m=0, t=0
+PASS: complete retained family versus independent dense coefficients: L=0, m=0, t=1
+PASS: complete retained family versus independent dense coefficients: L=1, m=0, t=0
+PASS: complete retained family versus independent dense coefficients: L=1, m=0, t=1
+PASS: complete retained family versus independent dense coefficients: L=1, m=1, t=0
+PASS: complete retained family versus independent dense coefficients: L=1, m=1, t=1
+PASS: complete retained family versus independent dense coefficients: L=1, m=1, t=2
+PASS: complete retained family versus independent dense coefficients: L=1, m=1, t=3
+PASS: complete retained family versus independent dense coefficients: L=2, m=0, t=0
+PASS: complete retained family versus independent dense coefficients: L=2, m=0, t=1
+PASS: complete retained family versus independent dense coefficients: L=2, m=1, t=0
+PASS: complete retained family versus independent dense coefficients: L=2, m=1, t=1
+PASS: complete retained family versus independent dense coefficients: L=2, m=1, t=2
+PASS: complete retained family versus independent dense coefficients: L=2, m=1, t=3
+PASS: complete retained family versus independent dense coefficients: L=2, m=2, t=0
+PASS: complete retained family versus independent dense coefficients: L=2, m=2, t=1
+PASS: complete retained family versus independent dense coefficients: L=2, m=2, t=2
+PASS: complete retained family versus independent dense coefficients: L=2, m=2, t=3
+PASS: complete retained family versus independent dense coefficients: L=2, m=2, t=4
+PASS: complete retained family versus independent dense coefficients: L=2, m=2, t=5
+PASS: repeated request columns, coefficient bit boundary and zero cyclic columns
+PASS: retained outer translation/run container at m=0, both input families and aggregate counters
+PASS: bounded residual-family suite completed; no graph-source or FFT runtime attempt was rerun.
+Source/configuration SHA-256: 8e657eaa10e21f0b6c8094bfdaa40df256e57408a3213df34db292382f494894

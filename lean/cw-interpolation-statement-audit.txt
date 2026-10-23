@@ -1,0 +1,118 @@
+ThinMatrix.RationalInterpolation.coefficient (d k : ℕ) (p : Polynomial ℚ) (hp : p.natDegree ≤ d) :
+  p.coeff k =
+    ∑ i, ThinMatrix.RationalInterpolation.weight d k i * Polynomial.eval (ThinMatrix.RationalInterpolation.node i) p
+ThinMatrix.RationalInterpolation.extractTerms_total.{u_1, u_2, u_3} {I : Type u_1} {J : Type u_2} {K : Type u_3}
+  {r o d : ℕ} {target : ThinMatrix.FiniteTrilinear.Tensor I J K ℚ}
+  (c : ThinMatrix.PolynomialDegeneration.Certificate target r o d) :
+  ThinMatrix.FiniteTrilinear.total (ThinMatrix.RationalInterpolation.extractTerms c) = target
+ThinMatrix.IntegerInterpolationWeights.prepare_weight (d : ℕ) (k i : Fin (d + 1)) :
+  (ThinMatrix.IntegerInterpolationWeights.prepare d k).weights.get i =
+    ThinMatrix.IntegerInterpolationWeights.weightNumerator d k i
+ThinMatrix.IntegerInterpolationWeights.prepare_den (d : ℕ) (k : Fin (d + 1)) :
+  (ThinMatrix.IntegerInterpolationWeights.prepare d k).denominator = ThinMatrix.IntegerInterpolationWeights.commonDen d
+ThinMatrix.IntegerInterpolationWeights.prepare_operations (d : ℕ) (k : Fin (d + 1)) :
+  (ThinMatrix.IntegerInterpolationWeights.prepare d k).operations ≤
+    (d + 1) ^ 2 * (2 * (d + 1) + 2) + (d + 1) * (d + 2) + (d + 1)
+ThinMatrix.IntegerInterpolationWeights.prepare_control (d : ℕ) (k : Fin (d + 1)) :
+  (ThinMatrix.IntegerInterpolationWeights.prepare d k).control ≤
+    (d + 1) * (d + 1 + (d + 1) * (8 * (d + 1) + 8)) + 10 * (d + 1) ^ 2 + 10 * (d + 1)
+ThinMatrix.IntegerInterpolationWeights.prepare_weight_bits (d : ℕ) (k i : Fin (d + 1)) :
+  ((ThinMatrix.IntegerInterpolationWeights.prepare d k).weights.get i).natAbs.size ≤
+    ThinMatrix.IntegerInterpolationWeights.bitEnvelope d
+ThinMatrix.IntegerInterpolationWeights.prepare_den_bits (d : ℕ) (k : Fin (d + 1)) :
+  (ThinMatrix.IntegerInterpolationWeights.prepare d k).denominator.natAbs.size ≤
+    ThinMatrix.IntegerInterpolationWeights.bitEnvelope d
+ThinMatrix.IntegerCoefficientExtraction.extract_exact (d : ℕ) (k : Fin (d + 1)) (p : Polynomial ℤ)
+  (hp : p.natDegree ≤ d) (values : Vector ℤ (d + 1))
+  (hv : ∀ (i : Fin (d + 1)), values.get i = Polynomial.eval (↑↑i) p) :
+  (ThinMatrix.IntegerCoefficientExtraction.extract d k values).numerator =
+    (ThinMatrix.IntegerCoefficientExtraction.extract d k values).denominator * p.coeff ↑k
+ThinMatrix.IntegerCoefficientExtraction.extract_zero (v : Vector ℤ 1) :
+  (ThinMatrix.IntegerCoefficientExtraction.extract 0 0 v).numerator = v.get 0 ∧
+    (ThinMatrix.IntegerCoefficientExtraction.extract 0 0 v).denominator = 1
+ThinMatrix.CWPowerSpecialization.family_bounds (n : ℕ) (i j k : ThinMatrix.CWPowerSpecialization.Index n) :
+  (∀ a < 3 * n, (ThinMatrix.CWPowerSpecialization.family n i j k).coeff a = 0) ∧
+    (ThinMatrix.CWPowerSpecialization.family n i j k).coeff (3 * n) =
+        ThinMatrix.PolynomialDegeneration.tensorPower (ThinMatrix.CWPolynomialCertificate.target 16) n i j k ∧
+      (ThinMatrix.CWPowerSpecialization.family n i j k).natDegree ≤ 10 * n
+ThinMatrix.CWExactDecomposition.term_count (n : ℕ) :
+  Fintype.card (ThinMatrix.CWInterpolationProgram.Request n) = (10 * n + 1) * 18 ^ n
+ThinMatrix.CWExactDecomposition.terms_total (n : ℕ) :
+  ThinMatrix.FiniteTrilinear.total (ThinMatrix.CWExactDecomposition.terms n) = fun i j k =>
+    ↑(ThinMatrix.PolynomialDegeneration.tensorPower (ThinMatrix.CWPolynomialCertificate.target 16) n i j k)
+ThinMatrix.CWExactDecomposition.terms_bilinear (n : ℕ) (x y : ThinMatrix.CWPowerSpecialization.Index n → ℚ)
+  (k : ThinMatrix.CWPowerSpecialization.Index n) :
+  ∑ s,
+      ((ThinMatrix.CWExactDecomposition.terms n s).right k *
+          ∑ i, (ThinMatrix.CWExactDecomposition.terms n s).left i * x i) *
+        ∑ j, (ThinMatrix.CWExactDecomposition.terms n s).middle j * y j =
+    ThinMatrix.FiniteTrilinear.bilinear
+      (fun i j k =>
+        ↑(ThinMatrix.PolynomialDegeneration.tensorPower (ThinMatrix.CWPolynomialCertificate.target 16) n i j k))
+      x y k
+ThinMatrix.CWInterpolationProgram.execute_correct (n : ℕ) (x y : ThinMatrix.CWPowerSpecialization.Index n → ℤ) :
+  List.map (fun o => (o.key, o.quotient)) (ThinMatrix.CWInterpolationProgram.execute n x y).outputs =
+    List.map
+      (fun k =>
+        (k,
+          ThinMatrix.FiniteTrilinear.bilinear
+            (ThinMatrix.PolynomialDegeneration.tensorPower (ThinMatrix.CWPolynomialCertificate.target 16) n) x y k))
+      (ThinMatrix.CWFiniteKeys.axisKeys n)
+ThinMatrix.CWInterpolationCosts.execute_work (n : ℕ) (x y : ThinMatrix.CWPowerSpecialization.Index n → ℤ) :
+  (ThinMatrix.CWInterpolationProgram.execute n x y).operations ≤ ThinMatrix.CWInterpolationCosts.workBound n
+ThinMatrix.CWInterpolationWidths.dot_bits (side : Fin 3) (n B : ℕ) (a : Fin (10 * n + 1))
+  (s : ThinMatrix.CWPowerSpecialization.TermIndex n) (x : ThinMatrix.CWPowerSpecialization.Index n → ℤ)
+  (hx : ∀ (i : ThinMatrix.CWPowerSpecialization.Index n), (x i).natAbs ≤ 2 ^ B) :
+  (ThinMatrix.CWInterpolationProgram.dot side n (↑↑a) s x).1.natAbs.size ≤
+    ThinMatrix.CWInterpolationWidths.linearExponent n B + 1
+ThinMatrix.CWInterpolationWidths.product_bits (n B : ℕ) (x y : ThinMatrix.CWPowerSpecialization.Index n → ℤ)
+  (hx : ∀ (i : ThinMatrix.CWPowerSpecialization.Index n), (x i).natAbs ≤ 2 ^ B)
+  (hy : ∀ (i : ThinMatrix.CWPowerSpecialization.Index n), (y i).natAbs ≤ 2 ^ B)
+  (p : ThinMatrix.CWInterpolationProgram.Request n × ThinMatrix.CountedCWCoefficients.Scalar)
+  (hp : p ∈ ThinMatrix.CWInterpolationProgram.products n x y) :
+  p.2.1.natAbs.size ≤ 2 * ThinMatrix.CWInterpolationWidths.linearExponent n B + 1
+ThinMatrix.CWInterpolationWidths.collect_bits (n B : ℕ) (x y : ThinMatrix.CWPowerSpecialization.Index n → ℤ)
+  (hx : ∀ (i : ThinMatrix.CWPowerSpecialization.Index n), (x i).natAbs ≤ 2 ^ B)
+  (hy : ∀ (i : ThinMatrix.CWPowerSpecialization.Index n), (y i).natAbs ≤ 2 ^ B)
+  (k : ThinMatrix.CWPowerSpecialization.Index n) :
+  (ThinMatrix.CWInterpolationProgram.collect n
+            (ThinMatrix.IntegerInterpolationWeights.prepare (10 * n) (ThinMatrix.CWInterpolationProgram.order n))
+            (ThinMatrix.CWInterpolationProgram.products n x y) k).1.natAbs.size ≤
+    ThinMatrix.CWInterpolationWidths.numeratorExponent n B + 1
+ThinMatrix.GraphFoldedCountCorrect.finite_modCount {n h r : ℕ} (hh : 0 < h)
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (i : Fin (ThinMatrix.EndToEndAPSP.incidenceSize n h)) :
+  (ThinMatrix.BinaryCell.view (ThinMatrix.GraphFoldedCountCorrect.output f input h i)).toNat =
+    (ThinMatrix.EndToEndAPSP.flatInstance (ThinMatrix.BinaryFoldedFormation.viewTable input.left)
+          (ThinMatrix.BinaryFoldedFormation.viewTable input.right)
+          (ThinMatrix.BinaryFoldedFormation.viewTable input.target)).modCount
+      r i
+ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work (w : (n : ℕ) → ThinMatrix.StoredMinPlusAPSP.OptionalTable n)
+  (W : ℕ → ℕ) (degree : ℕ)
+  (hw : ∀ (n : ℕ), ThinMatrix.APSPReduction.EdgeBound (ThinMatrix.StoredMinPlusAPSP.decode (w n)) (W n))
+  (hW : ∀ (n : ℕ), W n ≤ n ^ degree)
+  (hno : ∀ (n : ℕ), ThinMatrix.APSPReduction.NoNegativeCycles (ThinMatrix.StoredMinPlusAPSP.decode (w n))) :
+  (∀ (n : ℕ),
+      ThinMatrix.APSPReduction.IsAPSP (ThinMatrix.StoredMinPlusAPSP.decode (w n))
+        (ThinMatrix.StoredMinPlusAPSP.decode
+          (ThinMatrix.BinaryAPSPCaller.viewOptional
+            (ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                  (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).core.value))) ∧
+    (fun n =>
+        ↑(ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+              (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).work) =O[Filter.atTop]
+      fun n => ↑n ^ (299294792 / 100000000)
+def ThinMatrix.CWInterpolationCosts.workBound : ℕ → ℕ :=
+fun n =>
+  ThinMatrix.CWInterpolationCosts.setupWork (10 * n) + (10 * n + 1) * 18 ^ n * (2 * (18 ^ n * (25 * n + 2)) + 1) +
+    18 ^ n * ((10 * n + 1) * 18 ^ n * (25 * n + 3) + 1)
+def ThinMatrix.CWInterpolationWidths.numeratorExponent : ℕ → ℕ → ℕ :=
+fun n B =>
+  10 * n + 1 + 54 * n + ThinMatrix.CWInterpolationWidths.weightExponent (10 * n) +
+      3 * ThinMatrix.CWCoefficientBounds.bound (10 * n) * n +
+    2 * B
+'ThinMatrix.CWExactDecomposition.terms_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWInterpolationProgram.execute_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWInterpolationCosts.execute_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWInterpolationWidths.collect_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]

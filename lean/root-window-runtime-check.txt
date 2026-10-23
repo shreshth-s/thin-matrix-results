@@ -1,0 +1,28 @@
+Bounded root-window fixture: 180-second process-group deadline.
+PASS: binary channel weights, decoded values and counters through m=5
+PASS: all degree/cyclic copies, empty dimensions, repeated columns and 65536 bit boundary
+PASS: independent first-owner reference, both sides, normal ties and zero residual dimension
+PASS: retained root/windows versus independent dense coefficients: L=0, m=0, t=0
+PASS: retained root/windows versus independent dense coefficients: L=0, m=0, t=1
+PASS: retained root/windows versus independent dense coefficients: L=0, m=0, t=1
+PASS: retained root/windows versus independent dense coefficients: L=1, m=0, t=0
+PASS: retained root/windows versus independent dense coefficients: L=1, m=0, t=1
+PASS: retained root/windows versus independent dense coefficients: L=1, m=0, t=1
+PASS: retained root/windows versus independent dense coefficients: L=1, m=1, t=0
+PASS: retained root/windows versus independent dense coefficients: L=1, m=1, t=1
+PASS: retained root/windows versus independent dense coefficients: L=1, m=1, t=3
+PASS: retained root/windows versus independent dense coefficients: L=2, m=0, t=0
+PASS: retained root/windows versus independent dense coefficients: L=2, m=0, t=1
+PASS: retained root/windows versus independent dense coefficients: L=2, m=0, t=1
+PASS: retained root/windows versus independent dense coefficients: L=2, m=1, t=0
+PASS: retained root/windows versus independent dense coefficients: L=2, m=1, t=1
+PASS: retained root/windows versus independent dense coefficients: L=2, m=1, t=3
+PASS: retained root/windows versus independent dense coefficients: L=2, m=2, t=0
+PASS: retained root/windows versus independent dense coefficients: L=2, m=2, t=1
+PASS: retained root/windows versus independent dense coefficients: L=2, m=2, t=5
+PASS: nonzero remaining rare budget, selected mask pair at L=3,m=2
+PASS: two residual positions and nontrivial cyclic windows at L=4,m=2
+PASS: root/windows with repeated request columns, bit boundary and zero cyclic columns
+PASS: both-input retained translation/run container at m=0 and aggregate counters
+PASS: bounded root-window suite completed; no graph-source or FFT runtime attempt was rerun.
+Source/configuration SHA-256: 1822f9ef495d088dc44db84f84dd482c808012243d1c156a8db105832174e7e6

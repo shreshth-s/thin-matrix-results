@@ -1,0 +1,173 @@
+ThinMatrix.ResidualChannelTranspose.locate_get {m t : ℕ}
+  (keys : Vector (ThinMatrix.ResidualFamilyKeys.Channel m) (ThinMatrix.ResidualFamilyKeys.channelCount m t))
+  (hk : keys.toList = (ThinMatrix.ResidualFamilyKeys.channels m t).value)
+  (i : Fin (ThinMatrix.ResidualFamilyKeys.channelCount m t)) :
+  keys.get (ThinMatrix.ResidualChannelTranspose.locate keys i).value =
+    ThinMatrix.ResidualChannelTranspose.swap (keys.get i)
+ThinMatrix.ResidualChannelTranspose.locate_involutive {m t : ℕ}
+  (keys : Vector (ThinMatrix.ResidualFamilyKeys.Channel m) (ThinMatrix.ResidualFamilyKeys.channelCount m t))
+  (hk : keys.toList = (ThinMatrix.ResidualFamilyKeys.channels m t).value) :
+  Function.Involutive fun i => (ThinMatrix.ResidualChannelTranspose.locate keys i).value
+ThinMatrix.CompletedRootProducts.execute_polynomial {F q : ℕ} [NeZero q]
+  (a b : ThinMatrix.BinaryResidualPolynomial.Block F q) :
+  ThinMatrix.ResidualPolynomialDegree.decode (ThinMatrix.CompletedRootProducts.execute a b).value =
+    ThinMatrix.ResidualPolynomialDegree.decode a * ThinMatrix.ResidualPolynomialDegree.decode b
+ThinMatrix.CompletedRootProducts.execute_bits {F q : ℕ} [NeZero q] (a b : ThinMatrix.BinaryResidualPolynomial.Block F q)
+  (A : ℕ) (ha : ThinMatrix.BinaryResidualPolynomial.Bound A a) (hb : ThinMatrix.BinaryResidualPolynomial.Bound A b) :
+  (ThinMatrix.CompletedRootProducts.execute a b).bitSteps ≤ ThinMatrix.CompletedRootProducts.bitBudget F q A
+ThinMatrix.PairedRootRows.execute_bound {F q M : ℕ} [NeZero q]
+  (left right : Vector (ThinMatrix.RootRequestSelection.Selected (F * q)) M) (A : ℕ)
+  (ha : ThinMatrix.PairedRootRows.BoundRows A left) (hb : ThinMatrix.PairedRootRows.BoundRows A right) (i : Fin M) :
+  ThinMatrix.BinaryResidualPolynomial.Bound (ThinMatrix.CompletedRootProducts.magnitude F q A)
+    ((ThinMatrix.PairedRootRows.execute left right).value.products.value.get i)
+ThinMatrix.PairedRootRows.cells_eq {F q M : ℕ} (out : ThinMatrix.PairedRootRows.Prepared F q M) :
+  ThinMatrix.PairedRootRows.cells out = M * ((2 * F + ThinMatrix.CompletedRootProducts.outputLength F) * q)
+ThinMatrix.GraphRootProducts.fromInputs_halves {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR ell : ℕ)
+  (i : ThinMatrix.GraphRootProducts.Index p.L p.m p.t) :
+  have graph := ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell;
+  have keys := graph.permuted.transformed.source.roots.keys.value.channels;
+  ThinMatrix.ResidualFamilyKeys.normal (keys.get (ThinMatrix.GraphRootProducts.transpose graph i).value.channel) =
+      ThinMatrix.ResidualFamilyKeys.opposite (keys.get i.channel) ∧
+    ThinMatrix.ResidualFamilyKeys.opposite (keys.get (ThinMatrix.GraphRootProducts.transpose graph i).value.channel) =
+      ThinMatrix.ResidualFamilyKeys.normal (keys.get i.channel)
+ThinMatrix.GraphRootProducts.fromInputs_product {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR ell : ℕ)
+  (i : ThinMatrix.GraphRootProducts.Index p.L p.m p.t)
+  (request : Fin (ThinMatrix.FoldedBackendExecution.windowQuerySize n)) :
+  have graph := ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell;
+  ThinMatrix.ResidualPolynomialDegree.decode
+      ((ThinMatrix.GraphRootProducts.fromInputs f p block input bandL bandR ell i).paired.value.products.value.get
+        request) =
+    if ThinMatrix.GraphRootProducts.accepted graph i.leftIndex input.target bandL bandR request = true then
+      ThinMatrix.GraphRootProducts.rootPolynomial graph i.leftIndex input.target request *
+        ThinMatrix.GraphRootProducts.rootPolynomial graph (ThinMatrix.GraphRootProducts.transpose graph i).value
+          input.target request
+    else 0
+ThinMatrix.GraphRootProducts.fromInputs_bits {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR ell : ℕ)
+  (i : ThinMatrix.GraphRootProducts.Index p.L p.m p.t) :
+  (ThinMatrix.GraphRootProducts.fromInputs f p block input bandL bandR ell i).newBitSteps ≤
+    ThinMatrix.GraphRootProducts.bitBudget (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) i
+      input.target
+ThinMatrix.GraphRootProducts.execute_control {n h r b ell : ℕ} {f : ThinMatrix.CompactBlocks.PhysicalFactorization r}
+  {p : ThinMatrix.BinaryFoldedFactory.Plan f} (graph : ThinMatrix.GraphPrefixProgram.Prepared f p b ell)
+  (i : ThinMatrix.GraphRootProducts.Index p.L p.m p.t) (target : ThinMatrix.BinaryFoldedFormation.BinaryTable n)
+  (bandL bandR : ℕ) :
+  (ThinMatrix.GraphRootProducts.execute graph i target bandL bandR).newControl ≤
+    ThinMatrix.GraphRootProducts.controlBudget graph i
+ThinMatrix.WeightedRootProducts.prepare_value {F q M : ℕ} [NeZero q] (k t card : ℕ)
+  (products : Vector (ThinMatrix.BinaryResidualPolynomial.Block F q) M) (i : Fin M) (r : Fin q) :
+  ThinMatrix.BinaryCell.view
+      (((ThinMatrix.WeightedRootProducts.prepare k t card products).value.outputs.value.get i).sum.value.get r) =
+    ∑ d,
+      if card ≤ ↑d then
+        ThinMatrix.TensorContraction.residualWeight k t ↑d *
+          (ThinMatrix.ResidualPolynomialDegree.decode (products.get i)).coeff (↑d - card) r
+      else 0
+ThinMatrix.WeightedRootProducts.prepare_bits {F q M : ℕ} (k t card A : ℕ)
+  (products : Vector (ThinMatrix.BinaryResidualPolynomial.Block F q) M)
+  (ha : ∀ (i : Fin M), ThinMatrix.BinaryResidualPolynomial.Bound A (products.get i)) :
+  (ThinMatrix.WeightedRootProducts.prepare k t card products).bitSteps ≤
+    t * ThinMatrix.WeightedRootProducts.weightBudget k t + M * ThinMatrix.WeightedRootProducts.bitBudget t q (2 ^ k) A
+ThinMatrix.GraphWeightedRootProducts.fromInputs_value {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR ell : ℕ)
+  (i : ThinMatrix.GraphRootProducts.Index p.L p.m p.t)
+  (request : Fin (ThinMatrix.FoldedBackendExecution.windowQuerySize n)) (residue : Fin f.cyclic) :
+  ThinMatrix.BinaryCell.view
+      ((ThinMatrix.GraphWeightedRootProducts.output
+            (ThinMatrix.GraphWeightedRootProducts.fromInputs f p block input bandL bandR ell i).value request).get
+        residue) =
+    ThinMatrix.GraphWeightedRootProducts.sourceValue
+      (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) i input.target bandL bandR request
+      residue
+ThinMatrix.GraphWeightedRootProducts.fromInputs_bound {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR ell : ℕ)
+  (i : ThinMatrix.GraphRootProducts.Index p.L p.m p.t)
+  (request : Fin (ThinMatrix.FoldedBackendExecution.windowQuerySize n)) (residue : Fin f.cyclic) :
+  (ThinMatrix.BinaryCell.view
+        ((ThinMatrix.GraphWeightedRootProducts.output
+              (ThinMatrix.GraphWeightedRootProducts.fromInputs f p block input bandL bandR ell i).value request).get
+          residue)).natAbs ≤
+    ThinMatrix.GraphWeightedRootProducts.magnitude p.L p.m f.cyclic p.t
+ThinMatrix.GraphRootFamilyProducts.fromInputs_value {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR ell : ℕ)
+  (left right : Fin (ThinMatrix.GoodMapEmbedding.goodSlots p.L p.m).card)
+  (request : Fin (ThinMatrix.FoldedBackendExecution.windowQuerySize n)) (residue : Fin f.cyclic) :
+  have graph := ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell;
+  ThinMatrix.BinaryCell.view
+      ((ThinMatrix.RootProductCollection.output
+            (ThinMatrix.GraphRootFamilyProducts.execute graph left right input.target bandL bandR).value request).get
+        residue) =
+    ∑ u,
+      ∑ v,
+        ∑ run,
+          ∑ c,
+            ThinMatrix.GraphWeightedRootProducts.sourceValue graph
+              { u := u, v := v, run := run, left := left, right := right, channel := c } input.target bandL bandR
+              request residue
+ThinMatrix.GraphRootFamilyProducts.execute_bound {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR ell : ℕ)
+  (left right : Fin (ThinMatrix.GoodMapEmbedding.goodSlots p.L p.m).card)
+  (request : Fin (ThinMatrix.FoldedBackendExecution.windowQuerySize n)) (residue : Fin f.cyclic) :
+  (ThinMatrix.BinaryCell.view
+        ((ThinMatrix.RootProductCollection.output
+              (ThinMatrix.GraphRootFamilyProducts.execute
+                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) left right input.target
+                  bandL bandR).value
+              request).get
+          residue)).natAbs ≤
+    ThinMatrix.ExactHalfSourcePlan.J p.m *
+      (ThinMatrix.ExactHalfSourcePlan.J p.m *
+        ((2 * p.m + 1) *
+          (ThinMatrix.ResidualFamilyKeys.channelCount p.m p.t *
+            ThinMatrix.GraphWeightedRootProducts.magnitude p.L p.m f.cyclic p.t)))
+ThinMatrix.GraphRootFamilyProducts.execute_bits {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR ell : ℕ)
+  (left right : Fin (ThinMatrix.GoodMapEmbedding.goodSlots p.L p.m).card) :
+  (ThinMatrix.GraphRootFamilyProducts.execute (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+        left right input.target bandL bandR).bitSteps ≤
+    ThinMatrix.GraphRootFamilyProducts.executeBitBudget
+      (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) left right input.target
+ThinMatrix.GraphRootFamilyProducts.execute_control {n h r b ell : ℕ}
+  {f : ThinMatrix.CompactBlocks.PhysicalFactorization r} {p : ThinMatrix.BinaryFoldedFactory.Plan f}
+  (graph : ThinMatrix.GraphPrefixProgram.Prepared f p b ell)
+  (left right : Fin (ThinMatrix.GoodMapEmbedding.goodSlots p.L p.m).card)
+  (target : ThinMatrix.BinaryFoldedFormation.BinaryTable n) (bandL bandR : ℕ) :
+  (ThinMatrix.GraphRootFamilyProducts.execute graph left right target bandL bandR).control ≤
+    ThinMatrix.GraphRootFamilyProducts.executeControlBudget graph left right
+theorem ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work : ∀
+  (w : (n : ℕ) → ThinMatrix.StoredMinPlusAPSP.OptionalTable n) (W : ℕ → ℕ) (degree : ℕ),
+  (∀ (n : ℕ), ThinMatrix.APSPReduction.EdgeBound (ThinMatrix.StoredMinPlusAPSP.decode (w n)) (W n)) →
+    (∀ (n : ℕ), W n ≤ n ^ degree) →
+      (∀ (n : ℕ), ThinMatrix.APSPReduction.NoNegativeCycles (ThinMatrix.StoredMinPlusAPSP.decode (w n))) →
+        (∀ (n : ℕ),
+            ThinMatrix.APSPReduction.IsAPSP (ThinMatrix.StoredMinPlusAPSP.decode (w n))
+              (ThinMatrix.StoredMinPlusAPSP.decode
+                (ThinMatrix.BinaryAPSPCaller.viewOptional
+                  (ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                        (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).core.value))) ∧
+          (fun n =>
+              ↑(ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                    (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).work) =O[Filter.atTop]
+            fun n => ↑n ^ (299294792 / 100000000) :=
+fun w W degree hw hW hno =>
+  ⟨fun n =>
+    ThinMatrix.BinaryAlignedAPSP.run_correct (w n) (W n) (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)
+      (hw n) (hno n),
+    ThinMatrix.BinaryAlignedAPSPTheorem.run_work_bigO w W degree hw hW⟩
+'ThinMatrix.CompletedRootProducts.execute_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphRootProducts.fromInputs_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphWeightedRootProducts.fromInputs_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphRootFamilyProducts.fromInputs_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphRootFamilyProducts.execute_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphRootFamilyProducts.execute_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,83 @@
+@ThinMatrix.CroppedGroupedSuffix.transform_cropped : ∀ {R : Type u_1} [inst : CommRing R] {n : ℕ} (r : ℕ)
+  (p : ThinMatrix.WalshEmbedding.Cube n) (A : Finset (Fin n)) (X : ThinMatrix.CroppedGroupedSuffix.Word n → R),
+  ThinMatrix.CroppedGroupedSuffix.transform p A (ThinMatrix.CroppedGroupedSuffix.crop r X) =
+    ∑ J with J.card ≤ r, if J ⊆ A then ThinMatrix.CroppedGroupedSuffix.data p X J else 0
+'ThinMatrix.CroppedGroupedSuffix.transform_cropped' depends on axioms: [propext, Classical.choice, Quot.sound]
+ThinMatrix.CroppedGroupedSuffix.allocated_layer_volume : ∀ (n r P d C : ℕ),
+  d ≤ P →
+    4 ^ d * 3 ^ (P - d) * {w | (ThinMatrix.CroppedGroupedSuffix.rare w).card ≤ r}.card * C ≤
+      4 ^ P * (2 ^ n * ThinMatrix.CappedSubsetList.count n r) * C
+'ThinMatrix.CroppedGroupedSuffix.allocated_layer_volume' depends on axioms: [propext, Classical.choice, Quot.sound]
+@ThinMatrix.StoredGroupedCompletion.runAll_correct : ∀ {R : Type} [inst : CommRing R] {n C : ℕ} (r : ℕ)
+  (X : ThinMatrix.StoredGroupedCompletion.Source n C R) (requests : Vector (Array (Finset (Fin n))) (2 ^ n))
+  (p : Fin (2 ^ n)) (i : Fin (requests.get p).size) (c : Fin C),
+  ((ThinMatrix.StoredGroupedCompletion.runAll (ThinMatrix.StoredGroupedCompletion.prepare r X)
+                    (ThinMatrix.StoredGroupedCompletion.selectorFamilies
+                      (ThinMatrix.StoredGroupedCompletion.supports n r) requests)).groups.get
+              p).outputs[↑i].get
+      c =
+    ThinMatrix.CroppedGroupedSuffix.transform ((ThinMatrix.HalfSourceIntegerGreedy.cubeIndex n).symm p)
+      (requests.get p)[↑i] (ThinMatrix.CroppedGroupedSuffix.crop r (ThinMatrix.StoredGroupedCompletion.readSource X c))
+'ThinMatrix.StoredGroupedCompletion.runAll_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+@ThinMatrix.StoredGroupedCompletion.all_output_cells : ∀ {R : Type} [inst : CommRing R] {n r B q F : ℕ}
+  (stored : ThinMatrix.StoredGroupedCompletion.Prepared n r (B * q * F) R)
+  (masks : Vector (Array (Vector Bool (ThinMatrix.CappedSubsetList.count n r))) (2 ^ n)),
+  (List.map (fun result => (List.map (fun row => row.toList.length) result.outputs.toList).sum)
+        (ThinMatrix.StoredGroupedCompletion.runAll stored masks).groups.toList).sum =
+    ThinMatrix.StoredGroupedCompletion.requestCount masks * (B * q * F)
+'ThinMatrix.StoredGroupedCompletion.all_output_cells' depends on axioms: [propext, Classical.choice, Quot.sound]
+@ThinMatrix.StoredGroupedCompletion.all_work : ∀ {R : Type} [inst : CommRing R] {n r C : ℕ}
+  (stored : ThinMatrix.StoredGroupedCompletion.Prepared n r C R)
+  (masks : Vector (Array (Vector Bool (ThinMatrix.CappedSubsetList.count n r))) (2 ^ n)),
+  (ThinMatrix.StoredGroupedCompletion.runAll stored masks).work ≤
+    ThinMatrix.StoredGroupedCompletion.requestCount masks *
+          (ThinMatrix.CappedSubsetList.count n r * (8 * C + 16) + 3 * C + 20) +
+        20 * 2 ^ n +
+      4
+'ThinMatrix.StoredGroupedCompletion.all_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+@ThinMatrix.ExactHalfCroppedEmbedding.complete_embedding : ∀ {R : Type u_1} [inst : CommRing R] (L m : ℕ),
+  m ≤ L →
+    ∀ (X : ThinMatrix.WalshEmbedding.RawLeftInput L m (L - m) R)
+      (Y : ThinMatrix.WalshEmbedding.RawRightInput L m (L - m) R) (QL QR : Finset (Fin L)),
+      QL ∈ ThinMatrix.GoodMapEmbedding.goodSlots L m →
+        QR ∈ ThinMatrix.GoodMapEmbedding.goodSlots L m →
+          ∀ (iL iR : ThinMatrix.WalshEmbedding.Cube L) (aL aR : ThinMatrix.WalshEmbedding.Cube (L - m)),
+            ∑ r,
+                ∑ s,
+                  ThinMatrix.CroppedSourceContraction.contraction (m / 2)
+                    (ThinMatrix.MaskedLightSources.leftInput X (ThinMatrix.ExactHalfCroppedEmbedding.scanPick L m)
+                      (ThinMatrix.ExactHalfCroppedEmbedding.shifts m).get r s)
+                    (ThinMatrix.MaskedLightSources.rightInput Y (ThinMatrix.ExactHalfCroppedEmbedding.scanPick L m)
+                      (ThinMatrix.ExactHalfCroppedEmbedding.shifts m).get r s)
+                    (ThinMatrix.GoodMapEmbedding.goodSlots L m)
+                    (ThinMatrix.GoodMapEmbedding.cubeMap (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).1)
+                    (ThinMatrix.GoodMapEmbedding.cubeMap (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).2) QL QR
+                    iL iR
+                    (ThinMatrix.WalshEmbedding.transposeMap
+                      (ThinMatrix.GoodMapEmbedding.boolColumns (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).2)
+                      aR)
+                    (ThinMatrix.WalshEmbedding.transposeMap
+                      (ThinMatrix.GoodMapEmbedding.boolColumns (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).2)
+                      aL) =
+              4 ^ L *
+                ∑ h,
+                  ∑ k,
+                    X QL (ThinMatrix.WalshEmbedding.outsideBits QL iL) aL h k *
+                      Y QR (ThinMatrix.WalshEmbedding.outsideBits QR iR) h k aR
+'ThinMatrix.ExactHalfCroppedEmbedding.complete_embedding' depends on axioms: [propext, Classical.choice, Quot.sound]
+ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work : ∀
+  (w : (n : ℕ) → ThinMatrix.StoredMinPlusAPSP.OptionalTable n) (W : ℕ → ℕ) (degree : ℕ),
+  (∀ (n : ℕ), ThinMatrix.APSPReduction.EdgeBound (ThinMatrix.StoredMinPlusAPSP.decode (w n)) (W n)) →
+    (∀ (n : ℕ), W n ≤ n ^ degree) →
+      (∀ (n : ℕ), ThinMatrix.APSPReduction.NoNegativeCycles (ThinMatrix.StoredMinPlusAPSP.decode (w n))) →
+        (∀ (n : ℕ),
+            ThinMatrix.APSPReduction.IsAPSP (ThinMatrix.StoredMinPlusAPSP.decode (w n))
+              (ThinMatrix.StoredMinPlusAPSP.decode
+                (ThinMatrix.BinaryAPSPCaller.viewOptional
+                  (ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                        (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).core.value))) ∧
+          (fun n =>
+              ↑(ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                    (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).work) =O[Filter.atTop]
+            fun n => ↑n ^ (299294792 / 100000000)
+'ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]

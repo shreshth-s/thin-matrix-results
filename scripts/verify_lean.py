@@ -51,6 +51,23 @@ def source_snapshot(root: Path) -> dict[str, str]:
         "lean-toolchain", "lakefile.toml", "lake-manifest.json",
         "scripts/verify_lean.py", "lean/generate_aligned_intervals.py",
         "outputs/verify_five_term_aligned_apsp.py", "outputs/verify_exponents.py",
+        "outputs/verify_half_source_apsp.py", "outputs/check_half_source_integer.py", "scripts/verify.py",
+        "scripts/check_half_source_binary.lean",
+        "outputs/check_grouped_completion.py", "scripts/check_grouped_completion.lean",
+        "scripts/check_grouped_preparation.lean", "scripts/check_binary_grouped.lean",
+        "scripts/check_cropped_high.lean", "scripts/check_cyclic_window.lean",
+        "scripts/check_distinguished_root.lean", "scripts/check_binary_residual.lean",
+        "scripts/check_complete_residual.lean", "scripts/check_exact_half_sources.lean",
+        "scripts/check_residual_families.lean", "scripts/check_root_windows.lean",
+        "scripts/check_window_transforms.lean", "scripts/check_prefix_encoding.lean",
+        "scripts/check_prefix_completion.lean", "scripts/check_root_completion.lean", "scripts/check_root_products.lean", "scripts/check_shifted_low.lean", "scripts/check_low_recombination.lean", "scripts/check_physical_low_high.lean", "scripts/check_low_high_join.lean", "scripts/check_folded_band_schedule.lean", "scripts/check_shared_selector_costs.lean",
+        "scripts/check_cw_polynomial.lean", "outputs/check_cw_polynomial.py",
+        "scripts/check_cw_interpolation.lean", "outputs/check_cw_interpolation.py",
+        "scripts/check_cw_block_extraction.lean", "outputs/check_cw_block_extraction.py",
+        "scripts/check_cw_hash_counting.lean", "outputs/check_cw_hash_counting.py",
+        "scripts/check_cw_type_regularity.lean", "outputs/check_cw_type_regularity.py",
+        "scripts/check_modular_behrend.lean", "outputs/check_modular_behrend.py",
+        "scripts/check_cw_entropy_rate.lean", "outputs/check_cw_entropy_rate.py",
     )]
     return {
         str(path.relative_to(root)): hashlib.sha256(path.read_bytes()).hexdigest()

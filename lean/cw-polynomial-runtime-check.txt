@@ -1,0 +1,8 @@
+Bounded scalar CW fixture; deadline 120 seconds. Command: lake env lean -DwarningAsError=true --run scripts/check_cw_polynomial.lean
+PASS: q=0: 32 exact rational scalar entries agree with independent label formula.
+PASS: q=1: 108 exact rational scalar entries agree with independent label formula.
+PASS: q=2: 256 exact rational scalar entries agree with independent label formula.
+PASS: q=3: 500 exact rational scalar entries agree with independent label formula.
+PASS: q=16: 23328 exact rational scalar entries agree with independent label formula.
+PASS: CW scalar terms executed; polynomial coefficients and tensor-power scope are kernel-checked separately.
+Exit code: 0; elapsed: 5.726 seconds.

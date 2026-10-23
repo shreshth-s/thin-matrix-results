@@ -1,0 +1,121 @@
+structure ThinMatrix.PolynomialDegeneration.Certificate.{u_1, u_2, u_3, u_4} {R : Type u_1} {I : Type u_2}
+  {J : Type u_3} {K : Type u_4} [CommRing R] (target : ThinMatrix.FiniteTrilinear.Tensor I J K R)
+  (count order degree : ℕ) : Type (max (max (max u_1 u_2) u_3) u_4)
+number of parameters: 9
+fields:
+  ThinMatrix.PolynomialDegeneration.Certificate.terms : Fin count → ThinMatrix.FiniteTrilinear.Term I J K (Polynomial R)
+  ThinMatrix.PolynomialDegeneration.Certificate.below : ∀ (i : I) (j : J) (k : K),
+      ∀ n < order, (ThinMatrix.FiniteTrilinear.total self.terms i j k).coeff n = 0
+  ThinMatrix.PolynomialDegeneration.Certificate.leading : ∀ (i : I) (j : J) (k : K),
+      (ThinMatrix.FiniteTrilinear.total self.terms i j k).coeff order = target i j k
+  ThinMatrix.PolynomialDegeneration.Certificate.bounded : ∀ (i : I) (j : J) (k : K),
+      (ThinMatrix.FiniteTrilinear.total self.terms i j k).natDegree ≤ degree
+constructor:
+  ThinMatrix.PolynomialDegeneration.Certificate.mk.{u_1, u_2, u_3, u_4} {R : Type u_1} {I : Type u_2} {J : Type u_3}
+    {K : Type u_4} [CommRing R] {target : ThinMatrix.FiniteTrilinear.Tensor I J K R} {count order degree : ℕ}
+    (terms : Fin count → ThinMatrix.FiniteTrilinear.Term I J K (Polynomial R))
+    (below : ∀ (i : I) (j : J) (k : K), ∀ n < order, (ThinMatrix.FiniteTrilinear.total terms i j k).coeff n = 0)
+    (leading : ∀ (i : I) (j : J) (k : K), (ThinMatrix.FiniteTrilinear.total terms i j k).coeff order = target i j k)
+    (bounded : ∀ (i : I) (j : J) (k : K), (ThinMatrix.FiniteTrilinear.total terms i j k).natDegree ≤ degree) :
+    ThinMatrix.PolynomialDegeneration.Certificate target count order degree
+@ThinMatrix.FiniteTrilinear.total_bilinear : ∀ {I : Type u_1} {J : Type u_2} {K : Type u_3} {S : Type u_4}
+  {R : Type u_5} [inst : CommRing R] [inst_1 : Fintype I] [inst_2 : Fintype J] [inst_3 : Fintype S]
+  (a : S → ThinMatrix.FiniteTrilinear.Term I J K R) (x : I → R) (y : J → R) (k : K),
+  ThinMatrix.FiniteTrilinear.bilinear (ThinMatrix.FiniteTrilinear.total a) x y k =
+    ∑ s, ((a s).right k * ∑ i, (a s).left i * x i) * ∑ j, (a s).middle j * y j
+@ThinMatrix.CWPolynomialIdentity.expansion : ∀ {R : Type u_1} [inst : CommRing R] (q : ℕ) (a b c u v w t : R)
+  (x y z : Fin q → R),
+  ThinMatrix.CWPolynomialIdentity.witness q a b c u v w t x y z =
+    t ^ 3 * ThinMatrix.CWPolynomialIdentity.cw q a b c u v w x y z +
+              t ^ 4 *
+                (∑ i, x i * y i * z i - ThinMatrix.CWPolynomialIdentity.pairs a b c (∑ i, x i) (∑ i, y i) (∑ i, z i) -
+                  ↑q * ThinMatrix.CWPolynomialIdentity.cross a b c u v w) +
+            t ^ 6 * (-(((∑ i, x i) * ∑ i, y i) * ∑ i, z i) + ThinMatrix.CWPolynomialIdentity.pairs a b c u v w) -
+          t ^ 7 * (↑q * ThinMatrix.CWPolynomialIdentity.pairs a b c u v w) +
+        t ^ 9 * (u * v * w) -
+      t ^ 10 * (↑q * (u * v * w))
+@ThinMatrix.CWPolynomialCertificate.coefficient_low : ∀ {R : Type u_1} [inst : CommRing R] (q : ℕ)
+  (i j k : ThinMatrix.CWPolynomialCertificate.Axis q),
+  ∀ n < 3, (ThinMatrix.FiniteTrilinear.total (ThinMatrix.CWPolynomialCertificate.terms q) i j k).coeff n = 0
+@ThinMatrix.CWPolynomialCertificate.coefficient_target : ∀ {R : Type u_1} [inst : CommRing R] (q : ℕ)
+  (i j k : ThinMatrix.CWPolynomialCertificate.Axis q),
+  (ThinMatrix.FiniteTrilinear.total (ThinMatrix.CWPolynomialCertificate.terms q) i j k).coeff 3 =
+    ThinMatrix.CWPolynomialCertificate.target q i j k
+@ThinMatrix.CWPolynomialCertificate.degree_bound : ∀ {R : Type u_1} [inst : CommRing R] (q : ℕ)
+  (i j k : ThinMatrix.CWPolynomialCertificate.Axis q),
+  (ThinMatrix.FiniteTrilinear.total (ThinMatrix.CWPolynomialCertificate.terms q) i j k).natDegree ≤ 10
+@ThinMatrix.CWPolynomialCertificate.certificate : {R : Type u_1} →
+  [inst : CommRing R] →
+    (q : ℕ) → ThinMatrix.PolynomialDegeneration.Certificate (ThinMatrix.CWPolynomialCertificate.target q) (q + 2) 3 10
+ThinMatrix.CWPolynomialCertificate.cw16 : ThinMatrix.PolynomialDegeneration.Certificate
+  (ThinMatrix.CWPolynomialCertificate.target 16) 18 3 10
+ThinMatrix.CWPolynomialCertificate.cw16Power : (n : ℕ) →
+  ThinMatrix.PolynomialDegeneration.Certificate
+    (ThinMatrix.PolynomialDegeneration.tensorPower (ThinMatrix.CWPolynomialCertificate.target 16) n) (18 ^ n) (3 * n)
+    (10 * n)
+ThinMatrix.CWPolynomialCertificate.cw16Power_axis_card : ∀ (n : ℕ),
+  Fintype.card (ThinMatrix.PolynomialDegeneration.PowerIndex (ThinMatrix.CWPolynomialCertificate.Axis 16) n) = 18 ^ n
+@ThinMatrix.CWPolynomialCertificate.specialized_computable : ∀ {R : Type u_1} [inst : CommRing R] (q : ℕ) (t : R),
+  ThinMatrix.FiniteTrilinear.total (ThinMatrix.CWPolynomialCertificate.termsAt q t) = fun i j k =>
+    Polynomial.eval t (ThinMatrix.FiniteTrilinear.total (ThinMatrix.CWPolynomialCertificate.terms q) i j k)
+@ThinMatrix.PolynomialDegeneration.Certificate.restrict : {R : Type u_1} →
+  {I : Type u_2} →
+    {J : Type u_3} →
+      {K : Type u_4} →
+        {I' : Type u_5} →
+          {J' : Type u_6} →
+            {K' : Type u_7} →
+              [inst : CommRing R] →
+                {target : ThinMatrix.FiniteTrilinear.Tensor I J K R} →
+                  {count order degree : ℕ} →
+                    ThinMatrix.PolynomialDegeneration.Certificate target count order degree →
+                      (f : I' → I) →
+                        (g : J' → J) →
+                          (h : K' → K) →
+                            ThinMatrix.PolynomialDegeneration.Certificate
+                              (ThinMatrix.FiniteTrilinear.restrict target f g h) count order degree
+@ThinMatrix.PolynomialDegeneration.Certificate.product : {R : Type u_1} →
+  {I : Type u_2} →
+    {J : Type u_3} →
+      {K : Type u_4} →
+        {I' : Type u_5} →
+          {J' : Type u_6} →
+            {K' : Type u_7} →
+              [inst : CommRing R] →
+                {target : ThinMatrix.FiniteTrilinear.Tensor I J K R} →
+                  {other : ThinMatrix.FiniteTrilinear.Tensor I' J' K' R} →
+                    {r s a b d e : ℕ} →
+                      ThinMatrix.PolynomialDegeneration.Certificate target r a d →
+                        ThinMatrix.PolynomialDegeneration.Certificate other s b e →
+                          ThinMatrix.PolynomialDegeneration.Certificate
+                            (ThinMatrix.FiniteTrilinear.product target other) (r * s) (a + b) (d + e)
+@ThinMatrix.GraphFoldedCountCorrect.finite_modCount : ∀ {n h r : ℕ},
+  0 < h →
+    ∀ (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+      (i : Fin (ThinMatrix.EndToEndAPSP.incidenceSize n h)),
+      (ThinMatrix.BinaryCell.view (ThinMatrix.GraphFoldedCountCorrect.output f input h i)).toNat =
+        (ThinMatrix.EndToEndAPSP.flatInstance (ThinMatrix.BinaryFoldedFormation.viewTable input.left)
+              (ThinMatrix.BinaryFoldedFormation.viewTable input.right)
+              (ThinMatrix.BinaryFoldedFormation.viewTable input.target)).modCount
+          r i
+ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work : ∀
+  (w : (n : ℕ) → ThinMatrix.StoredMinPlusAPSP.OptionalTable n) (W : ℕ → ℕ) (degree : ℕ),
+  (∀ (n : ℕ), ThinMatrix.APSPReduction.EdgeBound (ThinMatrix.StoredMinPlusAPSP.decode (w n)) (W n)) →
+    (∀ (n : ℕ), W n ≤ n ^ degree) →
+      (∀ (n : ℕ), ThinMatrix.APSPReduction.NoNegativeCycles (ThinMatrix.StoredMinPlusAPSP.decode (w n))) →
+        (∀ (n : ℕ),
+            ThinMatrix.APSPReduction.IsAPSP (ThinMatrix.StoredMinPlusAPSP.decode (w n))
+              (ThinMatrix.StoredMinPlusAPSP.decode
+                (ThinMatrix.BinaryAPSPCaller.viewOptional
+                  (ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                        (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).core.value))) ∧
+          (fun n =>
+              ↑(ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                    (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).work) =O[Filter.atTop]
+            fun n => ↑n ^ (299294792 / 100000000)
+'ThinMatrix.CWPolynomialCertificate.cw16' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWPolynomialCertificate.cw16Power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWPolynomialCertificate.specialized_computable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.FiniteTrilinear.total_bilinear' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphFoldedCountCorrect.finite_modCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]

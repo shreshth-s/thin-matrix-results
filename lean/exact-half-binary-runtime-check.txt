@@ -1,0 +1,6 @@
+(true, 1419026751, 6167353)
+0
+'ThinMatrix.HalfSourceBinarySelection.translations_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceBinarySelection.translations_arithmetic_price' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

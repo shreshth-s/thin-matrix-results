@@ -1,0 +1,211 @@
+@ThinMatrix.ResidualPolynomialDegree.contract_degree : ∀ {R : Type u_1} [inst : CommRing R] (m D : ℕ)
+  (channels : ThinMatrix.WalshEmbedding.Cube m)
+  (read : (Fin m → ThinMatrix.WalshEmbedding.NormalLetter) → Polynomial R),
+  (∀ (w : Fin m → ThinMatrix.WalshEmbedding.NormalLetter), (read w).natDegree ≤ D) →
+    (ThinMatrix.DistinguishedResidualRoot.contract channels Polynomial.X read).natDegree ≤ m + D
+@ThinMatrix.ResidualPolynomialDegree.row_complete : ∀ {L C F : ℕ} [inst : NeZero C] (cap : ℕ)
+  (raw : ThinMatrix.BinarySourceFormation.RawStore L C) (maskN maskO : Vector Bool L)
+  (cn : Vector Bool (ThinMatrix.ResidualLayout.selected maskN).length)
+  (co : Vector Bool (ThinMatrix.ResidualLayout.selected maskO).length)
+  (wn : Vector (Fin 3) (ThinMatrix.ResidualLayout.remaining maskN).length)
+  (wo : Vector (Fin 3) (ThinMatrix.ResidualLayout.remaining maskO).length),
+  (ThinMatrix.ResidualLayout.selected maskN).length < F →
+    ThinMatrix.ResidualPolynomialDegree.decode
+        (ThinMatrix.BinaryResidualRootProgram.execute F cap raw maskN maskO cn co wn wo).value =
+      ThinMatrix.ResidualPolynomialDegree.polynomial cap raw maskN maskO cn co wn wo
+'ThinMatrix.ResidualPolynomialDegree.contract_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+@ThinMatrix.BinaryResidualDegreeSpace.execute_value : ∀ {L : ℕ} (mask : Vector Bool L),
+  (ThinMatrix.BinaryResidualDegreeSpace.execute mask).value = (ThinMatrix.ResidualLayout.selected mask).length + 1
+@ThinMatrix.BinaryResidualDegreeSpace.execute_bits : ∀ {L : ℕ} (mask : Vector Bool L),
+  (ThinMatrix.BinaryResidualDegreeSpace.execute mask).bitSteps ≤ ThinMatrix.BinaryResidualDegreeSpace.bitBudget L
+def ThinMatrix.CompleteResidualArray.execute : {L C : ℕ} →
+  ℕ →
+    ThinMatrix.BinarySourceFormation.RawStore L C →
+      (maskN maskO : Vector Bool L) →
+        Vector Bool (ThinMatrix.ResidualLayout.selected maskN).length →
+          Vector Bool (ThinMatrix.ResidualLayout.selected maskO).length →
+            ThinMatrix.BinaryGroupedCoordinates.Run (ThinMatrix.CompleteResidualArray.Rows maskN maskO C) :=
+fun {L C} cap raw maskN maskO cn co =>
+  let space := ThinMatrix.BinaryResidualDegreeSpace.execute maskN;
+  have out := ThinMatrix.BinaryResidualArray.execute space.value cap raw maskN maskO cn co;
+  { value := cast ⋯ out.value, bitSteps := space.bitSteps + out.bitSteps, control := space.control + out.control + 4 }
+@ThinMatrix.CompleteResidualArray.execute_polynomial : ∀ {L C : ℕ} [inst : NeZero C] (cap : ℕ)
+  (raw : ThinMatrix.BinarySourceFormation.RawStore L C) (maskN maskO : Vector Bool L)
+  (cn : Vector Bool (ThinMatrix.ResidualLayout.selected maskN).length)
+  (co : Vector Bool (ThinMatrix.ResidualLayout.selected maskO).length)
+  (w :
+    ThinMatrix.CroppedGroupedSuffix.Word
+      ((ThinMatrix.ResidualLayout.remaining maskN).length + (ThinMatrix.ResidualLayout.remaining maskO).length)),
+  ThinMatrix.ResidualPolynomialDegree.decode
+      (Vector.get (ThinMatrix.CompleteResidualArray.execute cap raw maskN maskO cn co).value
+        ((ThinMatrix.StoredGroupedCompletion.rawIndex
+            ((ThinMatrix.ResidualLayout.remaining maskN).length + (ThinMatrix.ResidualLayout.remaining maskO).length))
+          w)) =
+    ThinMatrix.ResidualPolynomialDegree.polynomial cap raw maskN maskO cn co
+      (Vector.ofFn fun i => w (Fin.castAdd (ThinMatrix.ResidualLayout.remaining maskO).length i))
+      (Vector.ofFn fun i => w (Fin.natAdd (ThinMatrix.ResidualLayout.remaining maskN).length i))
+@ThinMatrix.CompleteResidualArray.execute_root : ∀ {L C : ℕ} [inst : NeZero C] (cap : ℕ)
+  (raw : ThinMatrix.BinarySourceFormation.RawStore L C) (maskN maskO : Vector Bool L)
+  (he : (ThinMatrix.ResidualLayout.selected maskO).length = (ThinMatrix.ResidualLayout.selected maskN).length)
+  (cn : Vector Bool (ThinMatrix.ResidualLayout.selected maskN).length)
+  (co : Vector Bool (ThinMatrix.ResidualLayout.selected maskO).length)
+  (w :
+    ThinMatrix.CroppedGroupedSuffix.Word
+      ((ThinMatrix.ResidualLayout.remaining maskN).length + (ThinMatrix.ResidualLayout.remaining maskO).length)),
+  ThinMatrix.ResidualPolynomialDegree.decode
+      (Vector.get (ThinMatrix.CompleteResidualArray.execute cap raw maskN maskO cn co).value
+        ((ThinMatrix.StoredGroupedCompletion.rawIndex
+            ((ThinMatrix.ResidualLayout.remaining maskN).length + (ThinMatrix.ResidualLayout.remaining maskO).length))
+          w)) =
+    ThinMatrix.DistinguishedResidualSupport.root (ThinMatrix.ResidualLayout.equivalence maskN)
+      (ThinMatrix.ResidualRootBridge.transport (ThinMatrix.ResidualLayout.equivalence maskO) he ⋯) cn.get
+      (fun i => co.get ((finCongr he).symm i)) Polynomial.X cap (ThinMatrix.ResidualRootBridge.rawPolynomial raw)
+      (fun i => w (Fin.castAdd (ThinMatrix.ResidualLayout.remaining maskO).length i)) fun i =>
+      w (Fin.natAdd (ThinMatrix.ResidualLayout.remaining maskN).length ((finCongr ⋯).symm i))
+@ThinMatrix.CompleteResidualArray.execute_support : ∀ {L C : ℕ} [inst : NeZero C] (cap : ℕ)
+  (raw : ThinMatrix.BinarySourceFormation.RawStore L C) (maskN maskO : Vector Bool L),
+  (ThinMatrix.ResidualLayout.selected maskO).length = (ThinMatrix.ResidualLayout.selected maskN).length →
+    ∀ (cn : Vector Bool (ThinMatrix.ResidualLayout.selected maskN).length)
+      (co : Vector Bool (ThinMatrix.ResidualLayout.selected maskO).length)
+      (w :
+        ThinMatrix.CroppedGroupedSuffix.Word
+          ((ThinMatrix.ResidualLayout.remaining maskN).length + (ThinMatrix.ResidualLayout.remaining maskO).length)),
+      ThinMatrix.ResidualPolynomialDegree.decode
+            (Vector.get (ThinMatrix.CompleteResidualArray.execute cap raw maskN maskO cn co).value
+              ((ThinMatrix.StoredGroupedCompletion.rawIndex
+                  ((ThinMatrix.ResidualLayout.remaining maskN).length +
+                    (ThinMatrix.ResidualLayout.remaining maskO).length))
+                w)) ≠
+          0 →
+        (ThinMatrix.WalshEmbedding.ones cn.get +
+              ThinMatrix.DistinguishedResidualSupport.rareCount fun i =>
+                w (Fin.castAdd (ThinMatrix.ResidualLayout.remaining maskO).length i)) ≤
+            cap ∧
+          (ThinMatrix.WalshEmbedding.ones co.get +
+              ThinMatrix.DistinguishedResidualSupport.rareCount fun i =>
+                w (Fin.natAdd (ThinMatrix.ResidualLayout.remaining maskN).length i)) ≤
+            cap
+@ThinMatrix.CompleteResidualArray.execute_bits : ∀ {L C : ℕ} (cap : ℕ)
+  (raw : ThinMatrix.BinarySourceFormation.RawStore L C) (maskN maskO : Vector Bool L)
+  (cn : Vector Bool (ThinMatrix.ResidualLayout.selected maskN).length)
+  (co : Vector Bool (ThinMatrix.ResidualLayout.selected maskO).length) (A : ℕ),
+  ThinMatrix.BinaryResidualLeaf.RawBound raw A →
+    (ThinMatrix.CompleteResidualArray.execute cap raw maskN maskO cn co).bitSteps ≤
+      ThinMatrix.CompleteResidualArray.bitBudget L (ThinMatrix.ResidualLayout.selected maskN).length
+        (ThinMatrix.ResidualLayout.selected maskO).length (ThinMatrix.ResidualLayout.remaining maskN).length
+        (ThinMatrix.ResidualLayout.remaining maskO).length C cap A
+@ThinMatrix.CompleteResidualArray.execute_control : ∀ {L C : ℕ} (cap : ℕ)
+  (raw : ThinMatrix.BinarySourceFormation.RawStore L C) (maskN maskO : Vector Bool L)
+  (cn : Vector Bool (ThinMatrix.ResidualLayout.selected maskN).length)
+  (co : Vector Bool (ThinMatrix.ResidualLayout.selected maskO).length),
+  (ThinMatrix.CompleteResidualArray.execute cap raw maskN maskO cn co).control ≤
+    ThinMatrix.CompleteResidualArray.controlBudget L (ThinMatrix.ResidualLayout.selected maskN).length
+      (ThinMatrix.ResidualLayout.selected maskO).length (ThinMatrix.ResidualLayout.remaining maskN).length
+      (ThinMatrix.ResidualLayout.remaining maskO).length C
+@ThinMatrix.CompleteResidualArray.execute_width : ∀ {L C : ℕ} (cap : ℕ)
+  (raw : ThinMatrix.BinarySourceFormation.RawStore L C) (maskN maskO : Vector Bool L)
+  (cn : Vector Bool (ThinMatrix.ResidualLayout.selected maskN).length)
+  (co : Vector Bool (ThinMatrix.ResidualLayout.selected maskO).length) (A : ℕ),
+  ThinMatrix.BinaryResidualLeaf.RawBound raw A →
+    ∀
+      (i :
+        Fin
+          (3 ^
+            ((ThinMatrix.ResidualLayout.remaining maskN).length + (ThinMatrix.ResidualLayout.remaining maskO).length)))
+      (d : Fin ((ThinMatrix.ResidualLayout.selected maskN).length + 1)) (r : Fin C),
+      (ThinMatrix.BinaryResidualPolynomial.cellView
+              (Vector.get (ThinMatrix.CompleteResidualArray.execute cap raw maskN maskO cn co).value i) d
+              r).natAbs.size ≤
+        (ThinMatrix.ResidualLayout.selected maskO).length + 2 * (ThinMatrix.ResidualLayout.selected maskN).length +
+          A.size
+@ThinMatrix.CompleteResidualArray.coefficient_cells : ∀ {L C : ℕ} (cap : ℕ)
+  (raw : ThinMatrix.BinarySourceFormation.RawStore L C) (maskN maskO : Vector Bool L)
+  (cn : Vector Bool (ThinMatrix.ResidualLayout.selected maskN).length)
+  (co : Vector Bool (ThinMatrix.ResidualLayout.selected maskO).length),
+  (List.map (fun block => (List.map (fun row => row.toArray.size) (Vector.toList block)).sum)
+        (Vector.toList (ThinMatrix.CompleteResidualArray.execute cap raw maskN maskO cn co).value)).sum =
+    3 ^ ((ThinMatrix.ResidualLayout.remaining maskN).length + (ThinMatrix.ResidualLayout.remaining maskO).length) *
+        ((ThinMatrix.ResidualLayout.selected maskN).length + 1) *
+      C
+'ThinMatrix.CompleteResidualArray.execute_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CompleteResidualArray.execute_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CompleteResidualArray.execute_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CompleteResidualArray.execute_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CompleteResidualArray.execute_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+@ThinMatrix.BinaryTriangleExecution.prepareOracleFromPrimes_correct : ∀ {n h U : ℕ} {Payload : Type},
+  0 < h →
+    ∀ (backend : ThinMatrix.BinaryTriangleExecution.Backend n h Payload)
+      (parameters : ThinMatrix.CompleteAPSP.Parameters h U) (labels : Vector ℕ parameters.pool.card)
+      (hlabels : labels = ThinMatrix.EndToEndAPSP.primeVector parameters.pool) (addressPrice : ℕ)
+      (A B T : ThinMatrix.BinaryTriangleExecution.IntTable n) (i j : Fin n),
+      ThinMatrix.StoredMinPlusAPSP.decode
+            ((ThinMatrix.BinaryTriangleExecution.prepareOracleFromPrimes backend parameters labels hlabels
+                    addressPrice).oracle
+                A B T).answers
+            i j =
+          true ↔
+        ∃ k,
+          ThinMatrix.BinaryCell.view (ThinMatrix.BinaryTriangleExecution.read A i k) +
+                ThinMatrix.BinaryCell.view (ThinMatrix.BinaryTriangleExecution.read B k j) +
+              ThinMatrix.BinaryCell.view (ThinMatrix.BinaryTriangleExecution.read T i j) =
+            0
+@ThinMatrix.ExactHalfResidualWindow.coefficient_window_reconstruction : ∀ {L m k q : ℕ} [inst : NeZero k]
+  [inst_1 : NeZero q] (ell : ℕ) (eN eO : ThinMatrix.DistinguishedResidualSupport.Layout L m k)
+  (cn co : ThinMatrix.WalshEmbedding.Cube m) (cap : ℕ)
+  (source :
+    (Fin L → ThinMatrix.WalshEmbedding.NormalLetter) →
+      (Fin L → ThinMatrix.WalshEmbedding.OppositeLetter) → Polynomial (ThinMatrix.CyclicRing.Cyclic q))
+  (w : ThinMatrix.CroppedGroupedSuffix.Word (2 * k)) (degree : ℕ) (residue : Fin q),
+  ∑ s,
+      (ThinMatrix.CyclicLightWindow.component ell
+            (cap - max (ThinMatrix.WalshEmbedding.ones cn) (ThinMatrix.WalshEmbedding.ones co))
+            (ThinMatrix.BinaryWindowPartition.bits
+              (decide (ThinMatrix.WalshEmbedding.ones co ≤ ThinMatrix.WalshEmbedding.ones cn)) w)
+            s (ThinMatrix.ExactHalfResidualWindow.packedRoot eN eO cn co Polynomial.X cap source w)).coeff
+        degree residue =
+    (ThinMatrix.ExactHalfResidualWindow.packedRoot eN eO cn co Polynomial.X cap source w).coeff degree residue
+@ThinMatrix.ExactHalfCroppedEmbedding.complete_embedding : ∀ {R : Type u_1} [inst : CommRing R] (L m : ℕ),
+  m ≤ L →
+    ∀ (X : ThinMatrix.WalshEmbedding.RawLeftInput L m (L - m) R)
+      (Y : ThinMatrix.WalshEmbedding.RawRightInput L m (L - m) R) (QL QR : Finset (Fin L)),
+      QL ∈ ThinMatrix.GoodMapEmbedding.goodSlots L m →
+        QR ∈ ThinMatrix.GoodMapEmbedding.goodSlots L m →
+          ∀ (iL iR : ThinMatrix.WalshEmbedding.Cube L) (aL aR : ThinMatrix.WalshEmbedding.Cube (L - m)),
+            ∑ r,
+                ∑ s,
+                  ThinMatrix.CroppedSourceContraction.contraction (m / 2)
+                    (ThinMatrix.MaskedLightSources.leftInput X (ThinMatrix.ExactHalfCroppedEmbedding.scanPick L m)
+                      (ThinMatrix.ExactHalfCroppedEmbedding.shifts m).get r s)
+                    (ThinMatrix.MaskedLightSources.rightInput Y (ThinMatrix.ExactHalfCroppedEmbedding.scanPick L m)
+                      (ThinMatrix.ExactHalfCroppedEmbedding.shifts m).get r s)
+                    (ThinMatrix.GoodMapEmbedding.goodSlots L m)
+                    (ThinMatrix.GoodMapEmbedding.cubeMap (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).1)
+                    (ThinMatrix.GoodMapEmbedding.cubeMap (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).2) QL QR
+                    iL iR
+                    (ThinMatrix.WalshEmbedding.transposeMap
+                      (ThinMatrix.GoodMapEmbedding.boolColumns (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).2)
+                      aR)
+                    (ThinMatrix.WalshEmbedding.transposeMap
+                      (ThinMatrix.GoodMapEmbedding.boolColumns (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).2)
+                      aL) =
+              4 ^ L *
+                ∑ h,
+                  ∑ k,
+                    X QL (ThinMatrix.WalshEmbedding.outsideBits QL iL) aL h k *
+                      Y QR (ThinMatrix.WalshEmbedding.outsideBits QR iR) h k aR
+ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work (w : (n : ℕ) → ThinMatrix.StoredMinPlusAPSP.OptionalTable n)
+  (W : ℕ → ℕ) (degree : ℕ)
+  (hw : ∀ (n : ℕ), ThinMatrix.APSPReduction.EdgeBound (ThinMatrix.StoredMinPlusAPSP.decode (w n)) (W n))
+  (hW : ∀ (n : ℕ), W n ≤ n ^ degree)
+  (hno : ∀ (n : ℕ), ThinMatrix.APSPReduction.NoNegativeCycles (ThinMatrix.StoredMinPlusAPSP.decode (w n))) :
+  (∀ (n : ℕ),
+      ThinMatrix.APSPReduction.IsAPSP (ThinMatrix.StoredMinPlusAPSP.decode (w n))
+        (ThinMatrix.StoredMinPlusAPSP.decode
+          (ThinMatrix.BinaryAPSPCaller.viewOptional
+            (ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                  (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).core.value))) ∧
+    (fun n =>
+        ↑(ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+              (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).work) =O[Filter.atTop]
+      fun n => ↑n ^ (299294792 / 100000000)
+'ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]

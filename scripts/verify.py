@@ -35,6 +35,7 @@ def main() -> None:
         if certificate.stdout != expected:
             raise SystemExit(f"Certificate output differs from outputs/{recorded}")
     for script in (
+        "check_half_source_integer.py", "check_grouped_completion.py", "check_cw_polynomial.py", "check_cw_interpolation.py", "check_cw_block_extraction.py", "check_cw_hash_counting.py", "check_cw_type_regularity.py", "check_modular_behrend.py", "check_cw_entropy_rate.py",
         "check_pruned_encoding.py", "check_reductions.py",
         "check_modular_moments.py", "check_prefix_counts.py",
         "check_rectangular_reductions.py", "check_3sum_counts.py",

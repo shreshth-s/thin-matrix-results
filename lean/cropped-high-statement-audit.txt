@@ -1,0 +1,161 @@
+@ThinMatrix.BinaryCroppedHighInput.input_read : ∀ {L q : ℕ} (b : Bool) (cap : ℕ)
+  (raw : ThinMatrix.BinarySourceFormation.RawStore L q)
+  (a : ThinMatrix.SharedEncoder.Coordinates (ThinMatrix.HighBaseEncoder.rootDims L b)) (r : Fin q),
+  ThinMatrix.BinaryCell.view
+      (Vector.get
+        (ThinMatrix.SharedEncoder.read (2 * L) (ThinMatrix.HighBaseEncoder.rootDims L b)
+          (ThinMatrix.BinaryCroppedHighInput.input b cap raw).value a)
+        r) =
+    ThinMatrix.CroppedSourceContraction.crop cap
+      (fun n o => ThinMatrix.BinaryCell.view (ThinMatrix.BinarySourceFormation.readRaw raw n o r))
+      (ThinMatrix.BinaryHighExecution.decodeSource b a).1 (ThinMatrix.BinaryHighExecution.decodeSource b a).2
+'ThinMatrix.BinaryCroppedHighInput.input_read' depends on axioms: [propext, Classical.choice, Quot.sound]
+ThinMatrix.ShiftedHighForms.normalCell_view : ∀ (row : Fin 5) (col : Fin 4),
+  ThinMatrix.BinaryCell.view (ThinMatrix.ShiftedHighForms.normalCell row.castSucc col) =
+    ThinMatrix.ShiftedHighForms.normalForm (ThinMatrix.SourceCoordinates.normalEquiv col) row
+'ThinMatrix.ShiftedHighForms.local_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+@ThinMatrix.BinaryCroppedHighEncoder.correctness_and_work : ∀ {L m t q : ℕ} (cap A : ℕ) (b : Bool)
+  (raw : ThinMatrix.BinarySourceFormation.RawStore L q),
+  ThinMatrix.BinaryHighExecution.RawBound raw A →
+    1 ≤ q →
+      (∀ (w : ThinMatrix.HighBoxDP.BaseStates L m t) (r : Fin q),
+          ThinMatrix.BinaryCell.view
+              (Vector.get
+                (ThinMatrix.BinaryHighTable.readBase
+                    (ThinMatrix.BinaryCroppedHighEncoder.execute L m t q cap b raw).table w).1
+                r) =
+            ThinMatrix.BinaryCroppedHighEncoder.coefficientValue b cap raw (↑w) r) ∧
+        ThinMatrix.BinaryCroppedHighEncoder.allocatedCells
+              (ThinMatrix.BinaryCroppedHighEncoder.execute L m t q cap b raw) ≤
+            q * (2 * L + 1) * ThinMatrix.HighBaseEncoder.baseCount L m t ∧
+          (ThinMatrix.BinaryCroppedHighEncoder.execute L m t q cap b raw).bitSteps ≤
+            ThinMatrix.BinaryCroppedHighEncoder.totalBudget L m t q cap A
+'ThinMatrix.BinaryCroppedHighEncoder.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+@ThinMatrix.BinaryCroppedHighEncoder.leaf_keys : ∀ {L m t q : ℕ} (cap : ℕ) (b : Bool)
+  (raw : ThinMatrix.BinarySourceFormation.RawStore L q),
+  List.map (fun p => ThinMatrix.ArrayKeys.toWord p.1)
+      (ThinMatrix.BinaryCroppedHighEncoder.execute L m t q cap b raw).encoding.leaves =
+    ThinMatrix.HighBaseEncoder.generate L m t (2 * L)
+'ThinMatrix.BinaryCroppedHighEncoder.leaf_keys' depends on axioms: [propext, Classical.choice, Quot.sound]
+ThinMatrix.BinaryCroppedHighBoxes.setup_value : ∀ (L A : ℕ),
+  (ThinMatrix.BinaryCroppedHighBoxes.setup L A).value = ThinMatrix.BinaryCroppedHighBoxes.magnitude L A
+'ThinMatrix.BinaryCroppedHighBoxes.setup_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+ThinMatrix.BinaryCroppedHighBoxes.setup_price : ∀ (L A : ℕ),
+  (ThinMatrix.BinaryCroppedHighBoxes.setup L A).bitSteps ≤ ThinMatrix.BinaryCroppedHighBoxes.setupBudget L A
+'ThinMatrix.BinaryCroppedHighBoxes.setup_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+@ThinMatrix.BinaryCroppedHighBoxes.correctness_and_work : ∀ {L m t q : ℕ} [inst : NeZero q] (cap A : ℕ)
+  (X Y : ThinMatrix.BinarySourceFormation.RawStore L q),
+  ThinMatrix.BinaryHighExecution.RawBound X A →
+    ThinMatrix.BinaryHighExecution.RawBound Y A →
+      (∀ (w : ThinMatrix.HighBoxDP.States L m t) (r : Fin q),
+          ThinMatrix.BinaryArrayFFT.Integer.view
+              (Vector.get
+                (ThinMatrix.BinaryHighTable.lookup (ThinMatrix.BinaryCroppedHighBoxes.execute L m t q cap A X Y).boxes
+                  (ThinMatrix.ArrayKeys.materialize ↑w))
+                r) =
+            ThinMatrix.HighBoxDP.boxValue ↑w fun v =>
+              ThinMatrix.CyclicRing.convolution (ThinMatrix.BinaryCroppedHighEncoder.leafValues true cap X v).get
+                (ThinMatrix.BinaryCroppedHighEncoder.leafValues false cap Y v).get r) ∧
+        (ThinMatrix.BinaryCroppedHighBoxes.execute L m t q cap A X Y).work ≤
+          ThinMatrix.BinaryCroppedHighBoxes.totalBudget L m t q cap A
+'ThinMatrix.BinaryCroppedHighBoxes.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+def ThinMatrix.BinaryCroppedHighBoxes.execute : (L : ℕ) →
+  ℕ →
+    ℕ →
+      (q : ℕ) →
+        ℕ →
+          ℕ →
+            ThinMatrix.BinarySourceFormation.RawStore L q →
+              ThinMatrix.BinarySourceFormation.RawStore L q → ThinMatrix.BinaryCroppedHighBoxes.Execution L q :=
+fun L m t q cap A X Y =>
+  have size := ThinMatrix.BinaryCroppedHighBoxes.setup L A;
+  have left := ThinMatrix.BinaryCroppedHighEncoder.execute L m t q cap true X;
+  have right := ThinMatrix.BinaryCroppedHighEncoder.execute L m t q cap false Y;
+  have out := ThinMatrix.BinaryHighTable.prepare size.value left.table right.table;
+  { left := left, right := right, boxes := out.value,
+    work := size.bitSteps + left.bitSteps + right.bitSteps + out.work + 8 }
+def ThinMatrix.BinaryCroppedHighBoxes.totalBudget : ℕ → ℕ → ℕ → ℕ → ℕ → ℕ → ℕ :=
+fun L m t q cap A =>
+  ThinMatrix.BinaryCroppedHighBoxes.setupBudget L A +
+        2 * ThinMatrix.BinaryCroppedHighEncoder.totalBudget L m t q cap A +
+      ThinMatrix.BinaryHighTable.preparationBudget L m t q (ThinMatrix.BinaryCroppedHighBoxes.magnitude L A) +
+    8
+def ThinMatrix.BinaryCroppedHighEncoder.totalBudget : ℕ → ℕ → ℕ → ℕ → ℕ → ℕ → ℕ :=
+fun L m t q cap A =>
+  10 * (cap.size + 1) ^ 2 + 2 +
+    (ThinMatrix.BinaryCroppedHighInput.payloadBudget L q cap A + 4 * L +
+        ThinMatrix.BinaryHighCost.storedFactor L A * ThinMatrix.BinaryCroppedHighEncoder.encoderShape L * q) *
+      ThinMatrix.HighBaseEncoder.baseCount L m t
+def ThinMatrix.BinaryCroppedHighEncoder.coefficientValue : {L q : ℕ} →
+  Bool → ℕ → ThinMatrix.BinarySourceFormation.RawStore L q → ThinMatrix.CacheBounds.Word (2 * L) → Fin q → ℤ :=
+fun {L q} b cap raw word r =>
+  ∑ a,
+    ThinMatrix.CroppedSourceContraction.crop cap
+        (fun n o => ThinMatrix.BinaryCell.view (ThinMatrix.BinarySourceFormation.readRaw raw n o r))
+        (ThinMatrix.BinaryHighExecution.decodeSource b a).1 (ThinMatrix.BinaryHighExecution.decodeSource b a).2 *
+      ∏ i, ThinMatrix.ShiftedHighForms.integerForms L b (↑i) (word i) ↑(a i)
+@ThinMatrix.BinaryPreparedGroupedProgram.correctness_and_costs : ∀ {n C : ℕ} (A r : ℕ)
+  (X : ThinMatrix.BinaryGroupedPreparation.Source n C),
+  (∀ (c : Fin C) (w : Fin (3 ^ n)), ((Vector.get X c).get w).natAbs ≤ A) →
+    ∀ (requests : ThinMatrix.BinaryPreparedGroupedProgram.Requests n),
+      (∀ (p : Fin (2 ^ n)) (i : Fin (Vector.get requests p).size) (c : Fin C),
+          ThinMatrix.BinaryCell.view
+              (((ThinMatrix.BinaryPreparedGroupedProgram.execute r X requests).value.get p)[↑i].get c) =
+            ThinMatrix.CroppedGroupedSuffix.transform (Vector.get ((ThinMatrix.GroupedPreparation.pairKeys n).get p))
+              (ThinMatrix.CappedBitPreparation.support (Vector.get requests p)[↑i])
+              (ThinMatrix.CroppedGroupedSuffix.crop r (ThinMatrix.StoredGroupedCompletion.readSource X c))) ∧
+        (ThinMatrix.BinaryPreparedGroupedProgram.execute r X requests).bitSteps ≤
+            ThinMatrix.BinaryPreparedGroupedProgram.totalBits n r C A
+              (ThinMatrix.StoredGroupedCompletion.requestCount requests) ∧
+          (ThinMatrix.BinaryPreparedGroupedProgram.execute r X requests).control ≤
+            ThinMatrix.BinaryPreparedGroupedProgram.totalControl n r C
+              (ThinMatrix.StoredGroupedCompletion.requestCount requests)
+'ThinMatrix.BinaryPreparedGroupedProgram.correctness_and_costs' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@ThinMatrix.ExactHalfCroppedEmbedding.complete_embedding : ∀ {R : Type u_1} [inst : CommRing R] (L m : ℕ),
+  m ≤ L →
+    ∀ (X : ThinMatrix.WalshEmbedding.RawLeftInput L m (L - m) R)
+      (Y : ThinMatrix.WalshEmbedding.RawRightInput L m (L - m) R) (QL QR : Finset (Fin L)),
+      QL ∈ ThinMatrix.GoodMapEmbedding.goodSlots L m →
+        QR ∈ ThinMatrix.GoodMapEmbedding.goodSlots L m →
+          ∀ (iL iR : ThinMatrix.WalshEmbedding.Cube L) (aL aR : ThinMatrix.WalshEmbedding.Cube (L - m)),
+            ∑ r,
+                ∑ s,
+                  ThinMatrix.CroppedSourceContraction.contraction (m / 2)
+                    (ThinMatrix.MaskedLightSources.leftInput X (ThinMatrix.ExactHalfCroppedEmbedding.scanPick L m)
+                      (ThinMatrix.ExactHalfCroppedEmbedding.shifts m).get r s)
+                    (ThinMatrix.MaskedLightSources.rightInput Y (ThinMatrix.ExactHalfCroppedEmbedding.scanPick L m)
+                      (ThinMatrix.ExactHalfCroppedEmbedding.shifts m).get r s)
+                    (ThinMatrix.GoodMapEmbedding.goodSlots L m)
+                    (ThinMatrix.GoodMapEmbedding.cubeMap (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).1)
+                    (ThinMatrix.GoodMapEmbedding.cubeMap (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).2) QL QR
+                    iL iR
+                    (ThinMatrix.WalshEmbedding.transposeMap
+                      (ThinMatrix.GoodMapEmbedding.boolColumns (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).2)
+                      aR)
+                    (ThinMatrix.WalshEmbedding.transposeMap
+                      (ThinMatrix.GoodMapEmbedding.boolColumns (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).2)
+                      aL) =
+              4 ^ L *
+                ∑ h,
+                  ∑ k,
+                    X QL (ThinMatrix.WalshEmbedding.outsideBits QL iL) aL h k *
+                      Y QR (ThinMatrix.WalshEmbedding.outsideBits QR iR) h k aR
+'ThinMatrix.ExactHalfCroppedEmbedding.complete_embedding' depends on axioms: [propext, Classical.choice, Quot.sound]
+ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work (w : (n : ℕ) → ThinMatrix.StoredMinPlusAPSP.OptionalTable n)
+  (W : ℕ → ℕ) (degree : ℕ)
+  (hw : ∀ (n : ℕ), ThinMatrix.APSPReduction.EdgeBound (ThinMatrix.StoredMinPlusAPSP.decode (w n)) (W n))
+  (hW : ∀ (n : ℕ), W n ≤ n ^ degree)
+  (hno : ∀ (n : ℕ), ThinMatrix.APSPReduction.NoNegativeCycles (ThinMatrix.StoredMinPlusAPSP.decode (w n))) :
+  (∀ (n : ℕ),
+      ThinMatrix.APSPReduction.IsAPSP (ThinMatrix.StoredMinPlusAPSP.decode (w n))
+        (ThinMatrix.StoredMinPlusAPSP.decode
+          (ThinMatrix.BinaryAPSPCaller.viewOptional
+            (ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                  (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).core.value))) ∧
+    (fun n =>
+        ↑(ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+              (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).work) =O[Filter.atTop]
+      fun n => ↑n ^ (299294792 / 100000000)
+'ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]

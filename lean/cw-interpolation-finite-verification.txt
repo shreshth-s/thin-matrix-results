@@ -1,0 +1,1474 @@
+
+Thin matrix, N >= D^18: c=21.775, theta=.11121
+  G=0.071957221327794, q=0.428041144724411, E=17.927210335665762, T=17.927210335665762
+  PASS boxes: 0.071957221327794 > 1439/20000
+  PASS queries at density D^-1/2: 0.071958855275589 > 1439/20000
+  PASS encoding: 0.072789664334238 > 1439/20000
+  PASS query exponent rounded upward: 0.000008855275589 > 0
+  PASS tile fits: 0.072789664334238 > 0
+
+Wider regime, D <= N^.129: c=9.33, theta=.135
+  G=0.000142127963963, q=0.499466417635801, E=7.749341557601637, T=7.747453005047909
+  PASS boxes: 0.000142127963963 > 1/10000
+  PASS queries: 0.000533582364199 > 1/10000
+  PASS encoding: 0.002596426894487 > 1/10000
+  PASS tile fits: 0.004484979448215 > 0
+
+Deterministic integer reduction (unfolded): c=21.915, theta=.116108
+  G=0.075919325214107, q=0.443061314146586, E=18.040523779883512, T=18.040523779883512
+  PASS boxes saving: 0.002095356953506 > 419/200000
+  PASS queries saving: 0.002095273112394 > 419/200000
+  PASS scans saving: 0.002095200000000 > 419/200000
+  PASS encoding saving: 0.002112988659880 > 419/200000
+  PASS hash selection saving: 0.106706027942396 > 419/200000
+  PASS matrix writing saving: 0.942707300000000 > 419/200000
+  PASS successful scans saving: 0.973448850000000 > 419/200000
+  PASS 3SUM rounded exponent saving: 0.001047500000000 > 1047/1000000
+
+Deterministic integer reduction with residue folding: c=21.6844, theta=.1163026
+  G=0.075128280181711, q=0.443654548410684, E=17.853872033766476, T=17.853872033766476
+  PASS boxes saving: 0.002125821041662 > 17/8000
+  PASS queries saving: 0.002125622860004 > 17/8000
+  PASS scans saving: 0.002125200000000 > 17/8000
+  PASS folded encoding saving: 0.002317406777375 > 17/8000
+  PASS folded tile fits: 0.004442606777375 > 0
+  PASS hash selection saving: 0.104582027942396 > 17/8000
+  PASS folded matrix writing saving: 0.955968475000000 > 17/8000
+  PASS successful scans saving: 0.972770850000000 > 17/8000
+  PASS 3SUM rounded exponent saving: 0.001062500000000 > 531/500000
+
+Las Vegas integer amplification (unfolded): c=21.2733, theta=.111731
+  G=0.070353140360510, q=0.429647044908948, E=17.521013690153452, T=17.521013690153452
+  PASS boxes saving: 0.003999294616934 > 3999/1000000
+  PASS queries saving: 0.003999284085106 > 3999/1000000
+  PASS encoding saving: 0.004000455769537 > 3999/1000000
+  PASS matrix writing saving: 0.943154000000000 > 3999/1000000
+  PASS successful scans saving: 0.971577000000000 > 3999/1000000
+  PASS tile fits: 0.004000455769537 > 0
+  PASS oracle preprocessing admissibility: 0.000001161152603 > 0
+
+Las Vegas integer amplification with residue folding: c=21.0477, theta=.111971
+  G=0.069613877076460, q=0.430386142770839, E=17.338290775304982, T=17.338290775304982
+  PASS boxes saving: 0.004057096756016 > 4057/1000000
+  PASS queries saving: 0.004057095599315 > 4057/1000000
+  PASS folded encoding saving: 0.004094413615226 > 4057/1000000
+  PASS folded matrix writing saving: 0.956290000000000 > 4057/1000000
+  PASS successful scans saving: 0.970860000000000 > 4057/1000000
+  PASS folded tile fits: 0.004094413615226 > 0
+  unrounded maximal cost exponent tau = 2.995942904400685
+  PASS rounded exponent exceeds tau: 0.000000095599315 > 0
+
+Las Vegas integer APSP with slot batching and prefix queries: c=200337/10000, theta=177677/1562500
+  G=0.066532840450925, q=0.435739144757128, E=16.516458077121904, T=16.516458077121904
+  r=25732677/1000000000, A0=15.083850374988135, CK=2.865215404267538, q1=0.433467199506481, q2=0.433467199279399
+  PASS prefix fraction below threshold complement: 0.860554043000000 > 0
+  PASS residual sum increases to its cutoff: 0.740426143654151 > 0
+  PASS boxes saving: 0.004465176605493 > 893/200000
+  PASS residual-query saving: 0.004465173923857 > 893/200000
+  PASS stored-query saving: 0.004465173939097 > 893/200000
+  PASS batched encoding saving: 0.004465145109158 > 893/200000
+  PASS matrix writing saving: 0.949665722500000 > 893/200000
+  PASS successful scans saving: 0.966443815000000 > 893/200000
+  PASS outer bands fit N0: 0.004465145109158 > 0
+  PASS middle-block count exceeds K: 0.774152418659097 > 0
+  unrounded maximal cost exponent tau = 2.995534854890842
+  PASS rounded exponent exceeds tau: 0.000000145109158 > 0
+
+Deterministic all-edges Exact Triangle by per-pair moments, 11 stages: c=21.62, theta=.11216
+  G=0.072011046338159, q=0.430967888193885, E=17.801737928264625, T=17.801737928264625
+  PASS boxes saving: 0.003743746437837 > 3739/1000000
+  PASS queries saving: 0.003744811060525 > 3739/1000000
+  PASS failed scans saving: 0.003740000000000 > 3739/1000000
+  PASS encoding saving: 0.004385942088113 > 3739/1000000
+  PASS selection saving, middle above outer: 0.003850000000000 > 3739/1000000
+  PASS matrix writing saving: 0.957212500000000 > 3739/1000000
+  PASS residue computation saving: 0.971475000000000 > 3739/1000000
+  PASS middle part holds a block: 0.971815000000000 > 0
+  PASS folded tile fits: 0.004725942088113 > 0
+
+Deterministic zero-weight 5-Clique, split (2,2,1), 8 stages: c=23.04, theta=.11108
+  G=0.076591189430153, q=0.427640131766371, E=18.950534836584101, T=18.950534836584101
+  PASS boxes saving: 0.003624049013367 > 181/50000
+  PASS queries saving: 0.003625265786076 > 181/50000
+  PASS failed scans saving: 0.003623200000000 > 181/50000
+  PASS encoding saving: 0.004230855648628 > 181/50000
+  PASS selection saving, middle below outer: 0.003711165800000 > 181/50000
+  PASS matrix writing saving: 0.959737825000000 > 181/50000
+  PASS residue computation saving: 0.973158550000000 > 181/50000
+  PASS middle part holds a block: 0.473611450000000 > 0
+  PASS folded tile fits: 0.004683755648628 > 0
+  PASS graph construction saving: 0.500000000000000 > 181/50000
+
+Las Vegas integer 4-Clique, split (2,1,1), small-side fold: c=99209/5000, theta=56661/500000
+  G=0.065459879909611, q=0.434538873572891, E=16.360819343757224, T=16.360819343757224
+  PASS boxes saving: 0.004514113318567 > 2257/500000
+  PASS queries saving: 0.004514199278413 > 2257/500000
+  PASS clamped encoding, large side: 0.004784918538890 > 2257/500000
+  PASS geometric encoding term: 0.388997898054502 > 2257/500000
+  PASS matrix writing, large side: 0.931040000000000 > 2257/500000
+  PASS successful scans saving: 0.965520000000000 > 2257/500000
+  PASS small side holds a tile: 0.004784918538890 > 0
+  PASS clamp regime: side ratio exceeds K: 0.768425959031224 > 0
+  PASS middle part holds a block: 0.965520000000000 > 0
+
+Hinted uMv, c > 10 parameters: c=21.775, theta=.11121
+  G=0.071957221327794, q=0.428041144724411, E=17.927210335665762, T=17.927210335665762
+  PASS phase-2 saving exceeds g: 0.071957221327794 > 1439/20000
+  PASS phase-3 clamped encoding fits: 0.000257075197037 > 0
+  PASS phase-3 geometric encoding fits: 0.000046648018569 > 0
+  PASS small side holds a tile: 0.004607135656529 > 0
+  PASS phase-4 query exponent below one: 0.571958855275589 > 0
+
+Hinted uMv, c < 10 parameters: c=8.29, theta=.3385
+  G=0.001117470068009, q=0.998197841553414, E=6.891371996884084, T=6.878019956424033
+  PASS phase-2 saving exceeds g: 0.001117470068009 > 1/1000
+  PASS phase-3 clamped encoding fits: 0.000380134625396 > 0
+  PASS phase-3 geometric encoding fits: 0.001105507697959 > 0
+  PASS small side holds a tile: 0.002857296808801 > 0
+  PASS phase-4 query exponent below one: 0.001802158446586 > 0
+
+Las Vegas integer 3SUM by bucket-pair folding: c=21.2733, theta=.111731
+  G=0.070353140360510, q=0.429647044908948, E=17.521013690153452, T=17.521013690153452
+  PASS boxes saving: 0.003999294616934 > 3999/1000000
+  PASS queries saving: 0.003999284085106 > 3999/1000000
+  PASS encoding saving: 0.004000455769537 > 3999/1000000
+  PASS matrix writing saving: 0.943154000000000 > 3999/1000000
+  PASS bucket selection saving: 0.028423000000000 > 3999/1000000
+  PASS tile fits: 0.004000455769537 > 0
+  3SUM exponent 2 - delta = 1996001/1000000
+
+Deterministic integer 3SUM by bucket-pair folding: c=21.915, theta=.116108
+  G=0.075919325214107, q=0.443061314146586, E=18.040523779883512, T=18.040523779883512
+  PASS boxes saving: 0.002097422314705 > 2097/1000000
+  PASS queries saving: 0.002097397086830 > 2097/1000000
+  PASS failed scans saving: 0.002097500000000 > 2097/1000000
+  PASS encoding saving: 0.002122108542537 > 2097/1000000
+  PASS modulus selection saving: 0.916068750000000 > 2097/1000000
+  PASS bucket prime selection saving: 0.026578750000000 > 2097/1000000
+  PASS matrix writing saving: 0.943696250000000 > 2097/1000000
+  PASS successful scan saving: 0.973421250000000 > 2097/1000000
+  PASS tile fits: 0.004219608542537 > 0
+  3SUM exponent 2 - delta = 1997903/1000000
+
+Deterministic integer 3SUM by greedy modular moments: c=22.4828, theta=.111021
+  G=0.074502382749777, q=0.427458092853864, E=18.499934675364305, T=18.499934675364305
+  PASS moment boxes saving: 0.003800286893920 > 19/5000
+  PASS moment queries saving: 0.003800294398088 > 19/5000
+  PASS moment scans saving: 0.003800340000000 > 19/5000
+  PASS moment encoding saving: 0.003806152261295 > 19/5000
+  PASS moment selector saving: 0.003802635000000 > 19/5000
+  PASS moment bucket selection saving: 0.026815835000000 > 19/5000
+  PASS moment matrix construction saving: 0.946051635000000 > 19/5000
+  PASS moment tile fits: 0.004017282261295 > 0
+  deterministic 3SUM exponent 2 - delta = 9981/5000
+
+Downstream rational consequences
+  PASS min-plus convolution, Las Vegas (1+tau)/2 below bound: 0.000000500000000 > 0
+  PASS min-plus convolution, deterministic (1+tau)/2 below bound: 0.000000600000000 > 0
+  PASS MonoConvolution deterministic 3/2 - eps/(8-2eps) below bound: 0.000002262491111 > 0
+  PASS MonoConvolution Las Vegas 3/2 - eps/(8-2eps) below bound: 0.000000375250156 > 0
+  PASS MonoConvolution greedy moments 3/2 - eps/(8-2eps) below bound: 0.000000451679095 > 0
+
+Rectangular isolated Las Vegas min-plus convolution: c=21.487, theta=.111507
+  G=0.071043040392676, q=0.428956842540002, E=17.694059023379031, T=17.694059023379031
+  PASS rectangular boxes saving: 0.003943484351370 > 3943/1000000
+  PASS rectangular queries saving: 0.003943490849588 > 3943/1000000
+  PASS rectangular encoding saving: 0.003953476962084 > 3943/1000000
+  PASS rectangular thin-matrix construction saving: 0.930613712161250 > 3943/1000000
+  PASS rectangular tile fits: 0.003953476962084 > 0
+  PASS rectangular middle part exceeds block size: 0.000000808107500 > 0
+  PASS rectangular matrix formation saving: 0.972245000000000 > 3943/1000000
+  PASS rectangular diagonal extraction saving: 0.027755000000000 > 3943/1000000
+  Las Vegas min-plus convolution exponent 2 - delta = 1996057/1000000
+
+Rectangular deterministic min-plus convolution: c=23.1026, theta=.1151488
+  G=0.079822212262128, q=0.440133314912619, E=19.001144631863485, T=19.001144631863485
+  PASS rectangular deterministic boxes saving: 0.001943037983720 > 1943/1000000
+  PASS rectangular deterministic queries saving: 0.001943040668583 > 1943/1000000
+  PASS rectangular deterministic failed scans saving: 0.001943043681280 > 1943/1000000
+  PASS rectangular deterministic encoding saving: 0.001945978936429 > 1943/1000000
+  PASS rectangular deterministic thin-matrix construction saving: 0.878317556727040 > 1943/1000000
+  PASS rectangular deterministic tile fits: 0.003889022617709 > 0
+  PASS rectangular deterministic middle part exceeds block size: 0.060341414832640 > 0
+  PASS rectangular deterministic successful scans saving: 0.060341414832640 > 1943/1000000
+  PASS rectangular deterministic prime selection saving: 0.001943878302720 > 1943/1000000
+  PASS rectangular deterministic matrix formation saving: 0.916288000000000 > 1943/1000000
+  PASS rectangular deterministic diagonal extraction saving: 0.083712000000000 > 1943/1000000
+  deterministic min-plus convolution exponent 2 - delta = 1998057/1000000
+
+Lopsided k-Clique range conditions
+  PASS Las Vegas successful scans, a <= 30, m >= 1: 0.004090000000000 > 0
+  PASS deterministic prime selection, a <= 6, omega < 2.372: 0.086871700000000 > 0
+  PASS real list length below middle part, a <= 35: 0.021200929087974 > 0
+
+All-fixed-k lopsided clique geometry
+  PASS all-k Las Vegas graph formation saving per outer exponent: 0.029140000000000 > 4057/1000000
+  PASS all-k deterministic prime selection saving per outer exponent: 0.002125660000000 > 17/8000
+  PASS all-k deterministic successful scans saving per outer exponent: 0.069640850000000 > 17/8000
+  PASS all-k deterministic graph formation saving per outer exponent: 0.096870000000000 > 17/8000
+  PASS all-k deterministic grouping ratio below one: 0.903130000000000 > 0
+
+Hinted OMv, tau <= 0.14: c=8.58, theta=.335
+  G=0.009719297599653, q=0.990939183423127, E=7.130031517674977, T=7.121040009391807
+  PASS phase-2 saving exceeds g: 0.009719297599653 > 97/10000
+  PASS encoding fits at thinness tau: 0.012825625182166 > 97/10000
+  PASS phase-3 query exponent below bound: 0.000060816576873 > 0
+  PASS phase-3 query exponent below one: 0.009060816576873 > 0
+  PASS tile fits: 0.021817133465336 > 0
+
+Hinted OMv, tau <= 0.145: c=8.29, theta=.3385
+  G=0.001117470068009, q=0.998197841553414, E=6.891371996884084, T=6.878019956424033
+  PASS phase-2 saving exceeds g: 0.001117470068009 > 1/1000
+  PASS encoding fits at thinness tau: 0.005179727253847 > 1/1000
+  PASS phase-3 query exponent below bound: 0.000802158446586 > 0
+  PASS phase-3 query exponent below one: 0.001802158446586 > 0
+  PASS tile fits: 0.018531767713898 > 0
+
+Las Vegas real-input reduction: c=20.276, theta=.104566
+  G=0.061741990979497, q=0.407385479786465, E=16.712923594504030, T=16.712923594504030
+  PASS boxes saving: 0.003680563566270 > 23/6250
+  PASS queries saving: 0.003680624519313 > 23/6250
+  PASS same-block comparisons saving: 0.003680624519313 > 23/6250
+  PASS encoding saving: 0.003709198684426 > 23/6250
+  PASS source reduction overhead saving: 0.027965687740344 > 23/6250
+  PASS list exponent less than e: 0.031646312259656 > 0
+  PASS matrix construction saving: 0.940388000000000 > 23/6250
+  PASS list construction saving: 0.972034312259656 > 23/6250
+
+Las Vegas real-input rank-prefix comparison counts: c=21.2733, theta=.111731
+  G=0.070353140360510, q=0.429647044908948, E=17.521013690153452, T=17.521013690153452
+  PASS rank-prefix boxes saving: 0.003999294616934 > 3999/1000000
+  PASS rank-prefix queries saving: 0.003999284085106 > 3999/1000000
+  PASS rank-prefix encoding saving: 0.004000455769537 > 3999/1000000
+  PASS rank-prefix source reduction overhead saving: 0.028423000000000 > 3999/1000000
+  PASS rank-prefix matrix construction saving: 0.943154000000000 > 3999/1000000
+  PASS rank-prefix list construction saving: 0.971577000000000 > 3999/1000000
+  PASS rank-prefix tile fits with polylog padding: 0.004000455769537 > 0
+  PASS rank-prefix real clique list length, a <= 35: 0.005195000000000 > 0
+  PASS all-k real clique graph formation saving per outer exponent: 0.028423000000000 > 3999/1000000
+  PASS all-k real clique list construction saving per outer exponent: 0.971577000000000 > 3999/1000000
+
+All 172 strict inequalities certified with rational intervals.
+  PASS geometric encoding saving: 0.004094413615226 > 4057/1000000
+  PASS clamped encoding saving: 0.004650791572883 > 4057/1000000
+  PASS boxes saving: 0.004057096756016 > 4057/1000000
+  PASS query saving: 0.004057095599315 > 4057/1000000
+  PASS matrix construction saving: 0.872290000000000 > 4057/1000000
+  PASS successful scan saving: 0.004860000000000 > 4057/1000000
+  PASS geometric tile fits: 0.004094413615226 > 0
+  PASS short side tile fits: 0.004650791572883 > 0
+  PASS block fits middle part: 0.004860000000000 > 0
+  PASS main base below rounded target: 0.000000061117789 > 0
+  PASS outer-boundary base below rounded target: 0.000256020642656 > 0
+  PASS middle-boundary base below rounded target: 0.079894812524591 > 0
+  PASS new rounded target below simple substitution: 0.000001857350104 > 0
+
+13 strict inequalities passed.
+
+Established rectangular interpolation
+  c = 21.842998400000000
+  theta = 0.112537591700000
+  r = 0.025466625100000
+  alpha = 0.047816540000000
+  e = 0.061314111400000
+  z = 0.000373717900000
+  a = 0.030843914650000
+  b = 0.030470196750000
+  kappa = 1.304701967500000
+  q1 = 0.429905926430819
+  q2 = 0.429905926512091
+  q_lazy_upper = 0.429905903179070
+  G_alpha = 0.029844099845125
+  PASS c>10: 11.842998400000000 > 0
+  PASS positive block: 0.030470196750000 > 0
+  PASS positive z: 0.000373717900000 > 0
+  PASS prefix positive: 0.025466625100000 > 0
+  PASS pruning beyond prefix: 0.022349914900000 > 0
+  PASS pruning below box threshold: 0.064721051700000 > 0
+  PASS prefix fits: 0.861995783200000 > 0
+  PASS query sum increases: 0.741664419360726 > 0
+  PASS exponential upper-bound domain: 0.899764929235037 > 0
+  PASS boxes: 0.004110896862224 > 10277/2500000
+  PASS residual query: 0.004110896885301 > 10277/2500000
+  PASS stored query: 0.004110896880317 > 10277/2500000
+  PASS lazy reconstruction query: 0.004110898310961 > 10277/2500000
+  PASS failed scans: 0.004110896900000 > 10277/2500000
+  PASS pruned shared encodings: 0.004110899160297 > 10277/2500000
+  PASS matrix writing: 0.953734128025000 > 10277/2500000
+  PASS residue allowance: 0.969156085350000 > 10277/2500000
+  PASS input placement fits retained encodings: 15.487841333450404 > 0
+  PASS original outer geometry: 0.002654752597761 > 0
+  PASS independent product capacity: 0.789932983443956 > 0
+  PASS selector with explicit allowance: 0.004110887833450 > 10277/2500000
+  PASS interpolation lower domain: 0.104701967500000 > 0
+  PASS interpolation upper domain: 0.195298032500000 > 0
+  Certified exponent: 2.995889200000000
+
+Recent rectangular curve
+  c = 21.428730300000000
+  theta = 0.112844371900000
+  r = 0.025536047800000
+  alpha = 0.048364650000000
+  e = 0.062576917200000
+  z = 0.000320596820000
+  a = 0.031448757010000
+  b = 0.031128160190000
+  kappa = 1.373537922280000
+  q1 = 0.430836206575286
+  q2 = 0.430836206574940
+  q_lazy_upper = 0.430836189082606
+  G_alpha = 0.029496952858758
+  PASS c>10: 11.428730300000000 > 0
+  PASS positive block: 0.031128160190000 > 0
+  PASS positive z: 0.000320596820000 > 0
+  PASS prefix positive: 0.025536047800000 > 0
+  PASS pruning beyond prefix: 0.022828602200000 > 0
+  PASS pruning below box threshold: 0.064479721900000 > 0
+  PASS prefix fits: 0.861619580300000 > 0
+  PASS query sum increases: 0.741341373008696 > 0
+  PASS exponential upper-bound domain: 0.475112560289236 > 0
+  PASS boxes: 0.004167758560792 > 41677/10000000
+  PASS residual query: 0.004167758564376 > 41677/10000000
+  PASS stored query: 0.004167758564398 > 41677/10000000
+  PASS lazy reconstruction query: 0.004167759659014 > 41677/10000000
+  PASS failed scans: 0.004167758660000 > 41677/10000000
+  PASS pruned shared encodings: 0.004167759627575 > 41677/10000000
+  PASS matrix writing: 0.952826864485000 > 41677/10000000
+  PASS residue allowance: 0.968551242990000 > 41677/10000000
+  PASS input placement fits retained encodings: 15.159888778564270 > 0
+  PASS original outer geometry: 0.002642528070880 > 0
+  PASS independent product capacity: 0.786461044100595 > 0
+  PASS selector with explicit allowance: 0.004167749375717 > 41677/10000000
+  PASS recent curve domain: 0.873537922280000 > 0
+  Certified exponent: 2.995832300000000
+
+PASS: 45 strict rational inequalities.
+Fixed-profile direct-prefix five-term APSP numerical certificate
+  c: 10.741326620000000
+  theta: 0.056740653000000
+  r: 0.038571087000000
+  e: 0.083812911000000
+  y: 0.025146880000000
+  b: 0.041906455500000
+  prime_factors_per_composite: 100000.000000000000000
+  candidate_exponent: 0.000000419064555
+  target_saving: 0.006324000000000
+  CK: 2.399226103405380
+  T: 12.140552723405380
+  G: 0.075467246110185
+  augmented_encoder_saving: 0.034684128267120
+  E_aug: 12.105868595138261
+  E_box: 12.065085477295195
+  q1: 0.424532754092257
+  q2: 0.424532753969640
+  PASS compact tail regime: 5.741326620000000 > 0
+  PASS positive prefix: 0.038571087000000 > 0
+  PASS prefix below one: 0.961428913000000 > 0
+  PASS positive switching fraction: 0.056740653000000 > 0
+  PASS switching fits suffix: 0.904688260000000 > 0
+  PASS positive rational coefficient point: 0.025146880000000 > 0
+  PASS coefficient point below one: 0.974853120000000 > 0
+  PASS stored binomial cutoff increasing: 0.740982997044525 > 0
+  PASS prefix projection tail geometric: 0.794689154976717 > 0
+  PASS ordinary suffix tail geometric: 0.589378309953434 > 0
+  PASS box tail geometric: 0.614920240607333 > 0
+  PASS positive box gain: 0.075467246110185 > 0
+  PASS box gain below one: 0.924532753889815 > 0
+  PASS positive augmented encoding gain: 0.034684128267120 > 0
+  PASS positive residual query exponent: 0.424532754092257 > 0
+  PASS positive stored query exponent: 0.424532753969640 > 0
+  PASS positive augmented encoding slope: 12.605868595138261 > 0
+  PASS positive box encoding slope: 12.565085477295195 > 0
+  PASS positive geometry slope: 11.640552723405380 > 0
+  PASS boxes after candidate enumeration: 0.006324710517093 > 1581/250000
+  PASS residual queries after candidate enumeration: 0.006324710500126 > 1581/250000
+  PASS stored queries after candidate enumeration: 0.006324710510403 > 1581/250000
+  PASS augmented encodings after candidate enumeration: 0.006324721543427 > 1581/250000
+  PASS ordinary box encodings after candidate enumeration: 0.009742873369510 > 1581/250000
+  PASS matrix formation after candidate enumeration: 0.937139897685445 > 1581/250000
+  PASS incidence bookkeeping after candidate enumeration: 0.041906036435445 > 1581/250000
+  PASS original profile tile fits: 0.003418162852417 > 0
+  PASS initial-modulus tile fits: 0.491232467551209 > 0
+  PASS middle blocks fit: 0.958093544500000 > 0
+Certified target exponent: 2.993676000000000
+PASS: 29 strict rational interval inequalities.
+Cyclic-factor APSP numerical certificate
+Status: numerical inequalities only; ring algorithm is a separate proof dependency.
+  c: 10.673337630000000
+  theta: 0.059085882500000
+  r: 0.000000000000000
+  coefficient_point_y: 0.025178142000000
+  block_exponent_b: 0.043682760000000
+  factors_per_composite_R: 100000.000000000000000
+  factors_before_freezing_S: 92277.000000000000000
+  candidate_exponent_eta: 0.000000436827600
+  frozen_modulus_exponent_u: 0.040309140445200
+  final_ring_length_exponent_z: 0.003373619554800
+  tensor_exponent_e: 0.083991900445200
+  target_saving: 0.006559000000000
+  CK: 2.394417486048168
+  T: 12.067755116048168
+  G: 0.078105480242813
+  E_box: 11.989649635805354
+  q_residual: 0.401811798816911
+  q_stored: 0.441977240699185
+  PASS compact ordinary tail regime: 5.673337630000000 > 0
+  PASS positive switching fraction: 0.059085882500000 > 0
+  PASS stored binomial cutoff increasing: 0.740914117500000 > 0
+  PASS positive coefficient point: 0.025178142000000 > 0
+  PASS coefficient point below one: 0.974821858000000 > 0
+  PASS ordinary leaf tail geometric: 0.586492258101819 > 0
+  PASS box leaf tail geometric: 0.613286817495551 > 0
+  PASS positive box gain: 0.078105480242813 > 0
+  PASS box gain below one: 0.921894519757187 > 0
+  PASS positive residual query exponent: 0.401811798816911 > 0
+  PASS positive stored query exponent: 0.441977240699185 > 0
+  PASS positive ordinary encoder slope: 12.567755116048168 > 0
+  PASS positive box encoder slope: 12.489649635805354 > 0
+  PASS positive geometry slope: 11.567755116048168 > 0
+  PASS positive frozen-factor count: 92277.000000000000000 > 0
+  PASS at least two remaining factors: 7723.000000000000000 > 1
+  PASS positive final ring exponent: 0.003373619554800 > 0
+  PASS positive candidate exponent: 0.000000436827600 > 0
+  PASS middle blocks fit: 0.956317240000000 > 0
+  PASS incidence bookkeeping after enumeration: 0.043682323172400 > 6559/1000000
+  PASS phase I initial: boxes: 0.047094186120532 > 6559/1000000
+  PASS phase I initial: residual queries: 0.026130074799513 > 6559/1000000
+  PASS phase I initial: stored queries: 0.024375537441475 > 6559/1000000
+  PASS phase I initial: ordinary encodings: 0.516529472699296 > 6559/1000000
+  PASS phase I initial: box encodings: 0.519941335647427 > 6559/1000000
+  PASS phase I initial: matrix formation: 0.999999563172400 > 6559/1000000
+  PASS phase I initial: tile geometry: 0.472847149526896 > 0
+  PASS phase I freeze: boxes: 0.009933410447979 > 6559/1000000
+  PASS phase I freeze: residual queries: 0.009933386568463 > 6559/1000000
+  PASS phase I freeze: stored queries: 0.006559814772550 > 6559/1000000
+  PASS phase I freeze: ordinary encodings: 0.009934066645629 > 6559/1000000
+  PASS phase I freeze: box encodings: 0.016494294366408 > 6559/1000000
+  PASS phase I freeze: matrix formation: 0.939535852504600 > 6559/1000000
+  PASS phase I freeze: tile geometry: 0.006560883918429 > 0
+  PASS phase II start: boxes: 0.009933410447979 > 6559/1000000
+  PASS phase II start: residual queries: 0.009933386568463 > 6559/1000000
+  PASS phase II start: stored queries: 0.006559814772550 > 6559/1000000
+  PASS phase II start: ordinary encodings: 0.009934066645629 > 6559/1000000
+  PASS phase II start: box encodings: 0.016494294366408 > 6559/1000000
+  PASS phase II start: matrix formation: 0.939535852504600 > 6559/1000000
+  PASS phase II start: tile geometry: 0.006560883918429 > 0
+  PASS phase II final: boxes: 0.006559790893179 > 6559/1000000
+  PASS phase II final: residual queries: 0.006559767013663 > 6559/1000000
+  PASS phase II final: stored queries: 0.006559814772550 > 6559/1000000
+  PASS phase II final: ordinary encodings: 0.006560447090829 > 6559/1000000
+  PASS phase II final: box encodings: 0.013120674811608 > 6559/1000000
+  PASS phase II final: matrix formation: 0.936162232949800 > 6559/1000000
+  PASS phase II final: tile geometry: 0.006560883918429 > 0
+Exact prime-stage identities: PASS
+Target exponent, conditional on the separately audited ring lemma: 2.993441000000000
+PASS: 48 strict rational interval inequalities.
+Partial global normal-projection cache: exact numerical certificate
+Separate proof dependencies: cache encoder, first-ell partition, cyclic-fiber oracle.
+  c: 10.767898969000000
+  theta: 0.060343925615000
+  rho: 0.066059242397000
+  coefficient_y: 0.025749961000000
+  b: 0.043373850000000
+  R: 100000.000000000000000
+  S: 88618.000000000000000
+  eta: 0.000000433738500
+  u: 0.038437038393000
+  final_ring_exponent: 0.004936811607000
+  e: 0.081810888393000
+  target_saving: 0.006599000000000
+  CK: 2.401096785489803
+  T: 12.168995754489803
+  G: 0.080675446388831
+  q_cache: 0.208550804041463
+  E_source: 12.377546558531266
+  E_box: 12.088320308100972
+  q_inner: 0.389152590806696
+  q_old: 0.408473680620681
+  q_high: 0.389152590806534
+  q_stored: 0.449496516421696
+  PASS ordinary tail regime: 5.767898969000000 > 0
+  PASS positive switching threshold: 0.060343925615000 > 0
+  PASS stored coefficient cutoff increasing: 0.739656074385000 > 0
+  PASS direct inner coefficient cutoff increasing: 0.606322741051667 > 0
+  PASS positive cached degree: 0.066059242397000 > 0
+  PASS cache coefficient cutoff increasing: 0.600607424269667 > 0
+  PASS cache cutoff below total residual degree: 0.054628608833000 > 0
+  PASS low-family symmetric degree lies inside cache: 0.005715316782000 > 0
+  PASS high-family coefficient saddle remains admissible: 0.005651030418133 > 0
+  PASS positive coefficient point: 0.025749961000000 > 0
+  PASS coefficient point below one: 0.974250039000000 > 0
+  PASS ordinary scalar tail geometric: 0.590495354968899 > 0
+  PASS box tail geometric: 0.617569046894497 > 0
+  PASS positive box gain: 0.080675446388831 > 0
+  PASS box gain below one: 0.919324553611169 > 0
+  PASS positive direct query exponent: 0.389152590806696 > 0
+  PASS positive high query exponent: 0.389152590806534 > 0
+  PASS positive stored query exponent: 0.449496516421696 > 0
+  PASS positive source encoder slope: 12.877546558531266 > 0
+  PASS positive box encoder slope: 12.588320308100972 > 0
+  PASS positive geometry slope: 11.668995754489803 > 0
+  PASS positive frozen-stage count: 88618.000000000000000 > 0
+  PASS at least two remaining prime factors: 11382.000000000000000 > 1
+  PASS positive ring exponent: 0.004936811607000 > 0
+  PASS middle blocks fit: 0.956626150000000 > 0
+  PASS incidence bookkeeping after candidates: 0.043373416261500 > 6599/1000000
+  PASS phase I initial: boxes: 0.046872620971852 > 6599/1000000
+  PASS phase I initial: low residual queries: 0.026494370160739 > 6599/1000000
+  PASS phase I initial: high residual queries: 0.026494370160746 > 6599/1000000
+  PASS phase I initial: stored queries: 0.023877021782703 > 6599/1000000
+  PASS phase I initial: cached source encodings: 0.506511568463749 > 6599/1000000
+  PASS phase I initial: ordinary box encodings: 0.519056424465975 > 6599/1000000
+  PASS phase I initial: matrix formation: 0.999999566261500 > 6599/1000000
+  PASS phase I initial: tile geometry: 0.472183803494122 > 0
+  PASS phase I freeze: boxes: 0.011536507809072 > 6599/1000000
+  PASS phase I freeze: low residual queries: 0.011536497087167 > 6599/1000000
+  PASS phase I freeze: high residual queries: 0.011536497087180 > 6599/1000000
+  PASS phase I freeze: stored queries: 0.006599706923482 > 6599/1000000
+  PASS phase I freeze: cached source encodings: 0.011536816985837 > 6599/1000000
+  PASS phase I freeze: ordinary box encodings: 0.035198673480116 > 6599/1000000
+  PASS phase I freeze: matrix formation: 0.942344008672000 > 6599/1000000
+  PASS phase I freeze: tile geometry: 0.023662165671044 > 0
+  PASS phase II start: boxes: 0.011536507809072 > 6599/1000000
+  PASS phase II start: low residual queries: 0.011536497087167 > 6599/1000000
+  PASS phase II start: high residual queries: 0.011536497087180 > 6599/1000000
+  PASS phase II start: stored queries: 0.006599706923482 > 6599/1000000
+  PASS phase II start: cached source encodings: 0.011536816985837 > 6599/1000000
+  PASS phase II start: ordinary box encodings: 0.035198673480116 > 6599/1000000
+  PASS phase II start: matrix formation: 0.942344008672000 > 6599/1000000
+  PASS phase II start: tile geometry: 0.023662165671044 > 0
+  PASS phase II final: boxes: 0.006599696202072 > 6599/1000000
+  PASS phase II final: low residual queries: 0.006599685480167 > 6599/1000000
+  PASS phase II final: high residual queries: 0.006599685480180 > 6599/1000000
+  PASS phase II final: stored queries: 0.006599706923482 > 6599/1000000
+  PASS phase II final: cached source encodings: 0.006600005378837 > 6599/1000000
+  PASS phase II final: ordinary box encodings: 0.030261861873116 > 6599/1000000
+  PASS phase II final: matrix formation: 0.937407197065000 > 6599/1000000
+  PASS phase II final: tile geometry: 0.023662165671044 > 0
+Exact fixed-stage identities: PASS
+Target exponent, conditional on the separately audited algorithm: 2.993401000000000
+PASS: 58 strict rational interval inequalities.
+Aligned polynomial cache: exact numerical feasibility certificate
+Separate proof dependencies: aligned embedding; two-sided polynomial cache and query.
+Numerical checks supplement the separate embedding, cache, and query proofs.
+  c: 10.665501710000000
+  theta: 0.065297821400000
+  b: 0.046046346000000
+  R: 1000000000.000000000000000
+  S: 768979045.000000000000000
+  candidate eta: 0.000000000046046
+  u: 0.035408675172820
+  final ring exponent: 0.010637670827180
+  e: 0.081455021172820
+  CK: 2.393861212115431
+  T original geometry: 12.059362922115431
+  G: 0.086576385178390
+  q1 residual and cache overhead: 0.348125793364647
+  q2 stored: 0.478721436164647
+  E_source=T+q1: 12.407488715480078
+  E_box=T-G: 11.972786536937041
+  target saving: 0.007052080000000
+  target exponent if separate lemmas hold: 2.992947920000000
+  PASS ordinary tail regime: 5.665501710000000 > 0
+  PASS positive switching threshold: 0.065297821400000 > 0
+  PASS unweighted cache cutoff increasing: 0.434702178600000 > 0
+  PASS stored cutoff increasing: 0.734702178600000 > 0
+  PASS ordinary private-cap tail geometric: 0.586157023192953 > 0
+  PASS box private-cap tail geometric: 0.615775794955455 > 0
+  PASS positive box gain: 0.086576385178390 > 0
+  PASS box gain below one: 0.913423614821610 > 0
+  PASS positive residual query exponent: 0.348125793364647 > 0
+  PASS positive stored query exponent: 0.478721436164647 > 0
+  PASS positive source encoder slope: 12.907488715480078 > 0
+  PASS positive box encoder slope: 12.472786536937041 > 0
+  PASS positive original geometry slope: 11.559362922115431 > 0
+  PASS positive frozen-factor count: 768979045.000000000000000 > 0
+  PASS at least two cyclic factors: 231020955.000000000000000 > 1
+  PASS positive final ring exponent: 0.010637670827180 > 0
+  PASS positive candidate exponent: 0.000000000046046 > 0
+  PASS middle blocks fit: 0.953953654000000 > 0
+  PASS incidence bookkeeping after enumeration: 0.046046345953954 > 88151/12500000
+  PASS phase I initial: boxes: 0.050032872141307 > 88151/12500000
+  PASS phase I initial: residual queries: 0.030016425221161 > 88151/12500000
+  PASS phase I initial: stored queries: 0.024002973066699 > 88151/12500000
+  PASS phase I initial: two-sided polynomial cache encodings: 0.474726827569862 > 88151/12500000
+  PASS phase I initial: ordinary box encodings: 0.494743274490009 > 88151/12500000
+  PASS phase I initial: matrix formation: 0.999999999953954 > 88151/12500000
+  PASS phase I initial: original tile geometry: 0.444710402348702 > 0
+  PASS phase I freeze: boxes: 0.017689752068906 > 88151/12500000
+  PASS phase I freeze: residual queries: 0.017689752084632 > 88151/12500000
+  PASS phase I freeze: stored queries: 0.007052081235280 > 88151/12500000
+  PASS phase I freeze: two-sided polynomial cache encodings: 0.017689752346594 > 88151/12500000
+  PASS phase I freeze: ordinary box encodings: 0.053098427503688 > 88151/12500000
+  PASS phase I freeze: matrix formation: 0.946886987194724 > 88151/12500000
+  PASS phase I freeze: original tile geometry: 0.035408675434782 > 0
+  PASS phase II start: boxes: 0.017689752068906 > 88151/12500000
+  PASS phase II start: residual queries: 0.017689752084632 > 88151/12500000
+  PASS phase II start: stored queries: 0.007052081235280 > 88151/12500000
+  PASS phase II start: two-sided polynomial cache encodings: 0.017689752346594 > 88151/12500000
+  PASS phase II start: ordinary box encodings: 0.053098427503688 > 88151/12500000
+  PASS phase II start: matrix formation: 0.946886987194724 > 88151/12500000
+  PASS phase II start: original tile geometry: 0.035408675434782 > 0
+  PASS phase II final: boxes: 0.007052081241726 > 88151/12500000
+  PASS phase II final: residual queries: 0.007052081257451 > 88151/12500000
+  PASS phase II final: stored queries: 0.007052081235280 > 88151/12500000
+  PASS phase II final: two-sided polynomial cache encodings: 0.007052081519414 > 88151/12500000
+  PASS phase II final: ordinary box encodings: 0.042460756676508 > 88151/12500000
+  PASS phase II final: matrix formation: 0.936249316367544 > 88151/12500000
+  PASS phase II final: original tile geometry: 0.035408675434782 > 0
+Exact candidate/freeze/ring-stage identities: PASS
+PASS: 47 strict rational inequalities.
+Numerical target: 2.99294792, conditional on the separately audited embedding/cache/query lemmas.
+  PASS CW x marginal endpoint including positive allowance: 0.000140436788347 > 0
+  PASS CW y marginal endpoint including positive allowance: 0.000000014738209 > 0
+  PASS CW z marginal endpoint including positive allowance: 0.000140434586488 > 0
+  PASS symmetric type maximum at theta: 2.299677823663141 > 0
+c 10.422903143551736
+theta 0.065684067976502
+global z cap 0.250000000000000
+source rare budget 0.510000000000000
+gprime(theta) 2.299677823663141
+wcap 16.722000200000000
+row chunk exponent 1.722000000000000
+alpha 0.722000200000000
+beta 0.000000200000000
+kMM 15.000000000000000
+qMM 16.000000000000000
+d ratio 0.032960942713250
+e ratio 1.045125000000000
+f ratio 0.012164057286750
+p 0.053156852582759
+b 0.048840940000000
+R 100000000000000.000000000000000
+S 76777119351634.000000000000000
+u 0.037498666796260
+e 0.086339606796260
+eta 0.000000000000000
+T 11.799326316931103
+G 0.084708943532880
+q 0.349607038490617
+q2 0.480975124443622
+gamma 0.151830655893140
+E 11.667612674603311
+Ebox 11.714617373398222
+Eroot 9.030556399135830
+target exponent 2.992686300000000
+  PASS row exponent above one: 0.722000000000000 > 0
+  PASS column exponent above row exponent: 13.278000000000000 > 0
+  PASS row chunk exponent positive: 1.722000000000000 > 0
+  PASS k>1: 14.000000000000000 > 0
+  PASS alpha positive: 0.722000200000000 > 0
+  PASS beta positive: 0.000000200000000 > 0
+  PASS c>5: 5.422903143551736 > 0
+  PASS theta>0: 0.065684067976502 > 0
+  PASS theta<1/2: 0.434315932023498 > 0
+  PASS rho>0: 0.054123447119267 > 0
+  PASS rho<1/2: 0.445876552880733 > 0
+  PASS positive cachez: 0.250000000000000 > 0
+  PASS suffix fit: 0.895478282958855 > 0
+  PASS 2theta<1/2: 0.368631864046996 > 0
+  PASS positive box gain: 0.084708943532880 > 0
+  PASS frozen primes: 76777119351634.000000000000000 > 0
+  PASS cyclic primes: 23222880648365.000000000000000 > 0
+  PASS block fit: 0.951159060000000 > 0
+  PASS source budget above half: 0.010000000000000 > 0
+  PASS channel fit: 0.378631864046996 > 0
+PASS exact rational small-bias potential inequality
+  PASS bookkeeping: 0.048840940000000 > 73137/10000000
+  PASS I initial strict batch fit: 0.768005535000000 > 0
+  PASS I initial boxes: 0.052978204428552 > 73137/10000000
+  PASS I initial residual: 0.031765803609502 > 73137/10000000
+  PASS I initial stored: 0.025349662805556 > 73137/10000000
+  PASS I initial cache: 0.478983769416460 > 73137/10000000
+  PASS I initial box encoder: 0.476688015742899 > 73137/10000000
+  PASS I initial source root: 0.607780076743190 > 73137/10000000
+  PASS I initial formation: 1.000000000000000 > 73137/10000000
+  PASS I initial geometry: 0.423709811314347 > 0
+  PASS I freeze strict batch fit: 0.627385534514025 > 0
+  PASS I freeze boxes: 0.018656010080495 > 73137/10000000
+  PASS I freeze residual: 0.018656005763515 > 73137/10000000
+  PASS I freeze stored: 0.007313736876755 > 73137/10000000
+  PASS I freeze cache: 0.022714516025561 > 73137/10000000
+  PASS I freeze box encoder: 0.018656148814031 > 73137/10000000
+  PASS I freeze source root: 0.250396917949033 > 73137/10000000
+  PASS I freeze formation: 0.943751999805610 > 73137/10000000
+  PASS I freeze geometry: 0.000000138733536 > 0
+  PASS II initial strict batch fit: 0.627385534514025 > 0
+  PASS II initial boxes: 0.018656010080495 > 73137/10000000
+  PASS II initial residual: 0.018656005763515 > 73137/10000000
+  PASS II initial stored: 0.007313736876755 > 73137/10000000
+  PASS II initial cache: 0.022714516025561 > 73137/10000000
+  PASS II initial box encoder: 0.018656148814031 > 73137/10000000
+  PASS II initial source root: 0.250396917949033 > 73137/10000000
+  PASS II initial formation: 0.943751999805610 > 73137/10000000
+  PASS II initial geometry: 0.000000138733536 > 0
+  PASS II final strict batch fit: 0.638727807717765 > 0
+  PASS II final boxes: 0.007313736876755 > 73137/10000000
+  PASS II final residual: 0.007313732559775 > 73137/10000000
+  PASS II final stored: 0.007313736876755 > 73137/10000000
+  PASS II final cache: 0.011372242821821 > 73137/10000000
+  PASS II final box encoder: 0.007313875610291 > 73137/10000000
+  PASS II final source root: 0.239054644745293 > 73137/10000000
+  PASS II final formation: 0.932409726601870 > 73137/10000000
+  PASS II final geometry: 0.000000138733536 > 0
+PASS: 61 strict rational inequalities; conditional on small-bias masked translations, joint-cap box encoder, asymmetric-row constant-z cropped oracle and flat CW theorem premises.
+  PASS CW x marginal endpoint including positive allowance: 0.000140436788347 > 0
+  PASS CW y marginal endpoint including positive allowance: 0.000000014738209 > 0
+  PASS CW z marginal endpoint including positive allowance: 0.000140434586488 > 0
+  PASS symmetric type maximum at theta: 2.425709894558657 > 0
+c 10.422903231948180
+theta 0.065684064269990
+global z cap 0.220000000000000
+source rare budget 0.500000000000000
+gprime(theta) 2.425709894558657
+wcap 16.722000200000000
+row chunk exponent 1.722000000000000
+alpha 0.722000200000000
+beta 0.000000200000000
+kMM 15.000000000000000
+qMM 16.000000000000000
+d ratio 0.032960942713250
+e ratio 1.045125000000000
+f ratio 0.012164057286750
+p 0.053156852582759
+b 0.048840944200000
+R 100000000000000.000000000000000
+S 76777127384957.000000000000000
+u 0.037498673944450
+e 0.086339618144450
+eta 0.000000000000000
+T 11.799326411758992
+G 0.084708939436427
+q 0.349607018293582
+q2 0.480975102833562
+gamma 0.149632620626822
+E 11.711616695953931
+Ebox 11.714617472322565
+Eroot 9.030556443078844
+target exponent 2.992686262600000
+  PASS row exponent above one: 0.722000000000000 > 0
+  PASS column exponent above row exponent: 13.278000000000000 > 0
+  PASS row chunk exponent positive: 1.722000000000000 > 0
+  PASS k>1: 14.000000000000000 > 0
+  PASS alpha positive: 0.722000200000000 > 0
+  PASS beta positive: 0.000000200000000 > 0
+  PASS c>5: 5.422903231948180 > 0
+  PASS theta>0: 0.065684064269990 > 0
+  PASS theta<1/2: 0.434315935730010 > 0
+  PASS rho>0: 0.053062202560328 > 0
+  PASS rho<1/2: 0.446937797439672 > 0
+  PASS positive cachez: 0.220000000000000 > 0
+  PASS suffix fit: 0.902487526585297 > 0
+  PASS 2theta<1/2: 0.368631871460020 > 0
+  PASS positive box gain: 0.084708939436427 > 0
+  PASS frozen primes: 76777127384957.000000000000000 > 0
+  PASS cyclic primes: 23222872615042.000000000000000 > 0
+  PASS block fit: 0.951159055800000 > 0
+  PASS channel fit: 0.368631871460020 > 0
+  PASS shrinking-bias uniform exponent margin: 3.000000000000000 > 0
+PASS exact half-weight cap; all-m potential argument is in the exact-half source lemma
+  PASS bookkeeping: 0.048840944200000 > 36568687/5000000000
+  PASS I initial strict batch fit: 0.789983939940000 > 0
+  PASS I initial boxes: 0.052978208784255 > 36568687/5000000000
+  PASS I initial residual: 0.031765807327594 > 36568687/5000000000
+  PASS I initial stored: 0.025349666040916 > 36568687/5000000000
+  PASS I initial cache: 0.476834526661125 > 36568687/5000000000
+  PASS I initial box encoder: 0.476687965909948 > 36568687/5000000000
+  PASS I initial source root: 0.607780040868635 > 36568687/5000000000
+  PASS I initial formation: 1.000000000000000 > 36568687/5000000000
+  PASS I initial geometry: 0.423709757125693 > 0
+  PASS I freeze strict batch fit: 0.666238315923316 > 0
+  PASS I freeze boxes: 0.018656007739912 > 36568687/5000000000
+  PASS I freeze residual: 0.018656007739912 > 36568687/5000000000
+  PASS I freeze stored: 0.007313737484362 > 36568687/5000000000
+  PASS I freeze cache: 0.018915093844950 > 36568687/5000000000
+  PASS I freeze box encoder: 0.018656007959145 > 36568687/5000000000
+  PASS I freeze source root: 0.250396812300447 > 36568687/5000000000
+  PASS I freeze formation: 0.943751989083325 > 36568687/5000000000
+  PASS I freeze geometry: 0.000000000219233 > 0
+  PASS II initial strict batch fit: 0.666238315923316 > 0
+  PASS II initial boxes: 0.018656007739912 > 36568687/5000000000
+  PASS II initial residual: 0.018656007739912 > 36568687/5000000000
+  PASS II initial stored: 0.007313737484362 > 36568687/5000000000
+  PASS II initial cache: 0.018915093844950 > 36568687/5000000000
+  PASS II initial box encoder: 0.018656007959145 > 36568687/5000000000
+  PASS II initial source root: 0.250396812300447 > 36568687/5000000000
+  PASS II initial formation: 0.943751989083325 > 36568687/5000000000
+  PASS II initial geometry: 0.000000000219233 > 0
+  PASS II final strict batch fit: 0.677580586178866 > 0
+  PASS II final boxes: 0.007313737484362 > 36568687/5000000000
+  PASS II final residual: 0.007313737484362 > 36568687/5000000000
+  PASS II final stored: 0.007313737484362 > 36568687/5000000000
+  PASS II final cache: 0.007572823589400 > 36568687/5000000000
+  PASS II final box encoder: 0.007313737703595 > 36568687/5000000000
+  PASS II final source root: 0.239054542044897 > 36568687/5000000000
+  PASS II final formation: 0.932409718827775 > 36568687/5000000000
+  PASS II final geometry: 0.000000000219233 > 0
+PASS: 61 strict rational inequalities; conditional on exact-half masked translations, joint-cap box encoder, asymmetric-row constant-z cropped oracle and flat CW theorem premises.
+Deterministic cyclic 3SUM and exact counts: rational interval certificate
+Independent dependencies: fixed original buckets; exact count lifting; cyclic histogram folding.
+  c: 10.831078560000000
+  theta: 0.065042512690000
+  b: 0.044363672070000
+  R: 1000000000.000000000000000
+  S: 884889170.000000000000000
+  candidate eta: 0.000000000088727
+  folded exponent u: 0.078513865912349
+  final ring exponent: 0.010213478227651
+  T: 12.236603763130058
+  G: 0.087812697513341
+  Q residual: 0.347144789791544
+  q2 stored: 0.477229815171544
+  E source: 12.583748552921602
+  E box: 12.148791065616717
+  target saving: 0.006894500000000
+  target exponent: 1.993105500000000
+  PASS ordinary tail regime: 5.831078560000000 > 0
+  PASS positive threshold: 0.065042512690000 > 0
+  PASS unweighted cache cutoff increasing: 0.434957487310000 > 0
+  PASS stored cutoff increasing: 0.734957487310000 > 0
+  PASS ordinary private-cap tail geometric: 0.593127043427878 > 0
+  PASS box private-cap tail geometric: 0.622091330353598 > 0
+  PASS positive box gain: 0.087812697513341 > 0
+  PASS box gain below one: 0.912187302486659 > 0
+  PASS positive residual exponent: 0.347144789791544 > 0
+  PASS positive stored exponent: 0.477229815171544 > 0
+  PASS positive source-encoder slope: 13.083748552921602 > 0
+  PASS positive box-encoder slope: 12.648791065616717 > 0
+  PASS positive geometry slope: 11.736603763130058 > 0
+  PASS positive frozen count: 884889170.000000000000000 > 0
+  PASS at least two ring factors: 115110830.000000000000000 > 1
+  PASS positive candidate exponent: 0.000000000088727 > 0
+  PASS sub-buckets fit input: 0.955636327930000 > 0
+  PASS incidence/bucket bookkeeping after enumeration: 0.044363671981273 > 13789/2000000
+  PASS original-input reading after enumeration: 0.999999999911273 > 13789/2000000
+  PASS phase I initial: boxes: 0.088727344051273 > 13789/2000000
+  PASS phase I initial: residual queries: 0.044363671981273 > 13789/2000000
+  PASS phase I initial: stored queries: 0.044363671981273 > 13789/2000000
+  PASS phase I initial: polynomial source cache: 1.044363671981273 > 13789/2000000
+  PASS phase I initial: box encodings: 1.044363671981273 > 13789/2000000
+  PASS phase I initial: dense histogram formation: 1.044363671981273 > 13789/2000000
+  PASS phase I initial: tile geometry: 0.955636327930000 > 0
+  PASS phase I freeze: boxes: 0.017107992496888 > 13789/2000000
+  PASS phase I freeze: residual queries: 0.017107992503409 > 13789/2000000
+  PASS phase I freeze: stored queries: 0.006894514263519 > 13789/2000000
+  PASS phase I freeze: polynomial source cache: 0.017107992466296 > 13789/2000000
+  PASS phase I freeze: box encodings: 0.051258186302124 > 13789/2000000
+  PASS phase I freeze: dense histogram formation: 0.926592873112749 > 13789/2000000
+  PASS phase I freeze: tile geometry: 0.034150193805236 > 0
+  PASS phase II start: boxes: 0.017107992496888 > 13789/2000000
+  PASS phase II start: residual queries: 0.017107992503409 > 13789/2000000
+  PASS phase II start: stored queries: 0.006894514263519 > 13789/2000000
+  PASS phase II start: polynomial source cache: 0.017107992466296 > 13789/2000000
+  PASS phase II start: box encodings: 0.051258186302124 > 13789/2000000
+  PASS phase II start: dense histogram formation: 0.926592873112749 > 13789/2000000
+  PASS phase II start: tile geometry: 0.034150193805236 > 0
+  PASS phase II final: boxes: 0.006894514269237 > 13789/2000000
+  PASS phase II final: residual queries: 0.006894514275758 > 13789/2000000
+  PASS phase II final: stored queries: 0.006894514263519 > 13789/2000000
+  PASS phase II final: polynomial source cache: 0.006894514238645 > 13789/2000000
+  PASS phase II final: box encodings: 0.041044708074473 > 13789/2000000
+  PASS phase II final: dense histogram formation: 0.916379394885098 > 13789/2000000
+  PASS phase II final: tile geometry: 0.034150193805236 > 0
+Exact candidate/freeze/ring identities: PASS
+  PASS inherited MonoConvolution exponent below 1.4991368: 0.000000100506335 > 0
+Exact inherited MonoConvolution exponent: 11972422/7986211
+PASS: 48 strict rational interval inequalities.
+Certified numerical target: 1.9931055 (also the rounded exponent 1.993106).
+Five-term thin product, N >= D^18, |W| <= N^2/sqrt(D)
+  c: 16.251400000000000
+  theta: 0.050330000000000
+  r: 0.049970000000000
+  y: 0.020040000000000
+  T: 17.961330420419537
+  G: 0.099159055589669
+  E_aug: 17.900870197311173
+  E_box: 17.862171364829868
+  q1: 0.400820307279901
+  q2: 0.384635412689915
+  PASS compact tail regime: 11.251400000000000 > 0
+  PASS positive prefix: 0.049970000000000 > 0
+  PASS prefix below one: 0.950030000000000 > 0
+  PASS positive switching fraction: 0.050330000000000 > 0
+  PASS switching fits suffix: 0.899700000000000 > 0
+  PASS positive rational coefficient point: 0.020040000000000 > 0
+  PASS coefficient point below one: 0.979960000000000 > 0
+  PASS stored binomial cutoff increasing: 0.747022725598139 > 0
+  PASS prefix projection tail geometric: 0.868864497685458 > 0
+  PASS ordinary suffix tail geometric: 0.737728995370917 > 0
+  PASS box tail geometric: 0.751748331724583 > 0
+  PASS positive box gain: 0.099159055589669 > 0
+  PASS positive augmented encoding gain: 0.060460223108364 > 0
+  PASS box saving exceeds gamma: 0.099159055589669 > 991/10000
+  PASS residual query saving exceeds gamma: 0.099179692720099 > 991/10000
+  PASS stored query saving exceeds gamma: 0.115364587310085 > 991/10000
+  PASS residual query exponent below target: 0.000079692720099 > 0
+  PASS stored query exponent below target: 0.016264587310085 > 0
+  PASS tile fits N >= D^18: 0.038669579580463 > 0
+  PASS augmented encodings below N^2 D^-gamma: 0.000029802688827 > 0
+  PASS box encodings below N^2 D^-gamma: 0.038728635170132 > 0
+  certified: preprocessing O(N^2/D^991/10000), query O(D^4009/10000)
+Five-term thin product, N >= D^14, |W| <= N^2/sqrt(D)
+  c: 12.420851000000000
+  theta: 0.054780000000000
+  r: 0.015070800000000
+  y: 0.010000000000000
+  T: 13.929694567021998
+  G: 0.085309445790421
+  E_aug: 13.914490487392123
+  E_box: 13.844385121231578
+  q1: 0.414091364748920
+  q2: 0.414690550773412
+  PASS compact tail regime: 7.420851000000000 > 0
+  PASS positive prefix: 0.015070800000000 > 0
+  PASS prefix below one: 0.984929200000000 > 0
+  PASS positive switching fraction: 0.054780000000000 > 0
+  PASS switching fits suffix: 0.930149200000000 > 0
+  PASS positive rational coefficient point: 0.010000000000000 > 0
+  PASS coefficient point below one: 0.990000000000000 > 0
+  PASS stored binomial cutoff increasing: 0.744381789066666 > 0
+  PASS prefix projection tail geometric: 0.824881701022104 > 0
+  PASS ordinary suffix tail geometric: 0.649763402044208 > 0
+  PASS box tail geometric: 0.670529664120431 > 0
+  PASS positive box gain: 0.085309445790421 > 0
+  PASS positive augmented encoding gain: 0.015204079629875 > 0
+  PASS box saving exceeds gamma: 0.085309445790421 > 853/10000
+  PASS residual query saving exceeds gamma: 0.085908635251080 > 853/10000
+  PASS stored query saving exceeds gamma: 0.085309449226588 > 853/10000
+  PASS residual query exponent below target: 0.000608635251080 > 0
+  PASS stored query exponent below target: 0.000009449226588 > 0
+  PASS tile fits N >= D^14: 0.070305432978002 > 0
+  PASS augmented encodings below N^2 D^-gamma: 0.000209512607877 > 0
+  PASS box encodings below N^2 D^-gamma: 0.070314878768422 > 0
+  certified: preprocessing O(N^2/D^853/10000), query O(D^4147/10000)
+Real 3SUM and real min-plus/APSP/Exact Triangle with the five-term data structure
+  e: 0.081830000000000  target saving: 0.006195000000000
+  c: 10.776900000000000
+  theta: 0.056700000000000
+  r: 0.038540000000000
+  y: 0.025110000000000
+  T: 12.178629354997400
+  G: 0.075708590889701
+  E_aug: 12.143876705655800
+  E_box: 12.102920764107699
+  q1: 0.424288382414843
+  q2: 0.424291744396942
+  PASS compact tail regime: 5.776900000000000 > 0
+  PASS positive prefix: 0.038540000000000 > 0
+  PASS prefix below one: 0.961460000000000 > 0
+  PASS positive switching fraction: 0.056700000000000 > 0
+  PASS switching fits suffix: 0.904760000000000 > 0
+  PASS positive rational coefficient point: 0.025110000000000 > 0
+  PASS coefficient point below one: 0.974890000000000 > 0
+  PASS stored binomial cutoff increasing: 0.741027187818526 > 0
+  PASS prefix projection tail geometric: 0.795436181202631 > 0
+  PASS ordinary suffix tail geometric: 0.590872362405261 > 0
+  PASS box tail geometric: 0.616295151317930 > 0
+  PASS positive box gain: 0.075708590889701 > 0
+  PASS positive augmented encoding gain: 0.034752649341600 > 0
+  PASS boxes saving: 0.006195233992504 > 1239/200000
+  PASS residual queries saving: 0.006195481666993 > 1239/200000
+  PASS stored queries saving: 0.006195206555998 > 1239/200000
+  PASS augmented encodings saving: 0.006266569176186 > 1239/200000
+  PASS box encodings saving: 0.009617993873067 > 1239/200000
+  PASS explicit matrices saving: 0.918170000000000 > 1239/200000
+  PASS list formation saving: 0.959085000000000 > 1239/200000
+  PASS counting-call overhead saving: 0.040915000000000 > 1239/200000
+  PASS bucket term saving: 0.040915000000000 > 1239/200000
+  PASS unfolded tile condition: 0.003422759880563 > 0
+  certified exponents: 1.993805000000000 and 2.993805000000000
+MonoConvolution through All-Integers 3SUM at the full deterministic saving
+  PASS large light classes have polynomially bounded indices: 0.494811238040335 > 0
+  exponent (3-2eps)/(2-eps): 1.498270412680112
+  PASS MonoConvolution exponent below target: 0.000000587319888 > 0
+  PASS improves the half-saving transfer: 0.000866286813553 > 0
+Lopsided five-term clique split, aligned-cache parameters
+  PASS middle-part slack exceeds the saving: 0.038994266000000 > 0
+  PASS k=3: alpha=1 block fits (m - b alpha): 0.953953654000000 > 0
+  PASS k=3: exponent 2.992947920000000 below k: 0.007052080000000 > 0
+  PASS k=4: alpha=1 block fits (m - b alpha): 1.953953654000000 > 0
+  PASS k=4: exponent 3.992947920000000 below k: 0.007052080000000 > 0
+  PASS k=5: alpha=2 block fits (m - b alpha): 0.907907308000000 > 0
+  PASS k=5: exponent 4.985895840000000 below k: 0.014104160000000 > 0
+  PASS k=6: alpha=2 block fits (m - b alpha): 1.907907308000000 > 0
+  PASS k=6: exponent 5.985895840000000 below k: 0.014104160000000 > 0
+  PASS k=7: alpha=3 block fits (m - b alpha): 0.861860962000000 > 0
+  PASS k=7: exponent 6.978843760000000 below k: 0.021156240000000 > 0
+  PASS k=8: alpha=3 block fits (m - b alpha): 1.861860962000000 > 0
+  PASS k=8: exponent 7.978843760000000 below k: 0.021156240000000 > 0
+  PASS k=9: alpha=4 block fits (m - b alpha): 0.815814616000000 > 0
+  PASS k=9: exponent 8.971791680000000 below k: 0.028208320000000 > 0
+  PASS k=10: alpha=4 block fits (m - b alpha): 1.815814616000000 > 0
+  PASS k=10: exponent 9.971791680000000 below k: 0.028208320000000 > 0
+  PASS k=11: alpha=5 block fits (m - b alpha): 0.769768270000000 > 0
+  PASS k=11: exponent 10.964739600000000 below k: 0.035260400000000 > 0
+  PASS k=12: alpha=5 block fits (m - b alpha): 1.769768270000000 > 0
+  PASS k=12: exponent 11.964739600000000 below k: 0.035260400000000 > 0
+PASS: 89 strict rational interval inequalities.
+Rectangular min-plus convolution with the five-term data structure
+  e: 0.081483674200000  beta: 0.039147920000000  alpha: 0.960852080000000  target saving: 0.006073000000000
+  c: 11.058859600000000
+  theta: 0.056385047900000
+  r: 0.038328724900000
+  y: 0.024969474300000
+  CK: 2.421268812212642
+  T: 12.480128412212642
+  G: 0.077579669343457
+  E_aug: 12.444817353350393
+  E_box: 12.402548742869184
+  q1: 0.422420330988500
+  q2: 0.422420331044804
+  PASS compact tail regime: 6.058859600000000 > 0
+  PASS positive prefix: 0.038328724900000 > 0
+  PASS prefix below one: 0.961671275100000 > 0
+  PASS positive switching fraction: 0.056385047900000 > 0
+  PASS switching fits suffix: 0.905286227200000 > 0
+  PASS positive rational coefficient point: 0.024969474300000 > 0
+  PASS coefficient point below one: 0.975030525700000 > 0
+  PASS stored binomial cutoff increasing: 0.741367648842234 > 0
+  PASS prefix projection tail geometric: 0.801170303639590 > 0
+  PASS ordinary suffix tail geometric: 0.602340607279179 > 0
+  PASS box tail geometric: 0.626854323371842 > 0
+  PASS positive box gain: 0.077579669343457 > 0
+  PASS box gain below one: 0.922420330656543 > 0
+  PASS positive augmented encoding gain: 0.035311058862248 > 0
+  PASS positive residual query exponent: 0.422420330988500 > 0
+  PASS positive stored query exponent: 0.422420331044804 > 0
+  PASS geometry slope above one half: 11.980128412212642 > 0
+  PASS outer exponent positive: 0.960852080000000 > 0
+  PASS block exponent positive: 0.039147920000000 > 0
+  PASS middle part holds a block, beta > alpha e/2: 0.000001041079444 > 0
+  PASS folded tile fits at the final modulus, 1 > e(T-1/4): 0.003444201035102 > 0
+  PASS folded tile fits at the initial modulus, 1 > bT: 0.491536641242551 > 0
+  PASS block exponent below one, 1 > b: 0.959258162900000 > 0
+Las Vegas (Lemma lem:isolation with two encoder families, isolated witness recovery)
+  PASS Las Vegas boxes saving: 0.006074003844970 > 6073/1000000
+  PASS Las Vegas residual queries saving: 0.006074003818980 > 6073/1000000
+  PASS Las Vegas stored queries saving: 0.006074003814572 > 6073/1000000
+  PASS Las Vegas augmented encodings saving: 0.006074003220190 > 6073/1000000
+  PASS Las Vegas ordinary box encodings saving: 0.009383371573486 > 6073/1000000
+  PASS Las Vegas folded matrix formation saving: 0.902131761619166 > 6073/1000000
+  PASS Las Vegas convolution matrix formation saving: 0.960852080000000 > 6073/1000000
+  PASS Las Vegas diagonal extraction saving: 0.039147920000000 > 6073/1000000
+  unrounded maximal Las Vegas cost exponent: 1.993925996779810
+  PASS Las Vegas rounded exponent exceeds the maximal cost exponent: 0.000001003220190 > 0
+Deterministic (composite incidence certification, Lambda = 100000 factors, eta = b/Lambda)
+  eta: 0.000000407418371
+  PASS deterministic boxes saving: 0.006073612376181 > 6073/1000000
+  PASS deterministic residual queries saving: 0.006073612350191 > 6073/1000000
+  PASS deterministic stored queries saving: 0.006073612345783 > 6073/1000000
+  PASS deterministic augmented encodings saving: 0.006073611751401 > 6073/1000000
+  PASS deterministic ordinary box encodings saving: 0.009382980104697 > 6073/1000000
+  PASS deterministic folded matrix formation saving: 0.902131370150377 > 6073/1000000
+  PASS deterministic incidence bookkeeping saving: 0.039146487451767 > 6073/1000000
+  PASS deterministic convolution matrix formation saving: 0.960852080000000 > 6073/1000000
+  PASS deterministic diagonal extraction saving: 0.039147920000000 > 6073/1000000
+  unrounded maximal deterministic cost exponent: 1.993926388248599
+  PASS deterministic rounded exponent exceeds the maximal cost exponent: 0.000000611751401 > 0
+  PASS improves the square-block consequence 1.996474: 0.002547000000000 > 0
+  PASS improves the rectangular Las Vegas bound 1.996057: 0.002130000000000 > 0
+Certified exponent for both guarantees: 1.993927000000000
+PASS: 44 strict rational interval inequalities.
+Min-sum subset convolution through square five-term tiles and isolated recovery
+  e: 83812911/1000000000  delta: 1581/250000  lambda: 1  kappa: 17/400  rounded base target: 2995627/1000000
+  c: 10.741326620000000
+  theta: 0.056740653000000
+  r: 0.038571087000000
+  y: 0.025146880000000
+  T: 12.140552723405380
+  G: 0.075467246110185
+  E_aug: 12.105868595138261
+  E_box: 12.065085477295195
+  q1: 0.424532754092257
+  q2: 0.424532753969640
+  PASS compact tail regime: 5.741326620000000 > 0
+  PASS positive prefix: 0.038571087000000 > 0
+  PASS prefix below one: 0.961428913000000 > 0
+  PASS positive switching fraction: 0.056740653000000 > 0
+  PASS switching fits suffix: 0.904688260000000 > 0
+  PASS positive rational coefficient point: 0.025146880000000 > 0
+  PASS coefficient point below one: 0.974853120000000 > 0
+  PASS stored binomial cutoff increasing: 0.740982997044525 > 0
+  PASS prefix projection tail geometric: 0.794689154976717 > 0
+  PASS ordinary suffix tail geometric: 0.589378309953434 > 0
+  PASS box tail geometric: 0.614920240607333 > 0
+  PASS positive box gain: 0.075467246110185 > 0
+  PASS positive augmented encoding gain: 0.034684128267120 > 0
+  PASS boxes saving: 0.006325129581648 > 1581/250000
+  PASS residual queries saving: 0.006325129564681 > 1581/250000
+  PASS stored queries saving: 0.006325129574958 > 1581/250000
+  PASS augmented encodings saving on the short side: 0.006325140607982 > 1581/250000
+  PASS box encodings saving on the short side: 0.009743292434065 > 1581/250000
+  PASS folded matrix writing saving on the short side: 0.937140316750000 > 1581/250000
+  PASS input formation and residue saving: 0.993676000000000 > 0
+  PASS output updates saving: 0.036176000000000 > 0
+  PASS short side holds a square tile: 0.003418162852417 > 0
+  PASS middle part holds a block: 0.000593544500000 > 0
+  PASS outer rounding exponent below one: 0.993676000000000 > 0
+  PASS middle rounding exponent below one: 0.851200000000000 > 0
+  PASS outer-side base below rounded target: 0.000000873238469 > 0
+  PASS middle-side base below rounded target: 0.098757710935928 > 0
+  PASS improves the ten-term rectangular base: 0.001568634069756 > 0
+  PASS below Stoian Las Vegas base: 0.003081743798344 > 0
+  PASS below Stoian deterministic base: 0.004082544522390 > 0
+  certified Las Vegas base below 2995627/1000000
+  PASS candidate ratio exceeds rounded certified saving: 0.006325129634531 > 1581/250000
+Transfer of the square deterministic saving 0.00705208 into base 2 + 2^-delta
+  PASS transfer base below 2.995124: 0.000000202896301 > 0
+  PASS transfer base above 2.995123: 0.000000802004095 > 0
+  PASS transfer base below this rectangular base: 0.000505539837691 > 0
+PASS: 34 strict rational interval inequalities.
+Certified point (mu, 1+2mu) and square bound
+  PASS ADV+25 row kappa=0.5275 is below 1+2mu: 0.000001000000000 > 0
+  PASS omega below 2+mu: 0.155500000000000 > 0
+Main result: chord from (mu, 1+2mu) to (1, omega), source numbers only
+  PASS chord to kappa=1: chord slope below one (g nonincreasing): 0.329100529100529 > 0
+  PASS chord to kappa=1: crossover inside the chord segment: 0.467194080812102 > 0
+  PASS chord to kappa=1: block fits in the middle part at the crossover: 0.486759573187898 > 0
+  PASS chord to kappa=1: naive regime rho < b below budget: 0.479707493187898 > 0
+  PASS chord to kappa=1: tables n^(omega+gamma) below budget: 0.153753829187898 > 0
+  PASS chord to kappa=1: bridges n^(2+gamma) below budget: 0.525753829187898 > 0
+  PASS chord to kappa=1: saving eps'' exceeds target: 0.001746160812102 > 873/500000
+  chord to kappa=1: rho* = 0.532805919187898, eps'' = 0.001746160812102, exponent 2+mu-target = 2.525754000000000
+  closed form delta(2+mu-omega)/(3-omega) = 0.001746175859873
+Source-style black-box hypothesis (entries <= n^(1-mu) only, saving eps1 = delta at rho = mu)
+  PASS padding-side saving positive: 0.001113319673134 > 0
+  PASS padding side binds below the fast-MM side: 0.000632856186739 > 0
+  eps''_blackbox = min(eps1(1-mu)/(3-eps1), eps1(2+mu-omega)/(3-omega)) = 0.001113319673134  (exponent 2.526386680326866)
+Refinement A: one more ADV+25 row, omega(1,0.6,1) <= 2.092351, then chord to (1, 2.371339)
+  PASS ADV+25 kappa=0.6: chord slope below one (g nonincreasing): 0.484813793103448 > 0
+  PASS ADV+25 kappa=0.6: crossover inside the chord segment: 0.067750515564473 > 0
+  PASS ADV+25 kappa=0.6: block fits in the middle part at the crossover: 0.486203138435527 > 0
+  PASS ADV+25 kappa=0.6: naive regime rho < b below budget: 0.479151058435527 > 0
+  PASS ADV+25 kappa=0.6: tables n^(omega+gamma) below budget: 0.153197394435527 > 0
+  PASS ADV+25 kappa=0.6: bridges n^(2+gamma) below budget: 0.525197394435527 > 0
+  PASS ADV+25 kappa=0.6: saving eps'' exceeds target: 0.002302595564473 > 921/400000
+  ADV+25 kappa=0.6: rho* = 0.532249484435527, eps'' = 0.002302595564473, exponent 2+mu-target = 2.525197500000000
+  PASS ADV+25 node kappa=3/5: 1-kappa+w+allowances below budget: 0.032846384435527 > 0
+  PASS ADV+25 node kappa=1: 1-kappa+w+allowances below budget: 0.153858384435527 > 0
+Refinement B: SODA 2024 row omega(1,0.55,1) <= 2.066134 with the ADV+25 point at mu
+  PASS SODA 2024 kappa=0.55: chord slope below one (g nonincreasing): 0.505155555555556 > 0
+  PASS SODA 2024 kappa=0.55: crossover inside the chord segment: 0.017814703537471 > 0
+  PASS SODA 2024 kappa=0.55: block fits in the middle part at the crossover: 0.486138950462529 > 0
+  PASS SODA 2024 kappa=0.55: naive regime rho < b below budget: 0.479086870462529 > 0
+  PASS SODA 2024 kappa=0.55: tables n^(omega+gamma) below budget: 0.153133206462529 > 0
+  PASS SODA 2024 kappa=0.55: bridges n^(2+gamma) below budget: 0.525133206462529 > 0
+  PASS SODA 2024 kappa=0.55: saving eps'' exceeds target: 0.002366783537471 > 23667/10000000
+  SODA 2024 kappa=0.55: rho* = 0.532185296462529, eps'' = 0.002366783537471, exponent 2+mu-target = 2.525133300000000
+  PASS SODA 2024 node kappa=11/20: 1-kappa+w+allowances below budget: 0.008999196462529 > 0
+  PASS SODA 2024 node kappa=3/5: 1-kappa+w+allowances below budget: 0.032502196462529 > 0
+  PASS SODA 2024 node kappa=1: 1-kappa+w+allowances below budget: 0.153581196462529 > 0
+Comparison with chunking (saving mu*delta at rho = mu, entries polynomial in n^mu)
+  PASS uniform lopsided oracle beats chunked square products: 0.000825068093790 > 0
+  chunked chord saving = 0.000921107766083
+PASS: 31 strict rational interval inequalities.
+Deterministic 3XOR and exact #3XOR: rational interval certificate
+Independent dependencies: linear-projection buckets; prefix-exact count lifting; group-algebra histogram folding; aligned cache over Z[F_2^m].
+  c: 10.831078560000000
+  theta: 0.065042512690000
+  b: 0.044363672070000
+  physical hash exponent u: 0.078513865900000
+  final group-algebra exponent 2b-u: 0.010213478240000
+  T: 12.236603763130058
+  G: 0.087812697513341
+  Q residual: 0.347144789791544
+  q2 stored: 0.477229815171544
+  E source: 12.583748552921602
+  E box: 12.148791065616717
+  target saving: 0.006894500000000
+  target exponent: 1.993105500000000
+  PASS ordinary tail regime: 5.831078560000000 > 0
+  PASS positive threshold: 0.065042512690000 > 0
+  PASS unweighted cache cutoff increasing: 0.434957487310000 > 0
+  PASS stored cutoff increasing: 0.734957487310000 > 0
+  PASS ordinary private-cap tail geometric: 0.593127043427878 > 0
+  PASS box private-cap tail geometric: 0.622091330353598 > 0
+  PASS positive box gain: 0.087812697513341 > 0
+  PASS box gain below one: 0.912187302486659 > 0
+  PASS positive residual exponent: 0.347144789791544 > 0
+  PASS positive stored exponent: 0.477229815171544 > 0
+  PASS positive source-encoder slope: 13.083748552921602 > 0
+  PASS positive box-encoder slope: 12.648791065616717 > 0
+  PASS positive geometry slope: 11.736603763130058 > 0
+  PASS positive physical hash exponent: 0.078513865900000 > 0
+  PASS positive group-algebra exponent: 0.010213478240000 > 0
+  PASS sub-buckets fit input: 0.955636327930000 > 0
+  PASS incidence/bucket bookkeeping: 0.044363672070000 > 13789/2000000
+  PASS original-input reading and bucket-projection greedy: 1.000000000000000 > 13789/2000000
+  PASS phase I initial: boxes: 0.088727344140000 > 13789/2000000
+  PASS phase I initial: residual queries: 0.044363672070000 > 13789/2000000
+  PASS phase I initial: stored queries: 0.044363672070000 > 13789/2000000
+  PASS phase I initial: polynomial source cache: 1.044363672070000 > 13789/2000000
+  PASS phase I initial: box encodings: 1.044363672070000 > 13789/2000000
+  PASS phase I initial: dense histogram formation: 1.044363672070000 > 13789/2000000
+  PASS phase I initial: tile geometry: 0.955636327930000 > 0
+  PASS phase I freeze: boxes: 0.017107992596880 > 13789/2000000
+  PASS phase I freeze: residual queries: 0.017107992596423 > 13789/2000000
+  PASS phase I freeze: stored queries: 0.006894514358140 > 13789/2000000
+  PASS phase I freeze: polynomial source cache: 0.017107992716594 > 13789/2000000
+  PASS phase I freeze: box encodings: 0.051258186547051 > 13789/2000000
+  PASS phase I freeze: dense histogram formation: 0.926592873220000 > 13789/2000000
+  PASS phase I freeze: tile geometry: 0.034150193950171 > 0
+  PASS phase II start: boxes: 0.017107992596880 > 13789/2000000
+  PASS phase II start: residual queries: 0.017107992596423 > 13789/2000000
+  PASS phase II start: stored queries: 0.006894514358140 > 13789/2000000
+  PASS phase II start: polynomial source cache: 0.017107992716594 > 13789/2000000
+  PASS phase II start: box encodings: 0.051258186547051 > 13789/2000000
+  PASS phase II start: dense histogram formation: 0.926592873220000 > 13789/2000000
+  PASS phase II start: tile geometry: 0.034150193950171 > 0
+  PASS phase II final: boxes: 0.006894514356880 > 13789/2000000
+  PASS phase II final: residual queries: 0.006894514356423 > 13789/2000000
+  PASS phase II final: stored queries: 0.006894514358140 > 13789/2000000
+  PASS phase II final: polynomial source cache: 0.006894514476594 > 13789/2000000
+  PASS phase II final: box encodings: 0.041044708307051 > 13789/2000000
+  PASS phase II final: dense histogram formation: 0.916379394980000 > 13789/2000000
+  PASS phase II final: tile geometry: 0.034150193950171 > 0
+Exact physical/group-algebra split identity u + (2b-u) = 2b: PASS
+PASS: 46 strict rational interval inequalities.
+Certified numerical target: 1.9931055 for 3XOR and exact #3XOR (sets); Majdoddin reports 1.99451.
+PASS m=0: one empty translation, one translation pair, weight zero
+PASS m=1: 64 entries, exact exhaustive child averages, 32 false-on-tie choices, 2 invertible-map/input checks
+PASS m=2: 512 entries, exact exhaustive child averages, 512 false-on-tie choices, 24 invertible-map/input checks
+PASS m=3: 1728 entries, exact exhaustive child averages, 2376 false-on-tie choices, 1344 invertible-map/input checks
+PASS: integer scores, exact-half coverage, first-index scans; finite checks only.
+PASS: n=0..6, capped support counts, exactly 2^j copies per rare word, full group storage, and every mixed prefix layer.
+PASS q=0: 8 coefficient triples; q+2 rank-one polynomial terms; orders <3 vanish, order 3 equals CW, degree <=10.
+PASS q=1: 27 coefficient triples; q+2 rank-one polynomial terms; orders <3 vanish, order 3 equals CW, degree <=10.
+PASS q=2: 64 coefficient triples; q+2 rank-one polynomial terms; orders <3 vanish, order 3 equals CW, degree <=10.
+PASS q=3: 125 coefficient triples; q+2 rank-one polynomial terms; orders <3 vanish, order 3 equals CW, degree <=10.
+PASS q=16: 5832 coefficient triples; q+2 rank-one polynomial terms; orders <3 vanish, order 3 equals CW, degree <=10.
+PASS: 6056 exact coefficient triples; no floating point, rank/exponent assumptions or external algebra package.
+PASS: 592 exact Vandermonde moments and 5913 CW extraction coordinates (all n=1, 81 selected n=2); shared signed denominators and n=0 checked.
+PASS: 3232 exact integer cases; full/pruned encodings, leaf counts, cost bound, and decoded matrix entries match.
+test_all_zero_many_witnesses_stops_once_per_pair (__main__.ReductionChecks.test_all_zero_many_witnesses_stops_once_per_pair) ... ok
+test_bit_scaling_all_three_low_bit_cases (__main__.ReductionChecks.test_bit_scaling_all_three_low_bit_cases) ... ok
+test_bit_scaling_zero_base_and_negative_entries (__main__.ReductionChecks.test_bit_scaling_zero_base_and_negative_entries) ... ok
+test_block_min_plus_convolution_all_outputs (__main__.ReductionChecks.test_block_min_plus_convolution_all_outputs) ... ok
+test_bucket_pair_folding_matches_modular_sums (__main__.ReductionChecks.test_bucket_pair_folding_matches_modular_sums) ... ok
+test_deterministic_modulus_selection_minimizes_false_positives (__main__.ReductionChecks.test_deterministic_modulus_selection_minimizes_false_positives) ... ok
+test_different_primes_have_different_false_witnesses (__main__.ReductionChecks.test_different_primes_have_different_false_witnesses) ... ok
+test_failed_block_before_success_and_later_true_blocks (__main__.ReductionChecks.test_failed_block_before_success_and_later_true_blocks) ... ok
+test_random_signed_min_plus_instances (__main__.ReductionChecks.test_random_signed_min_plus_instances) ... ok
+test_random_signed_modular_instances (__main__.ReductionChecks.test_random_signed_modular_instances) ... ok
+test_repeated_primes_and_negative_residues (__main__.ReductionChecks.test_repeated_primes_and_negative_residues) ... ok
+test_residue_folding_matches_modular_counts (__main__.ReductionChecks.test_residue_folding_matches_modular_counts) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.279s
+
+OK
+test_affirmative_certificate_path (__main__.ModularMomentChecks.test_affirmative_certificate_path) ... ok
+test_decisions_against_exact_oracle (__main__.ModularMomentChecks.test_decisions_against_exact_oracle) ... ok
+test_nonempty_failed_scan_path (__main__.ModularMomentChecks.test_nonempty_failed_scan_path) ... ok
+test_pair_multiplicities_are_preserved (__main__.ModularMomentChecks.test_pair_multiplicities_are_preserved) ... ok
+test_per_pair_all_edges_certificates (__main__.ModularMomentChecks.test_per_pair_all_edges_certificates) ... ok
+test_signed_crt_objectives (__main__.ModularMomentChecks.test_signed_crt_objectives) ... ok
+test_two_bit_separating_family (__main__.ModularMomentChecks.test_two_bit_separating_family) ... ok
+test_weighted_contraction_on_no_instances (__main__.ModularMomentChecks.test_weighted_contraction_on_no_instances) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.169s
+
+OK
+test_arbitrary_prime_sequence_minima (__main__.PrefixCountChecks.test_arbitrary_prime_sequence_minima) ... ok
+test_exhaustive_ties_and_both_relations (__main__.PrefixCountChecks.test_exhaustive_ties_and_both_relations) ... ok
+test_missing_colors (__main__.PrefixCountChecks.test_missing_colors) ... ok
+test_repeated_bad_prime_and_complementary_certificate (__main__.PrefixCountChecks.test_repeated_bad_prime_and_complementary_certificate) ... ok
+test_single_color_duplicates_and_empty_lists (__main__.PrefixCountChecks.test_single_color_duplicates_and_empty_lists) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.205s
+
+OK
+test_arbitrary_failed_isolation_preserves_exactness (__main__.RectangularReductionTests.test_arbitrary_failed_isolation_preserves_exactness) ... ok
+test_convolution_negative_sentinel_and_endpoints (__main__.RectangularReductionTests.test_convolution_negative_sentinel_and_endpoints) ... ok
+test_dyadic_singleton_probability_finite_exact_counts (__main__.RectangularReductionTests.test_dyadic_singleton_probability_finite_exact_counts) ... ok
+test_false_singleton_rejected_and_all_failed_fallback (__main__.RectangularReductionTests.test_false_singleton_rejected_and_all_failed_fallback) ... ok
+test_isolated_true_singletons_avoid_fallback_for_all_multiplicities (__main__.RectangularReductionTests.test_isolated_true_singletons_avoid_fallback_for_all_multiplicities) ... ok
+test_masked_folded_count_and_label_products (__main__.RectangularReductionTests.test_masked_folded_count_and_label_products) ... ok
+test_rectangular_all_digit_widths (__main__.RectangularReductionTests.test_rectangular_all_digit_widths) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.694s
+
+OK
+test_aggregation_exact_with_a_false_pair_free_prime (__main__.Counting3SUMChecks.test_aggregation_exact_with_a_false_pair_free_prime) ... ok
+test_aggregation_never_undercounts (__main__.Counting3SUMChecks.test_aggregation_never_undercounts) ... ok
+test_colliding_residues_require_multiplicity (__main__.Counting3SUMChecks.test_colliding_residues_require_multiplicity) ... ok
+test_folded_entries_match_direct_modular_pair_counts (__main__.Counting3SUMChecks.test_folded_entries_match_direct_modular_pair_counts) ... ok
+test_one_set_repeated_element_correction_exhaustively (__main__.Counting3SUMChecks.test_one_set_repeated_element_correction_exhaustively) ... ok
+test_signed_one_set_pipeline (__main__.Counting3SUMChecks.test_signed_one_set_pipeline) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.069s
+
+OK
+PASS: weighted sum, greedy bound, and local coverage for sizes 1..4
+PASS: Cartesian-product cover completeness for sizes 1..6
+PASS: 120 signed/infinite subset-convolution table comparisons
+PASS (2, 1, 3, 2): 18 entries, 2 shared arrays
+PASS (2, 1, 7, 5): 245 entries, 18 shared arrays
+PASS (3, 1, 10, 7): 700 entries, 12 shared arrays
+PASS (3, 2, 7, 4): 196 entries, 12 shared arrays
+PASS (4, 1, 28, 5): 3920 entries, 8 shared arrays
+PASS total: 5079 exact signed entries and 52 shared encodings
+test_alternating_low_order_formula (__main__.AggregatedQueryTests.test_alternating_low_order_formula) ... ok
+test_box_group_contractions_match_all_nine_choices (__main__.AggregatedQueryTests.test_box_group_contractions_match_all_nine_choices) ... ok
+test_full_queries_match_independent_matrix_products (__main__.AggregatedQueryTests.test_full_queries_match_independent_matrix_products) ... ok
+test_local_projection_and_plus_identities (__main__.AggregatedQueryTests.test_local_projection_and_plus_identities) ... ok
+test_query_box_counts_and_transform_sizes (__main__.AggregatedQueryTests.test_query_box_counts_and_transform_sizes) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.137s
+
+OK
+test_complete_prefix_queries_with_free_pruning (__main__.LazyEncodingTests.test_complete_prefix_queries_with_free_pruning) ... ok
+test_complete_prefix_queries_with_lazy_reconstruction (__main__.LazyEncodingTests.test_complete_prefix_queries_with_lazy_reconstruction) ... ok
+test_cyclic_window_guarantee (__main__.LazyEncodingTests.test_cyclic_window_guarantee) ... ok
+test_sparse_contraction_reads (__main__.LazyEncodingTests.test_sparse_contraction_reads) ... ok
+test_stored_arrays_and_lazy_leaf_retrieval (__main__.LazyEncodingTests.test_stored_arrays_and_lazy_leaf_retrieval) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 2.228s
+
+OK
+test_balanced_box_dp_and_full_partition (__main__.BalancedTests.test_balanced_box_dp_and_full_partition) ... ok
+test_sparse_residual_and_source_counts (__main__.BalancedTests.test_sparse_residual_and_source_counts) ... ok
+test_global_retention_budget_volume (__main__.EncodingVolumeTests.test_global_retention_budget_volume) ... ok
+test_local_identity_and_conservative_access (__main__.EncodingVolumeTests.test_local_identity_and_conservative_access) ... ok
+test_per_half_prefix_array_volumes (__main__.EncodingVolumeTests.test_per_half_prefix_array_volumes) ... ok
+test_polynomial_cut_orders (__main__.EncodingVolumeTests.test_polynomial_cut_orders) ... ok
+test_weighted_coefficient_bound (__main__.EncodingVolumeTests.test_weighted_coefficient_bound) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.169s
+
+OK
+Full balanced partitions with closed box DP: 60
+Sparse residual identities and counts: 60
+Global retained-region internal-array volume cases: 3690
+Local tensor identity, conservative coordinate recovery, and three-form rank checks: 15
+Per-half prefix and internal-array volume cases: 8108
+Balanced prefix cut-order cases: 4847
+Weighted 4/2 coefficient bounds: 336
+PASS: 69 full queries versus an original-array oracle; 280720 complete box-family states; 850000 DP closure edges.
+PASS complete fixed-profile query versus original-array oracle: {'queries': 216, 'asymmetric_slots': 72, 'small_cutoffs': 72, 'source_lookups': 12936, 'predecessors': 79920, 'box_states': 630288, 'box_leaves': 505440, 'encoders': 104}
+All table counts, all internal-array bounds, sparse predecessor closures, augmented-source acceptance, and restricted box-leaf lookups passed.
+test_exact_conditional_expectations_and_bijections (__main__.ProfileMaps.test_exact_conditional_expectations_and_bijections) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.008s
+
+OK
+test_actual_local_five_term_identity (__main__.FiveTermRingTests.test_actual_local_five_term_identity) ... ok
+test_complete_sparse_ring_queries_against_original_arrays (__main__.FiveTermRingTests.test_complete_sparse_ring_queries_against_original_arrays) ... ok
+test_coprimality_is_necessary (__main__.FiveTermRingTests.test_coprimality_is_necessary) ... ok
+test_folded_signed_composite_counts_and_padding (__main__.FiveTermRingTests.test_folded_signed_composite_counts_and_padding) ... ok
+test_frozen_base_multi_prime_intermediates (__main__.FiveTermRingTests.test_frozen_base_multi_prime_intermediates) ... ok
+test_incidence_selection_certification_and_scans (__main__.FiveTermRingTests.test_incidence_selection_certification_and_scans) ... ok
+test_prefix_partition_over_cyclic_ring (__main__.FiveTermRingTests.test_prefix_partition_over_cyclic_ring) ... ok
+test_preprocessed_boxes_use_one_coefficient_each (__main__.FiveTermRingTests.test_preprocessed_boxes_use_one_coefficient_each) ... ok
+test_residual_target_coefficient_dot_product (__main__.FiveTermRingTests.test_residual_target_coefficient_dot_product) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 6.574s
+
+OK
+PASS original-array cyclic-ring target queries: {'encoders': 190, 'encoder_layers': 1050, 'encoder_internal_coefficients': 9913584, 'encoded_coefficients': 2878016, 'source_lookups': 23296, 'predecessors': 102272, 'predecessor_coefficients': 421872, 'transform_layers': 3072, 'transform_coefficients': 383328, 'box_states': 528240, 'box_leaves': 303960, 'box_coefficients': 1690368, 'residual_terms': 7680, 'target_box_reads': 43008, 'queries': 512, 'asymmetric_queries': 256, 'composite_queries': 320}
+Exact coefficient operation counts: {'full_ring_products': 304440, 'convolution_coefficient_products': 4018608, 'linear_coefficient_adds': 9414744, 'linear_coefficient_scales': 16266120, 'target_coefficient_products': 31680}
+PASS: every encoder layer and sparse-transform layer obeys its q-scaled volume bound; every predecessor and box leaf is stored; no full ring multiplication occurs during queries.
+PASS actual signed source embeddings and complete matrix-product queries: {'encoders': 42, 'stored_entries': 887136, 'intermediate_entries': 2297328, 'source_reads': 100032, 'predecessors': 347424, 'groups': 12864, 'asymmetric_keys': 11328, 'queries': 544}
+PASS exact cache counts, all intermediate volumes, lex-group disjointness, sparse closure, and matching full output keys.
+Includes ell=0, partial caching, full caching, and different left/right low/high group assignments.
+PASS cyclic-ring original-array queries: 24 complete outputs, 96 coefficients, q=3 and q=5.
+PASS each residual product reads exactly q coefficient pairs; every stored-box lookup reads one coefficient.
+Finite algebra validation only; no numerical exponent certificate or complete fast algorithm.
+PASS L=2, m=1: 2 good slots, 64 exact original-matrix outputs, 136 source entries.
+PASS L=3, m=2: 3 good slots, 144 exact original-matrix outputs, 1284 source entries.
+PASS L=3, m=1: 3 good slots, 144 exact original-matrix outputs, 1104 source entries.
+PASS total: 352 outputs, 2524 source entries; normalization 4^L.
+PASS shared-baseline joint cache and arbitrary-original-array queries: {'encoders': 20, 'stored_entries': 423918, 'intermediate_entries': 1088138, 'coefficient_cells': 2488004, 'encoder_layers': 116, 'residual_keys': 328, 'residual_coefficient_checks': 67, 'box_states': 9772, 'box_leaves': 8360, 'box_reads': 2712, 'queries': 34, 'asymmetric_queries': 16}
+PASS every residual coefficient, all cache layer volumes, and all high-box base/closure checks.
+Source embedding, its normalization, and numerical exponent certificates are separate obligations.
+PASS L=2, m=1, q=1: 128 normalized original-product coefficients; 12 compact encoders; 384 complete residual+box contractions.
+PASS L=3, m=2, q=1: 18 normalized original-product coefficients; 20 compact encoders; 90 complete residual+box contractions.
+PASS L=2, m=1, q=3: 384 normalized original-product coefficients; 36 compact encoders; 3456 complete residual+box contractions.
+PASS total: 530 exact normalized original-product coefficients; 68 compact encoders; 2011348 retained encoder/intermediate entries; 51120 high-box reads.
+The signed cyclic fixture has q=3; all coefficient targets are checked.
+test_composite_moduli_signed_random (__main__.CompositeFoldChecks.test_composite_moduli_signed_random) ... ok
+test_unbalanced_residues_and_multiplicities (__main__.CompositeFoldChecks.test_unbalanced_residues_and_multiplicities) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.008s
+
+OK
+PASS composite folded entries: 240
+PASS random all-edges graph instances: 240
+PASS uncertified true-incidence restart fixture: 1
+PASS boundary/different-witness fixtures: 8
+Finite checks only: no asymptotic exponent or prime-density certification.
+test_actual_greedy_selection_needs_two_restarts (__main__.ExactCountingChecks.test_actual_greedy_selection_needs_two_restarts) ... ok
+test_coprimality_and_prime_three_exclusion (__main__.ExactCountingChecks.test_coprimality_and_prime_three_exclusion) ... ok
+test_duplicate_labels_zero_base_and_uneven_last_block (__main__.ExactCountingChecks.test_duplicate_labels_zero_base_and_uneven_last_block) ... ok
+test_every_old_gap_and_parity_target_bit (__main__.ExactCountingChecks.test_every_old_gap_and_parity_target_bit) ... ok
+test_exact_minplus_multiplicities_after_value_computation (__main__.ExactCountingChecks.test_exact_minplus_multiplicities_after_value_computation) ... ok
+test_padded_middle_entries_are_absent (__main__.ExactCountingChecks.test_padded_middle_entries_are_absent) ... ok
+test_random_original_matrix_induction (__main__.ExactCountingChecks.test_random_original_matrix_induction) ... ok
+test_signed_joint_shifts_and_arbitrary_targets (__main__.ExactCountingChecks.test_signed_joint_shifts_and_arbitrary_targets) ... ok
+test_signed_target_counts_all_residue_classes (__main__.ExactCountingChecks.test_signed_target_counts_all_residue_classes) ... ok
+test_signed_window_closure_exhaustive (__main__.ExactCountingChecks.test_signed_window_closure_exhaustive) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.711s
+
+OK
+test_common_prime_greedy_purification (__main__.SignedWindowAudit.test_common_prime_greedy_purification) ... ok
+test_local_backward_closure_and_fixed_factor (__main__.SignedWindowAudit.test_local_backward_closure_and_fixed_factor) ... ok
+test_signed_original_matrices (__main__.SignedWindowAudit.test_signed_original_matrices) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 3.590s
+
+OK
+{'greedy_initial_incidences': 160, 'greedy_stages': 2, 'candidate_calls': 82, 'local_bit_cases': 328, 'signed_matrix_instances': 600, 'prefix_updates': 4997, 'incidence_updates': 85079, 'certified_masked_counts': 6065880}
+test_complete_occurrence_lists (__main__.FixedBucketCountingTests.test_complete_occurrence_lists) ... ok
+test_complete_original_sets (__main__.FixedBucketCountingTests.test_complete_original_sets) ... ok
+test_complete_sets_with_actual_restart (__main__.FixedBucketCountingTests.test_complete_sets_with_actual_restart) ... ok
+test_empty_inputs_and_coalesced_prefixes (__main__.FixedBucketCountingTests.test_empty_inputs_and_coalesced_prefixes) ... ok
+test_folded_histogram_identity (__main__.FixedBucketCountingTests.test_folded_histogram_identity) ... ok
+test_incidence_multiplicity_in_greedy_score (__main__.FixedBucketCountingTests.test_incidence_multiplicity_in_greedy_score) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.535s
+
+OK
+{'fixed_incidences': 1067, 'complete_occurrence_instances': 38, 'folded_products': 11527, 'coefficient_queries': 450722, 'purification_stages': 470, 'prefix_levels': 503, 'complete_set_instances': 50, 'nonempty_restart_sets': 1, 'structured_restart_instances': 1, 'empty_input_fixtures': 3, 'direct_histogram_identities': 142300, 'incidence_multiplicity_regressions': 1}
+test_biased_families (__main__.FixedLinearBucketCountingTests.test_biased_families) ... ok
+test_empty_and_tiny_inputs (__main__.FixedLinearBucketCountingTests.test_empty_and_tiny_inputs) ... ok
+test_end_to_end_multisets (__main__.FixedLinearBucketCountingTests.test_end_to_end_multisets) ... ok
+test_end_to_end_sets (__main__.FixedLinearBucketCountingTests.test_end_to_end_sets) ... ok
+test_folded_group_algebra_product (__main__.FixedLinearBucketCountingTests.test_folded_group_algebra_product) ... ok
+test_forced_restart_fixture (__main__.FixedLinearBucketCountingTests.test_forced_restart_fixture) ... ok
+test_group_algebra_ring (__main__.FixedLinearBucketCountingTests.test_group_algebra_ring) ... ok
+test_levels_and_certification (__main__.FixedLinearBucketCountingTests.test_levels_and_certification) ... ok
+test_linear_buckets (__main__.FixedLinearBucketCountingTests.test_linear_buckets) ... ok
+test_one_list_distinct_correction (__main__.FixedLinearBucketCountingTests.test_one_list_distinct_correction) ... ok
+test_one_list_distinct_occurrence_correction (__main__.FixedLinearBucketCountingTests.test_one_list_distinct_occurrence_correction) ... ok
+test_zero_padding_with_duplicate_heavy_lists (__main__.FixedLinearBucketCountingTests.test_zero_padding_with_duplicate_heavy_lists) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 1.201s
+
+OK
+{'biased_families': 93, 'aghp_families': 42, 'direct_character_sums': 31, 'single_bucket_instances': 82, 'fixed_incidences': 9226, 'linear_instances': 198, 'compatibility_solutions': 5640, 'greedy_rows': 3817, 'folded_products': 1282, 'coefficient_queries': 50221, 'attempts': 582, 'prefix_levels': 583, 'end_to_end_instances': 112, 'empty_input_fixtures': 3, 'complete_occurrence_instances': 27, 'complete_set_instances': 30, 'full_product_coefficients': 12864, 'product_cases': 10, 'uncertified_incidences': 32, 'nonempty_restart_sets': 16, 'restart_levels': 4, 'structured_restart_instances': 3, 'ring_products': 120, 'unrestricted_row_kills': 1475, 'level_attempts': 120, 'level_instances': 24, 'bucket_instances': 60, 'one_list_corrections': 10, 'one_list_occurrence_corrections': 31, 'zero_padding_instances': 6}
+PASS fixed linear buckets: 9226 incidences, 583 levels, 582 attempts, 16 restarts, 1282 folded group-algebra products, 50221 coefficient queries.
+PASS light-source-improvement/check_exact_small_bias.py: saved output reproduced
+PASS light-source-improvement/check_small_bias_potential.py: saved output reproduced
+PASS light-source-improvement/check_light_gauge_embedding.py: saved output reproduced
+PASS light-source-improvement/check_light_source_gauges.py: saved output reproduced
+PASS light-source-improvement/check_strict_light_gauge_backend.py: saved output reproduced
+PASS cropped-source-improvement/check_rectangular_chunks.py: saved output reproduced
+PASS half-source-improvement/check_half_bias.py: saved output reproduced
+PASS half-source-improvement/check_half_embedding.py: saved output reproduced
+PASS: structured-source finite checks; asymptotic proofs remain separate.
+PASS: all checks passed; stored certificate output reproduced.

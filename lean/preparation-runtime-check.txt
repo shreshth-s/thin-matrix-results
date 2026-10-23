@@ -1,0 +1,15 @@
+scripts/check_grouped_preparation.lean
+PASS: preparation through n=4; every capped group, raw-tensor output coefficient, full B*q*F volume, duplicate/empty requests, zero-column boundary, and total preparation/completion counters.
+
+scripts/check_grouped_completion.lean
+PASS: n=0..4, all capped suffix groups and activity sets, duplicate and empty requests, every B*q*F coefficient, and returned completion counters.
+
+scripts/check_half_source_binary.lean
+(true, 1419026751, 6167353)
+0
+'ThinMatrix.HalfSourceBinarySelection.translations_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceBinarySelection.translations_arithmetic_price' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+PASS: all three executable Lean fixtures completed.

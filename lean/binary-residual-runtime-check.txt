@@ -1,0 +1,29 @@
+scripts/check_binary_residual.lean
+PASS: retained layouts through L=6, both position arrays, every route and assembly, present/absent binary searches, construction bits and control.
+PASS: shifted binary coefficient rows, signs, all degrees/columns, zero dimensions and bit boundaries through 65536; copies, arithmetic bounds and control.
+PASS: complete retained binary residual arrays against independent dense binomial tensor coefficients through L=2; asymmetric layouts/channel counts, all crops, all four formal degrees and nine cyclic/request columns including duplicate requests, zero boundaries, input-derived widths, construction bits and control. No FFT runtime was invoked.
+
+Prior executable fixtures on this frozen source snapshot
+check_half_source_binary.lean
+(true, 1419026751, 6167353)
+0
+'ThinMatrix.HalfSourceBinarySelection.translations_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceBinarySelection.translations_arithmetic_price' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+check_grouped_completion.lean
+PASS: n=0..4, all capped suffix groups and activity sets, duplicate and empty requests, every B*q*F coefficient, and returned completion counters.
+check_grouped_preparation.lean
+PASS: preparation through n=4; every capped group, raw-tensor output coefficient, full B*q*F volume, duplicate/empty requests, zero-column boundary, and total preparation/completion counters.
+check_binary_grouped.lean
+PASS: binary grouped preparation/completion through n=4; independent raw-tensor equality for every coefficient, charged binary addresses, signed/zero inputs and bit boundaries through 65536, partial-sum widths, full B*q*F cells, duplicate/empty requests, zero-column boundary, and both counters.
+check_cropped_high.lean
+PASS: cropped shifted HIGH encoders through L=2, both orientations, every joint cap, all cyclic slots, retained cells and work; binary box recurrence with elementary full cyclic bases through L=1 against independent raw tensor and cyclic sums; production FFT composition is kernel-checked only; zero-length/zero-input boundaries and binary setup bit boundaries.
+check_cyclic_window.lean
+PASS: first cyclic windows through k=7, direct ternary decoding through n=8, both halves and all tested caps; retained binary partitions through k=3 with every B*q*F column, zero writes, cell counts and separate counters; independent ordinary contractions with repeated requests; channel-side ties, zero-position/zero-column cases and magnitude bit boundaries.
+check_distinguished_root.lean
+PASS: sparse shifted residual roots equal independent dense contractions; rare caps, all 12 coefficient columns, duplicated requests, asymmetric layouts and zero dimensions.
+PASS: all seven executable Lean fixtures completed.
+
+PASS: all eight executable Lean fixtures completed.
+Source/configuration SHA-256: 235610e8c2a54be890e6eb99a6d41322c360902602be936c8b1b37e3f22c15d2

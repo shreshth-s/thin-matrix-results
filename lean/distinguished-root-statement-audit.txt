@@ -1,0 +1,183 @@
+@ThinMatrix.DistinguishedResidualRoot.evaluate_value : ∀ {R : Type u_1} [inst : CommRing R] (m : ℕ)
+  (channels : ThinMatrix.WalshEmbedding.Cube m) (z : R) (read : (Fin m → ThinMatrix.WalshEmbedding.NormalLetter) → R),
+  (ThinMatrix.DistinguishedResidualRoot.evaluate m channels z read).value =
+    ThinMatrix.DistinguishedResidualRoot.contract channels z read
+'ThinMatrix.DistinguishedResidualRoot.evaluate_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+@ThinMatrix.DistinguishedResidualRoot.evaluate_lookups : ∀ {R : Type u_1} [inst : CommRing R] (m : ℕ)
+  (channels : ThinMatrix.WalshEmbedding.Cube m) (z : R) (read : (Fin m → ThinMatrix.WalshEmbedding.NormalLetter) → R),
+  (ThinMatrix.DistinguishedResidualRoot.evaluate m channels z read).lookups ≤ 3 ^ m
+def ThinMatrix.DistinguishedResidualRoot.evaluate.{u_1} : {R : Type u_1} →
+  [CommRing R] →
+    (m : ℕ) →
+      ThinMatrix.WalshEmbedding.Cube m →
+        R →
+          ((Fin m → ThinMatrix.WalshEmbedding.NormalLetter) → R) → ThinMatrix.DistinguishedResidualRoot.Evaluation R :=
+fun {R} [CommRing R] x x_1 x_2 x_3 =>
+  Nat.brecOn (motive := fun x =>
+    ThinMatrix.WalshEmbedding.Cube x →
+      R → ((Fin x → ThinMatrix.WalshEmbedding.NormalLetter) → R) → ThinMatrix.DistinguishedResidualRoot.Evaluation R)
+    x ThinMatrix.DistinguishedResidualRoot.evaluate._f x_1 x_2 x_3
+@ThinMatrix.DistinguishedResidualSupport.layout_distinguished : ∀ {L m : ℕ} (Q : Finset (Fin L)) (hQ : Q.card = m)
+  (i : Fin L), (∃ j, (ThinMatrix.DistinguishedResidualSupport.layout Q hQ) i = Sum.inl j) ↔ i ∈ Q
+@ThinMatrix.DistinguishedResidualSupport.physicalChannels_card : ∀ {L m k : ℕ}
+  (e : ThinMatrix.DistinguishedResidualSupport.Layout L m k) (channels : ThinMatrix.WalshEmbedding.Cube m),
+  (ThinMatrix.DistinguishedResidualSupport.physicalChannels e channels).card = ThinMatrix.WalshEmbedding.ones channels
+@ThinMatrix.DistinguishedResidualSupport.root_eq_dense : ∀ {R : Type u_1} [inst : CommRing R] {L m k : ℕ}
+  (eN eO : ThinMatrix.DistinguishedResidualSupport.Layout L m k) (cn co : ThinMatrix.WalshEmbedding.Cube m) (z : R)
+  (cap : ℕ)
+  (source : (Fin L → ThinMatrix.WalshEmbedding.NormalLetter) → (Fin L → ThinMatrix.WalshEmbedding.OppositeLetter) → R)
+  (wn wo : ThinMatrix.CroppedGroupedSuffix.Word k),
+  ThinMatrix.DistinguishedResidualSupport.root eN eO cn co z cap source wn wo =
+    ∑ n,
+      ∑ o,
+        (ThinMatrix.DistinguishedResidualRoot.kernel cn z n *
+            ∏ i, ThinMatrix.DistinguishedResidualRoot.oppositeFactor (co i) (o i)) *
+          ThinMatrix.DistinguishedResidualSupport.cropBoth cap source
+            (ThinMatrix.DistinguishedResidualSupport.assemble eN n fun i =>
+              ThinMatrix.DistinguishedResidualSupport.normalRemaining (wn i))
+            (ThinMatrix.DistinguishedResidualSupport.assemble eO o fun i =>
+              ThinMatrix.SourceCoordinates.oppositeEquiv (wo i))
+'ThinMatrix.DistinguishedResidualSupport.root_eq_dense' depends on axioms: [propext, Classical.choice, Quot.sound]
+@ThinMatrix.DistinguishedResidualSupport.root_evaluate : ∀ {R : Type u_1} [inst : CommRing R] {L m k : ℕ}
+  (eN eO : ThinMatrix.DistinguishedResidualSupport.Layout L m k) (cn co : ThinMatrix.WalshEmbedding.Cube m) (z : R)
+  (cap : ℕ)
+  (source : (Fin L → ThinMatrix.WalshEmbedding.NormalLetter) → (Fin L → ThinMatrix.WalshEmbedding.OppositeLetter) → R)
+  (wn wo : ThinMatrix.CroppedGroupedSuffix.Word k),
+  ThinMatrix.DistinguishedResidualSupport.root eN eO cn co z cap source wn wo =
+    (∏ i, ThinMatrix.DistinguishedResidualRoot.oppositeScale (co i)) *
+      (ThinMatrix.DistinguishedResidualRoot.evaluate m cn z fun n =>
+          ThinMatrix.DistinguishedResidualSupport.cropBoth cap source
+            (ThinMatrix.DistinguishedResidualSupport.assemble eN n fun i =>
+              ThinMatrix.DistinguishedResidualSupport.normalRemaining (wn i))
+            (ThinMatrix.DistinguishedResidualSupport.assemble eO
+              (fun i => ThinMatrix.DistinguishedResidualRoot.oppositeLetter (co i)) fun i =>
+              ThinMatrix.SourceCoordinates.oppositeEquiv (wo i))).value
+@ThinMatrix.DistinguishedResidualSupport.remaining_caps : ∀ {R : Type u_1} [inst : CommRing R] {L m k : ℕ}
+  (eN eO : ThinMatrix.DistinguishedResidualSupport.Layout L m k) (cn co : ThinMatrix.WalshEmbedding.Cube m) (z : R)
+  (cap : ℕ)
+  (source : (Fin L → ThinMatrix.WalshEmbedding.NormalLetter) → (Fin L → ThinMatrix.WalshEmbedding.OppositeLetter) → R)
+  (wn wo : ThinMatrix.CroppedGroupedSuffix.Word k),
+  ThinMatrix.DistinguishedResidualSupport.root eN eO cn co z cap source wn wo ≠ 0 →
+    ThinMatrix.WalshEmbedding.ones cn + ThinMatrix.DistinguishedResidualSupport.rareCount wn ≤ cap ∧
+      ThinMatrix.WalshEmbedding.ones co + ThinMatrix.DistinguishedResidualSupport.rareCount wo ≤ cap
+'ThinMatrix.DistinguishedResidualSupport.remaining_caps' depends on axioms: [propext, Classical.choice, Quot.sound]
+@ThinMatrix.ExactHalfResidualWindow.left_crop_eq : ∀ {R : Type u_1} [inst : CommRing R] {L m : ℕ}
+  (X : ThinMatrix.WalshEmbedding.RawLeftInput L m (L - m) R)
+  (r s : Fin (ThinMatrix.ExactHalfCroppedEmbedding.shifts m).length) (run : ℤ),
+  ThinMatrix.DistinguishedResidualSupport.cropBoth (m / 2) (ThinMatrix.ExactHalfResidualWindow.leftSource X r s run) =
+    ThinMatrix.CroppedSourceContraction.crop (m / 2) (ThinMatrix.ExactHalfResidualWindow.leftSource X r s run)
+@ThinMatrix.ExactHalfResidualWindow.right_crop_eq : ∀ {R : Type u_1} [inst : CommRing R] {L m : ℕ}
+  (Y : ThinMatrix.WalshEmbedding.RawRightInput L m (L - m) R)
+  (r s : Fin (ThinMatrix.ExactHalfCroppedEmbedding.shifts m).length) (run : ℤ),
+  ThinMatrix.DistinguishedResidualSupport.cropBoth (m / 2) (ThinMatrix.ExactHalfResidualWindow.rightSource Y r s run) =
+    ThinMatrix.CroppedSourceContraction.crop (m / 2) (ThinMatrix.ExactHalfResidualWindow.rightSource Y r s run)
+'ThinMatrix.ExactHalfResidualWindow.left_crop_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.ExactHalfResidualWindow.right_crop_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+@ThinMatrix.ExactHalfResidualWindow.selected_crop_eq : ∀ {R : Type u_1} [inst : CommRing R] {L m k : ℕ}
+  (eN eO : ThinMatrix.DistinguishedResidualSupport.Layout L m k) (cn co : ThinMatrix.WalshEmbedding.Cube m) (z : R)
+  (cap : ℕ)
+  (source : (Fin L → ThinMatrix.WalshEmbedding.NormalLetter) → (Fin L → ThinMatrix.WalshEmbedding.OppositeLetter) → R)
+  (w : ThinMatrix.CroppedGroupedSuffix.Word (2 * k)),
+  (if
+        ThinMatrix.CyclicLightWindow.count
+            (ThinMatrix.BinaryWindowPartition.bits
+              (decide (ThinMatrix.WalshEmbedding.ones co ≤ ThinMatrix.WalshEmbedding.ones cn)) w) ≤
+          cap - max (ThinMatrix.WalshEmbedding.ones cn) (ThinMatrix.WalshEmbedding.ones co) then
+      ThinMatrix.ExactHalfResidualWindow.packedRoot eN eO cn co z cap source w
+    else 0) =
+    ThinMatrix.ExactHalfResidualWindow.packedRoot eN eO cn co z cap source w
+@ThinMatrix.ExactHalfResidualWindow.coefficient_window_reconstruction : ∀ {L m k q : ℕ} [inst : NeZero k]
+  [inst_1 : NeZero q] (ell : ℕ) (eN eO : ThinMatrix.DistinguishedResidualSupport.Layout L m k)
+  (cn co : ThinMatrix.WalshEmbedding.Cube m) (cap : ℕ)
+  (source :
+    (Fin L → ThinMatrix.WalshEmbedding.NormalLetter) →
+      (Fin L → ThinMatrix.WalshEmbedding.OppositeLetter) → Polynomial (ThinMatrix.CyclicRing.Cyclic q))
+  (w : ThinMatrix.CroppedGroupedSuffix.Word (2 * k)) (degree : ℕ) (residue : Fin q),
+  ∑ s,
+      (ThinMatrix.CyclicLightWindow.component ell
+            (cap - max (ThinMatrix.WalshEmbedding.ones cn) (ThinMatrix.WalshEmbedding.ones co))
+            (ThinMatrix.BinaryWindowPartition.bits
+              (decide (ThinMatrix.WalshEmbedding.ones co ≤ ThinMatrix.WalshEmbedding.ones cn)) w)
+            s (ThinMatrix.ExactHalfResidualWindow.packedRoot eN eO cn co Polynomial.X cap source w)).coeff
+        degree residue =
+    (ThinMatrix.ExactHalfResidualWindow.packedRoot eN eO cn co Polynomial.X cap source w).coeff degree residue
+'ThinMatrix.ExactHalfResidualWindow.coefficient_window_reconstruction' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@ThinMatrix.BinaryWindowPartition.correctness_and_costs : ∀ {k C : ℕ} [inst : NeZero k]
+  (ell cap normalChannels oppositeChannels A : ℕ) (X : ThinMatrix.BinaryWindowPartition.Source k C),
+  ThinMatrix.BinaryWindowPartition.InputBound X A →
+    have r := cap - max normalChannels oppositeChannels;
+    have normal := decide (oppositeChannels ≤ normalChannels);
+    have out := ThinMatrix.BinaryWindowPartition.prepare ell cap normalChannels oppositeChannels X;
+    (∀ (w : ThinMatrix.CroppedGroupedSuffix.Word (2 * k)) (c : Fin C),
+        ∑ s, ThinMatrix.BinaryWindowPartition.sourceValue (out.value.components.get s) w c =
+          if ThinMatrix.CyclicLightWindow.count (ThinMatrix.BinaryWindowPartition.bits normal w) ≤ r then
+            ThinMatrix.BinaryWindowPartition.sourceValue X w c
+          else 0) ∧
+      (∀ (s : Fin k) (w : ThinMatrix.CroppedGroupedSuffix.Word (2 * k)) (c : Fin C),
+          r * ell / k < ThinMatrix.CyclicLightWindow.weight ell (ThinMatrix.BinaryWindowPartition.bits normal w) s →
+            ThinMatrix.BinaryWindowPartition.sourceValue (out.value.components.get s) w c = 0) ∧
+        (∀ (s : Fin k), ThinMatrix.BinaryWindowPartition.InputBound (out.value.components.get s) A) ∧
+          out.bitSteps ≤ ThinMatrix.BinaryWindowPartition.bitBudget k C A ∧
+            out.control ≤ ThinMatrix.BinaryWindowPartition.controlBudget k C ell + 8
+@ThinMatrix.BinaryCroppedHighBoxes.correctness_and_work : ∀ {L m t q : ℕ} [inst : NeZero q] (cap A : ℕ)
+  (X Y : ThinMatrix.BinarySourceFormation.RawStore L q),
+  ThinMatrix.BinaryHighExecution.RawBound X A →
+    ThinMatrix.BinaryHighExecution.RawBound Y A →
+      (∀ (w : ThinMatrix.HighBoxDP.States L m t) (r : Fin q),
+          ThinMatrix.BinaryArrayFFT.Integer.view
+              (Vector.get
+                (ThinMatrix.BinaryHighTable.lookup (ThinMatrix.BinaryCroppedHighBoxes.execute L m t q cap A X Y).boxes
+                  (ThinMatrix.ArrayKeys.materialize ↑w))
+                r) =
+            ThinMatrix.HighBoxDP.boxValue ↑w fun v =>
+              ThinMatrix.CyclicRing.convolution (ThinMatrix.BinaryCroppedHighEncoder.leafValues true cap X v).get
+                (ThinMatrix.BinaryCroppedHighEncoder.leafValues false cap Y v).get r) ∧
+        (ThinMatrix.BinaryCroppedHighBoxes.execute L m t q cap A X Y).work ≤
+          ThinMatrix.BinaryCroppedHighBoxes.totalBudget L m t q cap A
+@ThinMatrix.ExactHalfCroppedEmbedding.complete_embedding : ∀ {R : Type u_1} [inst : CommRing R] (L m : ℕ),
+  m ≤ L →
+    ∀ (X : ThinMatrix.WalshEmbedding.RawLeftInput L m (L - m) R)
+      (Y : ThinMatrix.WalshEmbedding.RawRightInput L m (L - m) R) (QL QR : Finset (Fin L)),
+      QL ∈ ThinMatrix.GoodMapEmbedding.goodSlots L m →
+        QR ∈ ThinMatrix.GoodMapEmbedding.goodSlots L m →
+          ∀ (iL iR : ThinMatrix.WalshEmbedding.Cube L) (aL aR : ThinMatrix.WalshEmbedding.Cube (L - m)),
+            ∑ r,
+                ∑ s,
+                  ThinMatrix.CroppedSourceContraction.contraction (m / 2)
+                    (ThinMatrix.MaskedLightSources.leftInput X (ThinMatrix.ExactHalfCroppedEmbedding.scanPick L m)
+                      (ThinMatrix.ExactHalfCroppedEmbedding.shifts m).get r s)
+                    (ThinMatrix.MaskedLightSources.rightInput Y (ThinMatrix.ExactHalfCroppedEmbedding.scanPick L m)
+                      (ThinMatrix.ExactHalfCroppedEmbedding.shifts m).get r s)
+                    (ThinMatrix.GoodMapEmbedding.goodSlots L m)
+                    (ThinMatrix.GoodMapEmbedding.cubeMap (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).1)
+                    (ThinMatrix.GoodMapEmbedding.cubeMap (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).2) QL QR
+                    iL iR
+                    (ThinMatrix.WalshEmbedding.transposeMap
+                      (ThinMatrix.GoodMapEmbedding.boolColumns (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).2)
+                      aR)
+                    (ThinMatrix.WalshEmbedding.transposeMap
+                      (ThinMatrix.GoodMapEmbedding.boolColumns (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).2)
+                      aL) =
+              4 ^ L *
+                ∑ h,
+                  ∑ k,
+                    X QL (ThinMatrix.WalshEmbedding.outsideBits QL iL) aL h k *
+                      Y QR (ThinMatrix.WalshEmbedding.outsideBits QR iR) h k aR
+ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work (w : (n : ℕ) → ThinMatrix.StoredMinPlusAPSP.OptionalTable n)
+  (W : ℕ → ℕ) (degree : ℕ)
+  (hw : ∀ (n : ℕ), ThinMatrix.APSPReduction.EdgeBound (ThinMatrix.StoredMinPlusAPSP.decode (w n)) (W n))
+  (hW : ∀ (n : ℕ), W n ≤ n ^ degree)
+  (hno : ∀ (n : ℕ), ThinMatrix.APSPReduction.NoNegativeCycles (ThinMatrix.StoredMinPlusAPSP.decode (w n))) :
+  (∀ (n : ℕ),
+      ThinMatrix.APSPReduction.IsAPSP (ThinMatrix.StoredMinPlusAPSP.decode (w n))
+        (ThinMatrix.StoredMinPlusAPSP.decode
+          (ThinMatrix.BinaryAPSPCaller.viewOptional
+            (ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                  (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).core.value))) ∧
+    (fun n =>
+        ↑(ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+              (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).work) =O[Filter.atTop]
+      fun n => ↑n ^ (299294792 / 100000000)
+'ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]

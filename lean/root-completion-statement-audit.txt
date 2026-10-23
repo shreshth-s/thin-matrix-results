@@ -1,0 +1,189 @@
+ThinMatrix.WindowCompletionRows.execute_get {k ell C M : ℕ} (source : ThinMatrix.WindowPrefixProgram.Prepared k ell C)
+  (layout : ThinMatrix.RetainedWindowPermutation.Layout (2 * k)) (labels : Vector (Vector (Fin 4) (2 * k)) M)
+  (i : Fin M) (c : Fin C) :
+  ThinMatrix.BinaryCell.view
+      (((ThinMatrix.WindowCompletionRows.execute source layout labels).value.rows.value.get i).get c) =
+    ThinMatrix.BinaryCell.view
+      ((ThinMatrix.WindowCompletionProgram.execute source layout labels.toArray).completed.value.requests[↑i].output.get
+        c)
+ThinMatrix.WindowCompletionRows.execute_abs {k ell C M : ℕ} (source : ThinMatrix.WindowPrefixProgram.Prepared k ell C)
+  (layout : ThinMatrix.RetainedWindowPermutation.Layout (2 * k)) (labels : Vector (Vector (Fin 4) (2 * k)) M) (A : ℕ)
+  (ha :
+    ∀ (p : Fin (2 ^ ThinMatrix.WindowPrefixProgram.length k ell)),
+      ThinMatrix.PrefixCompletionMatrices.LeafBound (Vector.get source.encoded.traces p) A)
+  (i : Fin M) (c : Fin C) :
+  (ThinMatrix.BinaryCell.view
+        (((ThinMatrix.WindowCompletionRows.execute source layout labels).value.rows.value.get i).get c)).natAbs ≤
+    2 ^ ThinMatrix.WindowPrefixProgram.length k ell * A
+ThinMatrix.WindowCompletionRows.execute_bits {k ell C M : ℕ} (source : ThinMatrix.WindowPrefixProgram.Prepared k ell C)
+  (layout : ThinMatrix.RetainedWindowPermutation.Layout (2 * k)) (labels : Vector (Vector (Fin 4) (2 * k)) M) (A : ℕ)
+  (ha :
+    ∀ (p : Fin (2 ^ ThinMatrix.WindowPrefixProgram.length k ell)),
+      ThinMatrix.PrefixCompletionMatrices.LeafBound (Vector.get source.encoded.traces p) A) :
+  (ThinMatrix.WindowCompletionRows.execute source layout labels).bitSteps ≤
+    ThinMatrix.WindowCompletionRows.bitBudget k ell source.rareCap C A M
+ThinMatrix.RetainedWindowCompletion.execute_view {k ell C M S : ℕ}
+  (sources : Vector (ThinMatrix.WindowPrefixProgram.Prepared k ell C) S)
+  (layouts : Vector (ThinMatrix.RetainedWindowPermutation.Layout (2 * k)) S)
+  (labels : Vector (Vector (Fin 4) (2 * k)) M) (i : Fin M) (c : Fin C) :
+  ThinMatrix.BinaryCell.view
+      (((ThinMatrix.RetainedWindowCompletion.execute sources layouts labels).value.sums.value.get i).output.get c) =
+    ∑ s,
+      ThinMatrix.BinaryCell.view
+        ((ThinMatrix.WindowCompletionProgram.execute (sources.get s) (layouts.get s)
+                        labels.toArray).completed.value.requests[↑i].output.get
+          c)
+ThinMatrix.RetainedWindowCompletion.execute_bits {k ell C M S : ℕ}
+  (sources : Vector (ThinMatrix.WindowPrefixProgram.Prepared k ell C) S)
+  (layouts : Vector (ThinMatrix.RetainedWindowPermutation.Layout (2 * k)) S)
+  (labels : Vector (Vector (Fin 4) (2 * k)) M) (A : ℕ)
+  (ha :
+    ∀ (s : Fin S) (p : Fin (2 ^ ThinMatrix.WindowPrefixProgram.length k ell)),
+      ThinMatrix.PrefixCompletionMatrices.LeafBound (Vector.get (sources.get s).encoded.traces p) A) :
+  (ThinMatrix.RetainedWindowCompletion.execute sources layouts labels).bitSteps ≤
+    ThinMatrix.RetainedWindowCompletion.bitBudget sources A M
+ThinMatrix.RetainedWindowCompletion.outputCells_eq {k ell C M S : ℕ}
+  (out : ThinMatrix.RetainedWindowCompletion.Prepared k ell C M S) :
+  ThinMatrix.RetainedWindowCompletion.outputCells out = (S + 1) * M * C
+ThinMatrix.GraphTargetWidth.width_le {n W : ℕ} (target : ThinMatrix.BinaryFoldedFormation.BinaryTable n)
+  (h : ∀ (i j : Fin n), (ThinMatrix.BinaryCell.view ((Vector.get target i).get j)).natAbs.size ≤ W) :
+  ThinMatrix.GraphTargetWidth.width target ≤ W
+ThinMatrix.GraphTargetWidth.prepare_formation_bits {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (shape : ThinMatrix.ThinMatrixBackend.ShapePlan p.L p.m)
+  (target : ThinMatrix.BinaryFoldedFormation.BinaryTable n) :
+  have B :=
+    ThinMatrix.GraphCompletionRequests.metadataWidth n h (ThinMatrix.FoldedBackendExecution.physicalFold f) f.cyclic;
+  (ThinMatrix.GraphCompletionRequests.prepare f p shape target).folded.geometry.bitSteps +
+      (ThinMatrix.GraphCompletionRequests.prepare f p shape target).folded.requests.bitSteps ≤
+    10000 * (B + 1) ^ 2 +
+      2000000 * ThinMatrix.FoldedBackendExecution.windowQuerySize n *
+        (ThinMatrix.GraphTargetWidth.width target + B + 10) ^ 2
+ThinMatrix.GraphRootCompletion.fromInputs_contraction {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR ell : ℕ)
+  (i : ThinMatrix.GraphRootCompletion.Index p.L p.m p.t)
+  (request : Fin (ThinMatrix.FoldedBackendExecution.windowQuerySize n)) (d : Fin (p.m + 1)) (residue : Fin f.cyclic) :
+  have graph := ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell;
+  let out := ThinMatrix.GraphRootCompletion.fromInputs f p block input bandL bandR ell i;
+  ThinMatrix.BinaryCell.view ((out.completed.value.sums.value.get request).output.get (finProdFinEquiv (d, residue))) =
+    ThinMatrix.EncoderCorrectness.tensorSum (fun x => 3)
+      (ThinMatrix.OppositeTensorBridge.pushForms (ThinMatrix.RetainedOppositeTransform.axes (p.L - p.m)) fun j =>
+        ThinMatrix.BinaryPrefixContraction.form
+          ((ThinMatrix.WindowCompletionRequests.orient out.residuals.value.labels[↑request]).value.get j))
+      fun w =>
+      ThinMatrix.BinaryResidualPolynomial.cellView
+        ((ThinMatrix.ResidualWindowSource.rows (ThinMatrix.GraphRootCompletion.root graph i)).get
+          ((ThinMatrix.StoredGroupedCompletion.rawIndex (2 * (p.L - p.m))) w))
+        d residue
+ThinMatrix.GraphRootCompletion.fromInputs_width {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR ell : ℕ)
+  (i : ThinMatrix.GraphRootCompletion.Index p.L p.m p.t)
+  (request : Fin (ThinMatrix.FoldedBackendExecution.windowQuerySize n)) (col : Fin ((p.m + 1) * f.cyclic)) :
+  (ThinMatrix.BinaryCell.view
+          (((ThinMatrix.GraphRootCompletion.fromInputs f p block input bandL bandR ell i).completed.value.sums.value.get
+                  request).output.get
+            col)).natAbs.size ≤
+    3 * (p.L - p.m) + p.L + 4 * p.m + (ThinMatrix.RetainedRootWindows.slots (p.L - p.m)).size
+ThinMatrix.GraphRootCompletion.fromInputs_newBits {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR ell : ℕ)
+  (i : ThinMatrix.GraphRootCompletion.Index p.L p.m p.t) :
+  have graph := ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell;
+  have out := ThinMatrix.GraphRootCompletion.fromInputs f p block input bandL bandR ell i;
+  have B :=
+    ThinMatrix.GraphCompletionRequests.metadataWidth n h (ThinMatrix.FoldedBackendExecution.physicalFold f) f.cyclic;
+  out.newBitSteps ≤
+    10000 * (B + 1) ^ 2 +
+        2000000 * ThinMatrix.FoldedBackendExecution.windowQuerySize n *
+          (ThinMatrix.GraphTargetWidth.width input.target + B + 10) ^ 2 +
+      ThinMatrix.RetainedWindowCompletion.bitBudget (ThinMatrix.GraphRootCompletion.sources graph i)
+        (ThinMatrix.GraphRootCompletion.magnitude p.L p.m ell) (ThinMatrix.FoldedBackendExecution.windowQuerySize n)
+ThinMatrix.GraphRootCompletion.execute_control {n h r b ell : ℕ} {f : ThinMatrix.CompactBlocks.PhysicalFactorization r}
+  {p : ThinMatrix.BinaryFoldedFactory.Plan f} (graph : ThinMatrix.GraphPrefixProgram.Prepared f p b ell)
+  (i : ThinMatrix.GraphRootCompletion.Index p.L p.m p.t) (target : ThinMatrix.BinaryFoldedFormation.BinaryTable n) :
+  have M := ThinMatrix.FoldedBackendExecution.windowQuerySize n;
+  (ThinMatrix.GraphRootCompletion.execute graph i target).newControl ≤
+    M * (1000 * (p.L + p.m + 1) ^ 5 + 32) + 8 + (48 * p.L + 24 + (M * (32 * (p.L - p.m) + 48) + 8)) +
+          (ThinMatrix.RetainedRootWindows.slots (p.L - p.m) * 40 + 8) +
+        ThinMatrix.RetainedWindowCompletion.controlBudget (ThinMatrix.GraphRootCompletion.sources graph i) M +
+      40
+ThinMatrix.RootRequestSelection.unique_ranks {L m C : ℕ} (right : Bool)
+  (q : ThinMatrix.GraphCompletionRequests.Physical L m C) :
+  ∃! pair, ThinMatrix.RootRequestSelection.accepts q.bandL q.bandR right pair.1 pair.2 q = true
+ThinMatrix.RootRequestSelection.fromInputs_value {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR ell : ℕ)
+  (i : ThinMatrix.GraphRootCompletion.Index p.L p.m p.t)
+  (request : Fin (ThinMatrix.FoldedBackendExecution.windowQuerySize n)) (d : Fin (p.m + 1)) (residue : Fin f.cyclic) :
+  let out := ThinMatrix.RootRequestSelection.fromInputs f p block input bandL bandR ell i;
+  ThinMatrix.BinaryCell.view ((out.selected.value.get request).output.get (finProdFinEquiv (d, residue))) =
+    if
+        ThinMatrix.RootRequestSelection.accepts bandL bandR i.right i.normal i.opposite
+            (out.source.targets.physical.value.get request) =
+          true then
+      ThinMatrix.EncoderCorrectness.tensorSum (fun x => 3)
+        (ThinMatrix.OppositeTensorBridge.pushForms (ThinMatrix.RetainedOppositeTransform.axes (p.L - p.m)) fun j =>
+          ThinMatrix.BinaryPrefixContraction.form
+            ((ThinMatrix.WindowCompletionRequests.orient out.source.residuals.value.labels[↑request]).value.get j))
+        fun w =>
+        ThinMatrix.BinaryResidualPolynomial.cellView
+          ((ThinMatrix.ResidualWindowSource.rows (ThinMatrix.GraphRootCompletion.root out.source.graph i)).get
+            ((ThinMatrix.StoredGroupedCompletion.rawIndex (2 * (p.L - p.m))) w))
+          d residue
+    else 0
+ThinMatrix.RootRequestSelection.fromInputs_selected_masks {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR ell : ℕ) (i : ThinMatrix.GraphRootCompletion.Index p.L p.m p.t)
+  (request : Fin (ThinMatrix.FoldedBackendExecution.windowQuerySize n)) :
+  have out := ThinMatrix.RootRequestSelection.fromInputs f p block input bandL bandR ell i;
+  have roots := out.source.graph.permuted.transformed.source.roots;
+  have q := out.source.targets.physical.value.get request;
+  (out.selected.value.get request).matched = true →
+    ThinMatrix.SourceFormation.cubeSupport (roots.keys.value.masks.get i.normal).bits.get =
+        ↑(ThinMatrix.RowIndexing.rowUnrank roots.source.shape.layout (if i.right = true then q.column else q.row)).1 ∧
+      ThinMatrix.SourceFormation.cubeSupport (roots.keys.value.masks.get i.opposite).bits.get =
+        ↑(ThinMatrix.RowIndexing.rowUnrank roots.source.shape.layout (if i.right = true then q.row else q.column)).1
+ThinMatrix.RootRequestSelection.fromInputs_bits {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR ell : ℕ)
+  (i : ThinMatrix.GraphRootCompletion.Index p.L p.m p.t) :
+  (ThinMatrix.RootRequestSelection.fromInputs f p block input bandL bandR ell i).selected.bitSteps ≤
+    ThinMatrix.FoldedBackendExecution.windowQuerySize n *
+      ((p.m + 1) * f.cyclic *
+        ThinMatrix.BackendScalarBits.backendScalarUnit
+          (ThinMatrix.RetainedRootWindows.slots (p.L - p.m) *
+              ThinMatrix.RetainedWindowCompletion.leafMagnitude (p.L - p.m) ell
+                (ThinMatrix.GraphRootCompletion.magnitude p.L p.m ell)).size)
+ThinMatrix.RootRequestSelection.fromInputs_control {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR ell : ℕ)
+  (i : ThinMatrix.GraphRootCompletion.Index p.L p.m p.t) :
+  (ThinMatrix.RootRequestSelection.fromInputs f p block input bandL bandR ell i).selected.control ≤
+    ThinMatrix.FoldedBackendExecution.windowQuerySize n * (40 * ((p.m + 1) * f.cyclic) + 112) + 8
+theorem ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work : ∀
+  (w : (n : ℕ) → ThinMatrix.StoredMinPlusAPSP.OptionalTable n) (W : ℕ → ℕ) (degree : ℕ),
+  (∀ (n : ℕ), ThinMatrix.APSPReduction.EdgeBound (ThinMatrix.StoredMinPlusAPSP.decode (w n)) (W n)) →
+    (∀ (n : ℕ), W n ≤ n ^ degree) →
+      (∀ (n : ℕ), ThinMatrix.APSPReduction.NoNegativeCycles (ThinMatrix.StoredMinPlusAPSP.decode (w n))) →
+        (∀ (n : ℕ),
+            ThinMatrix.APSPReduction.IsAPSP (ThinMatrix.StoredMinPlusAPSP.decode (w n))
+              (ThinMatrix.StoredMinPlusAPSP.decode
+                (ThinMatrix.BinaryAPSPCaller.viewOptional
+                  (ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                        (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).core.value))) ∧
+          (fun n =>
+              ↑(ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                    (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).work) =O[Filter.atTop]
+            fun n => ↑n ^ (299294792 / 100000000) :=
+fun w W degree hw hW hno =>
+  ⟨fun n =>
+    ThinMatrix.BinaryAlignedAPSP.run_correct (w n) (W n) (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)
+      (hw n) (hno n),
+    ThinMatrix.BinaryAlignedAPSPTheorem.run_work_bigO w W degree hw hW⟩
+'ThinMatrix.GraphRootCompletion.fromInputs_contraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphRootCompletion.fromInputs_newBits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.RootRequestSelection.fromInputs_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.RootRequestSelection.fromInputs_selected_masks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]

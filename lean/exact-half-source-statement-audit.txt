@@ -1,0 +1,110 @@
+ThinMatrix.ExactHalfWeightTable.read_build {L m : ℕ} (shape : ThinMatrix.ThinMatrixBackend.ShapePlan L m)
+  (Q : Finset (Fin L)) (h : ThinMatrix.WalshEmbedding.Cube m) :
+  ThinMatrix.ExactHalfWeightTable.read
+      (ThinMatrix.ExactHalfWeightTable.build shape.environment.good
+          (ThinMatrix.ExactHalfWeightTable.candidates shape.environment.gammaColumns).value).value
+      Q h =
+    ThinMatrix.ExactHalfCroppedEmbedding.weight L m Q h
+ThinMatrix.ExactHalfSourcePlan.prepare_pick {L m : ℕ} (shape : ThinMatrix.ThinMatrixBackend.ShapePlan L m)
+  (Q : Finset (Fin L)) (h : ThinMatrix.WalshEmbedding.Cube m) :
+  ThinMatrix.ExactHalfSourcePlan.readPick (ThinMatrix.ExactHalfSourcePlan.prepare shape).value.picks Q h =
+    ThinMatrix.ExactHalfCroppedEmbedding.scanPick L m Q h
+ThinMatrix.ExactHalfSourcePlan.prepare_inverse_bits {L m : ℕ} (shape : ThinMatrix.ThinMatrixBackend.ShapePlan L m) :
+  (ThinMatrix.ExactHalfSourcePlan.prepare shape).bitSteps ≤ 2 ^ L * ThinMatrix.ExactHalfWeightTable.candidateBitBudget L
+ThinMatrix.ExactHalfSourcePlan.prepare_retained_control {L m : ℕ} (shape : ThinMatrix.ThinMatrixBackend.ShapePlan L m) :
+  (ThinMatrix.ExactHalfSourcePlan.prepare shape).control ≤ ThinMatrix.ExactHalfSourcePlan.retainedControlBudget L m
+ThinMatrix.ExactHalfGraphSources.execute {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR : ℕ) :
+  ThinMatrix.ExactHalfGraphSources.Prepared f p ↑block
+ThinMatrix.ExactHalfGraphSources.folded_left {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR : ℕ) :
+  ThinMatrix.BinaryFoldedFormation.viewLeft
+      (ThinMatrix.ExactHalfGraphSources.execute f p block input bandL bandR).folded.value.left =
+    ThinMatrix.FoldedBackendExecution.formLeft f block (ThinMatrix.BinaryFoldedFormation.viewTable input.left)
+ThinMatrix.ExactHalfGraphSources.left_source {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  [NeZero f.cyclic] (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR : ℕ)
+  (u v : Fin (ThinMatrix.ExactHalfSourcePlan.J p.m)) (run : Fin (2 * p.m + 1))
+  (normal : Fin p.L → ThinMatrix.WalshEmbedding.NormalLetter)
+  (opposite : Fin p.L → ThinMatrix.WalshEmbedding.OppositeLetter) (j : Fin f.cyclic) :
+  ThinMatrix.BinaryCell.view
+      (ThinMatrix.BinarySourceFormation.readRaw
+        (Vector.get
+          ((Vector.get (ThinMatrix.ExactHalfGraphSources.execute f p block input bandL bandR).sources.value u).get v).1
+          run)
+        normal opposite j) =
+    ThinMatrix.WalshEmbedding.rawLeftSource
+      (ThinMatrix.MaskedLightSources.leftInput
+        (ThinMatrix.ThinMatrixBackend.rawLeft
+          (ThinMatrix.ThinMatrixBackend.readLeftMatrix
+            (ThinMatrix.BinaryOriginalReader.viewData
+              (ThinMatrix.ExactHalfGraphSources.execute f p block input bandL bandR).leftBand.value)))
+        (ThinMatrix.ExactHalfCroppedEmbedding.scanPick p.L p.m) (ThinMatrix.ExactHalfCroppedEmbedding.shifts p.m).get u
+        v)
+      (ThinMatrix.GoodMapEmbedding.goodSlots p.L p.m)
+      (ThinMatrix.GoodMapEmbedding.cubeMap (ThinMatrix.GoodSetConstruction.constructGoodMaps p.L p.m).1)
+      (ThinMatrix.GoodMapEmbedding.cubeMap (ThinMatrix.GoodSetConstruction.constructGoodMaps p.L p.m).2)
+      (ThinMatrix.SourceFormation.runValue p.m run) normal opposite j
+ThinMatrix.ExactHalfGraphSources.right_source {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  [NeZero f.cyclic] (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR : ℕ)
+  (u v : Fin (ThinMatrix.ExactHalfSourcePlan.J p.m)) (run : Fin (2 * p.m + 1))
+  (normal : Fin p.L → ThinMatrix.WalshEmbedding.NormalLetter)
+  (opposite : Fin p.L → ThinMatrix.WalshEmbedding.OppositeLetter) (j : Fin f.cyclic) :
+  ThinMatrix.BinaryCell.view
+      (ThinMatrix.BinarySourceFormation.readRaw
+        (Vector.get
+          ((Vector.get (ThinMatrix.ExactHalfGraphSources.execute f p block input bandL bandR).sources.value u).get v).2
+          run)
+        normal opposite j) =
+    ThinMatrix.WalshEmbedding.rawRightSource
+      (ThinMatrix.MaskedLightSources.rightInput
+        (ThinMatrix.ThinMatrixBackend.rawRight
+          (ThinMatrix.ThinMatrixBackend.readRightMatrix
+            (ThinMatrix.BinaryOriginalReader.viewData
+              (ThinMatrix.ExactHalfGraphSources.execute f p block input bandL bandR).rightBand.value)))
+        (ThinMatrix.ExactHalfCroppedEmbedding.scanPick p.L p.m) (ThinMatrix.ExactHalfCroppedEmbedding.shifts p.m).get u
+        v)
+      (ThinMatrix.GoodMapEmbedding.goodSlots p.L p.m)
+      (ThinMatrix.GoodMapEmbedding.cubeMap (ThinMatrix.GoodSetConstruction.constructGoodMaps p.L p.m).1)
+      (ThinMatrix.GoodMapEmbedding.cubeMap (ThinMatrix.GoodSetConstruction.constructGoodMaps p.L p.m).2)
+      (ThinMatrix.SourceFormation.runValue p.m run) normal opposite j
+ThinMatrix.ExactHalfGraphSources.sources_work {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR : ℕ) :
+  (ThinMatrix.ExactHalfGraphSources.execute f p block input bandL bandR).sources.operations ≤
+    ThinMatrix.ExactHalfBandSources.familiesBudget p.L p.m f.cyclic 1
+ThinMatrix.ExactHalfGraphSources.band_copy_work {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR : ℕ) :
+  (ThinMatrix.ExactHalfGraphSources.execute f p block input bandL bandR).leftBand.operations +
+      (ThinMatrix.ExactHalfGraphSources.execute f p block input bandL bandR).rightBand.operations ≤
+    2 * ((ThinMatrix.BackendScalarBits.backendScalarUnit 1 + 9) * f.cyclic + 24) *
+      (ThinMatrix.ThinMatrixBackend.tileWidth p.L p.m * 4 ^ p.m)
+ThinMatrix.ExactHalfGraphSources.pair_occurrences {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (block : Fin (ThinMatrix.CompactBlocks.blockCount n h))
+  (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (bandL bandR : ℕ) :
+  (List.map (fun row => row.toArray.size)
+        (Vector.toList (ThinMatrix.ExactHalfGraphSources.execute f p block input bandL bandR).sources.value)).sum =
+    if p.m = 0 then 1 else 4096 * p.m ^ 6
+ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work (w : (n : ℕ) → ThinMatrix.StoredMinPlusAPSP.OptionalTable n)
+  (W : ℕ → ℕ) (degree : ℕ)
+  (hw : ∀ (n : ℕ), ThinMatrix.APSPReduction.EdgeBound (ThinMatrix.StoredMinPlusAPSP.decode (w n)) (W n))
+  (hW : ∀ (n : ℕ), W n ≤ n ^ degree)
+  (hno : ∀ (n : ℕ), ThinMatrix.APSPReduction.NoNegativeCycles (ThinMatrix.StoredMinPlusAPSP.decode (w n))) :
+  (∀ (n : ℕ),
+      ThinMatrix.APSPReduction.IsAPSP (ThinMatrix.StoredMinPlusAPSP.decode (w n))
+        (ThinMatrix.StoredMinPlusAPSP.decode
+          (ThinMatrix.BinaryAPSPCaller.viewOptional
+            (ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                  (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).core.value))) ∧
+    (fun n =>
+        ↑(ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+              (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).work) =O[Filter.atTop]
+      fun n => ↑n ^ (299294792 / 100000000)
+'ThinMatrix.ExactHalfGraphSources.left_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.ExactHalfGraphSources.right_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.ExactHalfGraphSources.sources_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]

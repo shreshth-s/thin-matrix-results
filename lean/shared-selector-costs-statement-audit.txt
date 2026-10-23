@@ -1,0 +1,76 @@
+ThinMatrix.HalfSourceStoredKeys.produce_row (m : ℕ) (i : Fin (2 ^ m)) :
+  ((ThinMatrix.HalfSourceStoredKeys.produce m).value.get i).row.get =
+    (ThinMatrix.HalfSourceIntegerGreedy.cubeIndex m).symm i
+ThinMatrix.HalfSourceStoredKeys.produce_control (m : ℕ) :
+  (ThinMatrix.HalfSourceStoredKeys.produce m).control ≤ 2 ^ m * (4 * m * m + 20 * m + 50) + 4 * m + 17
+ThinMatrix.HalfSourceBinaryState.update_abs {m : ℕ} (j : ℕ) (key : ThinMatrix.HalfSourceStoredKeys.Key m)
+  (d : Vector Bool m) (old : ThinMatrix.HalfSourceBinaryState.Entry)
+  (ho : (ThinMatrix.BinaryCell.view old.1).natAbs ≤ j) :
+  (ThinMatrix.BinaryCell.view (ThinMatrix.HalfSourceBinaryState.update key d old).value.1).natAbs ≤ j + 1
+ThinMatrix.HalfSourceBinaryState.update_bits {m : ℕ} (j : ℕ) (key : ThinMatrix.HalfSourceStoredKeys.Key m)
+  (d : Vector Bool m) (old : ThinMatrix.HalfSourceBinaryState.Entry)
+  (ho : (ThinMatrix.BinaryCell.view old.1).natAbs ≤ j) :
+  (ThinMatrix.HalfSourceBinaryState.update key d old).bitSteps ≤ ThinMatrix.HalfSourceBinaryState.updateBudget j
+ThinMatrix.HalfSourceRetainedTranslations.build_refines (m : ℕ) (ts : ThinMatrix.HalfSourceBinaryScores.Tables)
+  (j : ℕ) :
+  (ThinMatrix.HalfSourceRetainedTranslations.build m ts (ThinMatrix.HalfSourceStoredKeys.produce m).value
+            j).value.entries =
+      (ThinMatrix.HalfSourceBinarySelection.build m ts j).value.entries ∧
+    (ThinMatrix.HalfSourceRetainedTranslations.build m ts (ThinMatrix.HalfSourceStoredKeys.produce m).value
+            j).value.sums =
+      (ThinMatrix.HalfSourceBinarySelection.build m ts j).value.sums
+ThinMatrix.HalfSourceRetainedTranslations.produce_entries (m : ℕ) :
+  (ThinMatrix.HalfSourceRetainedTranslations.produce m).value.entries = ThinMatrix.ExactHalfCroppedEmbedding.shifts m
+ThinMatrix.HalfSourceRetainedTranslations.produce_keeps_arithmetic (m : ℕ) :
+  (ThinMatrix.HalfSourceBinarySelection.translations m).bitSteps ≤
+    (ThinMatrix.HalfSourceRetainedTranslations.produce m).bitSteps
+ThinMatrix.HalfSourceRetainedTranslations.produce_bits (m : ℕ) :
+  (ThinMatrix.HalfSourceRetainedTranslations.produce m).bitSteps ≤
+    ThinMatrix.HalfSourceRetainedTranslations.arithmeticBudget m
+ThinMatrix.HalfSourceRetainedTranslations.produce_control (m : ℕ) :
+  (ThinMatrix.HalfSourceRetainedTranslations.produce m).control ≤
+    ThinMatrix.HalfSourceRetainedTranslations.indexedControlBudget m
+ThinMatrix.ExactHalfSourcePlan.prepare_keeps_generation {L m : ℕ} (shape : ThinMatrix.ThinMatrixBackend.ShapePlan L m) :
+  (ThinMatrix.ExactHalfSourcePlan.prepare shape).value.construction =
+      (ThinMatrix.HalfSourceRetainedTranslations.produce m).value ∧
+    (ThinMatrix.ExactHalfSourcePlan.prepare shape).bitSteps =
+      (ThinMatrix.HalfSourceRetainedTranslations.produce m).bitSteps +
+        (ThinMatrix.ExactHalfWeightTable.candidates shape.environment.gammaColumns).bitSteps
+ThinMatrix.ExactHalfSourcePlan.prepare_keeps_arithmetic {L m : ℕ} (shape : ThinMatrix.ThinMatrixBackend.ShapePlan L m) :
+  (ThinMatrix.HalfSourceBinarySelection.translations m).bitSteps ≤
+    (ThinMatrix.ExactHalfSourcePlan.prepare shape).bitSteps
+ThinMatrix.ExactHalfSourcePlan.prepare_bits {L m : ℕ} (shape : ThinMatrix.ThinMatrixBackend.ShapePlan L m) :
+  (ThinMatrix.ExactHalfSourcePlan.prepare shape).bitSteps ≤
+    ThinMatrix.HalfSourceRetainedTranslations.arithmeticBudget m +
+      2 ^ L * ThinMatrix.ExactHalfWeightTable.candidateBitBudget L
+ThinMatrix.ExactHalfSourcePlan.prepare_retained_control {L m : ℕ} (shape : ThinMatrix.ThinMatrixBackend.ShapePlan L m) :
+  (ThinMatrix.ExactHalfSourcePlan.prepare shape).control ≤ ThinMatrix.ExactHalfSourcePlan.retainedControlBudget L m
+ThinMatrix.GraphBlockSchedule.recorded_work_le {n h r : ℕ} (f : ThinMatrix.CompactBlocks.PhysicalFactorization r)
+  (p : ThinMatrix.BinaryFoldedFactory.Plan f) (input : ThinMatrix.BinaryFoldedFormation.Inputs n) (ell : ℕ) :
+  ThinMatrix.GraphBlockSchedule.recordedWork f p input ell ≤ ThinMatrix.GraphBlockSchedule.recordedBudget f p input ell
+ThinMatrix.GraphFoldedCountCorrect.finite_modCount {n h r : ℕ} (hh : 0 < h)
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (i : Fin (ThinMatrix.EndToEndAPSP.incidenceSize n h)) :
+  (ThinMatrix.BinaryCell.view (ThinMatrix.GraphFoldedCountCorrect.output f input h i)).toNat =
+    (ThinMatrix.EndToEndAPSP.flatInstance (ThinMatrix.BinaryFoldedFormation.viewTable input.left)
+          (ThinMatrix.BinaryFoldedFormation.viewTable input.right)
+          (ThinMatrix.BinaryFoldedFormation.viewTable input.target)).modCount
+      r i
+ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work (w : (n : ℕ) → ThinMatrix.StoredMinPlusAPSP.OptionalTable n)
+  (W : ℕ → ℕ) (degree : ℕ)
+  (hw : ∀ (n : ℕ), ThinMatrix.APSPReduction.EdgeBound (ThinMatrix.StoredMinPlusAPSP.decode (w n)) (W n))
+  (hW : ∀ (n : ℕ), W n ≤ n ^ degree)
+  (hno : ∀ (n : ℕ), ThinMatrix.APSPReduction.NoNegativeCycles (ThinMatrix.StoredMinPlusAPSP.decode (w n))) :
+  (∀ (n : ℕ),
+      ThinMatrix.APSPReduction.IsAPSP (ThinMatrix.StoredMinPlusAPSP.decode (w n))
+        (ThinMatrix.StoredMinPlusAPSP.decode
+          (ThinMatrix.BinaryAPSPCaller.viewOptional
+            (ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                  (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).core.value))) ∧
+    (fun n =>
+        ↑(ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+              (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).work) =O[Filter.atTop]
+      fun n => ↑n ^ (299294792 / 100000000)
+'ThinMatrix.ExactHalfSourcePlan.prepare_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphFoldedCountCorrect.finite_modCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]

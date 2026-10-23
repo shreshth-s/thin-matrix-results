@@ -1,0 +1,18 @@
+Bounded independent root-products fixture; 180-second process-group deadline.
+PASS: zero formal dimension and empty product
+PASS: full formal product with one cyclic residue
+PASS: full degree/cyclic convolution against independent dense reference
+PASS: signed width boundary 65536; product budgets
+PASS: actual binomial weights and all shifts including zero tails; k=0
+PASS: actual binomial weights and all shifts including zero tails; k=2
+PASS: actual binomial weights and all shifts including zero tails; k=4
+PASS: empty weighted degree and cyclic arrays
+PASS: strict retained-channel transpose and involution; m=0
+PASS: strict retained-channel transpose and involution; m=1
+PASS: strict retained-channel transpose and involution; m=2
+PASS: retained collection sums, duplicate requests, empty children/requests/columns and budgets
+PASS: actual L=3,m=2 paired roots with swapped masks/channel halves; all 16 forms, duplicate/unmatched requests, 5 degrees and 3 cyclic residues; independent physical tensor reference
+PASS: bounded root-products suite finished; no full graph or production FFT attempt.
+Exit code: 0; elapsed: 44.838 seconds.
+Nonzero physical product audit: confirmed, with full independent coefficient equality.
+Source/configuration SHA-256: 4baaf08e3f69487cf8e14172a4ade32bb8887fb09577e76f572ab5e773877560

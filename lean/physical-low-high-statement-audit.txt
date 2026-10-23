@@ -1,0 +1,781 @@
+theorem ThinMatrix.GraphPhysicalLow.fromInputs_value : ∀ {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR ell : ℕ) (request : Fin (ThinMatrix.FoldedBackendExecution.windowQuerySize n)) (residue : Fin f.cyclic),
+  have graph := ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell;
+  ThinMatrix.BinaryCell.view
+      ((ThinMatrix.RootProductCollection.output
+            (ThinMatrix.GraphLowMaskAssembly.execute graph input.target bandL bandR).value request).get
+        residue) =
+    ThinMatrix.GraphPhysicalLow.value graph input.target bandL bandR request residue :=
+fun {n h r} f p block input bandL bandR ell request residue =>
+  id
+    (Eq.mpr
+      (id
+        (congrArg
+          (fun _a =>
+            _a =
+              ThinMatrix.GraphPhysicalLow.value
+                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target bandL bandR
+                request residue)
+          (ThinMatrix.GraphLowRecombination.fromInputs_value f p block input bandL bandR ell request residue)))
+      (id
+        (id
+          (id
+            (of_eq_true
+              (Eq.trans
+                (congrFun'
+                  (congrArg Eq
+                    (ite_congr
+                      (Eq.refl
+                        ((ThinMatrix.LowRequestLocator.physical
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                                request).bandL =
+                            bandL ∧
+                          (ThinMatrix.LowRequestLocator.physical
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                                request).bandR =
+                            bandR))
+                      (fun a =>
+                        Finset.sum_congr (Eq.refl Finset.univ) fun x a =>
+                          Finset.sum_congr (Eq.refl Finset.univ) fun x_1 a =>
+                            Finset.sum_congr (Eq.refl (Finset.Icc (-↑p.m) ↑p.m)) fun x_2 a =>
+                              ThinMatrix.GraphPhysicalLow.run_reindex
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) x x_1 x_2
+                                (ThinMatrix.RootRequestSelection.rowRank
+                                  (ThinMatrix.LowRequestLocator.physical
+                                      (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                      input.target request).row)
+                                (ThinMatrix.RootRequestSelection.rowRank
+                                  (ThinMatrix.LowRequestLocator.physical
+                                      (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                      input.target request).column)
+                                input.target request residue)
+                      fun a => Eq.refl 0))
+                  (if
+                      (ThinMatrix.LowRequestLocator.physical
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                              request).bandL =
+                          bandL ∧
+                        (ThinMatrix.LowRequestLocator.physical
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                              request).bandR =
+                          bandR then
+                    ∑ x,
+                      ∑ x_1,
+                        ∑ x_2 ∈ Finset.Icc (-↑p.m) ↑p.m,
+                          ThinMatrix.GraphPhysicalLow.runValue
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) x x_1 x_2
+                            (ThinMatrix.RootRequestSelection.rowRank
+                              (ThinMatrix.LowRequestLocator.physical
+                                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                  input.target request).row)
+                            (ThinMatrix.RootRequestSelection.rowRank
+                              (ThinMatrix.LowRequestLocator.physical
+                                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                  input.target request).column)
+                            input.target request residue
+                  else 0))
+                (eq_self
+                  (if
+                      (ThinMatrix.LowRequestLocator.physical
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                              request).bandL =
+                          bandL ∧
+                        (ThinMatrix.LowRequestLocator.physical
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                              request).bandR =
+                          bandR then
+                    ∑ x,
+                      ∑ x_1,
+                        ∑ x_2 ∈ Finset.Icc (-↑p.m) ↑p.m,
+                          ThinMatrix.GraphPhysicalLow.runValue
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) x x_1 x_2
+                            (ThinMatrix.RootRequestSelection.rowRank
+                              (ThinMatrix.LowRequestLocator.physical
+                                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                  input.target request).row)
+                            (ThinMatrix.RootRequestSelection.rowRank
+                              (ThinMatrix.LowRequestLocator.physical
+                                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                  input.target request).column)
+                            input.target request residue
+                  else 0))))))))
+'ThinMatrix.GraphPhysicalLow.fromInputs_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem ThinMatrix.CroppedHighQueries.execute_value : ∀ {L m q M : ℕ} [inst : NeZero q] (t cap A bandL bandR : ℕ)
+  (shape : ThinMatrix.ThinMatrixBackend.ShapePlan L m)
+  (requests : Vector (ThinMatrix.GraphCompletionRequests.Physical L m q) M)
+  (X Y : ThinMatrix.BinarySourceFormation.RawStore L q),
+  ThinMatrix.BinaryHighExecution.RawBound X A →
+    ThinMatrix.BinaryHighExecution.RawBound Y A →
+      ∀ (i : Fin M) (residue : Fin q),
+        ThinMatrix.BinaryCell.view
+            ((ThinMatrix.CroppedHighQueries.get
+                  (ThinMatrix.CroppedHighQueries.execute t cap A bandL bandR shape requests X Y).value i).get
+              residue) =
+          ThinMatrix.CroppedHighQueries.value t cap bandL bandR shape (requests.get i) X Y residue :=
+fun {L m q M} [NeZero q] t cap A bandL bandR shape requests X Y hX hY i residue =>
+  Eq.mpr
+    (id
+      (congrFun'
+        (congrArg Eq
+          (Eq.trans
+            (congrArg ThinMatrix.BinaryCell.view
+              (congrFun'
+                (congrArg Vector.get
+                  (congrArg ThinMatrix.CroppedHighQueries.output
+                    (congrArg ThinMatrix.ToomCook.Counted.value
+                      (Eq.trans
+                        (congrFun'
+                          (congrArg Vector.get
+                            (congrArg ThinMatrix.CroppedHighQueries.Prepared.rows
+                              (congrArg ThinMatrix.ToomCook.Counted.value
+                                (congr
+                                  (congrArg ThinMatrix.ToomCook.Counted.mk
+                                    (congrArg
+                                      (ThinMatrix.CroppedHighQueries.Prepared.mk
+                                        (ThinMatrix.BinaryCroppedHighBoxes.execute L m t q cap A X Y))
+                                      (ThinMatrix.GroupedPreparation.ofStoredFn_eq requests fun i =>
+                                        ThinMatrix.CroppedHighQueries.row t bandL bandR shape (requests.get i)
+                                          (ThinMatrix.BinaryCroppedHighBoxes.execute L m t q cap A X Y).boxes)))
+                                  (congrFun'
+                                    (congrArg HAdd.hAdd
+                                      (congrFun'
+                                        (congrArg HAdd.hAdd
+                                          (congrArg
+                                            (HAdd.hAdd
+                                              (ThinMatrix.BinaryCroppedHighBoxes.execute L m t q cap A X Y).work)
+                                            (Finset.sum_congr (Eq.refl Finset.univ) fun x a =>
+                                              congrArg ThinMatrix.ToomCook.Counted.operations
+                                                (Eq.trans
+                                                  (congrFun'
+                                                    (congrArg Vector.get
+                                                      (ThinMatrix.GroupedPreparation.ofStoredFn_eq requests fun i =>
+                                                        ThinMatrix.CroppedHighQueries.row t bandL bandR shape
+                                                          (requests.get i)
+                                                          (ThinMatrix.BinaryCroppedHighBoxes.execute L m t q cap A X
+                                                              Y).boxes))
+                                                    x)
+                                                  (Vector.get_ofFn
+                                                    (fun i =>
+                                                      ThinMatrix.CroppedHighQueries.row t bandL bandR shape
+                                                        (requests.get i)
+                                                        (ThinMatrix.BinaryCroppedHighBoxes.execute L m t q cap A X
+                                                            Y).boxes)
+                                                    x)))))
+                                        (32 * M)))
+                                    8)))))
+                          i)
+                        (Vector.get_ofFn
+                          (fun i =>
+                            ThinMatrix.CroppedHighQueries.row t bandL bandR shape (requests.get i)
+                              (ThinMatrix.BinaryCroppedHighBoxes.execute L m t q cap A X Y).boxes)
+                          i)))))
+                residue))
+            (ThinMatrix.CroppedHighQueries.row_value t bandL bandR shape (requests.get i)
+              (ThinMatrix.BinaryCroppedHighBoxes.execute L m t q cap A X Y).boxes residue)))
+        (if ThinMatrix.CroppedHighQueries.accepts bandL bandR (requests.get i) = true then
+          ThinMatrix.CompleteThinProduct.storedHigh ThinMatrix.CroppedHighQueries.value._proof_1
+            (ThinMatrix.CroppedHighQueries.geometry shape (requests.get i)).embedding (requests.get i).outside.get
+            (ThinMatrix.CroppedHighQueries.geometry shape (requests.get i)).left_cap
+            (ThinMatrix.CroppedHighQueries.geometry shape (requests.get i)).right_cap
+            (ThinMatrix.CroppedHighQueries.leaf cap X Y residue)
+        else 0)))
+    (Decidable.casesOn (instDecidableEqBool (ThinMatrix.CroppedHighQueries.accepts bandL bandR (requests.get i)) true)
+      (fun h => Eq.mpr (id (congr (congrArg Eq (if_neg h)) (if_neg h))) (Eq.refl 0)) fun h =>
+      Eq.mpr (id (congr (congrArg Eq (if_pos h)) (if_pos h)))
+        (ThinMatrix.BinaryHighTable.query_boxes rfl
+          (ThinMatrix.CroppedHighQueries.geometry shape (requests.get i)).embedding (requests.get i).outside
+          (ThinMatrix.CroppedHighQueries.geometry shape (requests.get i)).left_cap
+          (ThinMatrix.CroppedHighQueries.geometry shape (requests.get i)).right_cap
+          (ThinMatrix.BinaryCroppedHighBoxes.execute L m t q cap A X Y).boxes residue
+          (ThinMatrix.CroppedHighQueries.leaf cap X Y residue) fun w =>
+          ThinMatrix.BinaryCroppedHighBoxes.execute_correct cap A X Y hX hY w residue))
+theorem ThinMatrix.CroppedHighQueries.execute_work : ∀ {L m q M : ℕ} [NeZero q] (t cap A bandL bandR : ℕ),
+  t ≤ 2 * m →
+    ∀ (shape : ThinMatrix.ThinMatrixBackend.ShapePlan L m)
+      (requests : Vector (ThinMatrix.GraphCompletionRequests.Physical L m q) M)
+      (X Y : ThinMatrix.BinarySourceFormation.RawStore L q),
+      ThinMatrix.BinaryHighExecution.RawBound X A →
+        ThinMatrix.BinaryHighExecution.RawBound Y A →
+          (ThinMatrix.CroppedHighQueries.execute t cap A bandL bandR shape requests X Y).operations ≤
+            ThinMatrix.CroppedHighQueries.budget L m t q M cap A :=
+fun {L m q M} [NeZero q] t cap A bandL bandR ht shape requests X Y hX hY =>
+  have hp := ThinMatrix.BinaryCroppedHighBoxes.execute_price cap A X Y hX hY;
+  have hb := ThinMatrix.CroppedHighQueries.table_bound cap A X Y hX hY;
+  have hs :=
+    Trans.trans
+      (Finset.sum_le_sum fun i x =>
+        ThinMatrix.CroppedHighQueries.row_work t bandL bandR (ThinMatrix.CroppedHighQueries.tableMagnitude L q A) ht
+          shape (requests.get i) (ThinMatrix.BinaryCroppedHighBoxes.execute L m t q cap A X Y).boxes hb)
+      (of_eq_true
+        (Eq.trans
+          (congrFun'
+            (congrArg Eq
+              (Eq.trans
+                (Finset.sum_const
+                  (ThinMatrix.CroppedHighQueries.rowBudget L m t q
+                    (ThinMatrix.CroppedHighQueries.tableMagnitude L q A)))
+                (congrFun' (congrArg HSMul.hSMul (Fintype.card_fin M))
+                  (ThinMatrix.CroppedHighQueries.rowBudget L m t q
+                    (ThinMatrix.CroppedHighQueries.tableMagnitude L q A)))))
+            (M * ThinMatrix.CroppedHighQueries.rowBudget L m t q (ThinMatrix.CroppedHighQueries.tableMagnitude L q A)))
+          (eq_self
+            (M *
+              ThinMatrix.CroppedHighQueries.rowBudget L m t q (ThinMatrix.CroppedHighQueries.tableMagnitude L q A)))));
+  Eq.mpr
+    (id
+      (congrFun'
+        (congrArg LE.le
+          (congrArg ThinMatrix.ToomCook.Counted.operations
+            (congr
+              (congrArg ThinMatrix.ToomCook.Counted.mk
+                (congrArg
+                  (ThinMatrix.CroppedHighQueries.Prepared.mk
+                    (ThinMatrix.BinaryCroppedHighBoxes.execute L m t q cap A X Y))
+                  (ThinMatrix.GroupedPreparation.ofStoredFn_eq requests fun i =>
+                    ThinMatrix.CroppedHighQueries.row t bandL bandR shape (requests.get i)
+                      (ThinMatrix.BinaryCroppedHighBoxes.execute L m t q cap A X Y).boxes)))
+              (congrFun'
+                (congrArg HAdd.hAdd
+                  (congrFun'
+                    (congrArg HAdd.hAdd
+                      (congrArg (HAdd.hAdd (ThinMatrix.BinaryCroppedHighBoxes.execute L m t q cap A X Y).work)
+                        (Finset.sum_congr (Eq.refl Finset.univ) fun x a =>
+                          congrArg ThinMatrix.ToomCook.Counted.operations
+                            (Eq.trans
+                              (congrFun'
+                                (congrArg Vector.get
+                                  (ThinMatrix.GroupedPreparation.ofStoredFn_eq requests fun i =>
+                                    ThinMatrix.CroppedHighQueries.row t bandL bandR shape (requests.get i)
+                                      (ThinMatrix.BinaryCroppedHighBoxes.execute L m t q cap A X Y).boxes))
+                                x)
+                              (Vector.get_ofFn
+                                (fun i =>
+                                  ThinMatrix.CroppedHighQueries.row t bandL bandR shape (requests.get i)
+                                    (ThinMatrix.BinaryCroppedHighBoxes.execute L m t q cap A X Y).boxes)
+                                x)))))
+                    (32 * M)))
+                8))))
+        (ThinMatrix.BinaryCroppedHighBoxes.totalBudget L m t q cap A +
+              M * ThinMatrix.CroppedHighQueries.rowBudget L m t q (ThinMatrix.CroppedHighQueries.tableMagnitude L q A) +
+            32 * M +
+          8)))
+    (Decidable.byContradiction fun a =>
+      ThinMatrix.CroppedHighQueries.execute_work._proof_1_3 t cap A bandL bandR shape requests X Y hp hs a)
+theorem ThinMatrix.GraphHighRun.fromInputs_raw_bound : ∀ {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR ell : ℕ) (u v : Fin (ThinMatrix.ExactHalfSourcePlan.J p.m)) (run : Fin (2 * p.m + 1)) (right : Bool),
+  ThinMatrix.BinaryHighExecution.RawBound
+    (ThinMatrix.GraphShiftedRootFactors.raw (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) u
+      v run right)
+    (2 ^ (p.L + p.m)) :=
+fun {n h r} f p block input bandL bandR ell u v run right normal opposite residue =>
+  Eq.mpr
+    (id
+      (congrArg (fun _a => _a ≤ ↑(2 ^ (p.L + p.m)))
+        (Eq.symm
+          (Int.natCast_natAbs
+            (ThinMatrix.BinaryCell.view
+              (ThinMatrix.BinarySourceFormation.readRaw
+                (ThinMatrix.GraphShiftedRootFactors.raw
+                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) u v run right)
+                normal opposite residue))))))
+    (Int.ofNat_le.mpr
+      (Bool.casesOn (motive := fun t =>
+        right = t →
+          (ThinMatrix.BinaryCell.view
+                (ThinMatrix.BinarySourceFormation.readRaw
+                  (ThinMatrix.GraphShiftedRootFactors.raw
+                    (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) u v run right)
+                  normal opposite residue)).natAbs ≤
+            2 ^ (p.L + p.m))
+        right
+        (fun h_1 =>
+          Eq.symm h_1 ▸
+            ThinMatrix.ExactHalfSourceBounds.graph_left f p block input bandL bandR u v run normal opposite residue)
+        (fun h_1 =>
+          Eq.symm h_1 ▸
+            ThinMatrix.ExactHalfSourceBounds.graph_right f p block input bandL bandR u v run normal opposite residue)
+        (Eq.refl right)))
+theorem ThinMatrix.GraphHighFamily.fromInputs_value : ∀ {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR ell : ℕ) (request : Fin (ThinMatrix.FoldedBackendExecution.windowQuerySize n)) (residue : Fin f.cyclic),
+  have graph := ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell;
+  ThinMatrix.BinaryCell.view
+      ((ThinMatrix.CountedCyclicCollection.output
+            (ThinMatrix.GraphHighFamily.execute graph input.target bandL bandR).2.value request).get
+        residue) =
+    ∑ u,
+      ∑ v,
+        ∑ run,
+          ThinMatrix.GraphHighRun.value graph bandL bandR u v run
+            (ThinMatrix.LowRequestLocator.physical graph input.target request) residue :=
+fun {n h r} f p block input bandL bandR ell request residue =>
+  id
+    (Eq.mpr
+      (id
+        (congrFun'
+          (congrArg Eq
+            (Eq.trans
+              (ThinMatrix.CountedCyclicCollection.execute_value
+                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                ell).permuted.transformed.source.roots.source.sources.value
+                (fun u =>
+                  ThinMatrix.CountedCyclicCollection.execute
+                    (Vector.get
+                      (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                      ell).permuted.transformed.source.roots.source.sources.value
+                      u)
+                    (fun v =>
+                      ThinMatrix.CountedCyclicCollection.execute
+                        ((Vector.get
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                                ell).permuted.transformed.source.roots.source.sources.value
+                                u).get
+                            v).1
+                        (fun run =>
+                          ThinMatrix.GraphHighRun.execute
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                            (ThinMatrix.GraphCompletionRequests.prepare f p
+                                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                                ell).permuted.transformed.source.roots.source.shape
+                                  input.target).physical.value
+                            bandL bandR u v run)
+                        ThinMatrix.CroppedHighQueries.get)
+                    ThinMatrix.CountedCyclicCollection.output)
+                ThinMatrix.CountedCyclicCollection.output request residue)
+              (Finset.sum_congr (Eq.refl Finset.univ) fun x a =>
+                Eq.trans
+                  (ThinMatrix.CountedCyclicCollection.execute_value
+                    (Vector.get
+                      (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                      ell).permuted.transformed.source.roots.source.sources.value
+                      x)
+                    (fun v =>
+                      ThinMatrix.CountedCyclicCollection.execute
+                        ((Vector.get
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                                ell).permuted.transformed.source.roots.source.sources.value
+                                x).get
+                            v).1
+                        (fun run =>
+                          ThinMatrix.GraphHighRun.execute
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                            (ThinMatrix.GraphCompletionRequests.prepare f p
+                                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                                ell).permuted.transformed.source.roots.source.shape
+                                  input.target).physical.value
+                            bandL bandR x v run)
+                        ThinMatrix.CroppedHighQueries.get)
+                    ThinMatrix.CountedCyclicCollection.output request residue)
+                  (Finset.sum_congr (Eq.refl Finset.univ) fun x_1 a =>
+                    ThinMatrix.CountedCyclicCollection.execute_value
+                      ((Vector.get
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                              ell).permuted.transformed.source.roots.source.sources.value
+                              x).get
+                          x_1).1
+                      (fun run =>
+                        ThinMatrix.GraphHighRun.execute
+                          (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                          (ThinMatrix.GraphCompletionRequests.prepare f p
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                              ell).permuted.transformed.source.roots.source.shape
+                                input.target).physical.value
+                          bandL bandR x x_1 run)
+                      ThinMatrix.CroppedHighQueries.get request residue))))
+          (∑ u,
+            ∑ v,
+              ∑ run,
+                ThinMatrix.GraphHighRun.value (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                  bandL bandR u v run
+                  (ThinMatrix.LowRequestLocator.physical
+                    (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target request)
+                  residue)))
+      (Finset.sum_congr rfl fun u a =>
+        Finset.sum_congr rfl fun v a =>
+          Finset.sum_congr rfl fun run a =>
+            ThinMatrix.GraphHighRun.fromInputs_value f p block input bandL bandR ell
+              (ThinMatrix.GraphCompletionRequests.prepare f p
+                    (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                  ell).permuted.transformed.source.roots.source.shape
+                    input.target).physical.value
+              u v run request residue))
+theorem ThinMatrix.GraphHighFamily.fromInputs_bound : ∀ {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR ell : ℕ) (request : Fin (ThinMatrix.FoldedBackendExecution.windowQuerySize n)) (residue : Fin f.cyclic),
+  have graph := ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell;
+  (ThinMatrix.BinaryCell.view
+        ((ThinMatrix.CountedCyclicCollection.output
+              (ThinMatrix.GraphHighFamily.execute graph input.target bandL bandR).2.value request).get
+          residue)).natAbs ≤
+    ThinMatrix.ExactHalfSourcePlan.J p.m *
+      (ThinMatrix.ExactHalfSourcePlan.J p.m *
+        ((2 * p.m + 1) * ThinMatrix.GraphHighRun.magnitude p.L p.m p.t f.cyclic)) :=
+fun {n h r} f p block input bandL bandR ell request residue =>
+  id
+    (ThinMatrix.GraphHighFamily.all_bound f p block input bandL bandR ell
+      (ThinMatrix.GraphCompletionRequests.prepare f p
+            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                          ell).permuted.transformed.source.roots.source.shape
+            input.target).physical.value
+      request residue)
+theorem ThinMatrix.GraphHighFamily.fromInputs_work : ∀ {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR ell : ℕ),
+  ThinMatrix.GraphHighFamily.work (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+      input.target bandL bandR ≤
+    ThinMatrix.GraphHighFamily.budget f p input.target :=
+fun {n h r} f p block input bandL bandR ell =>
+  let graph := ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell;
+  let targets :=
+    ThinMatrix.GraphCompletionRequests.prepare f p graph.permuted.transformed.source.roots.source.shape input.target;
+  have ht :=
+    ThinMatrix.GraphTargetWidth.prepare_formation_bits f p graph.permuted.transformed.source.roots.source.shape
+      input.target;
+  have hc :=
+    ThinMatrix.GraphCompletionRequests.prepare_control f p graph.permuted.transformed.source.roots.source.shape
+      input.target;
+  have hz :=
+    ThinMatrix.GraphCompletionRequests.prepare_bits f p graph.permuted.transformed.source.roots.source.shape
+      input.target;
+  have ha := ThinMatrix.GraphHighFamily.all_work f p block input bandL bandR ell targets.physical.value;
+  id
+    (id
+      (id
+        (Decidable.byContradiction fun a =>
+          ThinMatrix.GraphHighFamily.fromInputs_work._proof_1_1 f p block input bandL bandR ell ht hc hz ha a)))
+'ThinMatrix.GraphHighFamily.fromInputs_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem ThinMatrix.ShiftedPhysicalHigh.coefficient_eq : ∀ {L q : ℕ} (side : Bool) (cap : ℕ)
+  (raw : ThinMatrix.BinarySourceFormation.RawStore L q) (word : ThinMatrix.HighBoxDP.LeafWord (2 * L)) (r : Fin q),
+  ThinMatrix.BinaryCroppedHighEncoder.coefficientValue side cap raw (ThinMatrix.SourceCoordinates.liftLeaf word) r =
+    ThinMatrix.ShiftedPhysicalHigh.coefficient side cap raw word r :=
+fun {L q} side cap raw word r =>
+  id
+    (id
+      (Eq.mpr
+        (id
+          (congrFun'
+            (congrArg Eq
+              (Finset.sum_congr (Eq.refl Finset.univ) fun x a =>
+                congrArg
+                  (HMul.hMul
+                    (ThinMatrix.CroppedSourceContraction.crop cap
+                      (fun n o => ThinMatrix.BinaryCell.view (ThinMatrix.BinarySourceFormation.readRaw raw n o r))
+                      (ThinMatrix.BinaryHighExecution.decodeSource side x).1
+                      (ThinMatrix.BinaryHighExecution.decodeSource side x).2))
+                  (Finset.prod_congr (Eq.refl Finset.univ) fun x_1 a =>
+                    Eq.refl (ThinMatrix.ShiftedHighForms.integerForms L side (↑x_1) (word x_1).castSucc ↑(x x_1)))))
+            (∑ w,
+              ThinMatrix.CroppedSourceContraction.crop cap
+                  (fun n o => ThinMatrix.BinaryCell.view (ThinMatrix.BinarySourceFormation.readRaw raw n o r)) w.1 w.2 *
+                ∏ i, ThinMatrix.ShiftedPhysicalHigh.form side i (word i) w)))
+        (Eq.mpr
+          (id
+            (congrFun'
+              (congrArg Eq
+                (Finset.sum_congr (Eq.refl Finset.univ) fun x a =>
+                  congrArg
+                    (HMul.hMul
+                      (ThinMatrix.CroppedSourceContraction.crop cap
+                        (fun n o => ThinMatrix.BinaryCell.view (ThinMatrix.BinarySourceFormation.readRaw raw n o r))
+                        (ThinMatrix.BinaryHighExecution.decodeSource side x).1
+                        (ThinMatrix.BinaryHighExecution.decodeSource side x).2))
+                    (Finset.prod_congr (Eq.refl Finset.univ) fun x_1 a =>
+                      ThinMatrix.ShiftedPhysicalHigh.forms_at side x x_1 (word x_1))))
+              (∑ w,
+                ThinMatrix.CroppedSourceContraction.crop cap
+                    (fun n o => ThinMatrix.BinaryCell.view (ThinMatrix.BinarySourceFormation.readRaw raw n o r)) w.1
+                    w.2 *
+                  ∏ i, ThinMatrix.ShiftedPhysicalHigh.form side i (word i) w)))
+          (Bool.casesOn (motive := fun t =>
+            side = t →
+              ∑ x,
+                  ThinMatrix.CroppedSourceContraction.crop cap
+                      (fun n o => ThinMatrix.BinaryCell.view (ThinMatrix.BinarySourceFormation.readRaw raw n o r))
+                      (ThinMatrix.BinaryHighExecution.decodeSource side x).1
+                      (ThinMatrix.BinaryHighExecution.decodeSource side x).2 *
+                    ∏ x_1,
+                      ThinMatrix.ShiftedPhysicalHigh.form side x_1 (word x_1)
+                        (ThinMatrix.BinaryHighExecution.decodeSource side x) =
+                ∑ w,
+                  ThinMatrix.CroppedSourceContraction.crop cap
+                      (fun n o => ThinMatrix.BinaryCell.view (ThinMatrix.BinarySourceFormation.readRaw raw n o r)) w.1
+                      w.2 *
+                    ∏ i, ThinMatrix.ShiftedPhysicalHigh.form side i (word i) w)
+            side
+            (fun h =>
+              Eq.symm h ▸
+                Equiv.sum_comp (ThinMatrix.SourceCoordinates.coordinateEquivFalse L) fun w =>
+                  ThinMatrix.CroppedSourceContraction.crop cap
+                      (fun n o => ThinMatrix.BinaryCell.view (ThinMatrix.BinarySourceFormation.readRaw raw n o r)) w.1
+                      w.2 *
+                    ∏ i, ThinMatrix.ShiftedPhysicalHigh.form false i (word i) w)
+            (fun h =>
+              Eq.symm h ▸
+                Equiv.sum_comp (ThinMatrix.SourceCoordinates.coordinateEquivTrue L) fun w =>
+                  ThinMatrix.CroppedSourceContraction.crop cap
+                      (fun n o => ThinMatrix.BinaryCell.view (ThinMatrix.BinarySourceFormation.readRaw raw n o r)) w.1
+                      w.2 *
+                    ∏ i, ThinMatrix.ShiftedPhysicalHigh.form true i (word i) w)
+            (Eq.refl side)))))
+theorem ThinMatrix.ShiftedPhysicalHigh.fromInputs_value : ∀ {n h r : ℕ}
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (p : ThinMatrix.BinaryFoldedFactory.Plan f)
+  (block : Fin (ThinMatrix.CompactBlocks.blockCount n h)) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (bandL bandR ell : ℕ) (request : Fin (ThinMatrix.FoldedBackendExecution.windowQuerySize n)) (residue : Fin f.cyclic),
+  have graph := ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell;
+  ThinMatrix.BinaryCell.view
+      ((ThinMatrix.CountedCyclicCollection.output
+            (ThinMatrix.GraphHighFamily.execute graph input.target bandL bandR).2.value request).get
+        residue) =
+    ∑ u,
+      ∑ v,
+        ∑ run,
+          ThinMatrix.ShiftedPhysicalHigh.query p.t (p.m / 2) bandL bandR
+            graph.permuted.transformed.source.roots.source.shape
+            (ThinMatrix.LowRequestLocator.physical graph input.target request)
+            (ThinMatrix.GraphShiftedRootFactors.raw graph u v run false)
+            (ThinMatrix.GraphShiftedRootFactors.raw graph u v run true) residue :=
+fun {n h r} f p block input bandL bandR ell request residue =>
+  id
+    (Eq.mpr
+      (id
+        (congrArg
+          (fun _a =>
+            _a =
+              ∑ u,
+                ∑ v,
+                  ∑ run,
+                    ThinMatrix.ShiftedPhysicalHigh.query p.t (p.m / 2) bandL bandR
+                      (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                    ell).permuted.transformed.source.roots.source.shape
+                      (ThinMatrix.LowRequestLocator.physical
+                        (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target request)
+                      (ThinMatrix.GraphShiftedRootFactors.raw
+                        (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) u v run false)
+                      (ThinMatrix.GraphShiftedRootFactors.raw
+                        (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) u v run true)
+                      residue)
+          (ThinMatrix.GraphHighFamily.fromInputs_value f p block input bandL bandR ell request residue)))
+      (of_eq_true
+        (Eq.trans
+          (congr
+            (congrArg Eq
+              (Finset.sum_congr (Eq.refl Finset.univ) fun x a =>
+                Finset.sum_congr (Eq.refl Finset.univ) fun x_1 a =>
+                  Finset.sum_congr (Eq.refl Finset.univ) fun x_2 a =>
+                    ite_congr
+                      (Eq.refl
+                        (ThinMatrix.CroppedHighQueries.accepts bandL bandR
+                            (ThinMatrix.LowRequestLocator.physical
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                              request) =
+                          true))
+                      (fun a =>
+                        ThinMatrix.CompleteThinProduct.storedHigh.congr_simp (Eq.refl p.m) (Eq.refl p.t)
+                          ThinMatrix.CroppedHighQueries.value._proof_1
+                          (ThinMatrix.CroppedHighQueries.geometry
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                            ell).permuted.transformed.source.roots.source.shape
+                              (ThinMatrix.LowRequestLocator.physical
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                                request)).embedding
+                          (ThinMatrix.CroppedHighQueries.geometry
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                            ell).permuted.transformed.source.roots.source.shape
+                              (ThinMatrix.LowRequestLocator.physical
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                                request)).embedding
+                          (Eq.refl
+                            (ThinMatrix.CroppedHighQueries.geometry
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                              ell).permuted.transformed.source.roots.source.shape
+                                (ThinMatrix.LowRequestLocator.physical
+                                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                  input.target request)).embedding)
+                          (ThinMatrix.LowRequestLocator.physical
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                                request).outside.get
+                          (ThinMatrix.LowRequestLocator.physical
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                                request).outside.get
+                          (Eq.refl
+                            (ThinMatrix.LowRequestLocator.physical
+                                  (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell)
+                                  input.target request).outside.get)
+                          (ThinMatrix.CroppedHighQueries.geometry
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                            ell).permuted.transformed.source.roots.source.shape
+                              (ThinMatrix.LowRequestLocator.physical
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                                request)).left_cap
+                          (ThinMatrix.CroppedHighQueries.geometry
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                            ell).permuted.transformed.source.roots.source.shape
+                              (ThinMatrix.LowRequestLocator.physical
+                                (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                                request)).right_cap
+                          (ThinMatrix.CroppedHighQueries.leaf (p.m / 2)
+                            (ThinMatrix.GraphShiftedRootFactors.raw
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) x x_1 x_2
+                              false)
+                            (ThinMatrix.GraphShiftedRootFactors.raw
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) x x_1 x_2 true)
+                            residue)
+                          (ThinMatrix.ShiftedPhysicalHigh.leaf (p.m / 2)
+                            (ThinMatrix.GraphShiftedRootFactors.raw
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) x x_1 x_2
+                              false)
+                            (ThinMatrix.GraphShiftedRootFactors.raw
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) x x_1 x_2 true)
+                            residue)
+                          (ThinMatrix.ShiftedPhysicalHigh.leaf_eq (p.m / 2)
+                            (ThinMatrix.GraphShiftedRootFactors.raw
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) x x_1 x_2
+                              false)
+                            (ThinMatrix.GraphShiftedRootFactors.raw
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) x x_1 x_2 true)
+                            residue))
+                      fun a => Eq.refl 0))
+            (Finset.sum_congr (Eq.refl Finset.univ) fun x a =>
+              Finset.sum_congr (Eq.refl Finset.univ) fun x_1 a =>
+                Finset.sum_congr (Eq.refl Finset.univ) fun x_2 a =>
+                  Eq.refl
+                    (if
+                        ThinMatrix.CroppedHighQueries.accepts bandL bandR
+                            (ThinMatrix.LowRequestLocator.physical
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                              request) =
+                          true then
+                      ThinMatrix.CompleteThinProduct.storedHigh ThinMatrix.ShiftedPhysicalHigh.query._proof_1
+                        (ThinMatrix.CroppedHighQueries.geometry
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                          ell).permuted.transformed.source.roots.source.shape
+                            (ThinMatrix.LowRequestLocator.physical
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                              request)).embedding
+                        (ThinMatrix.LowRequestLocator.physical
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                              request).outside.get
+                        (ThinMatrix.CroppedHighQueries.geometry
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                          ell).permuted.transformed.source.roots.source.shape
+                            (ThinMatrix.LowRequestLocator.physical
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                              request)).left_cap
+                        (ThinMatrix.CroppedHighQueries.geometry
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                          ell).permuted.transformed.source.roots.source.shape
+                            (ThinMatrix.LowRequestLocator.physical
+                              (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                              request)).right_cap
+                        (ThinMatrix.ShiftedPhysicalHigh.leaf (p.m / 2)
+                          (ThinMatrix.GraphShiftedRootFactors.raw
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) x x_1 x_2 false)
+                          (ThinMatrix.GraphShiftedRootFactors.raw
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) x x_1 x_2 true)
+                          residue)
+                    else 0)))
+          (eq_self
+            (∑ x,
+              ∑ x_1,
+                ∑ x_2,
+                  if
+                      ThinMatrix.CroppedHighQueries.accepts bandL bandR
+                          (ThinMatrix.LowRequestLocator.physical
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                            request) =
+                        true then
+                    ThinMatrix.CompleteThinProduct.storedHigh ThinMatrix.CroppedHighQueries.value._proof_1
+                      (ThinMatrix.CroppedHighQueries.geometry
+                          (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                        ell).permuted.transformed.source.roots.source.shape
+                          (ThinMatrix.LowRequestLocator.physical
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                            request)).embedding
+                      (ThinMatrix.LowRequestLocator.physical
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                            request).outside.get
+                      (ThinMatrix.CroppedHighQueries.geometry
+                          (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                        ell).permuted.transformed.source.roots.source.shape
+                          (ThinMatrix.LowRequestLocator.physical
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                            request)).left_cap
+                      (ThinMatrix.CroppedHighQueries.geometry
+                          (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR
+                                        ell).permuted.transformed.source.roots.source.shape
+                          (ThinMatrix.LowRequestLocator.physical
+                            (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) input.target
+                            request)).right_cap
+                      (ThinMatrix.ShiftedPhysicalHigh.leaf (p.m / 2)
+                        (ThinMatrix.GraphShiftedRootFactors.raw
+                          (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) x x_1 x_2 false)
+                        (ThinMatrix.GraphShiftedRootFactors.raw
+                          (ThinMatrix.GraphPrefixProgram.fromInputs f p block input bandL bandR ell) x x_1 x_2 true)
+                        residue)
+                  else 0)))))
+'ThinMatrix.ShiftedPhysicalHigh.fromInputs_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem ThinMatrix.ExactHalfCroppedEmbedding.complete_embedding.{u_1} : ∀ {R : Type u_1} [inst : CommRing R] (L m : ℕ),
+  m ≤ L →
+    ∀ (X : ThinMatrix.WalshEmbedding.RawLeftInput L m (L - m) R)
+      (Y : ThinMatrix.WalshEmbedding.RawRightInput L m (L - m) R) (QL QR : Finset (Fin L)),
+      QL ∈ ThinMatrix.GoodMapEmbedding.goodSlots L m →
+        QR ∈ ThinMatrix.GoodMapEmbedding.goodSlots L m →
+          ∀ (iL iR : ThinMatrix.WalshEmbedding.Cube L) (aL aR : ThinMatrix.WalshEmbedding.Cube (L - m)),
+            ∑ r,
+                ∑ s,
+                  ThinMatrix.CroppedSourceContraction.contraction (m / 2)
+                    (ThinMatrix.MaskedLightSources.leftInput X (ThinMatrix.ExactHalfCroppedEmbedding.scanPick L m)
+                      (ThinMatrix.ExactHalfCroppedEmbedding.shifts m).get r s)
+                    (ThinMatrix.MaskedLightSources.rightInput Y (ThinMatrix.ExactHalfCroppedEmbedding.scanPick L m)
+                      (ThinMatrix.ExactHalfCroppedEmbedding.shifts m).get r s)
+                    (ThinMatrix.GoodMapEmbedding.goodSlots L m)
+                    (ThinMatrix.GoodMapEmbedding.cubeMap (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).1)
+                    (ThinMatrix.GoodMapEmbedding.cubeMap (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).2) QL QR
+                    iL iR
+                    (ThinMatrix.WalshEmbedding.transposeMap
+                      (ThinMatrix.GoodMapEmbedding.boolColumns (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).2)
+                      aR)
+                    (ThinMatrix.WalshEmbedding.transposeMap
+                      (ThinMatrix.GoodMapEmbedding.boolColumns (ThinMatrix.GoodSetConstruction.constructGoodMaps L m).2)
+                      aL) =
+              4 ^ L *
+                ∑ h,
+                  ∑ k,
+                    X QL (ThinMatrix.WalshEmbedding.outsideBits QL iL) aL h k *
+                      Y QR (ThinMatrix.WalshEmbedding.outsideBits QR iR) h k aR :=
+fun {R} [CommRing R] L m hm X Y QL QR hQL hQR iL iR aL aR =>
+  ThinMatrix.TranslatedCroppedEmbedding.complete_embedding L m (ThinMatrix.ExactHalfCroppedEmbedding.shifts m).length
+    (m / 2) hm X Y (ThinMatrix.ExactHalfCroppedEmbedding.shifts m).get
+    (ThinMatrix.ExactHalfCroppedEmbedding.scanPick L m) (ThinMatrix.ExactHalfCroppedEmbedding.scanPick L m)
+    (ThinMatrix.ExactHalfCroppedEmbedding.weight L m)
+    (fun Q x => ThinMatrix.ExactHalfCroppedEmbedding.scanPick_valid L m Q)
+    (fun Q x => ThinMatrix.ExactHalfCroppedEmbedding.scanPick_valid L m Q)
+    (ThinMatrix.ExactHalfCroppedEmbedding.normal_weight L m) QL QR hQL hQR iL iR aL aR
+theorem ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work : ∀
+  (w : (n : ℕ) → ThinMatrix.StoredMinPlusAPSP.OptionalTable n) (W : ℕ → ℕ) (degree : ℕ),
+  (∀ (n : ℕ), ThinMatrix.APSPReduction.EdgeBound (ThinMatrix.StoredMinPlusAPSP.decode (w n)) (W n)) →
+    (∀ (n : ℕ), W n ≤ n ^ degree) →
+      (∀ (n : ℕ), ThinMatrix.APSPReduction.NoNegativeCycles (ThinMatrix.StoredMinPlusAPSP.decode (w n))) →
+        (∀ (n : ℕ),
+            ThinMatrix.APSPReduction.IsAPSP (ThinMatrix.StoredMinPlusAPSP.decode (w n))
+              (ThinMatrix.StoredMinPlusAPSP.decode
+                (ThinMatrix.BinaryAPSPCaller.viewOptional
+                  (ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                        (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).core.value))) ∧
+          (fun n =>
+              ↑(ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                    (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).work) =O[Filter.atTop]
+            fun n => ↑n ^ (299294792 / 100000000) :=
+fun w W degree hw hW hno =>
+  ⟨fun n =>
+    ThinMatrix.BinaryAlignedAPSP.run_correct (w n) (W n) (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)
+      (hw n) (hno n),
+    ThinMatrix.BinaryAlignedAPSPTheorem.run_work_bigO w W degree hw hW⟩
+'ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]

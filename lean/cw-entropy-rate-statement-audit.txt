@@ -1,0 +1,139 @@
+ThinMatrix.TernaryEntropy.coefficient_bounds (a b c : ℕ) :
+  Real.exp (↑(a + b + c) * ThinMatrix.TernaryEntropy.entropy ↑a ↑b ↑c) / (↑(a + b + c) + 1) ^ 2 ≤
+      ↑(ThinMatrix.TernaryEntropy.coefficient a b c) ∧
+    ↑(ThinMatrix.TernaryEntropy.coefficient a b c) ≤
+      Real.exp (↑(a + b + c) * ThinMatrix.TernaryEntropy.entropy ↑a ↑b ↑c)
+ThinMatrix.TernaryEntropy.entropy_shannon (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) :
+  ThinMatrix.TernaryEntropy.entropy a b c =
+    -(a / (a + b + c)) * Real.log (a / (a + b + c)) - b / (a + b + c) * Real.log (b / (a + b + c)) -
+      c / (a + b + c) * Real.log (c / (a + b + c))
+ThinMatrix.CWTargetMarginals.reference_marginals (s : ℕ) (axis a : Fin 3) :
+  ThinMatrix.CWTypeCounts.count a (ThinMatrix.CWTargetMarginals.size s)
+      (ThinMatrix.CWBlockWords.mapWord (ThinMatrix.CWTargetMarginals.color axis) (ThinMatrix.CWTargetMarginals.size s)
+        (ThinMatrix.CWCanonicalType.reference s)) =
+    s * ThinMatrix.CWTargetMarginals.counts axis a
+ThinMatrix.CWTargetMarginals.marginal_bounds (s : ℕ) (axis : Fin 3) :
+  Real.exp (↑(ThinMatrix.CWTargetMarginals.size s) * ThinMatrix.CWTargetMarginals.entropy axis) /
+        (↑(ThinMatrix.CWTargetMarginals.size s) + 1) ^ 2 ≤
+      ↑(ThinMatrix.CWTypeCardinalities.marginalCount (ThinMatrix.CWTargetMarginals.size s)
+          (ThinMatrix.CWCanonicalType.reference s) (ThinMatrix.CWTargetMarginals.color axis)) ∧
+    ↑(ThinMatrix.CWTypeCardinalities.marginalCount (ThinMatrix.CWTargetMarginals.size s)
+          (ThinMatrix.CWCanonicalType.reference s) (ThinMatrix.CWTargetMarginals.color axis)) ≤
+      Real.exp (↑(ThinMatrix.CWTargetMarginals.size s) * ThinMatrix.CWTargetMarginals.entropy axis)
+ThinMatrix.CWTargetMarginals.entropy_shannon (axis : Fin 3) :
+  ThinMatrix.CWTargetMarginals.entropy axis =
+    -∑ a,
+        ↑(ThinMatrix.CWTargetMarginals.counts axis a) / ↑ThinMatrix.CWCanonicalType.period *
+          Real.log (↑(ThinMatrix.CWTargetMarginals.counts axis a) / ↑ThinMatrix.CWCanonicalType.period)
+ThinMatrix.ExtractionLoss.eventually_loss_le (ε : ℝ) (he : 0 < ε) :
+  ∀ᶠ (x : ℝ) in Filter.atTop, ThinMatrix.ExtractionLoss.loss x ≤ ε * x
+ThinMatrix.CWEntropySurvival.finite_survival (s : ℕ) (hs : 0 < s) :
+  ∃ r,
+    Real.exp
+        (↑(ThinMatrix.CWTargetMarginals.size s) * ThinMatrix.CWEntropySurvival.rate -
+          ThinMatrix.ExtractionLoss.loss ↑(ThinMatrix.CWTargetMarginals.size s)) ≤
+      ↑(ThinMatrix.CWQuantitativeCleanup.survivors
+            (ThinMatrix.CWTypePrimeChoice.selected (ThinMatrix.CWTargetMarginals.size s)
+              (ThinMatrix.CWCanonicalType.reference s))
+            (ThinMatrix.CWTargetMarginals.size s) (ThinMatrix.CWCanonicalType.reference s)
+            (ThinMatrix.ModularBehrendBuckets.buckets
+              (ThinMatrix.CWTypePrimeChoice.selected (ThinMatrix.CWTargetMarginals.size s)
+                (ThinMatrix.CWCanonicalType.reference s)))
+            r).card
+ThinMatrix.CWEntropySurvival.exponential_survival (ε : ℝ) (he : 0 < ε) :
+  ∀ᶠ (s : ℕ) in Filter.atTop,
+    ∃ r,
+      Real.exp (↑(ThinMatrix.CWTargetMarginals.size s) * (ThinMatrix.CWEntropySurvival.rate - ε)) ≤
+        ↑(ThinMatrix.CWQuantitativeCleanup.survivors
+              (ThinMatrix.CWTypePrimeChoice.selected (ThinMatrix.CWTargetMarginals.size s)
+                (ThinMatrix.CWCanonicalType.reference s))
+              (ThinMatrix.CWTargetMarginals.size s) (ThinMatrix.CWCanonicalType.reference s)
+              (ThinMatrix.ModularBehrendBuckets.buckets
+                (ThinMatrix.CWTypePrimeChoice.selected (ThinMatrix.CWTargetMarginals.size s)
+                  (ThinMatrix.CWCanonicalType.reference s)))
+              r).card
+ThinMatrix.CWEntropyFloors.floor_bounds (N : ℕ) :
+  ThinMatrix.CWTargetMarginals.size (ThinMatrix.CWEntropyFloors.scale N) ≤ N ∧
+    N < ThinMatrix.CWTargetMarginals.size (ThinMatrix.CWEntropyFloors.scale N) + ThinMatrix.CWCanonicalType.period
+ThinMatrix.CWEntropyFloors.exponential_survival (ε : ℝ) (he : 0 < ε) :
+  ∀ᶠ (N : ℕ) in Filter.atTop,
+    ∃ r,
+      Real.exp (↑N * (ThinMatrix.CWEntropySurvival.rate - ε)) ≤
+        ↑(ThinMatrix.CWQuantitativeCleanup.survivors
+              (ThinMatrix.CWTypePrimeChoice.selected
+                (ThinMatrix.CWTargetMarginals.size (ThinMatrix.CWEntropyFloors.scale N))
+                (ThinMatrix.CWCanonicalType.reference (ThinMatrix.CWEntropyFloors.scale N)))
+              (ThinMatrix.CWTargetMarginals.size (ThinMatrix.CWEntropyFloors.scale N))
+              (ThinMatrix.CWCanonicalType.reference (ThinMatrix.CWEntropyFloors.scale N))
+              (ThinMatrix.ModularBehrendBuckets.buckets
+                (ThinMatrix.CWTypePrimeChoice.selected
+                  (ThinMatrix.CWTargetMarginals.size (ThinMatrix.CWEntropyFloors.scale N))
+                  (ThinMatrix.CWCanonicalType.reference (ThinMatrix.CWEntropyFloors.scale N))))
+              r).card
+ThinMatrix.CWTargetExtractionRate.exponential_extraction (ε : ℝ) (he : 0 < ε) :
+  ∀ᶠ (s : ℕ) in Filter.atTop,
+    ∃ r,
+      Real.exp (↑(ThinMatrix.CWTargetMarginals.size s) * (ThinMatrix.CWEntropySurvival.rate - ε)) ≤
+          ↑(Fintype.card (ThinMatrix.CWTargetExtractionRate.Copies s r)) ∧
+        Fintype.card (ThinMatrix.CWInterpolationProgram.Request (ThinMatrix.CWTargetMarginals.size s)) =
+            (10 * ThinMatrix.CWTargetMarginals.size s + 1) * 18 ^ ThinMatrix.CWTargetMarginals.size s ∧
+          (∀ (w : ThinMatrix.CWTargetExtractionRate.Copies s r),
+              Fintype.card (ThinMatrix.CWBlockWords.Rows 16 (ThinMatrix.CWTargetMarginals.size s) ↑w) =
+                  16 ^ (s * 4000000000000) ∧
+                Fintype.card (ThinMatrix.CWBlockWords.Inners 16 (ThinMatrix.CWTargetMarginals.size s) ↑w) =
+                    16 ^ (s * 60000000000000) ∧
+                  Fintype.card (ThinMatrix.CWBlockWords.Cols 16 (ThinMatrix.CWTargetMarginals.size s) ↑w) =
+                    16 ^ (s * 6888000000000)) ∧
+            ThinMatrix.FiniteTrilinear.total
+                (ThinMatrix.CWIndependentCopies.terms (ThinMatrix.CWTargetMarginals.size s)
+                  (ThinMatrix.CWCanonicalType.reference s) (ThinMatrix.CWTargetExtractionRate.X s r)
+                  (ThinMatrix.CWTargetExtractionRate.Y s r) (ThinMatrix.CWTargetExtractionRate.Z s r)) =
+              ThinMatrix.CWIndependentCopies.directSum (ThinMatrix.CWTargetMarginals.size s)
+                (ThinMatrix.CWCanonicalType.reference s) (ThinMatrix.CWTargetExtractionRate.X s r)
+                (ThinMatrix.CWTargetExtractionRate.Y s r) (ThinMatrix.CWTargetExtractionRate.Z s r)
+ThinMatrix.CWTargetExtractionRate.exists_positive_base (ε : ℝ) (he : 0 < ε) :
+  ∃ s,
+    0 < s ∧
+      ∃ r,
+        Real.exp (↑(ThinMatrix.CWTargetMarginals.size s) * (ThinMatrix.CWEntropySurvival.rate - ε)) ≤
+          ↑(Fintype.card (ThinMatrix.CWTargetExtractionRate.Copies s r))
+def ThinMatrix.CWEntropySurvival.rate : ℝ :=
+min (ThinMatrix.CWTargetMarginals.entropy 0)
+  (min (ThinMatrix.CWTargetMarginals.entropy 1) (ThinMatrix.CWTargetMarginals.entropy 2))
+def ThinMatrix.CWTargetMarginals.counts : Fin 3 → Fin 3 → ℕ :=
+![![11200343770853, 64000000000000, 48656229147], ![4180500000000, 66888000000000, 4180500000000],
+  ![64229156229147, 10888000000000, 131843770853]]
+@[reducible] def ThinMatrix.CWTargetExtractionRate.Copies : (s : ℕ) →
+  ThinMatrix.CWTargetExtractionRate.Sample s → Type :=
+fun s r =>
+  ThinMatrix.CWIndependentCopies.Copies (ThinMatrix.CWTargetMarginals.size s) (ThinMatrix.CWCanonicalType.reference s)
+    (ThinMatrix.CWTargetExtractionRate.X s r) (ThinMatrix.CWTargetExtractionRate.Y s r)
+    (ThinMatrix.CWTargetExtractionRate.Z s r)
+ThinMatrix.GraphFoldedCountCorrect.finite_modCount {n h r : ℕ} (hh : 0 < h)
+  (f : ThinMatrix.CompactBlocks.PhysicalFactorization r) (input : ThinMatrix.BinaryFoldedFormation.Inputs n)
+  (i : Fin (ThinMatrix.EndToEndAPSP.incidenceSize n h)) :
+  (ThinMatrix.BinaryCell.view (ThinMatrix.GraphFoldedCountCorrect.output f input h i)).toNat =
+    (ThinMatrix.EndToEndAPSP.flatInstance (ThinMatrix.BinaryFoldedFormation.viewTable input.left)
+          (ThinMatrix.BinaryFoldedFormation.viewTable input.right)
+          (ThinMatrix.BinaryFoldedFormation.viewTable input.target)).modCount
+      r i
+ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work (w : (n : ℕ) → ThinMatrix.StoredMinPlusAPSP.OptionalTable n)
+  (W : ℕ → ℕ) (degree : ℕ)
+  (hw : ∀ (n : ℕ), ThinMatrix.APSPReduction.EdgeBound (ThinMatrix.StoredMinPlusAPSP.decode (w n)) (W n))
+  (hW : ∀ (n : ℕ), W n ≤ n ^ degree)
+  (hno : ∀ (n : ℕ), ThinMatrix.APSPReduction.NoNegativeCycles (ThinMatrix.StoredMinPlusAPSP.decode (w n))) :
+  (∀ (n : ℕ),
+      ThinMatrix.APSPReduction.IsAPSP (ThinMatrix.StoredMinPlusAPSP.decode (w n))
+        (ThinMatrix.StoredMinPlusAPSP.decode
+          (ThinMatrix.BinaryAPSPCaller.viewOptional
+            (ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+                  (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).core.value))) ∧
+    (fun n =>
+        ↑(ThinMatrix.BinaryAlignedAPSP.run (w n) (W n)
+              (ThinMatrix.BinaryAlignedAPSPTheorem.addressPrice degree n)).work) =O[Filter.atTop]
+      fun n => ↑n ^ (299294792 / 100000000)
+'ThinMatrix.TernaryEntropy.coefficient_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWEntropySurvival.exponential_survival' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWEntropyFloors.exponential_survival' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.CWTargetExtractionRate.exponential_extraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.BinaryAlignedAPSPTheorem.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]

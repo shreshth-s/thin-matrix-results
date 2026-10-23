@@ -1,0 +1,12 @@
+PASS: d=0: all 1 coefficients recovered exactly by the retained integer table.
+PASS: d=1: all 2 coefficients recovered exactly by the retained integer table.
+PASS: d=2: all 3 coefficients recovered exactly by the retained integer table.
+PASS: d=3: all 4 coefficients recovered exactly by the retained integer table.
+PASS: d=10: all 11 coefficients recovered exactly by the retained integer table.
+PASS: d=20: all 21 coefficients recovered exactly by the retained integer table.
+PASS: n=0 executes the scalar product with denominator 1 and one output.
+PASS: CW n=1 mode=0: 198 retained products and all 18 outputs match direct contraction; 76457 arithmetic operations.
+PASS: CW n=1 mode=1: 198 retained products and all 18 outputs match direct contraction; 76457 arithmetic operations.
+PASS: CW n=1 mode=2: 198 retained products and all 18 outputs match direct contraction; 76457 arithmetic operations.
+PASS: bounded integer interpolation and exact CW execution; no large tensor-power or graph/FFT runtime claim.
+Exit code: 0; elapsed: 3.381 seconds.

@@ -1,0 +1,7 @@
+PASS: n=0: 1 actual classes, 1 words, 3 coordinate fibers, 0 ordered distinct pairs.
+PASS: n=1: 6 actual classes, 6 words, 18 coordinate fibers, 0 ordered distinct pairs.
+PASS: n=2: 21 actual classes, 36 words, 96 coordinate fibers, 30 ordered distinct pairs.
+PASS: n=3: 56 actual classes, 216 words, 468 coordinate fibers, 780 ordered distinct pairs.
+SCOPE: executable constructed classes, fiber/cardinality formulas, actual collisions and prime selector; no execution-cost or entropy-rate assertion.
+
+Exit code: 0.

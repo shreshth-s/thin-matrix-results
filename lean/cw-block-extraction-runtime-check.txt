@@ -1,0 +1,6 @@
+PASS: actual mod-7 candidate construction and collision cleanup retain exactly two copies.
+PASS: 512 actual word-embedding coordinates equal the independently computed direct-sum tensor.
+PASS: zero tensor power retains one scalar; empty coordinate restriction retains no copy.
+SCOPE: bounded executable finite isolation; generic exact decomposition is kernel-checked separately.
+
+Exit code: 0; elapsed: 3.068 seconds.

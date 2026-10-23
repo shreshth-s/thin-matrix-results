@@ -1,0 +1,11 @@
+Bounded folded-band scheduling fixture; deadline 180 seconds. Command: lake env lean --run scripts/check_folded_band_schedule.lean
+PASS: actual normalized coefficient copies, signed values and binary-copy/control budgets
+PASS: empty requests and singleton cyclic coefficient space
+PASS: exhaustive nested binary collection, unmatched children, multiplicity, empty arrays and accumulation charges
+PASS: actual stored-shape band enumeration, including no bands and incomplete final bands
+PASS: independent original incidence ordering across blocks and all three request windows
+PASS: actual copied bands versus independent original signed cyclic products, including zero and partial bands
+PASS: complete new finite program with its constructed plan at n=0, h=0..3; no graph children
+PASS: bounded folded-band scheduling suite finished; no full graph or production FFT evaluation.
+Exit code: 0; elapsed: 3.254 seconds.
+Source/configuration SHA-256: b8c0bff07126e22887292bddc87ba9e2a0476f2ed592da16fe5002519277bd67

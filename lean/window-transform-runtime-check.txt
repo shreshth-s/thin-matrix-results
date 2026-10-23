@@ -1,0 +1,20 @@
+Bounded independent runtime suite; 180-second process-group deadline.
+PASS: independent dense forward matrix and coordinate permutation: k=0, ell=0, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=0, ell=1, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=0, ell=0, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=0, ell=1, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=1, ell=0, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=1, ell=1, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=1, ell=1, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=1, ell=2, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=2, ell=0, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=2, ell=1, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=2, ell=2, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=2, ell=3, both sides and ties
+PASS: repeated request columns, 65536 bit boundary and empty coefficients
+PASS: complete retained roots to transformed/permuted windows, zero residual and empty distinguished masks
+PASS: independent physical-root tensor reference with nonzero rare budget at L=3,m=2
+PASS: both input families and aggregate retained-array counters at m=0
+PASS: bounded window-transform suite completed; no expensive graph-source or FFT runtime attempt was rerun.
+Exit code: 0; elapsed seconds: 7.488
+Source/configuration SHA-256: 56ddc9addf6c1daaa31f5d2a1c5d97e67b5f2a39da98d5ae7834618a9a4ed92d

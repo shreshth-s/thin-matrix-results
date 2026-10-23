@@ -1,0 +1,10 @@
+Bounded LOW/HIGH join fixture; deadline 180 seconds. Command: lake env lean --run scripts/check_low_high_join.lean
+PASS: binary divisor, retained numerators, signed exact quotients and arithmetic/control budgets, L=0..12
+PASS: 257-bit divisor and signed cancellation without integer reconversion
+PASS: empty request and cyclic arrays retain and charge shared divisor construction
+PASS: signed Euclidean quotient including nondivisible inputs
+PASS: independent LOW plus ordinary-threshold HIGH identity for all local letters and thresholds, k=0..2
+PASS: actual exact-half band sources through normalized physical queries, m=0, L=0..1; signed cyclic products, duplicate and rejected requests
+PASS: bounded LOW/HIGH join suite finished; no full graph or production FFT evaluation.
+Exit code: 0; elapsed: 3.652 seconds.
+Source/configuration SHA-256: b111c275d763463786ffb13d803493959d92ed240cfe13e289a71ebe3b04713b

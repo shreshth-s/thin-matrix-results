@@ -5123,6 +5123,28 @@ lean/GraphFoldedCountCorrect.lean
 'ThinMatrix.GraphFoldedCountCorrect.finite_nonnegative' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.GraphFoldedCountCorrect.finite_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
 
+lean/PaddedMatrix.lean
+'ThinMatrix.PaddedMatrix.execute_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.PaddedMatrix.power_matrix_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.PaddedMatrix.execute_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.PaddedMatrix.embed_index' depends on axioms: [propext, Quot.sound]
+'ThinMatrix.PaddedMatrix.pad_costs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.PaddedMatrix.crop_costs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.PaddedMatrix.pad_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.PaddedMatrix.depth_fits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.PaddedMatrix.atSize_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.PaddedMatrix.sum_padding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.PaddedMatrix.execute_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/PaddedMatrixScale.lean
+'ThinMatrix.PaddedMatrixScale.execute_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.PaddedMatrixScale.execute_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.PaddedMatrixScale.bases_gt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.PaddedMatrixScale.aspect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.PaddedMatrixScale.fits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.PaddedMatrixScale.clog_power_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.PaddedMatrixScale.size_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
 lean/ToomCyclic.lean
 'ThinMatrix.ToomCyclic.input_natDegree_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.ToomCyclic.multiply_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -5136,6 +5158,6 @@ lean/ToomCyclicBit.lean
 'ThinMatrix.ToomCyclicBit.foldArray_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.ToomCyclicBit.multiply_fixed_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-PASS: 356 modules; 3806 scoped declarations checked; only standard Lean axioms.
-Source/configuration SHA-256: 0f62323de659fbe349e6e14b14e048fb36512d8e7b951f997ad7a09b12d69e69
+PASS: 358 modules; 3824 scoped declarations checked; only standard Lean axioms.
+Source/configuration SHA-256: 9148e2d054b2c9a5dc21b66077e068aaf037e4c36e1c51c3a2e0acf10f3b0f4a
 See lean/README.md for the exact formalization scope and remaining obligations.

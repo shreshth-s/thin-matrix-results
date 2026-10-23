@@ -91,9 +91,10 @@ selection, and common-denominator and coefficient-height bounds. The retained
 recursive evaluator now has correctness and arithmetic/control recurrences;
 its binary implementation has derived intermediate widths, bit costs and exact
 denominator recovery. Ordinary matrix coordinates at tensor-power dimensions
-are connected to the actual CW base. Arbitrary-size padding/address pricing,
-efficient graph batches and the complete APSP execution-cost proof remain
-unfinished; see [the latest scope](lean/EXACT_HALF_ROADMAP.md#retained-recursive-execution-checkpoint).
+are connected to the actual CW base. Arbitrary-size padding, exact cropping
+and integer size bounds are now proved. Complete size-selection/address pricing,
+efficient graph batches and the full APSP execution-cost proof remain unfinished;
+see [the latest scope](lean/EXACT_HALF_ROADMAP.md#padded-matrix-execution-checkpoint).
 
 ## Caveats
 

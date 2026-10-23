@@ -1,0 +1,18 @@
+PASS: padded 0x0 by 0x0, depth 0, seed -3; 0 entries.
+PASS: padded 0x0 by 0x0, depth 0, seed 65537; 0 entries.
+PASS: padded 0x3 by 3x2, depth 2, seed -3; 0 entries.
+PASS: padded 0x3 by 3x2, depth 2, seed 65537; 0 entries.
+PASS: padded 2x0 by 0x3, depth 1, seed -3; 6 entries.
+PASS: padded 2x0 by 0x3, depth 1, seed 65537; 6 entries.
+PASS: padded 1x1 by 1x1, depth 0, seed -3; 1 entries.
+PASS: padded 1x1 by 1x1, depth 0, seed 65537; 1 entries.
+PASS: padded 1x2 by 2x3, depth 1, seed -3; 3 entries.
+PASS: padded 1x2 by 2x3, depth 1, seed 65537; 3 entries.
+PASS: padded 2x2 by 2x3, depth 1, seed -3; 6 entries.
+PASS: padded 2x2 by 2x3, depth 1, seed 65537; 6 entries.
+PASS: padded 3x2 by 2x4, depth 2, seed -3; 12 entries.
+PASS: padded 3x2 by 2x4, depth 2, seed 65537; 12 entries.
+PASS: padded 3x3 by 3x4, depth 2, seed -3; 12 entries.
+PASS: padded 3x3 by 3x4, depth 2, seed 65537; 12 entries.
+PASS: 80 original matrix entries after selected-depth padding and cropping; complete arithmetic budget checked.
+SCOPE: address and depth-selection binary costs and the full APSP bound remain unproved.

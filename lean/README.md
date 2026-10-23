@@ -58,7 +58,9 @@ The level-one equal-copy rank conversion and retained recursive evaluation
 are now proved, including binary primitives, intermediate widths, exact
 denominator recovery and matrix coordinates at tensor-power dimensions; see
 [the current checkpoint](#retained-recursive-execution-checkpoint).
-Arbitrary-size padding/address pricing and APSP cost integration remain unproved.
+Arbitrary-size padding and integer size bounds are now proved; see the
+[padded matrix checkpoint](#padded-matrix-execution-checkpoint). Complete size-selection/address
+pricing and APSP cost integration remain unproved.
 
 The following new source components are formalized:
 
@@ -441,7 +443,7 @@ numerical interval-generator inputs. The successful transcript is
 dependency downloads are excluded from the repository. The stored compiler
 transcript normalizes trailing whitespace; diagnostics and axiom reports are retained.
 
-The recorded frozen-source run compiled 356 modules and checked 3,806 axiom
+The recorded frozen-source run compiled 358 modules and checked 3,824 axiom
 reports, all containing only the standard axioms above. The transcript records
 the source/configuration hash; `sources.json` records the same digest.
 
@@ -2145,3 +2147,63 @@ exponent remains **2.99294792**, and the requested **2.9926862626** theorem is
 still unfinished. The mathematical TeX/PDF and numerical witnesses are unchanged.
 
 Frozen verification for this checkpoint: 356 modules, 3,806 axiom reports; only standard Lean axioms. The full Python suite and the actual Lean runtime fixture passed. Source/configuration SHA-256: `0f62323de659fbe349e6e14b14e048fb36512d8e7b951f997ad7a09b12d69e69`.
+
+
+## Padded matrix execution checkpoint
+
+`PaddedMatrix` now takes ordinary matrix arrays at arbitrary finite dimensions,
+selects a depth with integer ceiling logarithms, pads one copy into the retained
+simultaneous product, and crops the original output coordinates. Its
+`atSize_correct` theorem proves every output is the original matrix product,
+including empty dimensions. No caller-supplied valid padding plan is needed.
+The fixed bilinear base still supplies its already-proved tensor identity.
+
+Padding retains the original signed cells and inserts zeros. It preserves the
+original magnitude bound, so `execute_bits` transfers the complete binary
+arithmetic budget from `BinaryRecursiveCost`. Separate exact control identities
+charge both padded input arrays and every cropped output; these do not price
+native logarithm computation or recursive address arithmetic.
+
+`PaddedMatrixScale` connects that adapter to the actual extracted CW base.
+For a fixed positive base scale s, write Q for its inner axis `rows s`. The
+selected depth is `k=clog(Q,D)+1`. The integer hypotheses
+
+    (n-1)^500 <= D^861,       p <= D^15
+
+suffice to fit an n-by-D times D-by-p product into the base powers; the extra
+level covers upward rounding of the first axis. The adapter proves the
+original product and its binary arithmetic budget for this same actual base.
+For positive D it also proves
+
+    Q^k <= Q^2 * D,          k <= size(D)+1.
+
+Thus selecting the next base power costs only a fixed factor in the inner
+size. These are finite integer size bounds, not the complete uniform binary
+resource theorem. The first-axis hypothesis still has to be established for
+the graph algorithm's actual rounded batch shapes.
+
+The actual Lean runtime fixture checks 80 original matrix entries for empty
+axes, partial power dimensions, signed values and the 16-bit boundary. Every
+result is compared with an independent direct inner product, and the complete
+binary arithmetic budget is checked. It uses small explicit bilinear bases;
+the positive-scale CW base remains symbolically proved rather than materialized.
+
+```sh
+lake env lean --run scripts/check_padded_recursion.lean
+```
+
+The remaining work is complete binary pricing of size selection and addresses,
+a combined uniform rectangular resource interface, optimized shared graph
+batches and strict fit, rounded aggregate phase costs, and adaptive APSP
+integration. The full `2.9926862626` theorem remains unproved. The existing
+closed theorem remains `2.99294792` and imports none of these extensions.
+
+The concrete next integration point is `BinaryPreparedGroupedProgram.runGroup`
+and its family scheduler. They still call the elementary
+`BinaryGroupedCompletion.runMatrix`. The fast replacement must construct the
+selector/data chunks for the padded CW multiplier, preserve original request
+indices and duplicates, retain every `B*q*F` column, and charge the resulting
+outputs. Its actual dimensions must establish the independent strict batch
+fit before the rectangular bound enters the phase ledger.
+
+Frozen verification for this checkpoint: 358 modules, 3,824 axiom reports; only standard Lean axioms. The padded Lean runtime fixture passed on 80 original entries. The numerical/finite Python suite is unchanged from its preceding successful run. Source/configuration SHA-256: `9148e2d054b2c9a5dc21b66077e068aaf037e4c36e1c51c3a2e0acf10f3b0f4a`.

@@ -82,6 +82,23 @@ def source_snapshot(root: Path) -> dict[str, str]:
         "scripts/check_addressed_recursion.lean",
         "scripts/check_half_source_suffix.lean",
         "scripts/check_half_source_binary_suffix.lean",
+        "scripts/check_addressed_costs.lean",
+        "scripts/check_addressed_matrix.lean",
+        "scripts/check_shared_fully_prefix_schedule.lean",
+        "scripts/check_addressed_work.lean",
+        "scripts/check_fully_retained_root_batch.lean",
+        "scripts/check_shared_fully_prefix_work.lean",
+        "scripts/check_addressed_price.lean",
+        "scripts/check_shared_prefix_prices.lean",
+        "scripts/check_half_source_cap_setup.lean",
+        "scripts/check_selected_high_queries.lean",
+        "scripts/check_retained_high_sources.lean",
+        "scripts/check_graph_own_band_routing.lean",
+        "scripts/check_selected_root_product.lean",
+        "scripts/check_retained_root_batch.lean",
+        "scripts/check_selected_root_rows.lean",
+        "scripts/check_fully_retained_root_prices.lean",
+        "scripts/check_original_row_collection.lean",
     )]
     return {
         str(path.relative_to(root)): hashlib.sha256(path.read_bytes()).hexdigest()

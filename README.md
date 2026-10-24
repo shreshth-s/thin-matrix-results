@@ -83,14 +83,14 @@ arithmetic, deterministic certification, parameter setup, and APSP reductions
 are connected in this statement. See [lean/README.md](lean/README.md) for the
 execution model and reproduction instructions.
 
-The extension to `2.9926862626` is in progress. The frozen Lean check now
-covers 416 modules and 4,337 declaration reports. It includes the exact
-rectangular base construction, retained binary recursion, compatible
-middle-block batches, stable occurrence routing, reused prefix matrix banks,
-adaptive suffix selection, the independent rounded batch fit and all 61
-numerical phase checks. Connecting the actual optimized backend costs to the
-final APSP caller remains unfinished. The complete theorem remains
-`2.99294792`; see [the current scope](lean/EXACT_HALF_ROADMAP.md#routed-shared-batch-and-parameter-checkpoint).
+The extension to `2.9926862626` is in progress. The frozen Lean check covers
+502 modules and 4,848 declaration reports. It includes addressed binary
+rectangular execution, retained shared batches, stable original-occurrence
+routing, selected cyclic coefficient products, reused HIGH sources, actual
+source-volume bounds, independent fit and all 61 numerical phase checks.
+The optimized backend's complete aggregate runtime and APSP caller theorem
+remain unfinished. The complete theorem remains `2.99294792`; see
+[the current scope](lean/EXACT_HALF_ROADMAP.md#addressed-execution-and-source-cost-checkpoint).
 
 ## Caveats
 

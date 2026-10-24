@@ -16,18 +16,18 @@ and bounded indexed-control model; native Lean evaluation is not that model.
 
 The current `BinaryAlignedAPSPTheorem.correctness_and_work` proves
 `299294792/100000000`. Its transitive local import closure contains 129
-modules and **none of the 281 modules recorded as exact-half extensions**.
+modules and **none of the 367 modules recorded as exact-half extensions**.
 Thus no exact-half result is currently on the closed theorem's proof path.
 The existing graph/controller correctness framework is reusable, but its
 concrete callback and cost specialization still use the old backend. All
-281 extension modules remain outside that closure. The full local import graph is recorded in
+367 extension modules remain outside that closure. The full local import graph is recorded in
 `exact-half-dependency-audit.json`; import closure is an overapproximation of
 declaration dependencies, and exclusion is decisive for this audit.
 
-The current result is in [Routed shared-batch and parameter
-checkpoint](#routed-shared-batch-and-parameter-checkpoint). It adds production
-prefix matrix banks, compatible blocks, stable request routing, adaptive
-prefix selection, rounded batch fit and the exact numerical phase ledger.
+The current result is in [Addressed execution and source-cost
+checkpoint](#addressed-execution-and-source-cost-checkpoint). It adds actual
+binary address pricing, shared batches, stable occurrence routing, selected
+cyclic coefficient products and source-volume bounds.
 Earlier checkpoint sections below retain their historical scope and pending obligations.
 
 ## Current proof boundaries
@@ -42,7 +42,7 @@ Earlier checkpoint sections below retain their historical scope and pending obli
 | Full APSP caller | The older concrete backend and adaptive theorem are closed at `2.99294792`. | Instantiate the caller with the improved backend and derive its complete `2.9926862626` cost from original graph hypotheses. None of the extension modules is yet in the closed theorem's import closure. |
 
 The current remaining obligations are listed at the end of the
-[routed shared-batch and parameter checkpoint](#routed-shared-batch-and-parameter-checkpoint).
+[addressed execution and source-cost checkpoint](#addressed-execution-and-source-cost-checkpoint).
 
 ## Original completion sequence (historical)
 
@@ -2206,3 +2206,28 @@ APSP caller. The closed theorem remains **2.99294792**; the requested
 **2.9926862626** theorem is unfinished. Its 129-module import closure contains
 none of the 281 extension modules. No canonical mathematical result or
 numerical witness changed at this checkpoint.
+
+## Addressed execution and source-cost checkpoint
+
+The frozen verification passed **502 modules and 4,848 axiom reports**, using
+only `propext`, `Classical.choice` and `Quot.sound`. Source/configuration
+SHA-256: `f1a93c88a816e1d76fa9c953e3a074170ce9a1978f9eb0a6bab6c5dde34b2a57`.
+
+This checkpoint connects binary matrix-address operations to retained shared
+prefix and window completion. It prices padded storage, input gathering,
+internal arrays, projected outputs, matrix tiles and recursion. Stable own-band
+routing preserves original occurrence IDs and duplicates; selected cyclic
+products read the requested coefficient while retaining full coefficient
+vectors during preprocessing. HIGH preparation reuses source encodings.
+
+Actual source, root, channel-type, own-band, completion and HIGH volumes have
+proved bounds, alongside the rounded independent fit and 61 numerical phase
+checks. The executable optimized LOW/HIGH backend and complete aggregate
+runtime/caller proof are still being integrated. Newer scratch proofs are not
+part of this frozen verification. The complete theorem remains **2.99294792**;
+the requested **2.9926862626** theorem is unfinished. The closed theorem's
+129-module import closure contains none of the 367 extension modules.
+
+Both canonical/research and results Python verification suites were rerun and
+passed, reproducing all stored certificate outputs. No mathematical witness
+or canonical TeX source changed in this checkpoint.

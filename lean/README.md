@@ -447,7 +447,7 @@ numerical interval-generator inputs. The successful transcript is
 dependency downloads are excluded from the repository. The stored compiler
 transcript normalizes trailing whitespace; diagnostics and axiom reports are retained.
 
-The recorded frozen-source run compiled 416 modules and checked 4,337 axiom
+The recorded frozen-source run compiled 502 modules and checked 4,848 axiom
 reports, all containing only the standard axioms above. The transcript records
 the source/configuration hash; `sources.json` records the same digest.
 
@@ -2330,3 +2330,28 @@ APSP caller. The closed theorem remains **2.99294792**; the requested
 **2.9926862626** theorem is unfinished. Its 129-module import closure contains
 none of the 281 extension modules. No canonical mathematical result or
 numerical witness changed at this checkpoint.
+
+## Addressed execution and source-cost checkpoint
+
+The frozen verification passed **502 modules and 4,848 axiom reports**, using
+only `propext`, `Classical.choice` and `Quot.sound`. Source/configuration
+SHA-256: `f1a93c88a816e1d76fa9c953e3a074170ce9a1978f9eb0a6bab6c5dde34b2a57`.
+
+This checkpoint connects binary matrix-address operations to retained shared
+prefix and window completion. It prices padded storage, input gathering,
+internal arrays, projected outputs, matrix tiles and recursion. Stable own-band
+routing preserves original occurrence IDs and duplicates; selected cyclic
+products read the requested coefficient while retaining full coefficient
+vectors during preprocessing. HIGH preparation reuses source encodings.
+
+Actual source, root, channel-type, own-band, completion and HIGH volumes have
+proved bounds, alongside the rounded independent fit and 61 numerical phase
+checks. The executable optimized LOW/HIGH backend and complete aggregate
+runtime/caller proof are still being integrated. Newer scratch proofs are not
+part of this frozen verification. The complete theorem remains **2.99294792**;
+the requested **2.9926862626** theorem is unfinished. The closed theorem's
+129-module import closure contains none of the 367 extension modules.
+
+Both canonical/research and results Python verification suites were rerun and
+passed, reproducing all stored certificate outputs. No mathematical witness
+or canonical TeX source changed in this checkpoint.

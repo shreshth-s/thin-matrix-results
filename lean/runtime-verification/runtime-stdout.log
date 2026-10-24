@@ -1,0 +1,1240 @@
+
+===== scripts/check_addressed_costs.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 89a0b26f30d19bd0657b03eee46564ec69a7aa297f2b8e3f11f43dab46ed37b5
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_addressed_costs.lean"]
+Exit: 0; seconds: 5.179; output SHA-256: 94ad96c67937c8b38e19e648113ce0ad5fe2d07ae6d921e71cffa786e1f3bd6e
+----- captured output begins -----
+PASS: rank=0, copies=1, dimensions=1x1x1, depth=0, seed=-11; 1 cells, 329 binary address steps.
+PASS: rank=0, copies=1, dimensions=1x1x1, depth=0, seed=65537; 1 cells, 329 binary address steps.
+PASS: rank=0, copies=1, dimensions=2x1x3, depth=1, seed=-11; 6 cells, 6081 binary address steps.
+PASS: rank=0, copies=1, dimensions=2x1x3, depth=1, seed=65537; 6 cells, 6081 binary address steps.
+PASS: rank=1, copies=2, dimensions=1x2x1, depth=1, seed=-11; 2 cells, 13650 binary address steps.
+PASS: rank=1, copies=2, dimensions=1x2x1, depth=1, seed=65537; 2 cells, 13650 binary address steps.
+PASS: rank=5, copies=2, dimensions=2x1x2, depth=1, seed=-11; 8 cells, 132780 binary address steps.
+PASS: rank=5, copies=2, dimensions=2x1x2, depth=1, seed=65537; 8 cells, 132780 binary address steps.
+PASS: rank=5, copies=2, dimensions=2x1x2, depth=2, seed=-11; 32 cells, 1045503 binary address steps.
+PASS: rank=5, copies=2, dimensions=2x1x2, depth=2, seed=65537; 32 cells, 1045503 binary address steps.
+PASS: rank=3, copies=2, dimensions=1x2x3, depth=2, seed=-11; 18 cells, 1369141 binary address steps.
+PASS: rank=3, copies=2, dimensions=1x2x3, depth=2, seed=65537; 18 cells, 1369141 binary address steps.
+PASS: rank=9, copies=1, dimensions=2x2x2, depth=2, seed=-11; 16 cells, 3486713 binary address steps.
+PASS: rank=9, copies=1, dimensions=2x2x2, depth=2, seed=65537; 16 cells, 3486713 binary address steps.
+PASS: 166 binary-addressed recursive output cells, signed values, zero rank, incomplete final child group, and asymmetric matrix dimensions.
+
+----- captured output ends -----
+
+===== scripts/check_addressed_matrix.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 4b14567807f9e33903115ffd00a9d93ccb004b190dc1a9cf94f0cedd7531766a
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_addressed_matrix.lean"]
+Exit: 0; seconds: 5.368; output SHA-256: 61285e473925501beddb0b20d765d1c1ac6e7615ea6efe7c2d224b8d16157352
+----- captured output begins -----
+PASS: 0x1x1, depth0, seed-7: 0 outputs; full binary pad, recursion, rational recovery, crop and uniform bit bound.
+PASS: 0x1x1, depth0, seed65537: 0 outputs; full binary pad, recursion, rational recovery, crop and uniform bit bound.
+PASS: 1x0x1, depth0, seed-7: 1 outputs; full binary pad, recursion, rational recovery, crop and uniform bit bound.
+PASS: 1x0x1, depth0, seed65537: 1 outputs; full binary pad, recursion, rational recovery, crop and uniform bit bound.
+PASS: 1x1x0, depth0, seed-7: 0 outputs; full binary pad, recursion, rational recovery, crop and uniform bit bound.
+PASS: 1x1x0, depth0, seed65537: 0 outputs; full binary pad, recursion, rational recovery, crop and uniform bit bound.
+PASS: 1x1x1, depth0, seed-7: 1 outputs; full binary pad, recursion, rational recovery, crop and uniform bit bound.
+PASS: 1x1x1, depth0, seed65537: 1 outputs; full binary pad, recursion, rational recovery, crop and uniform bit bound.
+PASS: 2x1x2, depth1, seed-7: 4 outputs; full binary pad, recursion, rational recovery, crop and uniform bit bound.
+PASS: 2x1x2, depth1, seed65537: 4 outputs; full binary pad, recursion, rational recovery, crop and uniform bit bound.
+PASS: 1x2x1, depth1, seed-7: 1 outputs; full binary pad, recursion, rational recovery, crop and uniform bit bound.
+PASS: 1x2x1, depth1, seed65537: 1 outputs; full binary pad, recursion, rational recovery, crop and uniform bit bound.
+PASS: 2x2x2, depth1, seed-7: 4 outputs; full binary pad, recursion, rational recovery, crop and uniform bit bound.
+PASS: 2x2x2, depth1, seed65537: 4 outputs; full binary pad, recursion, rational recovery, crop and uniform bit bound.
+PASS: 3x2x4, depth2, seed-7: 12 outputs; full binary pad, recursion, rational recovery, crop and uniform bit bound.
+PASS: 3x2x4, depth2, seed65537: 12 outputs; full binary pad, recursion, rational recovery, crop and uniform bit bound.
+PASS: 4x3x2, depth2, seed-7: 8 outputs; full binary pad, recursion, rational recovery, crop and uniform bit bound.
+PASS: 4x3x2, depth2, seed65537: 8 outputs; full binary pad, recursion, rational recovery, crop and uniform bit bound.
+PASS: 62 complete binary-addressed ordinary matrix outputs; signed inputs, rational base, padded and empty axes.
+
+----- captured output ends -----
+
+===== scripts/check_addressed_price.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: f9d221366d514e9e68d19a3d69dad3c44607359f1ae54f2eb0f8eeb3a2b4a822
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_addressed_price.lean"]
+Exit: 0; seconds: 5.765; output SHA-256: 7622ca9383d5ed66968c0122d369533296198783c5c709e5aceaacd6724b025c
+----- captured output begins -----
+PASS: 0x1x1, depth0, seed-7: 0 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/priced-work, full-tree storage and whole-batch address bounds.
+PASS: 0x1x1, depth0, seed65537: 0 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/priced-work, full-tree storage and whole-batch address bounds.
+PASS: 1x0x1, depth0, seed-7: 1 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/priced-work, full-tree storage and whole-batch address bounds.
+PASS: 1x0x1, depth0, seed65537: 1 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/priced-work, full-tree storage and whole-batch address bounds.
+PASS: 1x1x0, depth0, seed-7: 0 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/priced-work, full-tree storage and whole-batch address bounds.
+PASS: 1x1x0, depth0, seed65537: 0 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/priced-work, full-tree storage and whole-batch address bounds.
+PASS: 1x1x1, depth0, seed-7: 1 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/priced-work, full-tree storage and whole-batch address bounds.
+PASS: 1x1x1, depth0, seed65537: 1 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/priced-work, full-tree storage and whole-batch address bounds.
+PASS: 2x1x2, depth1, seed-7: 4 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/priced-work, full-tree storage and whole-batch address bounds.
+PASS: 2x1x2, depth1, seed65537: 4 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/priced-work, full-tree storage and whole-batch address bounds.
+PASS: 1x2x1, depth1, seed-7: 1 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/priced-work, full-tree storage and whole-batch address bounds.
+PASS: 1x2x1, depth1, seed65537: 1 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/priced-work, full-tree storage and whole-batch address bounds.
+PASS: 2x2x2, depth1, seed-7: 4 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/priced-work, full-tree storage and whole-batch address bounds.
+PASS: 2x2x2, depth1, seed65537: 4 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/priced-work, full-tree storage and whole-batch address bounds.
+PASS: 3x2x4, depth2, seed-7: 12 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/priced-work, full-tree storage and whole-batch address bounds.
+PASS: 3x2x4, depth2, seed65537: 12 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/priced-work, full-tree storage and whole-batch address bounds.
+PASS: 4x3x2, depth2, seed-7: 8 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/priced-work, full-tree storage and whole-batch address bounds.
+PASS: 4x3x2, depth2, seed65537: 8 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/priced-work, full-tree storage and whole-batch address bounds.
+PASS: 62 complete binary-addressed ordinary matrix outputs; signed inputs, rational base, padded and empty axes, actual bit plus derived indexed-control price and whole-batch address bounds.
+
+----- captured output ends -----
+
+===== scripts/check_addressed_recursion.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 84ed01ec5a57b36b3e19e51c3bc4b78f3912668e14e811f042b6502332f6f91b
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_addressed_recursion.lean"]
+Exit: 0; seconds: 5.179; output SHA-256: 94ad96c67937c8b38e19e648113ce0ad5fe2d07ae6d921e71cffa786e1f3bd6e
+----- captured output begins -----
+PASS: rank=0, copies=1, dimensions=1x1x1, depth=0, seed=-11; 1 cells, 329 binary address steps.
+PASS: rank=0, copies=1, dimensions=1x1x1, depth=0, seed=65537; 1 cells, 329 binary address steps.
+PASS: rank=0, copies=1, dimensions=2x1x3, depth=1, seed=-11; 6 cells, 6081 binary address steps.
+PASS: rank=0, copies=1, dimensions=2x1x3, depth=1, seed=65537; 6 cells, 6081 binary address steps.
+PASS: rank=1, copies=2, dimensions=1x2x1, depth=1, seed=-11; 2 cells, 13650 binary address steps.
+PASS: rank=1, copies=2, dimensions=1x2x1, depth=1, seed=65537; 2 cells, 13650 binary address steps.
+PASS: rank=5, copies=2, dimensions=2x1x2, depth=1, seed=-11; 8 cells, 132780 binary address steps.
+PASS: rank=5, copies=2, dimensions=2x1x2, depth=1, seed=65537; 8 cells, 132780 binary address steps.
+PASS: rank=5, copies=2, dimensions=2x1x2, depth=2, seed=-11; 32 cells, 1045503 binary address steps.
+PASS: rank=5, copies=2, dimensions=2x1x2, depth=2, seed=65537; 32 cells, 1045503 binary address steps.
+PASS: rank=3, copies=2, dimensions=1x2x3, depth=2, seed=-11; 18 cells, 1369141 binary address steps.
+PASS: rank=3, copies=2, dimensions=1x2x3, depth=2, seed=65537; 18 cells, 1369141 binary address steps.
+PASS: rank=9, copies=1, dimensions=2x2x2, depth=2, seed=-11; 16 cells, 3486713 binary address steps.
+PASS: rank=9, copies=1, dimensions=2x2x2, depth=2, seed=65537; 16 cells, 3486713 binary address steps.
+PASS: 166 binary-addressed recursive output cells, signed values, zero rank, incomplete final child group, and asymmetric matrix dimensions.
+
+----- captured output ends -----
+
+===== scripts/check_addressed_work.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: f3871be588b61d7f03381d66c13ccbe616928edb60fac2fbb5d5db0eda48ab1c
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_addressed_work.lean"]
+Exit: 0; seconds: 5.229; output SHA-256: 4f77ccce5b9cc5e7ccdc3f6182a22ce8c059ff7a9e7d89a9e469eee1fce3851b
+----- captured output begins -----
+PASS: 0x1x1, depth0, seed-7: 0 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/work bounds.
+PASS: 0x1x1, depth0, seed65537: 0 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/work bounds.
+PASS: 1x0x1, depth0, seed-7: 1 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/work bounds.
+PASS: 1x0x1, depth0, seed65537: 1 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/work bounds.
+PASS: 1x1x0, depth0, seed-7: 0 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/work bounds.
+PASS: 1x1x0, depth0, seed65537: 0 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/work bounds.
+PASS: 1x1x1, depth0, seed-7: 1 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/work bounds.
+PASS: 1x1x1, depth0, seed65537: 1 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/work bounds.
+PASS: 2x1x2, depth1, seed-7: 4 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/work bounds.
+PASS: 2x1x2, depth1, seed65537: 4 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/work bounds.
+PASS: 1x2x1, depth1, seed-7: 1 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/work bounds.
+PASS: 1x2x1, depth1, seed65537: 1 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/work bounds.
+PASS: 2x2x2, depth1, seed-7: 4 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/work bounds.
+PASS: 2x2x2, depth1, seed65537: 4 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/work bounds.
+PASS: 3x2x4, depth2, seed-7: 12 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/work bounds.
+PASS: 3x2x4, depth2, seed65537: 12 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/work bounds.
+PASS: 4x3x2, depth2, seed-7: 8 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/work bounds.
+PASS: 4x3x2, depth2, seed65537: 8 outputs; full binary pad, recursion, rational recovery, crop and uniform bit/control/work bounds.
+PASS: 62 complete binary-addressed ordinary matrix outputs; signed inputs, rational base, padded and empty axes, actual bit plus indexed-control counter budget.
+
+----- captured output ends -----
+
+===== scripts/check_auto_retained_root.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 8e97aae8267a1a0e7a317eaadaf333b2eb67cdda8220dc8f8f40e6ed8d21d063
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_auto_retained_root.lean"]
+Exit: 0; seconds: 4.572; output SHA-256: 924012c1688f5affee0642a96308eceb5b46c1717ff78c63fc2fcc1cb259c794
+----- captured output begins -----
+PASS: auto root shape setup, requests=0; tile=2x1; binary setup=69971.
+PASS: auto root shape setup, requests=2; tile=2x1; binary setup=69971.
+PASS: 16 inclusive address widths and prices. SCOPE: auto-wrapper setup reuse/empty-column control smoke test with an explicit shape-only zero-rank fixture, not a valid matrix-multiplication base. Full nonempty coefficients are covered by the retained-root2856-output fixture; correctness for valid schemes is proved in Lean.
+
+----- captured output ends -----
+
+===== scripts/check_binary_grouped.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 6f3878a20351327a681f33d742566b79850da9c35c2233188edd6cb0ca29b255
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_binary_grouped.lean"]
+Exit: 0; seconds: 15.042; output SHA-256: 6dc0729e3acc070222d4368cee17eea8484cf6ec6c538ee8463bdb1e823ca569
+----- captured output begins -----
+PASS: binary grouped preparation/completion through n=4; independent raw-tensor equality for every coefficient, charged binary addresses, signed/zero inputs and bit boundaries through 65536, partial-sum widths, full B*q*F cells, duplicate/empty requests, zero-column boundary, and both counters.
+
+----- captured output ends -----
+
+===== scripts/check_binary_residual.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: ff6cc7e1cfdd4fe713f3ff5397508bb9e1aa525126338d1c723368b29801626d
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_binary_residual.lean"]
+Exit: 0; seconds: 9.754; output SHA-256: 8d3c89a88fd42c8a30d50e00de8f1217ab661e5c6538ab8d5dc0104e50af5639
+----- captured output begins -----
+PASS: retained layouts through L=6, both position arrays, every route and assembly, present/absent binary searches, construction bits and control.
+PASS: shifted binary coefficient rows, signs, all degrees/columns, zero dimensions and bit boundaries through 65536; copies, arithmetic bounds and control.
+PASS: complete retained binary residual arrays against independent dense binomial tensor coefficients through L=2; asymmetric layouts/channel counts, all crops, all four formal degrees and nine cyclic/request columns including duplicate requests, zero boundaries, input-derived widths, construction bits and control. No FFT runtime was invoked.
+
+----- captured output ends -----
+
+===== scripts/check_complete_residual.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: df7d59c64716fb98e834dd256bcd22bd05d9f324a0c09d7c468cfc7e50fd99fa
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_complete_residual.lean"]
+Exit: 0; seconds: 14.134; output SHA-256: e01cc0fd06915b3611cf5c1ff132af2e561f3dd10d752e7d042700b677ff49ab
+----- captured output begins -----
+PASS: binary degree-space selection for every mask through L=7; derived F=mN+1, binary count/add/decode prices and control.
+PASS: complete residual arrays against independent dense binomial tensor coefficients through L=2; all retained coefficients and zero tails through degree 2*L+3, nonzero highest-degree examples through L=3, asymmetric masks, repeated request columns, zero dimensions, bit boundaries through 65536, full storage and both construction counters. No FFT runtime was invoked.
+
+----- captured output ends -----
+
+===== scripts/check_cropped_high.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 6c52a8abfffb8f5a7361292cf511cdc830d52551b6f1aa9589610dc206554d22
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_cropped_high.lean"]
+Exit: 0; seconds: 94.356; output SHA-256: a50366d2b01e13cd3540e638692495ce5b55c4880faa4cb7907bf2c4f794125f
+----- captured output begins -----
+PASS: cropped shifted HIGH encoders through L=2, both orientations, every joint cap, all cyclic slots, retained cells and work; binary box recurrence with elementary full cyclic bases through L=1 against independent raw tensor and cyclic sums; production FFT composition is kernel-checked only; zero-length/zero-input boundaries and binary setup bit boundaries.
+
+----- captured output ends -----
+
+===== scripts/check_cw_block_extraction.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 7aa3e35b4fd7bc5122d8da9ef59d88cef8a794714f91eadf0fd94f8b91ad27ea
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_cw_block_extraction.lean"]
+Exit: 0; seconds: 3.283; output SHA-256: d3054014267c17fb92a40a16c7481e200d9668498e445b52410ca72d205e2ebe
+----- captured output begins -----
+PASS: actual mod-7 candidate construction and collision cleanup retain exactly two copies.
+PASS: 512 actual word-embedding coordinates equal the independently computed direct-sum tensor.
+PASS: zero tensor power retains one scalar; empty coordinate restriction retains no copy.
+SCOPE: bounded executable finite isolation; generic exact decomposition is kernel-checked separately.
+
+----- captured output ends -----
+
+===== scripts/check_cw_entropy_rate.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 5601dba155d1b0436022aa975c48f308a19ed867d31d91e3d2c2245cc5b5007f
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_cw_entropy_rate.lean"]
+Exit: 0; seconds: 3.473; output SHA-256: c9e2b1e6d887d389c1ecc4c52d7eb463d40e04b8028158e2754faf18182e5418
+----- captured output begins -----
+PASS: 343 actual ternary coefficient cases and exact entropy-weight inequalities.
+PASS: 18 scaled target marginal histograms, from actual block colors and counts.
+PASS: 12 floor boundary cases and actual zero-scale target cardinalities.
+PASS: 1555 actual bounded CW words and marginal histograms.
+SCOPE: actual finite arithmetic and zero scale; real entropy/rate proofs are kernel-checked. No positive-scale target word is materialized.
+
+----- captured output ends -----
+
+===== scripts/check_cw_hash_counting.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: e21c34c051522a2a6a97aaad815027c255d0735bde9d7598c63df78f6a61ed09
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_cw_hash_counting.lean"]
+Exit: 0; seconds: 4.969; output SHA-256: 1f2ad09ed5c825b6d0670f1da48295550125c1ab22771671afd070d7ed7b4716
+----- captured output begins -----
+PASS: M=3, n=0: 9 actual samples, 3 single fibers, 0 shared-pair fibers.
+PASS: M=3, n=1: 27 actual samples, 18 single fibers, 72 shared-pair fibers.
+PASS: M=5, n=1: 125 actual samples, 30 single fibers, 120 shared-pair fibers.
+PASS: M=7, n=1: 343 actual samples, 42 single fibers, 168 shared-pair fibers.
+PASS: M=5, n=2: 625 actual samples, 10 single fibers, 10 shared-pair fibers.
+PASS: cleanup M=3, n=0, |B|=1, T=1, P=0: totals 1/0, best kept 1.
+PASS: cleanup M=3, n=0, |B|=0, T=1, P=0: totals 0/0, best kept 0.
+PASS: cleanup M=5, n=2, |B|=2, T=2, P=2: totals 100/20, best kept 1.
+SCOPE: exact finite hash counts and actual cleanup; no execution-cost or entropy-scale assertion.
+
+----- captured output ends -----
+
+===== scripts/check_cw_interpolation.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: c228cbfe222a1e57c026e8fa91b12900b64215f20f22de27823672ad55df2efe
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_cw_interpolation.lean"]
+Exit: 0; seconds: 3.826; output SHA-256: 76222d488af065c39be2e2b19ae8ee52dda7ad3dac4c448b47eac243ecea1d2e
+----- captured output begins -----
+PASS: d=0: all 1 coefficients recovered exactly by the retained integer table.
+PASS: d=1: all 2 coefficients recovered exactly by the retained integer table.
+PASS: d=2: all 3 coefficients recovered exactly by the retained integer table.
+PASS: d=3: all 4 coefficients recovered exactly by the retained integer table.
+PASS: d=10: all 11 coefficients recovered exactly by the retained integer table.
+PASS: d=20: all 21 coefficients recovered exactly by the retained integer table.
+PASS: n=0 executes the scalar product with denominator 1 and one output.
+PASS: CW n=1 mode=0: 198 retained products and all 18 outputs match direct contraction; 76457 arithmetic operations.
+PASS: CW n=1 mode=1: 198 retained products and all 18 outputs match direct contraction; 76457 arithmetic operations.
+PASS: CW n=1 mode=2: 198 retained products and all 18 outputs match direct contraction; 76457 arithmetic operations.
+PASS: bounded integer interpolation and exact CW execution; no large tensor-power or graph/FFT runtime claim.
+
+----- captured output ends -----
+
+===== scripts/check_cw_polynomial.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 96e6808779ffcbbc06e2e766498e539b9e001854d4b854844940cb1dd1f9b792
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_cw_polynomial.lean"]
+Exit: 0; seconds: 5.854; output SHA-256: e3148ec7df95f0d4de3652c70dad8d04cabb888671ffd329ca58f522487f7c9e
+----- captured output begins -----
+PASS: q=0: 32 exact rational scalar entries agree with independent label formula.
+PASS: q=1: 108 exact rational scalar entries agree with independent label formula.
+PASS: q=2: 256 exact rational scalar entries agree with independent label formula.
+PASS: q=3: 500 exact rational scalar entries agree with independent label formula.
+PASS: q=16: 23328 exact rational scalar entries agree with independent label formula.
+PASS: CW scalar terms executed; polynomial coefficients and tensor-power scope are kernel-checked separately.
+
+----- captured output ends -----
+
+===== scripts/check_cw_type_regularity.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 373a4242431a6dca92fb62650ffc93c9e7fbf18c2375b44c66f146cc1d8bcb49
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_cw_type_regularity.lean"]
+Exit: 0; seconds: 4.539; output SHA-256: 1a746c5d02b46b9318279a3344053d5681a8fa2350c0ab93228311ee88863038
+----- captured output begins -----
+PASS: n=0: 1 actual classes, 1 words, 3 coordinate fibers, 0 ordered distinct pairs.
+PASS: n=1: 6 actual classes, 6 words, 18 coordinate fibers, 0 ordered distinct pairs.
+PASS: n=2: 21 actual classes, 36 words, 96 coordinate fibers, 30 ordered distinct pairs.
+PASS: n=3: 56 actual classes, 216 words, 468 coordinate fibers, 780 ordered distinct pairs.
+SCOPE: executable constructed classes, fiber/cardinality formulas, actual collisions and prime selector; no execution-cost or entropy-rate assertion.
+
+----- captured output ends -----
+
+===== scripts/check_cyclic_window.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 8038295ac04f640c0066f717f172c5be26562a344cce115bdd5eb778be4c4b38
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_cyclic_window.lean"]
+Exit: 0; seconds: 9.247; output SHA-256: 7cdb405f79f031ccae65272fd78900eba5d665e10d3c014283b264cb648a67fb
+----- captured output begins -----
+PASS: first cyclic windows through k=7, direct ternary decoding through n=8, both halves and all tested caps; retained binary partitions through k=3 with every B*q*F column, zero writes, cell counts and separate counters; independent ordinary contractions with repeated requests; channel-side ties, zero-position/zero-column cases and magnitude bit boundaries.
+
+----- captured output ends -----
+
+===== scripts/check_distinguished_root.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: fdd8b25f13b56e0a9199d7af334305c83bd7b0f965f0475b3727ace01f1829b0
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_distinguished_root.lean"]
+Exit: 0; seconds: 240.457; output SHA-256: 29184bf9cd037e2833d2868c53aa694815f10072d551aff6e8ba36d31911947b
+----- captured output begins -----
+PASS: sparse shifted residual roots equal independent dense contractions; rare caps, all 12 coefficient columns, duplicated requests, asymmetric layouts and zero dimensions.
+
+----- captured output ends -----
+
+===== scripts/check_equal_copy_recursion.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 11af20dd7b4ff3bcb36d8fbef9dd20d59a3327aaa099844664f94e8584fbb845
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_equal_copy_recursion.lean"]
+Exit: 0; seconds: 3.95; output SHA-256: b30e10e194160303461771a3752648a4ee0361150c24671f89d5b0e66e2ede54
+----- captured output begins -----
+PASS: 168 padded-routing cases, including empty and incomplete batches.
+PASS: depth 0, 2 terms, 12 coefficient checks, six independent dot products.
+PASS: depth 1, 6 terms, 60 coefficient checks, six independent dot products.
+PASS: depth 2, 18 terms, 324 coefficient checks, six independent dot products.
+PASS: depth 3, 54 terms, 1836 coefficient checks, six independent dot products.
+SCOPE: executes the coefficient recursion and exact bounded products; no binary multiplier or APSP runtime claim.
+
+----- captured output ends -----
+
+===== scripts/check_exact_half_sources.lean | rechecked | PASS | stdout =====
+Source SHA-256: 7e3cf7e928f0780c391a0c943d671a4896dad7367b876786e9b2583d4706ad4f
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_exact_half_sources.lean"]
+Exit: 0; seconds: 2182.259; output SHA-256: ee7691b742f557510ef2bf7dcb27d2a1d6719a1018973297d9c6f4cb7be0ba69
+----- captured output begins -----
+PASS: inverse-weight table against independent subset/parity enumeration, L=0, m=0
+PASS: inverse-weight table against independent subset/parity enumeration, L=1, m=0
+PASS: inverse-weight table against independent subset/parity enumeration, L=1, m=1
+PASS: inverse-weight table against independent subset/parity enumeration, L=2, m=0
+PASS: inverse-weight table against independent subset/parity enumeration, L=2, m=1
+PASS: inverse-weight table against independent subset/parity enumeration, L=2, m=2
+PASS: inverse-weight table against independent subset/parity enumeration, L=3, m=0
+PASS: inverse-weight table against independent subset/parity enumeration, L=3, m=1
+PASS: inverse-weight table against independent subset/parity enumeration, L=3, m=2
+PASS: inverse-weight table against independent subset/parity enumeration, L=3, m=3
+PASS: zero-dimensional selector and empty source words
+PASS: zero-dimensional selector and signed Walsh sources
+PASS: full translation list, first-occurrence masks and binary coefficient boundary
+PASS: both shifted sources against signed Walsh reference and charged formation
+PASS: binary callback inputs through folded formation, copies and all 4096 translation pairs
+
+----- captured output ends -----
+
+===== scripts/check_folded_band_schedule.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 4133c0616e37ca714425157d928cc216bc8816edfe5a25f4b71b752e5e57d9dd
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_folded_band_schedule.lean"]
+Exit: 0; seconds: 3.628; output SHA-256: 97be4492d3826256fd85774dec213174c4eeed6783a9ad1a174d11730363eccc
+----- captured output begins -----
+PASS: actual normalized coefficient copies, signed values and binary-copy/control budgets
+PASS: empty requests and singleton cyclic coefficient space
+PASS: exhaustive nested binary collection, unmatched children, multiplicity, empty arrays and accumulation charges
+PASS: actual stored-shape band enumeration, including no bands and incomplete final bands
+PASS: independent original incidence ordering across blocks and all three request windows
+PASS: actual copied bands versus independent original signed cyclic products, including zero and partial bands
+PASS: complete new finite program with its constructed plan at n=0, h=0..3; no graph children
+PASS: bounded folded-band scheduling suite finished; no full graph or production FFT evaluation.
+
+----- captured output ends -----
+
+===== scripts/check_fully_retained_root_batch.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 7be0d4ce1217a3c8841f57d48a5f01cc70dfbb040654e5373a8a35b6de0d6bed
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_fully_retained_root_batch.lean"]
+Exit: 0; seconds: 301.728; output SHA-256: 63e9443ba85b0db31c2b8adadcc97a0f003e1123ba1bc66990be7a75977b7ebf
+----- captured output begins -----
+PASS: 2856 complete shared root outputs against sum of original per-window completions; independent data for each window, both orientations, duplicate and empty requests, and both aggregate cost counters.
+SCOPE: actual addressed backend and retained window sum with full block/coefficient columns; full APSP caller connection remains open.
+
+----- captured output ends -----
+
+===== scripts/check_fully_retained_root_prices.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 9b7cb1617e3b9eff8f356160d26eeda3277caca4096d2740a2df7f046baaa7d7
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_fully_retained_root_prices.lean"]
+Exit: 0; seconds: 405.269; output SHA-256: 2e59b13fbce0e1d19801249622e239310d07ac533a23b02946022dca48bf1aba
+----- captured output begins -----
+PASS: 2856 complete shared root outputs against sum of original per-window completions; independent data for each window, both orientations, duplicate and empty requests, and both aggregate cost counters, complete priced child/accumulation bound and actual source-bank storage majorants.
+SCOPE: actual addressed backend and retained window sum with full block/coefficient columns; full APSP caller connection remains open.
+
+----- captured output ends -----
+
+===== scripts/check_graph_own_band_prices.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: fe335488a61c19d6fe1295a1eb7b2a158569113a776002bb211e895b7fb3f293
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_graph_own_band_prices.lean"]
+Exit: 0; seconds: 11.82; output SHA-256: c08d329be872b346826b088d3fb5b6841b01e79b9973d53a2ca8cad5936f2f57
+----- captured output begins -----
+PASS: 16 retained own-band/mask banks across both orientations; one actual binary cap, one shared physical-target/two-router preparation, per-type binary tile/setup and exact final counters; actual bank-copy bound and three global indexed-control prices.
+SCOPE: empty graph/middle-block production integration with a shape-only zero-rank base; nonempty source algebra, routing and root coefficients are independently covered by existing fixtures, and production correctness for valid schemes is proved in Lean.
+
+----- captured output ends -----
+
+===== scripts/check_graph_own_band_production.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 038398a8388292305b58cdd48d85944e78a0bce1ca0542532245331afcc9cd58
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_graph_own_band_production.lean"]
+Exit: 0; seconds: 7.078; output SHA-256: b67c78c33a1a3f37f8c5447ee0b0745fada171f5d33e043e4233ff13978c3184
+----- captured output begins -----
+PASS: 16 retained own-band/mask banks across both orientations; one actual binary cap, one shared physical-target/two-router preparation, per-type binary tile/setup and exact final counters.
+SCOPE: empty graph/middle-block production integration with a shape-only zero-rank base; nonempty source algebra, routing and root coefficients are independently covered by existing fixtures, and production correctness for valid schemes is proved in Lean.
+
+----- captured output ends -----
+
+===== scripts/check_graph_own_band_routing.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 2d150d884b97257d173527b89a9fc40a0d73725f7f05b9c48af1203e6611dddb
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_graph_own_band_routing.lean"]
+Exit: 0; seconds: 6.25; output SHA-256: b467bf38005b4305ce3ca4b39f23ce9552d73d30b530c27b7240ddb6550414ab
+----- captured output begins -----
+PASS: graph own-band root routing right=false; 37 original occurrences projected once.
+PASS: graph own-band root routing right=true; 37 original occurrences projected once.
+PASS: graph own-band root routing right=false; 37 original occurrences projected once.
+PASS: graph own-band root routing right=true; 37 original occurrences projected once.
+PASS: 805 routed occurrences; stable indices, duplicates, empty lists, both orientations, original projected labels, and finite routing budgets.
+PASS: routing omits the opposite band while preserving each original occurrence and its projected labels.
+
+----- captured output ends -----
+
+===== scripts/check_graph_own_band_runtime.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: e9415408ae6076d6538c642f13fe54bb84f1ce12f0f68645b71d1d9dad01390a
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_graph_own_band_runtime.lean"]
+Exit: 0; seconds: 5.712; output SHA-256: 2f88c8049a9e1a6d41461e1863f3ee84527b665a046bb7b412fa89866dc25b2e
+----- captured output begins -----
+PASS: graph own-band root routing right=false; 37 original occurrences projected once.
+PASS: graph own-band root routing right=true; 37 original occurrences projected once.
+PASS: graph own-band root routing right=false; 37 original occurrences projected once.
+PASS: graph own-band root routing right=true; 37 original occurrences projected once.
+PASS: 805 routed occurrences; stable indices, duplicates, empty lists, both orientations, original projected labels, and finite routing budgets.
+PASS: retained mask sizes drive every own-band decoder/router/read, with original occurrences and exact counters preserved.
+
+----- captured output ends -----
+
+===== scripts/check_graph_own_routing.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: e65e086cc4cafd19ea3e05df8003f6c942e653024da648f45cdd8ed2dfae4ee3
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_graph_own_routing.lean"]
+Exit: 0; seconds: 9.358; output SHA-256: fd69b0f3ac3267166c1623bdf2a5b3699ecd257c59172aff194ffe3f570bc77c
+----- captured output begins -----
+PASS: graph own-root routing right=false; 37 original occurrences projected once.
+PASS: graph own-root routing right=true; 37 original occurrences projected once.
+PASS: 731 routed occurrences; stable indices, duplicates, empty lists, both orientations, original projected labels, and finite routing budgets.
+SCOPE: routing and projection before completion; production graph scheduler and compact source-cost closure remain.
+
+----- captured output ends -----
+
+===== scripts/check_grouped_completion.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: b3a8732e5d40d7f0b7b745a087551eac16eb524fd153e4e7bc38988ffc10386e
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_grouped_completion.lean"]
+Exit: 0; seconds: 18.046; output SHA-256: 2a0da60f524ffebf515dea9208bb6965190997250e92fd61bef344f7fbfc5900
+----- captured output begins -----
+PASS: n=0..4, all capped suffix groups and activity sets, duplicate and empty requests, every B*q*F coefficient, and returned completion counters.
+
+----- captured output ends -----
+
+===== scripts/check_grouped_preparation.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: fa1aa5ec5790ba6ef377e094ab009ca21dd4a0c8f7685b773e6db3cc4345ad0e
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_grouped_preparation.lean"]
+Exit: 0; seconds: 17.541; output SHA-256: 44fcb5683a1efdaa699cb7fac760d7e762b63ebccaefe512e8e4f8624f333896
+----- captured output begins -----
+PASS: preparation through n=4; every capped group, raw-tensor output coefficient, full B*q*F volume, duplicate/empty requests, zero-column boundary, and total preparation/completion counters.
+
+----- captured output ends -----
+
+===== scripts/check_half_source_binary.lean | rechecked | PASS | stdout =====
+Source SHA-256: b514d7f77ff1584291b18325114bd40cbe17ad43bf4e00632d210d82b23ea09b
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_half_source_binary.lean"]
+Exit: 0; seconds: 53.352; output SHA-256: 4d68e30b391b3b1a8dbf76b016fbed82f1525538757b776a07600c69f31dc730
+----- captured output begins -----
+(true, 1419026751, 6167353)
+0
+'ThinMatrix.HalfSourceBinarySelection.translations_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceBinarySelection.translations_arithmetic_price' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+----- captured output ends -----
+
+===== scripts/check_half_source_binary_suffix.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 9e52f9517c95c0859a294cf9a1d8ff20455f584ac5d8e087decb5717a0c8ca36
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_half_source_binary_suffix.lean"]
+Exit: 0; seconds: 5.442; output SHA-256: dffdf9e2adfa45326e5cfb09b426d3f9c737df1b45b0e98b064472d517ee68b1
+----- captured output begins -----
+PASS 756 binary Pascal/division/comparison suffix selectors against exhaustive Boolean subsets
+PASS actual bit/control counters within the proved polynomial budgets
+Scope: finite exact suffix setup fixture; not a full APSP runtime proof.
+
+----- captured output ends -----
+
+===== scripts/check_half_source_cap_setup.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 5dd4bfbcb192a6c839a60e4024ae1f044cc16646ec5885471b3ec23d1aa835af
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_half_source_cap_setup.lean"]
+Exit: 0; seconds: 8.542; output SHA-256: 79f0d0ea274be3bc42c47a57bf7ad12a170684a829452d5d4bdd7a3963479728
+----- captured output begins -----
+PASS 9 binary shared-cap constructions against exact integer power comparisons
+PASS actual bit counters within the proved O(4^m poly(m+size(k))) bound
+Scope: shared shape setup only, with native control/address lowering separate.
+
+----- captured output ends -----
+
+===== scripts/check_half_source_count.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 51e420a493d8f0c04cdf002f5d4d48d5797b3b262df9ba12e13d36b7cfd14a2b
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_half_source_count.lean"]
+Exit: 0; seconds: 4.896; output SHA-256: bd8c49c60cd6fd78d7c8de4514ec6d44a6183f22a4bc584c962a6df897729e82
+----- captured output begins -----
+PASS 6 binary translation cardinalities, including m=1000; exact result, bit-step price, output width
+
+----- captured output ends -----
+
+===== scripts/check_half_source_suffix.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 9148ed33671e14da3c52f374cdf6178cec1ab0a08910f3a059a190808a2f84b7
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_half_source_suffix.lean"]
+Exit: 0; seconds: 5.429; output SHA-256: 7bdb369bed43f66b0e6d9d4f0cea66ef87ab8be61a5c7154f05d48ca94ccf4e6
+----- captured output begins -----
+PASS 120 exact support counts against exhaustive Boolean subsets
+PASS 855 suffix choices against exhaustive support counts
+PASS 500 exact integer ordinary/channel ceil roundings
+Scope: finite selector/rounding checks; not an asymptotic production cost certificate.
+
+----- captured output ends -----
+
+===== scripts/check_high_scalar_result.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: dff68b7e9deb8039cae6b4eada87d25b796b6f5d9f2663fef6b819337908338d
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_high_scalar_result.lean"]
+Exit: 0; seconds: 12.33; output SHA-256: 1a8b280beb264b3bd566c3c3c8bab1f5b42bac2074d402b19cf1c483bbbe7da4
+----- captured output begins -----
+PASS 219 HIGH scalar schedule occurrences across retained pair tables
+PASS 3 nontrivial original-ID scalar totals over every J² degree-run child, L=m=t=1, q=3
+PASS original IDs, duplicates, empty input, distinct signed tables for every band pair, q=1,3,8, and full route/pair/query loop budget
+
+----- captured output ends -----
+
+===== scripts/check_high_scalar_schedule.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 75c146a84b0ce117de1409da88aa80e07ed872381dec0e5f8d7b5168989ab588
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_high_scalar_schedule.lean"]
+Exit: 0; seconds: 4.954; output SHA-256: b33939b6e42e530d217b990a60613fcda005e0174128d8c864107b36195adb87
+----- captured output begins -----
+PASS 219 HIGH scalar schedule occurrences across retained pair tables
+PASS original IDs, duplicates, empty input, distinct signed tables for every band pair, q=1,3,8, and full route/pair/query loop budget
+
+----- captured output ends -----
+
+===== scripts/check_low_high_join.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 527312cba9021d070115655421d2291ce719a4708b822e9f2b3c051a8ab4a2d1
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_low_high_join.lean"]
+Exit: 0; seconds: 6.116; output SHA-256: bc44931f37ad1af580bbb3e814aa8857695aee3b0b9695a605fc08a150c261a1
+----- captured output begins -----
+PASS: binary divisor, retained numerators, signed exact quotients and arithmetic/control budgets, L=0..12
+PASS: 257-bit divisor and signed cancellation without integer reconversion
+PASS: empty request and cyclic arrays retain and charge shared divisor construction
+PASS: signed Euclidean quotient including nondivisible inputs
+PASS: independent LOW plus ordinary-threshold HIGH identity for all local letters and thresholds, k=0..2
+PASS: actual exact-half band sources through normalized physical queries, m=0, L=0..1; signed cyclic products, duplicate and rejected requests
+PASS: bounded LOW/HIGH join suite finished; no full graph or production FFT evaluation.
+
+----- captured output ends -----
+
+===== scripts/check_low_recombination.lean | rechecked | PASS | stdout =====
+Source SHA-256: b50929e243705dd99aa28e900add6dec91589fb76e023f558af87986d43ccdc3
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_low_recombination.lean"]
+Exit: 0; seconds: 53.776; output SHA-256: de6f85ecfc751d3f80b95b28b70bbe45f450dcb3d790fafb4bfe7a6b64fe207f
+----- captured output begins -----
+PASS: each shared integer degree run occurs exactly once, m=0..8
+PASS: actual masked Walsh source stores against subset/parity reference; zero and ordinary residual dimensions
+PASS: actual translated run stores, both orientations, selected translation pairs, every word and cyclic coefficient
+PASS: empty strict channels, zero dimension, duplicate requests and rejected bands
+PASS: actual physical locators and ordinary forms with zero distinguished dimension
+PASS: all actual mask pairs and shared runs; independent degree-matched physical pencil
+PASS: nonzero rare-letter channels, shared degree filtering, all formal/cyclic coefficients
+PASS: bounded LOW recombination suite finished; no full graph or production FFT evaluation.
+
+----- captured output ends -----
+
+===== scripts/check_matrix_addresses.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: fe591b77ad110a384061d47697e94836053bc3926f86c39106049e17c8d03e7f
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_matrix_addresses.lean"]
+Exit: 0; seconds: 5.743; output SHA-256: 41bef2b6bb782189c64578ed81392f12a257846dbb4a70b2b66f74cd3f59da50
+----- captured output begins -----
+PASS: radix 1, depth 0; 1 complete forward/inverse addresses and budgets.
+PASS: radix 1, depth 1; 1 complete forward/inverse addresses and budgets.
+PASS: radix 1, depth 2; 1 complete forward/inverse addresses and budgets.
+PASS: radix 1, depth 3; 1 complete forward/inverse addresses and budgets.
+PASS: radix 2, depth 0; 1 complete forward/inverse addresses and budgets.
+PASS: radix 2, depth 1; 2 complete forward/inverse addresses and budgets.
+PASS: radix 2, depth 2; 4 complete forward/inverse addresses and budgets.
+PASS: radix 2, depth 3; 8 complete forward/inverse addresses and budgets.
+PASS: radix 3, depth 0; 1 complete forward/inverse addresses and budgets.
+PASS: radix 3, depth 1; 3 complete forward/inverse addresses and budgets.
+PASS: radix 3, depth 2; 9 complete forward/inverse addresses and budgets.
+PASS: radix 3, depth 3; 27 complete forward/inverse addresses and budgets.
+PASS: radix 6, depth 0; 1 complete forward/inverse addresses and budgets.
+PASS: radix 6, depth 1; 6 complete forward/inverse addresses and budgets.
+PASS: radix 6, depth 2; 36 complete forward/inverse addresses and budgets.
+PASS: radix 6, depth 3; 216 complete forward/inverse addresses and budgets.
+PASS: base 2, middle dimension 1, selected depth 1; binary setup budget.
+PASS: base 2, middle dimension 2, selected depth 2; binary setup budget.
+PASS: base 2, middle dimension 3, selected depth 2; binary setup budget.
+PASS: base 2, middle dimension 4, selected depth 3; binary setup budget.
+PASS: base 2, middle dimension 15, selected depth 4; binary setup budget.
+PASS: base 2, middle dimension 16, selected depth 5; binary setup budget.
+PASS: base 2, middle dimension 17, selected depth 5; binary setup budget.
+PASS: base 2, middle dimension 65535, selected depth 16; binary setup budget.
+PASS: base 2, middle dimension 65536, selected depth 17; binary setup budget.
+PASS: base 2, middle dimension 65537, selected depth 17; binary setup budget.
+PASS: base 3, middle dimension 1, selected depth 1; binary setup budget.
+PASS: base 3, middle dimension 2, selected depth 1; binary setup budget.
+PASS: base 3, middle dimension 3, selected depth 2; binary setup budget.
+PASS: base 3, middle dimension 4, selected depth 2; binary setup budget.
+PASS: base 3, middle dimension 15, selected depth 3; binary setup budget.
+PASS: base 3, middle dimension 16, selected depth 3; binary setup budget.
+PASS: base 3, middle dimension 17, selected depth 3; binary setup budget.
+PASS: base 3, middle dimension 65535, selected depth 11; binary setup budget.
+PASS: base 3, middle dimension 65536, selected depth 11; binary setup budget.
+PASS: base 3, middle dimension 65537, selected depth 11; binary setup budget.
+PASS: base 16, middle dimension 1, selected depth 1; binary setup budget.
+PASS: base 16, middle dimension 2, selected depth 1; binary setup budget.
+PASS: base 16, middle dimension 3, selected depth 1; binary setup budget.
+PASS: base 16, middle dimension 4, selected depth 1; binary setup budget.
+PASS: base 16, middle dimension 15, selected depth 1; binary setup budget.
+PASS: base 16, middle dimension 16, selected depth 2; binary setup budget.
+PASS: base 16, middle dimension 17, selected depth 2; binary setup budget.
+PASS: base 16, middle dimension 65535, selected depth 4; binary setup budget.
+PASS: base 16, middle dimension 65536, selected depth 5; binary setup budget.
+PASS: base 16, middle dimension 65537, selected depth 5; binary setup budget.
+PASS: 318 tensor addresses; 30 depth selections; 90 product/inverse checks.
+SCOPE: these are setup/address routines, not the full APSP theorem or complete evaluator address integration.
+
+----- captured output ends -----
+
+===== scripts/check_modular_behrend.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: d601a00e2f28c781296b41672b40f6f3bf03aebbdb61fac1714ef8ed35c52a9a
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_modular_behrend.lean"]
+Exit: 0; seconds: 38.996; output SHA-256: 7ddd546728cf74a66e1556e5042dad147d73429ee5f0a0bd65360e24cc268e08
+----- captured output begins -----
+PASS: actual interval selector for N=0..12; 8191 candidate subsets.
+PASS: actual modular buckets for M=0..25, including empty and singleton cases.
+PASS: actual cleanup n=0, selected M=7, constructed |B|=2: 49 samples, totals 2/0, best kept 1.
+PASS: actual cleanup n=1, selected M=7, constructed |B|=2: 343 samples, totals 14/0, best kept 1.
+PASS: actual cleanup n=2, selected M=11, constructed |B|=4: 14641 samples, totals 968/88, best kept 1.
+SCOPE: actual exhaustive bucket construction and cleanup; real Behrend inequalities are kernel-checked, not runtime float checks; no generation-cost assertion.
+
+----- captured output ends -----
+
+===== scripts/check_original_row_collection.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 78f5bea32deaa64fb80900e0630abfe989dd23bdb378839a335aa228456ad177
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_original_row_collection.lean"]
+Exit: 0; seconds: 5.356; output SHA-256: 8576a7fda4d4b6579e43fd834ba45ac78b4ea601edd0846ab72b8ba935f95fd5
+----- captured output begins -----
+PASS: 8640 original-ID coefficient outputs across reordered groups, duplicate values, empty buckets/axes, signed bit boundaries, and exact child/collection counters.
+SCOPE: one shared side-output collection; complete APSP integration remains open.
+
+----- captured output ends -----
+
+===== scripts/check_padded_recursion.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 361473380ead0c0f8bb519426171003425bed772aee0af6e3cf2217e7cfcb89f
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_padded_recursion.lean"]
+Exit: 0; seconds: 6.462; output SHA-256: e2b430ca2532a1be5ae5c799d396fd107b5f6a1abfdf3d02f54aba331c58b90c
+----- captured output begins -----
+PASS: padded 0x0 by 0x0, depth 0, seed -3; 0 entries.
+PASS: padded 0x0 by 0x0, depth 0, seed 65537; 0 entries.
+PASS: padded 0x3 by 3x2, depth 2, seed -3; 0 entries.
+PASS: padded 0x3 by 3x2, depth 2, seed 65537; 0 entries.
+PASS: padded 2x0 by 0x3, depth 1, seed -3; 6 entries.
+PASS: padded 2x0 by 0x3, depth 1, seed 65537; 6 entries.
+PASS: padded 1x1 by 1x1, depth 0, seed -3; 1 entries.
+PASS: padded 1x1 by 1x1, depth 0, seed 65537; 1 entries.
+PASS: padded 1x2 by 2x3, depth 1, seed -3; 3 entries.
+PASS: padded 1x2 by 2x3, depth 1, seed 65537; 3 entries.
+PASS: padded 2x2 by 2x3, depth 1, seed -3; 6 entries.
+PASS: padded 2x2 by 2x3, depth 1, seed 65537; 6 entries.
+PASS: padded 3x2 by 2x4, depth 2, seed -3; 12 entries.
+PASS: padded 3x2 by 2x4, depth 2, seed 65537; 12 entries.
+PASS: padded 3x3 by 3x4, depth 2, seed -3; 12 entries.
+PASS: padded 3x3 by 3x4, depth 2, seed 65537; 12 entries.
+PASS: 80 original matrix entries after selected-depth padding and cropping; complete arithmetic budget checked.
+SCOPE: address and depth-selection binary costs and the full APSP bound remain unproved.
+
+----- captured output ends -----
+
+===== scripts/check_physical_low_high.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: f397914590d840f733e5a4c2cf2c0e28436c2adf8076b12bfed8fc7ef2c5291c
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_physical_low_high.lean"]
+Exit: 0; seconds: 9.789; output SHA-256: 8fc11f2b4c8e0064c91525806d8189dac1a0f08a61b82f4980368533d72cf1f7
+----- captured output begins -----
+PASS: physical word inverse and ordinary forms, zero and one-dimensional masks, every physical word/label/orientation
+PASS: physical word inverse and outside p1 annihilation, all actual L=2,m=1 mask pairs and physical words/labels
+PASS: zero-dimensional executed HIGH queries, duplicate/rejected requests, cyclic sums and finite work
+PASS: all-outside executed HIGH queries against independent physical leaf threshold sum
+PASS: all thresholds/crops for L=m=1, actual binary HIGH recurrence, key scans and all cyclic coefficients
+PASS: zero raw coefficients preserve executable request/selection work
+PASS: counted retained collection: empty dimensions, signed sums and duplicate request values
+PASS: bounded physical LOW/HIGH suite finished; no full graph or production FFT evaluation.
+
+----- captured output ends -----
+
+===== scripts/check_prefix_completion.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 48c488d37234db6dbedba4d509aa434ac4d78ea815e3e4f220ca74559ef46a12
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_prefix_completion.lean"]
+Exit: 0; seconds: 11.835; output SHA-256: ffe76c36232af772df0fdb72075bcb225a447467d04348e60fd789a9075aace6
+----- captured output begins -----
+PASS: all completion labels P=0, ell=0, all caps; duplicate requests and columns
+PASS: all completion labels P=0, ell=1, all caps; duplicate requests and columns
+PASS: all completion labels P=0, ell=2, all caps; duplicate requests and columns
+PASS: all completion labels P=1, ell=0, all caps; duplicate requests and columns
+PASS: all completion labels P=1, ell=1, all caps; duplicate requests and columns
+PASS: all completion labels P=1, ell=2, all caps; duplicate requests and columns
+PASS: all completion labels P=2, ell=0, all caps; duplicate requests and columns
+PASS: all completion labels P=2, ell=1, all caps; duplicate requests and columns
+PASS: all completion labels P=2, ell=2, all caps; duplicate requests and columns
+PASS: binary width boundary 65536
+PASS: empty coefficient vector
+PASS: zero residual dimension and clamped window
+PASS: zero window length
+PASS: both opposite orientations and all cyclic windows
+PASS: actual folded requests n=0,2,5 with signed targets and all cyclic residues; physical band tags and residual projection
+PASS: actual retained L=3,m=2 root through completion; independent physical coefficient reference
+PASS: bounded completion suite finished; no full graph or production FFT attempt.
+
+----- captured output ends -----
+
+===== scripts/check_prefix_encoding.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: c65445af88463a39a9b01d280d52f345dde02b554df6fedafbe82ff039a567c9
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_prefix_encoding.lean"]
+Exit: 0; seconds: 72.813; output SHA-256: 9a51bae5050c411be9ddc9887da980c20e218662b08e33817a25fcd0e38e2e90
+----- captured output begins -----
+PASS: all capped groups, all prefix labels and all suffix queries: P=0, ell=0
+PASS: all capped groups, all prefix labels and all suffix queries: P=0, ell=1
+PASS: all capped groups, all prefix labels and all suffix queries: P=0, ell=2
+PASS: all capped groups, all prefix labels and all suffix queries: P=1, ell=0
+PASS: all capped groups, all prefix labels and all suffix queries: P=1, ell=1
+PASS: all capped groups, all prefix labels and all suffix queries: P=1, ell=2
+PASS: all capped groups, all prefix labels and all suffix queries: P=2, ell=0
+PASS: all capped groups, all prefix labels and all suffix queries: P=2, ell=1
+PASS: all capped groups, all prefix labels and all suffix queries: P=2, ell=2
+PASS: all capped groups, all prefix labels and all suffix queries: P=3, ell=0
+PASS: all capped groups, all prefix labels and all suffix queries: P=3, ell=1
+PASS: all capped groups, all prefix labels and all suffix queries: P=3, ell=2
+PASS: 65536 bit boundary, duplicate columns, zero dimensions and empty coefficients
+PASS: actual retained root/window/permutation/prefix pipeline with zero residual and empty distinguished masks
+PASS: actual capped prefix arrays versus independent physical-root tensor at L=3,m=2
+PASS: both-input graph-family container and input-dependent prefix budgets at m=0
+PASS: bounded prefix-encoding suite completed; no expensive graph-source or FFT runtime attempt was rerun.
+
+----- captured output ends -----
+
+===== scripts/check_prefix_schedule.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 773c7881cc4fbbfe892df8a925c349b997c2eadcc6ee92e3286643725da1af11
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_prefix_schedule.lean"]
+Exit: 0; seconds: 22.962; output SHA-256: c1260d984bcd8488f96a7d30d93f0f984aba4d8ee9d070f78e2410ff369c0a12
+----- captured output begins -----
+PASS: P=0, suffix=0, cap=0, blocks=2, coefficients=3, requests=3, seed=-7; 18 full outputs.
+PASS: P=1, suffix=2, cap=1, blocks=3, coefficients=2, requests=66, seed=-7; 396 full outputs.
+PASS: P=2, suffix=1, cap=1, blocks=2, coefficients=1, requests=66, seed=-7; 132 full outputs.
+PASS: P=1, suffix=1, cap=0, blocks=1, coefficients=0, requests=18, seed=-7; 0 full outputs.
+PASS: P=1, suffix=1, cap=2, blocks=0, coefficients=3, requests=18, seed=-7; 0 full outputs.
+PASS: P=1, suffix=1, cap=1, blocks=2, coefficients=2, requests=0, seed=-7; 0 full outputs.
+PASS: P=0, suffix=0, cap=0, blocks=2, coefficients=3, requests=3, seed=65537; 18 full outputs.
+PASS: P=1, suffix=2, cap=1, blocks=3, coefficients=2, requests=66, seed=65537; 396 full outputs.
+PASS: P=2, suffix=1, cap=1, blocks=2, coefficients=1, requests=66, seed=65537; 132 full outputs.
+PASS: P=1, suffix=1, cap=0, blocks=1, coefficients=0, requests=18, seed=65537; 0 full outputs.
+PASS: P=1, suffix=1, cap=2, blocks=0, coefficients=3, requests=18, seed=65537; 0 full outputs.
+PASS: P=1, suffix=1, cap=1, blocks=2, coefficients=2, requests=0, seed=65537; 0 full outputs.
+PASS: 1092 full scheduled/scattered prefix/block outputs against independent raw tensors and the production row; original IDs, duplicate requests, empty cases, aggregate padded volume and scatter counters.
+SCOPE: complete compatible prefix-batch scheduling and original-index scatter; global graph/window integration and full APSP counter domination remain.
+
+----- captured output ends -----
+
+===== scripts/check_residual_families.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 64f366234906250e632a8eba2592b66176c30867a07ad8d397207628badc55d8
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_residual_families.lean"]
+Exit: 0; seconds: 7.68; output SHA-256: 49ca1de8c32fe4a4d697651a1f36d05307cbe6f6e9cf8873ef5410c15026540c
+----- captured output begins -----
+PASS: explicit good-code decoder through L=7, exact retained bits and control recurrence
+PASS: strict joint channel coverage, uniqueness and enumeration costs through m=5, including t=0
+PASS: complete retained family versus independent dense coefficients: L=0, m=0, t=0
+PASS: complete retained family versus independent dense coefficients: L=0, m=0, t=1
+PASS: complete retained family versus independent dense coefficients: L=1, m=0, t=0
+PASS: complete retained family versus independent dense coefficients: L=1, m=0, t=1
+PASS: complete retained family versus independent dense coefficients: L=1, m=1, t=0
+PASS: complete retained family versus independent dense coefficients: L=1, m=1, t=1
+PASS: complete retained family versus independent dense coefficients: L=1, m=1, t=2
+PASS: complete retained family versus independent dense coefficients: L=1, m=1, t=3
+PASS: complete retained family versus independent dense coefficients: L=2, m=0, t=0
+PASS: complete retained family versus independent dense coefficients: L=2, m=0, t=1
+PASS: complete retained family versus independent dense coefficients: L=2, m=1, t=0
+PASS: complete retained family versus independent dense coefficients: L=2, m=1, t=1
+PASS: complete retained family versus independent dense coefficients: L=2, m=1, t=2
+PASS: complete retained family versus independent dense coefficients: L=2, m=1, t=3
+PASS: complete retained family versus independent dense coefficients: L=2, m=2, t=0
+PASS: complete retained family versus independent dense coefficients: L=2, m=2, t=1
+PASS: complete retained family versus independent dense coefficients: L=2, m=2, t=2
+PASS: complete retained family versus independent dense coefficients: L=2, m=2, t=3
+PASS: complete retained family versus independent dense coefficients: L=2, m=2, t=4
+PASS: complete retained family versus independent dense coefficients: L=2, m=2, t=5
+PASS: repeated request columns, coefficient bit boundary and zero cyclic columns
+PASS: retained outer translation/run container at m=0, both input families and aggregate counters
+PASS: bounded residual-family suite completed; no graph-source or FFT runtime attempt was rerun.
+
+----- captured output ends -----
+
+===== scripts/check_retained_high_sources.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 027fb9c590ee14162ed8be01e6be7be09d9057af780431b1541a3bee70120fdc
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_retained_high_sources.lean"]
+Exit: 0; seconds: 21.765; output SHA-256: f6e6a44992190aba8ae01ee566db344cd3955ac5d026fc0b0f33d55e90bca65a
+----- captured output begins -----
+PASS 19656 retained HIGH bank coefficients against independent raw-word contractions
+PASS three distinct source bands, both orientations, q=1,3,8, L=0,1,2, crop-before-encode, and exact bank loop cost
+
+----- captured output ends -----
+
+===== scripts/check_retained_recursion.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 668407594c59d71e661911dba2eb32fdc2f04e52e5de938184b0cc00be2941d9
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_retained_recursion.lean"]
+Exit: 0; seconds: 7.552; output SHA-256: ae6e72374318076b42f3dca8c796a893dbf7393d35f6c2a04a376d8cb152dfc8
+----- captured output begins -----
+PASS: rational dot/incomplete batch, depth 0, seed 0, 2 outputs; 2 ring operations; 238 binary steps.
+PASS: rational dot/incomplete batch, depth 0, seed 3, 2 outputs; 2 ring operations; 212 binary steps.
+PASS: rational dot/incomplete batch, depth 0, seed -65537, 2 outputs; 2 ring operations; 10624 binary steps.
+PASS: rational dot/incomplete batch, depth 1, seed 0, 2 outputs; 106 ring operations; 13869 binary steps.
+PASS: rational dot/incomplete batch, depth 1, seed 3, 2 outputs; 106 ring operations; 16083 binary steps.
+PASS: rational dot/incomplete batch, depth 1, seed -65537, 2 outputs; 106 ring operations; 65828 binary steps.
+PASS: rational dot/incomplete batch, depth 2, seed 0, 2 outputs; 498 ring operations; 80385 binary steps.
+PASS: rational dot/incomplete batch, depth 2, seed 3, 2 outputs; 498 ring operations; 82643 binary steps.
+PASS: rational dot/incomplete batch, depth 2, seed -65537, 2 outputs; 498 ring operations; 230804 binary steps.
+PASS: rational dot/incomplete batch, depth 3, seed 0, 2 outputs; 1834 ring operations; 318457 binary steps.
+PASS: rational dot/incomplete batch, depth 3, seed 3, 2 outputs; 1834 ring operations; 320443 binary steps.
+PASS: rational dot/incomplete batch, depth 3, seed -65537, 2 outputs; 1834 ring operations; 683524 binary steps.
+PASS: rectangular/multiple outputs, depth 0, seed 2, 2 outputs; 2 ring operations; 212 binary steps.
+PASS: rectangular/multiple outputs, depth 0, seed -3, 2 outputs; 2 ring operations; 206 binary steps.
+PASS: empty rank/zero tensor, depth 0, seed 0, 2 outputs; 2 ring operations; 238 binary steps.
+PASS: rectangular/multiple outputs, depth 1, seed 2, 12 outputs; 1626 ring operations; 63694 binary steps.
+PASS: rectangular/multiple outputs, depth 1, seed -3, 12 outputs; 1626 ring operations; 66935 binary steps.
+PASS: empty rank/zero tensor, depth 1, seed 0, 2 outputs; 0 ring operations; 0 binary steps.
+PASS: rectangular/multiple outputs, depth 2, seed 2, 72 outputs; 29938 ring operations; 1717858 binary steps.
+PASS: rectangular/multiple outputs, depth 2, seed -3, 72 outputs; 29938 ring operations; 1735476 binary steps.
+PASS: empty rank/zero tensor, depth 2, seed 0, 2 outputs; 0 ring operations; 0 binary steps.
+PASS: 202 outputs checked against independent dense tensors, including zero rank, signed rational bases, incomplete batches and the 16-bit boundary.
+PASS: matrix coordinates, depth 0, seed 2, 2 output entries.
+PASS: matrix coordinates, depth 0, seed -3, 2 output entries.
+PASS: matrix coordinates, depth 1, seed 2, 12 output entries.
+PASS: matrix coordinates, depth 1, seed -3, 12 output entries.
+PASS: matrix coordinates, depth 2, seed 2, 72 output entries.
+PASS: matrix coordinates, depth 2, seed -3, 72 output entries.
+PASS: 172 ordinary matrix output entries after the executable coordinate adapters.
+SCOPE: bounded runtime fixtures for the retained arithmetic and binary programs; full APSP execution costs remain separate.
+
+----- captured output ends -----
+
+===== scripts/check_retained_root_batch.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 54c7c671b7d5a74ebc70ddf4392daec4128f6433b180490816cb7035d6628bbb
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_retained_root_batch.lean"]
+Exit: 0; seconds: 165.297; output SHA-256: 372e062d9d2f81bee5c9c24a719b5f956692ffcb4eaffeebb5db39e546d822da
+----- captured output begins -----
+PASS: 2856 complete shared root outputs against sum of original per-window completions; independent data for each window, both orientations, duplicate and empty requests, and both aggregate cost counters.
+SCOPE: retained window sum with full block/coefficient columns; full APSP caller connection remains open.
+
+----- captured output ends -----
+
+===== scripts/check_root_completion.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 3cb6d8b5e90d7e09dbc310d53f087ef044d8c45cf6f73c58297781f63999b5d2
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_root_completion.lean"]
+Exit: 0; seconds: 26.34; output SHA-256: 6cd8bef54a06898710a2e244d2a9094f79f1013cc7339debee048545959cfb9c
+----- captured output begins -----
+PASS: zero residual dimension; all coefficients and duplicate requests
+PASS: zero window length
+PASS: all 256 request forms; two executed windows; ell=0; rare support and duplicates
+PASS: all 256 request forms; two executed windows; ell=1; rare support and duplicates
+PASS: all 256 request forms; two executed windows; ell=2; rare support and duplicates
+PASS: all 256 request forms; two executed windows; ell=5; rare support and duplicates
+PASS: both selected window orientations
+PASS: signed binary width boundary 65536
+PASS: empty coefficient vectors
+PASS: empty request vector
+PASS: empty window family; repeated request rows retained
+PASS: actual L=3,m=1 retained root; two windows; all formal degrees/cyclic residues; independent physical coefficient reference
+PASS: actual folded requests; both orientations, all band/mask selections; full copied columns; maximum target-cell width
+PASS: bounded root-completion suite finished; no full graph or production FFT attempt.
+
+----- captured output ends -----
+
+===== scripts/check_root_products.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 72cc493f8f3315cf118cb82b85145d3a1d31f45ecc95231ee343ed0eda3a8970
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_root_products.lean"]
+Exit: 0; seconds: 79.287; output SHA-256: adc0ae095f7c7b5e660e4857ad9721324d114f3edd7dba9f2bccff06b6062f4f
+----- captured output begins -----
+PASS: zero formal dimension and empty product
+PASS: full formal product with one cyclic residue
+PASS: full degree/cyclic convolution against independent dense reference
+PASS: signed width boundary 65536; product budgets
+PASS: actual binomial weights and all shifts including zero tails; k=0
+PASS: actual binomial weights and all shifts including zero tails; k=2
+PASS: actual binomial weights and all shifts including zero tails; k=4
+PASS: empty weighted degree and cyclic arrays
+PASS: strict retained-channel transpose and involution; m=0
+PASS: strict retained-channel transpose and involution; m=1
+PASS: strict retained-channel transpose and involution; m=2
+PASS: retained collection sums, duplicate requests, empty children/requests/columns and budgets
+PASS: actual L=3,m=2 paired roots with swapped masks/channel halves; all 16 forms, duplicate/unmatched requests, 5 degrees and 3 cyclic residues; independent physical tensor reference
+PASS: bounded root-products suite finished; no full graph or production FFT attempt.
+
+----- captured output ends -----
+
+===== scripts/check_root_windows.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 4bd3373747785e401d42be4917d900f5850dcb40235c79bf4e944af62fffba6d
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_root_windows.lean"]
+Exit: 0; seconds: 10.296; output SHA-256: e1397eebdfd7f714bc1618350033ebd976f888eec382bce7f5604d40f2c458c4
+----- captured output begins -----
+PASS: binary channel weights, decoded values and counters through m=5
+PASS: all degree/cyclic copies, empty dimensions, repeated columns and 65536 bit boundary
+PASS: independent first-owner reference, both sides, normal ties and zero residual dimension
+PASS: retained root/windows versus independent dense coefficients: L=0, m=0, t=0
+PASS: retained root/windows versus independent dense coefficients: L=0, m=0, t=1
+PASS: retained root/windows versus independent dense coefficients: L=0, m=0, t=1
+PASS: retained root/windows versus independent dense coefficients: L=1, m=0, t=0
+PASS: retained root/windows versus independent dense coefficients: L=1, m=0, t=1
+PASS: retained root/windows versus independent dense coefficients: L=1, m=0, t=1
+PASS: retained root/windows versus independent dense coefficients: L=1, m=1, t=0
+PASS: retained root/windows versus independent dense coefficients: L=1, m=1, t=1
+PASS: retained root/windows versus independent dense coefficients: L=1, m=1, t=3
+PASS: retained root/windows versus independent dense coefficients: L=2, m=0, t=0
+PASS: retained root/windows versus independent dense coefficients: L=2, m=0, t=1
+PASS: retained root/windows versus independent dense coefficients: L=2, m=0, t=1
+PASS: retained root/windows versus independent dense coefficients: L=2, m=1, t=0
+PASS: retained root/windows versus independent dense coefficients: L=2, m=1, t=1
+PASS: retained root/windows versus independent dense coefficients: L=2, m=1, t=3
+PASS: retained root/windows versus independent dense coefficients: L=2, m=2, t=0
+PASS: retained root/windows versus independent dense coefficients: L=2, m=2, t=1
+PASS: retained root/windows versus independent dense coefficients: L=2, m=2, t=5
+PASS: nonzero remaining rare budget, selected mask pair at L=3,m=2
+PASS: two residual positions and nontrivial cyclic windows at L=4,m=2
+PASS: root/windows with repeated request columns, bit boundary and zero cyclic columns
+PASS: both-input retained translation/run container at m=0 and aggregate counters
+PASS: bounded root-window suite completed; no graph-source or FFT runtime attempt was rerun.
+
+----- captured output ends -----
+
+===== scripts/check_routed_prefix_batch.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: b8363f7b197ff13437e9d9fb0d87fc3277c19d5884f7d8c79128a1879b7cf3f7
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_routed_prefix_batch.lean"]
+Exit: 0; seconds: 16.669; output SHA-256: 09e6103475b3fefabdbcd2af384df7a9c5af057ea858d86219ad64cf67ad2c38
+----- captured output begins -----
+PASS: P=0, suffix=0, cap=0, blocks=2, coefficients=3, requests=3, seed=-7; 18 full outputs.
+PASS: P=1, suffix=2, cap=1, blocks=3, coefficients=2, requests=66, seed=-7; 396 full outputs.
+PASS: P=2, suffix=1, cap=1, blocks=2, coefficients=1, requests=66, seed=-7; 132 full outputs.
+PASS: P=1, suffix=1, cap=0, blocks=1, coefficients=0, requests=18, seed=-7; 0 full outputs.
+PASS: P=1, suffix=1, cap=2, blocks=0, coefficients=3, requests=18, seed=-7; 0 full outputs.
+PASS: P=1, suffix=1, cap=1, blocks=2, coefficients=2, requests=0, seed=-7; 0 full outputs.
+PASS: P=0, suffix=0, cap=0, blocks=2, coefficients=3, requests=3, seed=65537; 18 full outputs.
+PASS: P=1, suffix=2, cap=1, blocks=3, coefficients=2, requests=66, seed=65537; 396 full outputs.
+PASS: P=2, suffix=1, cap=1, blocks=2, coefficients=1, requests=66, seed=65537; 132 full outputs.
+PASS: P=1, suffix=1, cap=0, blocks=1, coefficients=0, requests=18, seed=65537; 0 full outputs.
+PASS: P=1, suffix=1, cap=2, blocks=0, coefficients=3, requests=18, seed=65537; 0 full outputs.
+PASS: P=1, suffix=1, cap=1, blocks=2, coefficients=2, requests=0, seed=65537; 0 full outputs.
+PASS: 1092 routed prefix/block outputs against independent raw tensors and the production row; original IDs, duplicate requests, empty cases and scalar budgets.
+SCOPE: retained compatible prefix batches and routing; global window scheduling, rounded batch fit, address integration and full APSP cost remain.
+
+----- captured output ends -----
+
+===== scripts/check_selected_high_queries.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 76ecec22de9f69f1f7e07dfdf014707c7f3c591ecc53b039d22c54ee76995ce1
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_selected_high_queries.lean"]
+Exit: 0; seconds: 5.612; output SHA-256: 9d70c47f859b4c8167933baabad432fa8625531f0f6c9f66c341f27abf2a1fdd
+----- captured output begins -----
+PASS 69 selected HIGH coefficient reads against explicit values and full-vector queries
+PASS own-band routing, duplicates, and empty queries for q=1,3,8
+PASS 171 nontrivial HIGH key sums and cost bounds, L=m=1, t=0,1,2, q=1,3,8
+
+----- captured output ends -----
+
+===== scripts/check_selected_normalization.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: c19cd8c05f1ac478314a7aba87a01bd6ce98c9c30ce5ca58e8b674509effb45a
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_selected_normalization.lean"]
+Exit: 0; seconds: 7.725; output SHA-256: d45cdc78d2bfda65c4340e802677da149509c2e52e4a50a263273fc69e55c131
+----- captured output begins -----
+PASS: 12180 selected normalized incidence outputs across empty/singleton grids, partial middle blocks, signed LOW/HIGH cancellation, nondivisible component numerators, and charged output addressing.
+SCOPE: complete-numerator normalization and controller incidence ordering; full APSP endpoint remains open.
+
+----- captured output ends -----
+
+===== scripts/check_selected_root_product.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 969d6df950c14a348a21bbd56a478edfb2876b8d07e96a4ecf7d89bdf8127bb4
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_selected_root_product.lean"]
+Exit: 0; seconds: 22.225; output SHA-256: 6f493f7ed6060a2903e80283737f314f2e2a8527de5dfa32f5c58f0508a3981c
+----- captured output begins -----
+PASS: 1536 selected cyclic coefficients against independent signed convolution and original complete weighted product; empty degree ranges, wrapped residues, excluded channels and both cost counters.
+SCOPE: finite selected-coefficient root product; full APSP cost connection remains open.
+
+----- captured output ends -----
+
+===== scripts/check_selected_root_rows.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: ff9404446a427b22085c66d5ddc034b6838f442675a0a5d34cc1b9f99c2766d7
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_selected_root_rows.lean"]
+Exit: 0; seconds: 6.216; output SHA-256: ae18b023828bea0af5b5758551348feb3603ed99d0b8fc91ebd9dce8cf68a336
+----- captured output begins -----
+PASS: 1296 selected scalar outputs with occurrence/block/formal-degree/cyclic indexing against independent signed convolution; requested residues vary, empty axes and both cost counters checked.
+SCOPE: retained root row contraction; full APSP caller connection remains open.
+
+----- captured output ends -----
+
+===== scripts/check_shared_addressed.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: fc295f5b03475a8cee2a7250f0e7d1deaba5475db8c935459ad3cef7f5958a14
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shared_addressed.lean"]
+Exit: 0; seconds: 13.021; output SHA-256: 5349c691bdd2524248b27a65fa2e84f5567eb389412bbaf695cd4d994eb0200c
+----- captured output begins -----
+PASS: 0x1x3, chunks 1x1, seed -7; 0 outputs and complete address/setup budgets.
+PASS: 0x1x3, chunks 1x1, seed 65537; 0 outputs and complete address/setup budgets.
+PASS: 3x1x0, chunks 2x1, seed -7; 0 outputs and complete address/setup budgets.
+PASS: 3x1x0, chunks 2x1, seed 65537; 0 outputs and complete address/setup budgets.
+PASS: 1x1x1, chunks 2x1, seed -7; 1 outputs and complete address/setup budgets.
+PASS: 1x1x1, chunks 2x1, seed 65537; 1 outputs and complete address/setup budgets.
+PASS: 5x1x3, chunks 2x1, seed -7; 15 outputs and complete address/setup budgets.
+PASS: 5x1x3, chunks 2x1, seed 65537; 15 outputs and complete address/setup budgets.
+PASS: 3x2x5, chunks 3x2, seed -7; 15 outputs and complete address/setup budgets.
+PASS: 3x2x5, chunks 3x2, seed 65537; 15 outputs and complete address/setup budgets.
+PASS: 5x2x6, chunks 2x1, seed -7; 30 outputs and complete address/setup budgets.
+PASS: 5x2x6, chunks 2x1, seed 65537; 30 outputs and complete address/setup budgets.
+PASS: 5x3x7, chunks 2x3, seed -7; 35 outputs and complete address/setup budgets.
+PASS: 5x3x7, chunks 2x3, seed 65537; 35 outputs and complete address/setup budgets.
+PASS: 2x3x1, chunks 4x2, seed -7; 2 outputs and complete address/setup budgets.
+PASS: 2x3x1, chunks 4x2, seed 65537; 2 outputs and complete address/setup budgets.
+PASS: 196 binary-addressed batch outputs; padded chunks, signed cells, empty axes, exact legacy agreement and independent dense sums.
+SCOPE: binary outer chunk addresses and shared shape setup; recursive internal address lowering and whole APSP costs remain.
+
+----- captured output ends -----
+
+===== scripts/check_shared_completion_tile.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: fb921979352101b26484060e3f76128f407d7fadae8408ab0371e28bebe3eeaf
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shared_completion_tile.lean"]
+Exit: 0; seconds: 5.09; output SHA-256: 86e0d53ace6776b9193bbc641760cbad614f3fd51c3a3cc560f02e29a3096408
+----- captured output begins -----
+PASS: support=0; row=1; columns=0; binary bitsteps=7667.
+PASS: support=1; row=2; columns=1; binary bitsteps=69963.
+PASS: integer tile geometry support=2, row=4, columns=32768.
+PASS: integer tile geometry support=3, row=7, columns=14348907.
+PASS: integer tile geometry support=7, row=29, columns=4747561509943.
+PASS: 243 retained window overhead comparisons; actual binary square/root/increment/power/decode runs for support0/1, integer rounded geometry for support2/3/7, exact fit and absorbed complete batch cost. All support sizes and native setup counters are covered by the Lean proofs.
+
+----- captured output ends -----
+
+===== scripts/check_shared_fully_prefix_schedule.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 1f1ebbf2880e9dcfdb486bba55282f1fbbcdf95ebb31770800bd4739acd65941
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shared_fully_prefix_schedule.lean"]
+Exit: 0; seconds: 89.814; output SHA-256: 87ff1805bb3c893b7528d9d57b3416ad8eaec1ebd578ed646e6e416f60cfa521
+----- captured output begins -----
+PASS: P=0, suffix=0, cap=0, blocks=2, coefficients=3, requests=3, seed=-7; 18 full outputs.
+PASS: P=1, suffix=2, cap=1, blocks=3, coefficients=2, requests=66, seed=-7; 396 full outputs.
+PASS: P=2, suffix=1, cap=1, blocks=2, coefficients=1, requests=66, seed=-7; 132 full outputs.
+PASS: P=1, suffix=1, cap=0, blocks=1, coefficients=0, requests=18, seed=-7; 0 full outputs.
+PASS: P=1, suffix=1, cap=2, blocks=0, coefficients=3, requests=18, seed=-7; 0 full outputs.
+PASS: P=1, suffix=1, cap=1, blocks=2, coefficients=2, requests=0, seed=-7; 0 full outputs.
+PASS: P=0, suffix=0, cap=0, blocks=2, coefficients=3, requests=3, seed=65537; 18 full outputs.
+PASS: P=1, suffix=2, cap=1, blocks=3, coefficients=2, requests=66, seed=65537; 396 full outputs.
+PASS: P=2, suffix=1, cap=1, blocks=2, coefficients=1, requests=66, seed=65537; 132 full outputs.
+PASS: P=1, suffix=1, cap=0, blocks=1, coefficients=0, requests=18, seed=65537; 0 full outputs.
+PASS: P=1, suffix=1, cap=2, blocks=0, coefficients=3, requests=18, seed=65537; 0 full outputs.
+PASS: P=1, suffix=1, cap=1, blocks=2, coefficients=2, requests=0, seed=65537; 0 full outputs.
+PASS: 1092 full scheduled/scattered prefix/block outputs against independent raw tensors and the production row; original IDs, duplicate requests, empty cases, aggregate padded scalar/address volume, one-time setup and scatter counters.
+SCOPE: addressed prefix-batch schedule and shared setup with original-index scatter; actual recursive/padding/recovery binary addresses included; bounded indexed-array controls, global graph/window integration and full APSP counter domination remain.
+
+----- captured output ends -----
+
+===== scripts/check_shared_fully_prefix_work.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: c72e18c22f388c152326135fa2950f1206df14b81264f9eb7f3ba2f43bb99b46
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shared_fully_prefix_work.lean"]
+Exit: 0; seconds: 89.783; output SHA-256: 52077a99a974e39e65b43d3efb61d64e5a828bd968a9bd3c45a5cb72f1588936
+----- captured output begins -----
+PASS: P=0, suffix=0, cap=0, blocks=2, coefficients=3, requests=3, seed=-7; 18 full outputs.
+PASS: P=1, suffix=2, cap=1, blocks=3, coefficients=2, requests=66, seed=-7; 396 full outputs.
+PASS: P=2, suffix=1, cap=1, blocks=2, coefficients=1, requests=66, seed=-7; 132 full outputs.
+PASS: P=1, suffix=1, cap=0, blocks=1, coefficients=0, requests=18, seed=-7; 0 full outputs.
+PASS: P=1, suffix=1, cap=2, blocks=0, coefficients=3, requests=18, seed=-7; 0 full outputs.
+PASS: P=1, suffix=1, cap=1, blocks=2, coefficients=2, requests=0, seed=-7; 0 full outputs.
+PASS: P=0, suffix=0, cap=0, blocks=2, coefficients=3, requests=3, seed=65537; 18 full outputs.
+PASS: P=1, suffix=2, cap=1, blocks=3, coefficients=2, requests=66, seed=65537; 396 full outputs.
+PASS: P=2, suffix=1, cap=1, blocks=2, coefficients=1, requests=66, seed=65537; 132 full outputs.
+PASS: P=1, suffix=1, cap=0, blocks=1, coefficients=0, requests=18, seed=65537; 0 full outputs.
+PASS: P=1, suffix=1, cap=2, blocks=0, coefficients=3, requests=18, seed=65537; 0 full outputs.
+PASS: P=1, suffix=1, cap=1, blocks=2, coefficients=2, requests=0, seed=65537; 0 full outputs.
+PASS: 1092 full scheduled/scattered prefix/block outputs against independent raw tensors and the production row; original IDs, duplicate requests, empty cases, aggregate padded complete bit/control/address volume, one-time setup and scatter counters.
+SCOPE: addressed prefix-batch schedule and shared setup with original-index scatter; actual recursive/padding/recovery binary addresses included; bounded indexed-array controls, global graph/window integration and full APSP counter domination remain.
+
+----- captured output ends -----
+
+===== scripts/check_shared_prefix_prices.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: a7620b49ec2469c0b65f14984165098fd5a999d18840beb58f753f8381042c48
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shared_prefix_prices.lean"]
+Exit: 0; seconds: 91.581; output SHA-256: 85136a8e0e63e520b2ab0f4fb30ab5dbbbcdd46590b998089a12c70808595c4c
+----- captured output begins -----
+PASS: P=0, suffix=0, cap=0, blocks=2, coefficients=3, requests=3, seed=-7; 18 full outputs.
+PASS: P=1, suffix=2, cap=1, blocks=3, coefficients=2, requests=66, seed=-7; 396 full outputs.
+PASS: P=2, suffix=1, cap=1, blocks=2, coefficients=1, requests=66, seed=-7; 132 full outputs.
+PASS: P=1, suffix=1, cap=0, blocks=1, coefficients=0, requests=18, seed=-7; 0 full outputs.
+PASS: P=1, suffix=1, cap=2, blocks=0, coefficients=3, requests=18, seed=-7; 0 full outputs.
+PASS: P=1, suffix=1, cap=1, blocks=2, coefficients=2, requests=0, seed=-7; 0 full outputs.
+PASS: P=0, suffix=0, cap=0, blocks=2, coefficients=3, requests=3, seed=65537; 18 full outputs.
+PASS: P=1, suffix=2, cap=1, blocks=3, coefficients=2, requests=66, seed=65537; 396 full outputs.
+PASS: P=2, suffix=1, cap=1, blocks=2, coefficients=1, requests=66, seed=65537; 132 full outputs.
+PASS: P=1, suffix=1, cap=0, blocks=1, coefficients=0, requests=18, seed=65537; 0 full outputs.
+PASS: P=1, suffix=1, cap=2, blocks=0, coefficients=3, requests=18, seed=65537; 0 full outputs.
+PASS: P=1, suffix=1, cap=1, blocks=2, coefficients=2, requests=0, seed=65537; 0 full outputs.
+PASS: 1092 full scheduled/scattered prefix/block outputs against independent raw tensors and the production row; original IDs, duplicate requests, empty cases, aggregate padded complete bit/control/address volume, polynomial global control price, whole-root retained cell and bitheap address budgets, one-time setup and scatter counters.
+SCOPE: addressed prefix-batch schedule and shared setup with original-index scatter; actual recursive/padding/recovery binary addresses included; bounded indexed-array RAM controls are priced; no compiler allocator or copy-on-write claim; graph-wide asymptotic domination remains separate.
+
+----- captured output ends -----
+
+===== scripts/check_shared_prefix_schedule.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: d63808b28da7ff1692fce18adfcfb216a8c38a6d7cda7c7d104d1e5c99591c2b
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shared_prefix_schedule.lean"]
+Exit: 0; seconds: 22.061; output SHA-256: bb749f1e6e5c8409aaff9354c291c671f2252e10684f8152087fce5fa5d47a2f
+----- captured output begins -----
+PASS: P=0, suffix=0, cap=0, blocks=2, coefficients=3, requests=3, seed=-7; 18 full outputs.
+PASS: P=1, suffix=2, cap=1, blocks=3, coefficients=2, requests=66, seed=-7; 396 full outputs.
+PASS: P=2, suffix=1, cap=1, blocks=2, coefficients=1, requests=66, seed=-7; 132 full outputs.
+PASS: P=1, suffix=1, cap=0, blocks=1, coefficients=0, requests=18, seed=-7; 0 full outputs.
+PASS: P=1, suffix=1, cap=2, blocks=0, coefficients=3, requests=18, seed=-7; 0 full outputs.
+PASS: P=1, suffix=1, cap=1, blocks=2, coefficients=2, requests=0, seed=-7; 0 full outputs.
+PASS: P=0, suffix=0, cap=0, blocks=2, coefficients=3, requests=3, seed=65537; 18 full outputs.
+PASS: P=1, suffix=2, cap=1, blocks=3, coefficients=2, requests=66, seed=65537; 396 full outputs.
+PASS: P=2, suffix=1, cap=1, blocks=2, coefficients=1, requests=66, seed=65537; 132 full outputs.
+PASS: P=1, suffix=1, cap=0, blocks=1, coefficients=0, requests=18, seed=65537; 0 full outputs.
+PASS: P=1, suffix=1, cap=2, blocks=0, coefficients=3, requests=18, seed=65537; 0 full outputs.
+PASS: P=1, suffix=1, cap=1, blocks=2, coefficients=2, requests=0, seed=65537; 0 full outputs.
+PASS: 1092 full scheduled/scattered prefix/block outputs against independent raw tensors and the production row; original IDs, duplicate requests, empty cases, aggregate padded scalar/address volume, one-time setup and scatter counters.
+SCOPE: addressed prefix-batch schedule and shared setup with original-index scatter; recursive internal addresses, global graph/window integration and full APSP counter domination remain.
+
+----- captured output ends -----
+
+===== scripts/check_shared_prefix_setup.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 06087d959d59e82babf188205fe537c5daf6b60fe41bbf4cb92cae2df166313c
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shared_prefix_setup.lean"]
+Exit: 0; seconds: 15.186; output SHA-256: 2c9cbc305dd806ec99e393a58f966a9baa2c5302804999f4578939173c86427a
+----- captured output begins -----
+PASS: P=0, suffix=0, cap=0, blocks=2, coefficients=3, requests=3, seed=-7; 18 full outputs.
+PASS: P=1, suffix=2, cap=1, blocks=3, coefficients=2, requests=66, seed=-7; 396 full outputs.
+PASS: P=2, suffix=1, cap=1, blocks=2, coefficients=1, requests=66, seed=-7; 132 full outputs.
+PASS: P=1, suffix=1, cap=0, blocks=1, coefficients=0, requests=18, seed=-7; 0 full outputs.
+PASS: P=1, suffix=1, cap=2, blocks=0, coefficients=3, requests=18, seed=-7; 0 full outputs.
+PASS: P=1, suffix=1, cap=1, blocks=2, coefficients=2, requests=0, seed=-7; 0 full outputs.
+PASS: P=0, suffix=0, cap=0, blocks=2, coefficients=3, requests=3, seed=65537; 18 full outputs.
+PASS: P=1, suffix=2, cap=1, blocks=3, coefficients=2, requests=66, seed=65537; 396 full outputs.
+PASS: P=2, suffix=1, cap=1, blocks=2, coefficients=1, requests=66, seed=65537; 132 full outputs.
+PASS: P=1, suffix=1, cap=0, blocks=1, coefficients=0, requests=18, seed=65537; 0 full outputs.
+PASS: P=1, suffix=1, cap=2, blocks=0, coefficients=3, requests=18, seed=65537; 0 full outputs.
+PASS: P=1, suffix=1, cap=1, blocks=2, coefficients=2, requests=0, seed=65537; 0 full outputs.
+PASS: 1092 routed prefix/block outputs against independent raw tensors and the production row; original IDs, duplicate requests, empty cases and binary/address budgets.
+SCOPE: reusable shared shape and binary outer-addressed prefix groups; recursive internal addresses, global window scheduling, rounded fit and full APSP cost remain.
+
+----- captured output ends -----
+
+===== scripts/check_shared_rectangular.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 88156f3181c0996b634b9d657ee89ce3a4391856ef1adf5480f1625f3179847a
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shared_rectangular.lean"]
+Exit: 0; seconds: 10.557; output SHA-256: a425bf19624f06c4c0b78e5c362dc2c51f14cf543ddf669385cfa01ded58b92c
+----- captured output begins -----
+PASS: 0 requests, 1 terms, 3 columns, chunks 1x1, seed -7; 0 outputs.
+PASS: 0 requests, 1 terms, 3 columns, chunks 1x1, seed 65537; 0 outputs.
+PASS: 3 requests, 1 terms, 0 columns, chunks 2x1, seed -7; 0 outputs.
+PASS: 3 requests, 1 terms, 0 columns, chunks 2x1, seed 65537; 0 outputs.
+PASS: 1 requests, 1 terms, 1 columns, chunks 2x1, seed -7; 1 outputs.
+PASS: 1 requests, 1 terms, 1 columns, chunks 2x1, seed 65537; 1 outputs.
+PASS: 5 requests, 1 terms, 3 columns, chunks 2x1, seed -7; 15 outputs.
+PASS: 5 requests, 1 terms, 3 columns, chunks 2x1, seed 65537; 15 outputs.
+PASS: 3 requests, 2 terms, 5 columns, chunks 3x2, seed -7; 15 outputs.
+PASS: 3 requests, 2 terms, 5 columns, chunks 3x2, seed 65537; 15 outputs.
+PASS: 5 requests, 2 terms, 6 columns, chunks 2x1, seed -7; 30 outputs.
+PASS: 5 requests, 2 terms, 6 columns, chunks 2x1, seed 65537; 30 outputs.
+PASS: 5 requests, 3 terms, 7 columns, chunks 2x3, seed -7; 35 outputs.
+PASS: 5 requests, 3 terms, 7 columns, chunks 2x3, seed 65537; 35 outputs.
+PASS: 2 requests, 3 terms, 1 columns, chunks 4x2, seed -7; 2 outputs.
+PASS: 2 requests, 3 terms, 1 columns, chunks 4x2, seed 65537; 2 outputs.
+PASS: 90 prepared-group outputs against independent raw-tensor sums, including empty and duplicate requests.
+PASS: 196 shared rectangular outputs and 90 prepared-group outputs; duplicate request rows, empty rows/columns, partial chunks and full scalar budgets.
+SCOPE: matrix-level shared completion; production graph routing, global address pricing, rounded fit and full APSP proof remain.
+
+----- captured output ends -----
+
+===== scripts/check_shared_selector_costs.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: c892b25b9db4fdd07ba8be0c2c880d6d4954b230622732e5cf54d528a20894f3
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shared_selector_costs.lean"]
+Exit: 0; seconds: 9.302; output SHA-256: 0a806fcd3d4189d8bab0ea67f0e9d13aa7043723c95705c176fbd7e6d30b0d39
+----- captured output begins -----
+PASS: materialized character keys and active flags versus independent testBit enumeration, m=0..6
+PASS: actual signed binary state updates, decoded caches and charges against integer parity, m=0..3, sums=-4..4
+PASS: actual binary selector/state loop for eight steps, reference exact integer greedy choices, retained arithmetic and magnitude/control bounds
+PASS: actual zero-dimensional source preparation retains generator payload and arithmetic, first valid picks and setup bounds, L=0..3
+PASS: bounded shared-selector cost suite finished; no full graph or production FFT evaluation.
+
+----- captured output ends -----
+
+===== scripts/check_shifted_low.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: b0470296783931c80eeb704f1e3eebedf53a607a9152193ad214e4ffcb293c9d
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shifted_low.lean"]
+Exit: 0; seconds: 12.221; output SHA-256: d3c19abb9347f36680eeae356ae40b950cfa89a22765f08ecd05641ccaa343c1
+----- captured output begins -----
+PASS: empty channel list, zero physical/residual dimensions and threshold one
+PASS: nonempty ordinary residual, opposite forms and every cyclic residue; m=0
+PASS: shifted private p1 baseline and weighted degree-one functional; m=1
+PASS: distinct physical masks, retained windows/forms and shifted LOW; L=2,m=1
+PASS: joint strict channels, nonzero rare letters, full product degrees and cyclic residues; m=2
+PASS: bounded shifted-LOW suite finished; duplicate and rejected requests retained in every case.
+
+----- captured output ends -----
+
+===== scripts/check_window_shared_completion.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: dc2ccdce3abe7c0e1167809fcc73fe8db59120b73ce12214c8b1d58a8462ee2a
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_window_shared_completion.lean"]
+Exit: 0; seconds: 108.624; output SHA-256: 3023840cf392d806bc93f8e4d283759bf180aad1a3545e08c5e284fe0ee0ade8
+----- captured output begins -----
+PASS: k=0, suffix=0, cap=0, counts=(0,0), normal=false, slot=0, blocks=2, coefficients=3, requests=3, seed=-7; 18 full outputs.
+PASS: k=1, suffix=1, cap=1, counts=(0,0), normal=false, slot=0, blocks=3, coefficients=2, requests=18, seed=-7; 108 full outputs.
+PASS: k=2, suffix=1, cap=1, counts=(1,0), normal=false, slot=0, blocks=2, coefficients=1, requests=258, seed=-7; 516 full outputs.
+PASS: k=2, suffix=1, cap=1, counts=(1,0), normal=false, slot=1, blocks=2, coefficients=1, requests=258, seed=-7; 516 full outputs.
+PASS: k=1, suffix=9, cap=1, counts=(0,1), normal=false, slot=0, blocks=2, coefficients=2, requests=18, seed=-7; 72 full outputs.
+PASS: k=1, suffix=1, cap=0, counts=(0,0), normal=false, slot=0, blocks=1, coefficients=0, requests=18, seed=-7; 0 full outputs.
+PASS: k=1, suffix=1, cap=1, counts=(0,0), normal=false, slot=0, blocks=0, coefficients=3, requests=18, seed=-7; 0 full outputs.
+PASS: k=1, suffix=1, cap=1, counts=(0,0), normal=false, slot=0, blocks=2, coefficients=2, requests=0, seed=-7; 0 full outputs.
+PASS: k=0, suffix=0, cap=0, counts=(0,0), normal=true, slot=0, blocks=2, coefficients=3, requests=3, seed=-7; 18 full outputs.
+PASS: k=1, suffix=1, cap=1, counts=(0,0), normal=true, slot=0, blocks=3, coefficients=2, requests=18, seed=-7; 108 full outputs.
+PASS: k=2, suffix=1, cap=1, counts=(1,0), normal=true, slot=0, blocks=2, coefficients=1, requests=258, seed=-7; 516 full outputs.
+PASS: k=2, suffix=1, cap=1, counts=(1,0), normal=true, slot=1, blocks=2, coefficients=1, requests=258, seed=-7; 516 full outputs.
+PASS: k=1, suffix=9, cap=1, counts=(0,1), normal=true, slot=0, blocks=2, coefficients=2, requests=18, seed=-7; 72 full outputs.
+PASS: k=1, suffix=1, cap=0, counts=(0,0), normal=true, slot=0, blocks=1, coefficients=0, requests=18, seed=-7; 0 full outputs.
+PASS: k=1, suffix=1, cap=1, counts=(0,0), normal=true, slot=0, blocks=0, coefficients=3, requests=18, seed=-7; 0 full outputs.
+PASS: k=1, suffix=1, cap=1, counts=(0,0), normal=true, slot=0, blocks=2, coefficients=2, requests=0, seed=-7; 0 full outputs.
+PASS: k=0, suffix=0, cap=0, counts=(0,0), normal=false, slot=0, blocks=2, coefficients=3, requests=3, seed=65537; 18 full outputs.
+PASS: k=1, suffix=1, cap=1, counts=(0,0), normal=false, slot=0, blocks=3, coefficients=2, requests=18, seed=65537; 108 full outputs.
+PASS: k=2, suffix=1, cap=1, counts=(1,0), normal=false, slot=0, blocks=2, coefficients=1, requests=258, seed=65537; 516 full outputs.
+PASS: k=2, suffix=1, cap=1, counts=(1,0), normal=false, slot=1, blocks=2, coefficients=1, requests=258, seed=65537; 516 full outputs.
+PASS: k=1, suffix=9, cap=1, counts=(0,1), normal=false, slot=0, blocks=2, coefficients=2, requests=18, seed=65537; 72 full outputs.
+PASS: k=1, suffix=1, cap=0, counts=(0,0), normal=false, slot=0, blocks=1, coefficients=0, requests=18, seed=65537; 0 full outputs.
+PASS: k=1, suffix=1, cap=1, counts=(0,0), normal=false, slot=0, blocks=0, coefficients=3, requests=18, seed=65537; 0 full outputs.
+PASS: k=1, suffix=1, cap=1, counts=(0,0), normal=false, slot=0, blocks=2, coefficients=2, requests=0, seed=65537; 0 full outputs.
+PASS: k=0, suffix=0, cap=0, counts=(0,0), normal=true, slot=0, blocks=2, coefficients=3, requests=3, seed=65537; 18 full outputs.
+PASS: k=1, suffix=1, cap=1, counts=(0,0), normal=true, slot=0, blocks=3, coefficients=2, requests=18, seed=65537; 108 full outputs.
+PASS: k=2, suffix=1, cap=1, counts=(1,0), normal=true, slot=0, blocks=2, coefficients=1, requests=258, seed=65537; 516 full outputs.
+PASS: k=2, suffix=1, cap=1, counts=(1,0), normal=true, slot=1, blocks=2, coefficients=1, requests=258, seed=65537; 516 full outputs.
+PASS: k=1, suffix=9, cap=1, counts=(0,1), normal=true, slot=0, blocks=2, coefficients=2, requests=18, seed=65537; 72 full outputs.
+PASS: k=1, suffix=1, cap=0, counts=(0,0), normal=true, slot=0, blocks=1, coefficients=0, requests=18, seed=65537; 0 full outputs.
+PASS: k=1, suffix=1, cap=1, counts=(0,0), normal=true, slot=0, blocks=0, coefficients=3, requests=18, seed=65537; 0 full outputs.
+PASS: k=1, suffix=1, cap=1, counts=(0,0), normal=true, slot=0, blocks=2, coefficients=2, requests=0, seed=65537; 0 full outputs.
+PASS: 4920 shared window/block outputs compared with production completion; both layouts, every rotation, clamped suffixes, own channel caps, retained encoding reuse, duplicate requests and empty cases.
+SCOPE: fixed common-type window batch and production correctness; full APSP counter connection remains open.
+
+----- captured output ends -----
+
+===== scripts/check_window_transforms.lean | reused unchanged | PASS | stdout =====
+Source SHA-256: 30fe6698c0d493ee60a2062f6043007debacb75236535ff10786bd5b4fac2c85
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_window_transforms.lean"]
+Exit: 0; seconds: 10.216; output SHA-256: 6a1ae65b64ec777c2f99cadddb4717a9db6535d08cefe3923e0201c76e8cf633
+----- captured output begins -----
+PASS: independent dense forward matrix and coordinate permutation: k=0, ell=0, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=0, ell=1, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=0, ell=0, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=0, ell=1, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=1, ell=0, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=1, ell=1, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=1, ell=1, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=1, ell=2, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=2, ell=0, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=2, ell=1, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=2, ell=2, both sides and ties
+PASS: independent dense forward matrix and coordinate permutation: k=2, ell=3, both sides and ties
+PASS: repeated request columns, 65536 bit boundary and empty coefficients
+PASS: complete retained roots to transformed/permuted windows, zero residual and empty distinguished masks
+PASS: independent physical-root tensor reference with nonzero rare budget at L=3,m=2
+PASS: both input families and aggregate retained-array counters at m=0
+PASS: bounded window-transform suite completed; no expensive graph-source or FFT runtime attempt was rerun.
+
+----- captured output ends -----

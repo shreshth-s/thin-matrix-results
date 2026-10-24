@@ -256,4 +256,3 @@ theorem normalizedDivideCounted_steps (divisor : List Bool) (x : SignedBits) :
 #print axioms normalizedDivideCounted_steps
 
 end ThinMatrix.IntegerArithmetic
-

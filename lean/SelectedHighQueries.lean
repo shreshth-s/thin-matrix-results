@@ -112,7 +112,7 @@ theorem routed_work (t A : ℕ) (ht : t ≤ 2*m) (shape : ThinMatrixBackend.Shap
     (requests : Vector (GraphCompletionRequests.Physical L m q) M)
     (hb : ∀ i,(requests.get i).bandL<S ∧ (requests.get i).bandR<S) (a b : Fin S)
     (table : BinaryHighTable.Table q) (hA : BinaryHighTable.Bounds.TableBound A table) :
-    (query t shape requests (ids (route requests hb).value a b).value table).operations  ≤ 
+    (query t shape requests (ids (route requests hb).value a b).value table).operations  ≤
       (ids (route requests hb).value a b).value.length*(rowBudget L m t A+32)+8 := query_work t A ht _ _ _ _ hA
 
 theorem total (requests : Vector (GraphCompletionRequests.Physical L m q) M)

@@ -20,6 +20,14 @@ def count (m : ℕ) : ℕ := if m=0 then 1 else 64*m^3
 
 theorem count_eq (m : ℕ) : count m=J m := (ExactHalfCroppedEmbedding.shifts_length m).symm
 
+/-- Evaluate translation dimensions from their closed cardinality; the proof
+keeps all index types unchanged while avoiding translation-list regeneration. -/
+@[csimp] theorem J_eq_count : J=count := by
+  funext m
+  exact (count_eq m).symm
+
+#print axioms J_eq_count
+
 /-- The supplied size is runtime data; the type equality is erased. -/
 def indexedBuild {α : Type} {n : ℕ} (size : ℕ) (hs : size=n) (f : Fin n → Program α) : Program (Vector α n) :=
   let out := vectorBuild size (fun i => f (Fin.cast hs i))

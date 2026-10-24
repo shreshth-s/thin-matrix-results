@@ -101,4 +101,3 @@ def main : IO Unit := do
     checked := checked+(← check 1 1 1 2 2 2 2 seed true)
   IO.println s!"PASS: {checked} routed prefix/block outputs against independent raw tensors and the production row; original IDs, duplicate requests, empty cases and scalar budgets."
   IO.println "SCOPE: retained compatible prefix batches and routing; global window scheduling, rounded batch fit, address integration and full APSP cost remain."
-

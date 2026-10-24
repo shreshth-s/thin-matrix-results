@@ -1,5 +1,116 @@
 # Lean formalization status
 
+<!-- exact-half-final-status-v1 -->
+## Current proof status
+
+The closed endpoint is
+[`ThinMatrix.HalfSourceAPSPTheorem.correctness_work_and_addresses`](HalfSourceAPSPTheorem.lean).
+It proves exact deterministic integer APSP correctness, complete charged work
+**`O(n^2.9926862626)`**, and eventual address-price sufficiency within its
+reserved retained layout. The exact exponent is
+`14963431313 / 5000000000 = 2.9926862626`.
+
+The final hypotheses concern only the original graph: integer edge weights
+bounded by `W(n) <= n^degree` for a fixed degree, and no negative cycles.
+Correctness means minimum weight over every finite directed walk, with
+infinity for unreachable pairs. No source-cost, valid-plan, batch-fit,
+coefficient-width, fast-oracle, or desired runtime premise is left to the
+caller. One fixed valid rectangular multiplication scheme is selected from a
+proved existence theorem before the variable graph size is considered.
+
+The earlier
+[`BinaryAlignedAPSPTheorem.correctness_and_work`](BinaryAlignedAPSPTheorem.lean)
+remains a separate closed `2.99294792` theorem. Its parameters have not been
+renamed to claim the new exponent. The sections below the historical-record
+heading preserve earlier checkpoints; their statements of unfinished work
+are historical, not the current status.
+
+## Current proof path
+
+| Layer | Closed connection |
+| --- | --- |
+| Exact-half sources and setup | Constructed translations, first valid list indices, original-coordinate masks, cropped sources, retained source banks and their actual setup costs. |
+| Shared rectangular completion | A fixed proved CW scheme, addressed binary execution, compatible middle-block/coefficient columns, selected occurrence routing, rounded tile setup and independent batch fit. |
+| Complete graph backend | [`GraphHalfSourceExecution`](GraphHalfSourceExecution.lean) connects retained LOW/HIGH programs, exact normalization and original graph-incidence counts. [`GraphHalfSourceBackend`](GraphHalfSourceBackend.lean) supplies actual factor validation and the new dispatch. |
+| All phase costs | [`HalfSourceBackendPhaseRate.exists_phase_prices`](HalfSourceBackendPhaseRate.lean) discharges source/setup, LOW/HIGH, output, metadata and address charges for the same concrete backend. All 61 numerical phase checks and rounded seven-term costs are retained. |
+| Full APSP caller | [`GraphHalfSourceWork.run_work_of_phasePrices`](GraphHalfSourceWork.lean) transports those costs through parameter setup, certification, restarts and adaptive APSP calls; the final theorem discharges its phase premise. |
+| Retained addresses | [`HalfSourceRunAddress`](HalfSourceRunAddress.lean) connects actual caller counts and phase-layout capacities to the selected bounded-address price. |
+
+The dependency status is summarized in
+[EXACT_HALF_ROADMAP.md](EXACT_HALF_ROADMAP.md#closed-dependency-chain).
+
+## Reproduce the current checkout
+
+The project pins Lean `4.31.0` and its mathlib revision in the checked Lake
+configuration. With that toolchain and dependencies installed:
+
+```sh
+lake exe cache get
+python3 scripts/verify_lean.py --jobs 4
+```
+
+The verifier compiles every top-level Lean module in dependency order with
+warnings as errors, checks every listed `#print axioms` report, verifies
+pinned dependencies, and rejects sources changed during verification.
+The final frozen run passed **612 modules and 5,290 axiom
+reports**, all using only `propext`, `Classical.choice` and `Quot.sound`.
+Source/configuration SHA-256: `9d5e9865f2e599654af2082098a609a237ed2208d99adbb14648695b9527b04b`.
+The complete recorded run is [verification-output.txt](verification-output.txt).
+
+Run the separate exact-rational and finite-instance suite with:
+
+```sh
+python3 scripts/verify.py
+```
+
+Finite fixtures exercise bounded instances and do not replace the general
+Lean theorem. The frozen Lean transcript is the evidence for the module and
+axiom counts above; it is not a native-runtime benchmark.
+
+The [finite Lean verification record](runtime-verification/README.md)
+accounts for all 71 current executable fixtures: 68 unchanged passes reused
+from the full run, plus three successful targeted rechecks. The archive
+preserves the original failures, exact fixture and harness corrections,
+source hashes and both kernel transcripts.
+
+## Current execution model
+
+The theorem bounds the actual returned counter of the same retained program:
+binary coefficient arithmetic plus bounded indexed-array/control actions.
+The complete charge includes parameter selection, source formation, shared
+preprocessing, full cyclic-vector storage, LOW/HIGH queries, completion,
+normalization, controller/restart work, host arithmetic and output writes.
+Fixed constants and the address price may depend on the fixed polynomial
+input promise. The retained-layout theorem establishes eventual address-price
+sufficiency for indices within the reserved retained layout, tied to actual
+parameter output and host/callback counts. It does not enumerate every machine
+access.
+
+This is not a semantics-preserving compiler or allocator proof, a complete
+word-RAM lowering, or a runtime guarantee for Lean's native evaluator and
+persistent arrays. The fixed multiplication scheme is proved to exist; the
+large positive-scale scheme is not materialized by the small runtime fixtures.
+
+The separate [`machine/`](../machine/README.md) adapter has its own toolchain,
+verification scope and remaining implementation/time premises; this theorem
+does not discharge them. Other result-table rows are not established by this
+APSP endpoint. No practical speedup, priority, peer review or unrestricted
+sub-`2.99` result is claimed.
+
+## Historical development record
+
+The following text preserves earlier theorem descriptions, reproduction
+records, local milestones and proof-gap audits. Every section is historical;
+its old counts, import-closure observations and pending obligations describe
+that checkpoint. Use the current sections above for the completed theorem.
+
+### Historical aligned endpoint and early extension status
+
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
+
 The current closed theorem proves deterministic integer APSP in `O(n^2.99294792)`, for
 polynomially bounded integer weights and graphs without negative cycles.
 The end-to-end theorem is
@@ -19,6 +130,11 @@ costs, and the oracle's correctness and charged work are proved internally.
 There is no assumed fast oracle or desired final cost inequality.
 
 ## Exact-half extension in progress
+
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
 
 The requested end-to-end target is `O(n^2.9926862626)`. That theorem is
 **not yet proved in Lean**. The existing closed APSP theorem above retains
@@ -427,6 +543,11 @@ closed APSP theorem still proves `2.99294792` in its stated charged-work model.
 
 ## Reproduce
 
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
+
 Install [Lean through elan](https://lean-lang.org/install/). The main project
 pins Lean `4.31.0` and mathlib commit
 `9a9483a92959bc92bd6a60176dd1fe597298c1f8`.
@@ -601,6 +722,11 @@ are the checked theorem statements, including their explicit hypotheses.
 
 ## Main components
 
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
+
 | Components | Scope |
 | --- | --- |
 | `LocalIdentities`, `TensorContraction` | Aligned local identity, arbitrary entangled contractions, shared-channel LOW expansion, residual weights and exact LOW/HIGH partition. |
@@ -628,6 +754,11 @@ end-to-end statement, not by the number of modules or successful checks.
 
 ## Execution model
 
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
+
 The main operational developments use explicit bit operations and indexed
 array/control actions. Their counters describe that model, not elapsed time
 of Lean's native compiler or persistent-array implementation. Intermediate
@@ -648,6 +779,11 @@ be described as correctness and charged work in this model, rather than a
 machine-certified runtime or a performance claim for Lean's evaluator.
 
 ## Separate word-RAM adapter
+
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
 
 The [`machine/`](../machine/) project independently pins Lean `4.33.1`, the
 source paper's [formal-math word-RAM development](https://github.com/anthropics/formal-math/tree/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp), and its own mathlib revision.
@@ -733,6 +869,11 @@ and `EXACT_HALF_ROADMAP.md` for the verification evidence and exact gaps.
 
 ## Executed prefix completion from graph requests
 
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
+
 `GraphPrefixCompletion.fromInputs` retains `GraphPrefixProgram.fromInputs`
 once, generates every folded request from the original binary target table,
 and decodes its physical ordinary labels using the retained shape and Delta
@@ -802,6 +943,11 @@ See `prefix-completion-runtime-check.txt`, `prefix-completion-statement-audit.tx
 
 
 ## Executed full-root window sum and request selection
+
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
 
 Five further modules connect the actual selected-window executions to one
 complete oriented residual root/channel for every original folded request:
@@ -880,6 +1026,11 @@ and `EXACT_HALF_ROADMAP.md`.
 
 
 ## Paired root products and retained family sums
+
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
 
 Nine further modules connect the existing executed root rows to complete
 paired products, weighted degree reduction and retained family accumulation:
@@ -969,6 +1120,11 @@ and the frozen full-verifier log.
 
 ## Shifted LOW identity for the executed fixed-mask family
 
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
+
 Six further modules connect the existing executed weighted family sum to the
 shifted LOW functional of the actual cropped raw sources:
 
@@ -1036,6 +1192,11 @@ Frozen source/configuration SHA-256: `b70a80234bcd5dd03f97f5a4c8ff716d7fe0323898
 
 
 ## Executed mask, physical locator and shared-degree recombination
+
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
 
 Seven further modules connect the fixed-mask LOW program to exhaustive mask
 aggregation and the original masked Walsh degree filter:
@@ -1106,6 +1267,11 @@ Frozen source/configuration SHA-256: `d1fca8d872a5579f0e045182af3ca75f18bda5eb16
 
 ## Physical LOW reindexing and executed HIGH assembly
 
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
+
 Eight further modules connect actual retained sources to both physical-word
 interfaces for one block/band pair:
 
@@ -1170,6 +1336,11 @@ Frozen source/configuration SHA-256: `eb366ccc35697f6e75c444968ddb9c7d63b2665c0e
 
 
 ## Executed LOW/HIGH join and exact binary normalization
+
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
 
 Ten further modules close the finite physical contraction and normalization
 boundary for one retained graph block and band pair. They use the actual
@@ -1237,6 +1408,11 @@ Frozen source/configuration SHA-256: `b111c275d763463786ffb13d803493959d92ed240c
 
 
 ## Original folded requests and exhaustive retained scheduling
+
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
 
 This section records the earlier scheduling snapshot; the setup-charge
 omission described here is partially repaired in the following checkpoint.
@@ -1314,6 +1490,11 @@ Frozen source/configuration SHA-256: `b8c0bff07126e22887292bddc87ba9e2a0476f2ed5
 
 ## Retained translation arithmetic and binary state costs
 
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
+
 `ExactHalfSourcePlan.prepare` now runs `HalfSourceRetainedTranslations.produce`
 once and retains its keys, binary power tables and final binary/cached-sum
 state in the actual selector plan. The generator's output is proved equal to
@@ -1360,6 +1541,11 @@ Frozen source/configuration SHA-256: `0b81c9d97ea21665b01740e95d993308ab0f227991
 
 
 ## CW polynomial certificate and tensor-power interface
+
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
 
 `CWPolynomialCertificate.cw16` constructs an explicit certificate over Q:
 18 separated polynomial terms, coefficients below degree 3 zero, degree-3
@@ -1408,6 +1594,11 @@ Frozen source/configuration SHA-256: `81758711a5bc3539647986a448b354c483a7a84230
 
 
 ## Exact interpolation and executable CW extraction checkpoint
+
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
 
 `CWExactDecomposition.terms_total` proves an explicit exact rational separated
 sum for every tensor power of CW16. It has `(10*n+1)*18^n` terms, including
@@ -1494,6 +1685,11 @@ The interrupted raw log and resumed tail remain in the frozen staging directory.
 
 ## CW block and finite independent-copy extraction checkpoint
 
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
+
 `CWSixBlocks.identity` proves all six coordinate restrictions of the actual
 CW tensor are matrix-multiplication tensors: <1,1,q>, <q,1,1>, <1,q,1>,
 and three scalar blocks. The coordinate maps are injective, and all other
@@ -1568,6 +1764,11 @@ no previous snapshot or dependency source was changed.
 
 ## Finite hash-counting and quantitative cleanup checkpoint
 
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
+
 `CWPrimeHashCounts` proves the finite counting contract underlying VXXZ24
 Claim 5.5 for every prime M>2. The random space is the explicit product of
 two offsets and n coordinate weights over ZMod M, of cardinality M^(n+2).
@@ -1631,6 +1832,11 @@ The old closed theorem remains 2.99294792; 2.9926862626 is unproved.
 Frozen source/configuration SHA-256: `7380a16ffdd885fa5b35f1a2a2496e8432f1f15e31aeb5324a78de7d414f3699`.
 
 ## Type regularity, multinomial counts and finite density bound
+
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
 
 This checkpoint connects the actual reference type class and hash cleanup
 to exact multinomial data. It does not prove the rectangular exponent or
@@ -1703,6 +1909,11 @@ Frozen source/configuration SHA-256: `ea7f05b91af35162e9d69110a71316bd75b72efd77
 
 ## Constructed modular buckets and unconditional finite survival
 
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
+
 `FiniteAPSearch` gives an executable deterministic reference construction.
 It enumerates all subsets of `range N`, tests the finite three-term
 progression predicate, and retains a largest admissible set, with a fixed
@@ -1771,6 +1982,11 @@ The old closed theorem remains 2.99294792; 2.9926862626 is unproved.
 Frozen source/configuration SHA-256: `38d5d4593ca50df6431c273a33bf782cfe8c34d7e1f54c4cca5a84243e13bf44`.
 
 ## Actual target marginal entropy and exponential extraction rate
+
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
 
 `TernaryEntropy` proves endpoint-inclusive finite bounds for the actual
 ternary multinomial coefficient: if n=a+b+c, its value lies between
@@ -1842,6 +2058,11 @@ The old closed theorem remains 2.99294792; 2.9926862626 is unproved.
 
 ## Remaining rectangular path after target entropy
 
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
+
 The actual target marginal growth and exponential independent-copy rate are
 now proved. The next mathematical contract is rectangular asymptotic sum:
 convert the proved exact decompositions of many independent rectangular
@@ -1882,6 +2103,11 @@ silently absorbed into a constant here.
 Frozen source/configuration SHA-256: `b031d74d6cb353cc4500d521a2953e6e2c4153400ce7617570810e9923d18e0b`.
 
 ## Proof-gap audit: informal mathematics versus the requested theorem
+
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
 
 An argument in the manuscript can be mathematically sound without already
 being a closed Lean theorem about the particular executed program. These
@@ -1970,6 +2196,11 @@ uniform in an input epsilon, and does not prove the missing recursion.
 
 ## Equal-copy recursion and rectangular rank checkpoint
 
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
+
 The latest endpoint is `CWRectangularRanks.exists_fixed_base`. It closes the
 level-one rank conversion that was missing after target entropy extraction.
 There is one positive integral CW base and an explicit family of exact
@@ -2025,6 +2256,11 @@ lake env lean --run scripts/check_equal_copy_recursion.lean
 
 ### Remaining execution obligations
 
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
+
 The new endpoint is an exact rational **rank construction**. Evaluating each
 expanded dense coefficient form separately would not attain its rank
 exponent. The following work is still needed for the requested closed APSP
@@ -2053,6 +2289,11 @@ Frozen verification for this checkpoint: 343 modules, 3,726 axiom reports; only 
 
 
 ## Retained recursive execution checkpoint
+
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
 
 The rank construction now feeds an actual retained program. The new endpoint
 `CWRetainedArithmetic.exists_arithmetic_program` selects the same positive
@@ -2130,6 +2371,11 @@ python3 outputs/check_retained_recursion.py
 
 ### What still prevents the requested APSP theorem
 
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
+
 1. The multiplier currently accepts tensor-power dimensions. Construct and
    prove the arbitrary-size next-power padding/truncation adapter, including
    its size bounds. Price the recursive layout/index arithmetic and combine
@@ -2154,6 +2400,11 @@ Frozen verification for this checkpoint: 356 modules, 3,806 axiom reports; only 
 
 
 ## Padded matrix execution checkpoint
+
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
 
 `PaddedMatrix` now takes ordinary matrix arrays at arbitrary finite dimensions,
 selects a depth with integer ceiling logarithms, pads one copy into the retained
@@ -2214,6 +2465,11 @@ Frozen verification for this checkpoint: 358 modules, 3,824 axiom reports; only 
 
 ## Shared rectangular completion checkpoint
 
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
+
 Seven new modules connect the retained CW program to concrete selector/data
 chunks. They do not yet connect that program to the optimized graph schedule.
 
@@ -2272,6 +2528,11 @@ lake env lean --run scripts/check_shared_rectangular.lean
 
 ### Remaining integration boundary
 
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
+
 The production graph does not call `BinaryPreparedGroupedProgram.runGroup`.
 Its path is `GraphPrefixCompletion` -> `WindowCompletionProgram` ->
 `PrefixCompletionProgram`, whose elementary row contractions read the
@@ -2304,6 +2565,11 @@ Frozen verification for this checkpoint: 365 modules, 3,875 axiom reports, only 
 
 ## Routed shared-batch and parameter checkpoint
 
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
+
 The frozen verification passed **416 modules and 4,337 axiom reports**, using
 only `propext`, `Classical.choice` and `Quot.sound`. Source/configuration
 SHA-256: `3cb6f842ac3e6a8e16586eb1e4337258821d272bad05a61d1c3998021dd4238b`.
@@ -2332,6 +2598,11 @@ none of the 281 extension modules. No canonical mathematical result or
 numerical witness changed at this checkpoint.
 
 ## Addressed execution and source-cost checkpoint
+
+> **Historical checkpoint.** This section records the state when it was
+> written. Statements that the exact-half theorem was unfinished or that
+> `2.99294792` was the current endpoint are superseded by the completed
+> `2.9926862626` theorem described at the top of this document.
 
 The frozen verification passed **502 modules and 4,848 axiom reports**, using
 only `propext`, `Classical.choice` and `Quot.sound`. Source/configuration

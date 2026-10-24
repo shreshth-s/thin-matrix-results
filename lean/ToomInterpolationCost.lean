@@ -253,4 +253,3 @@ theorem actual_recombine_cost (k s A : ℕ) (hk : 2≤k)
 
 end
 end ThinMatrix.ToomBitCost
-

@@ -1,0 +1,24 @@
+Read-only endpoint scope audit
+
+Conclusion: the final correctness_work_and_addresses theorem has no caller-supplied cost, fit, backend, scalar-width, successful-setup, or address-width premise. Its supplied hypotheses are EdgeBound, a fixed polynomial bound W(n) <= n^degree, and no negative cycles. The rectangular scheme and phase-price theorem are selected from proved existence internally. Local AddressFits, independent long-side fit, scalar bounds and phase work are discharged along the actual dispatcher/backend chain.
+
+Model limit: the work theorem bounds the returned binary-arithmetic and indexed-control counters. AddressSafe selects the actual run setup and uses its host trace length, but its conclusion is address-price sufficiency for indices within a reserved retained-layout capacity. It does not enumerate actual memory accesses or state a whole-payload allocation/access-trace invariant. callback_layout binds actual controller factor histories to computed phase dimensions, rather than equating the arbitrary factory payload to a physical memory layout. Component storage bounds support the reserved layout. This is sufficient for the stated charged-counter theorem; it must not be described as a separate compiler-to-RAM, Lean allocator, native elapsed-time, or actual machine-access certification.
+
+No repository files were edited or rebuilt during this audit.
+
+Audited source SHA-256 values:
+HalfSourceAPSPTheorem.lean 74e1bd6fc480bb3498dbac5c10efad0538712495dd786be8e09f366c44cb5c96
+HalfSourceRunAddress.lean b56c663ba03c6b03e140d19c20d8c17adc259dc2c0513c5de5524d8d94f465d1
+HalfSourceBackendPhaseRate.lean e06865c2c6a56aae4122468e99829800d8b46b81e451ef8b77162a3a67552783
+GraphHalfSourceWork.lean edeed63030f426f39a2febdf681588b6a8309506b964fda245b53e0725c956cf
+GraphHalfSourceHostCosts.lean 9fded43075cdbeafa60956e2aba2ce991f61cbfae8c91a2e9261078d6ef0fc20
+HalfSourceRetainedHeap.lean 0696d9b516dc36631222a11272cf88e1121618e533bd0617208bd98455501bbd
+GraphCallbackStorage.lean 01b21fd11dfc3fa92623bc0219b3caafa9631e1c0de97f87b6dacf5453dc9644
+GraphCallbackOutputStorage.lean 1270648881b09a980e49a732c472cb12f169f0db8bb4ca372040736de69a294b
+GraphOwnBandStorage.lean 751d71c938933c1220fad44a98208d0ee9383a6dc4596777ec395c87ae133516
+SharedPrefixStorage.lean 659e2700d926a82c93442dbc6a942c43b0aef2c2b7f3e8bd500fe3fd0cfc20c5
+SharedPreparedWidths.lean 89a59e0121eba0e49082bd194b411fede25c6c9ba7f1026af57837003083f030
+GraphOwnBandShapeBounds.lean cb1a32543d2771bdcbc1438a26227778904bf55488cbb55a341d8a31dbcfd44f
+SharedFullyPrefixPrices.lean 8b14a811d28843c3144a2e06e6ad42cce66cea9e0a93fa9f56978fc397098676
+GraphHalfSourceExecution.lean 8c7b0a6037e14e187b5c1435f20f6f5f83a3be0455a0eebe8ac162b8e68f091b
+GraphHalfSourceBackend.lean de3fa0be5fc6e80a7a645450dff9692c7507369eb8173b6f1eeda9fb56859e02

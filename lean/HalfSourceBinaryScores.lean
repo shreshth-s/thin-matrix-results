@@ -450,4 +450,3 @@ theorem chosen_refines_rational {N n : ℕ} (m : ℕ) (hm : 0 < m) (sums : Fin N
 #print axioms chosen_price
 #print axioms chosen_refines_rational
 end ThinMatrix.HalfSourceBinaryScores
-

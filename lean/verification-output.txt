@@ -2783,6 +2783,7 @@ lean/HalfSourceRetainedTranslations.lean
 'ThinMatrix.HalfSourceRetainedTranslations.produce_control' depends on axioms: [propext, Classical.choice, Quot.sound]
 
 lean/ExactHalfSourcePlan.lean
+'ThinMatrix.ExactHalfSourcePlan.J_eq_count' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.ExactHalfSourcePlan.count_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.ExactHalfSourcePlan.indexedBuild_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.ExactHalfSourcePlan.sizedScan_eq' depends on axioms: [propext, Quot.sound]
@@ -4577,6 +4578,25 @@ lean/AutoFullyRetainedRootBatch.lean
 'ThinMatrix.AutoFullyRetainedRootBatch.priced_setup' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.AutoFullyRetainedRootBatch.priced_children' depends on axioms: [propext, Classical.choice, Quot.sound]
 
+lean/FullyRetainedWindowCosts.lean
+'ThinMatrix.FullyRetainedWindowCosts.priced_from_schedule' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.FullyRetainedWindowCosts.control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.FullyRetainedWindowCosts.overhead_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.FullyRetainedWindowCosts.overhead_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/RootCompletionRate.lean
+'ThinMatrix.RootCompletionRate.root_extra_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.RootCompletionRate.sum_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.RootCompletionRate.scalar_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.RootCompletionRate.extras' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.RootCompletionRate.extras_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/SharedCompletionProgramRate.lean
+'ThinMatrix.SharedCompletionProgramRate.exists_schedule_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/AutoRootCompletionRate.lean
+'ThinMatrix.AutoRootCompletionRate.exists_root_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+
 lean/BinaryAPSPCaller.lean
 'ThinMatrix.BinaryAPSPCaller.run_query_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.BinaryAPSPCaller.run_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -5224,6 +5244,10 @@ lean/BinaryLowHighNormalize.lean
 'ThinMatrix.BinaryLowHighNormalize.table_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.BinaryLowHighNormalize.table_control' depends on axioms: [propext, Classical.choice, Quot.sound]
 
+lean/BinarySumRowsRuntime.lean
+'ThinMatrix.BinarySumRowsRuntime.foldr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.BinarySumRowsRuntime.sumRows_eq_execute' depends on axioms: [propext, Classical.choice, Quot.sound]
+
 lean/BitArrayCost.lean
 'ThinMatrix.BitArraySimulation.padded_execute_fixed_bit_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.BitArraySimulation.execute_correct_and_bit_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -5657,12 +5681,6 @@ lean/FiniteRequestRouter.lean
 'ThinMatrix.FiniteRequestRouter.gather_size' depends on axioms: [propext, Quot.sound]
 'ThinMatrix.FiniteRequestRouter.gather_get' depends on axioms: [propext, Quot.sound]
 
-lean/FullyRetainedWindowCosts.lean
-'ThinMatrix.FullyRetainedWindowCosts.priced_from_schedule' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.FullyRetainedWindowCosts.control' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.FullyRetainedWindowCosts.overhead_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.FullyRetainedWindowCosts.overhead_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
-
 lean/GraphBandSharing.lean
 'ThinMatrix.GraphBandSharing.sources_left_independent' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.GraphBandSharing.sources_right_independent' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -5881,52 +5899,193 @@ lean/GraphBlockSchedule.lean
 'ThinMatrix.GraphBlockSchedule.extraction_control' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.GraphBlockSchedule.recorded_work_le' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-lean/GraphFoldedCountCorrect.lean
-'ThinMatrix.GraphFoldedCountCorrect.original_semantic' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphFoldedCountCorrect.modCount' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphFoldedCountCorrect.finite_modCount' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphFoldedCountCorrect.finite_nonnegative' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphFoldedCountCorrect.finite_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean/GraphOwnBandRouter.lean
+'ThinMatrix.GraphOwnBandRouter.accepts_old' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRouter.key_eq_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRouter.ids_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRouter.total' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRouter.cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRouter.original_masks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRouter.encode_decode' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRouter.group_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRouter.project_get' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRouter.project_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRouter.project_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRouter.transport_get' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRouter.transport_work' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-lean/SelectedHighQueries.lean
-'ThinMatrix.SelectedHighQueries.route_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedHighQueries.routed_matches' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedHighQueries.lookup_work' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedHighQueries.lookup_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedHighQueries.lookup_matches' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedHighQueries.query_value' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedHighQueries.query_work' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedHighQueries.stored_matches' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedHighQueries.ids_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedHighQueries.routed_work' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedHighQueries.total' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean/GraphOwnBandRoutingTotals.lean
+'ThinMatrix.GraphOwnBandRoutingTotals.total_selected' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-lean/RetainedHighSources.lean
-'ThinMatrix.RetainedHighSources.side_get' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.RetainedHighSources.side_work' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.RetainedHighSources.prepare_work' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.RetainedHighSources.bank_get' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.RetainedHighSources.bank_work' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.RetainedHighSources.pair_matches' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.RetainedHighSources.pair_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean/OriginalRowCollection.lean
+'ThinMatrix.OriginalRowCollection.tag_length' depends on axioms: [propext, Quot.sound]
+'ThinMatrix.OriginalRowCollection.flatten_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.OriginalRowCollection.flatten_mem' depends on axioms: [propext, Quot.sound]
+'ThinMatrix.OriginalRowCollection.correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.OriginalRowCollection.selected_cover' depends on axioms: [propext]
+'ThinMatrix.OriginalRowCollection.bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.OriginalRowCollection.control' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-lean/GraphRetainedHigh.lean
-'ThinMatrix.GraphRetainedHigh.raw_left' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphRetainedHigh.raw_right' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphRetainedHigh.raw_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphRetainedHigh.left_encoder' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphRetainedHigh.right_encoder' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphRetainedHigh.boxes_match' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphRetainedHigh.boxes_work' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphRetainedHigh.bank_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean/GraphOwnBandCompletion.lean
+'ThinMatrix.GraphOwnBandCompletion.complete_indices' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandCompletion.complete_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandCompletion.complete_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandCompletion.projected_label' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandCompletion.row_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-lean/GraphSelectedHigh.lean
-'ThinMatrix.GraphSelectedHigh.table_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphSelectedHigh.query_ids' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphSelectedHigh.query_work' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphSelectedHigh.query_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphSelectedHigh.query_matches' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphSelectedHigh.routed_matches' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean/GraphOwnBandCollection.lean
+'ThinMatrix.GraphOwnBandCollection.child_indices' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandCollection.bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandCollection.control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandCollection.coverage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandCollection.correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphRootInvariance.lean
+'ThinMatrix.GraphRootInvariance.root_length_independent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphRootInvariance.length_independent' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphRootBandValue.lean
+'ThinMatrix.GraphRootBandValue.root_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphRootBandValue.output_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/SelectedRootProduct.lean
+'ThinMatrix.SelectedRootProduct.execute_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedRootProduct.term_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedRootProduct.dot_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedRootProduct.term_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedRootProduct.term_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedRootProduct.term_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedRootProduct.execute_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedRootProduct.agrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedRootProduct.execute_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedRootProduct.execute_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/SelectedRootRows.lean
+'ThinMatrix.SelectedRootRows.readBlock_get' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedRootRows.readBlock_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedRootRows.entry_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedRootRows.execute_get' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedRootRows.execute_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedRootRows.execute_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedRootRows.execute_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphSelectedRootProduct.lean
+'ThinMatrix.GraphSelectedRootProduct.decode_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedRootProduct.entry_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnRootSpec.lean
+'ThinMatrix.GraphOwnRootSpec.rootValue_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnRootSpec.left_index' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnRootSpec.right_index' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnRootSpec.accepts' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnBandCanonical.lean
+'ThinMatrix.GraphOwnBandCanonical.expected_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceCapSetup.lean
+'ThinMatrix.HalfSourceCapSetup.dimension_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCapSetup.root_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCapSetup.execute_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCapSetup.four_size' depends on axioms: [propext, Quot.sound]
+'ThinMatrix.HalfSourceCapSetup.dimension_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCapSetup.root_loop_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCapSetup.root_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCapSetup.rounded_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCapSetup.execute_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnBandPreparation.lean
+'ThinMatrix.GraphOwnBandPreparation.sources_get' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandPreparation.sources_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandPreparation.sources_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandPreparation.banks_get' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandPreparation.banks_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandPreparation.banks_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnBandProduction.lean
+'ThinMatrix.GraphOwnBandProduction.prepare_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandProduction.prepare_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandProduction.execute_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandProduction.execute_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandProduction.correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandProduction.canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnBandRuntime.lean
+'ThinMatrix.GraphOwnBandRuntime.groups_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRuntime.encode_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRuntime.decode_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRuntime.run_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRuntime.ids_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRuntime.project_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnBandRuntimeCompletion.lean
+'ThinMatrix.GraphOwnBandRuntimeCompletion.complete_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRuntimeCompletion.index_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRuntimeCompletion.child_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRuntimeCompletion.collect_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRuntimeCompletion.execute_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnBandRuntimePreparation.lean
+'ThinMatrix.GraphOwnBandRuntimePreparation.bank_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandRuntimePreparation.banks_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnBandTargets.lean
+'ThinMatrix.GraphOwnBandTargets.prepare_eq_runtime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandTargets.readyRuntime_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandTargets.execute_eq_runtime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandTargets.requests_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandTargets.masks_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandTargets.tree_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandTargets.work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandTargets.bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandTargets.control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandTargets.correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnBandPriced.lean
+'ThinMatrix.GraphOwnBandPriced.targets_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandPriced.labels_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandPriced.count_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandPriced.collection_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnBandOverhead.lean
+'ThinMatrix.GraphOwnBandOverhead.natural' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandOverhead.rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnBandTypeRate.lean
+'ThinMatrix.GraphOwnBandTypeRate.source_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandTypeRate.exists_type_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/SharedAddressedStorage.lean
+'ThinMatrix.SharedAddressedStorage.batch_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedAddressedStorage.batch_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedAddressedStorage.bit_heap_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedAddressedStorage.address_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/SharedPrefixStorage.lean
+'ThinMatrix.SharedPrefixStorage.grouped_cells' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedPrefixStorage.trace_cells' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedPrefixStorage.matrix_cells' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedPrefixStorage.bank_scalars' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedPrefixStorage.bank_cells' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedPrefixStorage.root_child_cells' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedPrefixStorage.root_output_cells' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/SharedPrefixStorageBounds.lean
+'ThinMatrix.SharedPrefixStorageBounds.scale_facts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedPrefixStorageBounds.bank_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedPrefixStorageBounds.window_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedPrefixStorageBounds.root_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedPrefixStorageBounds.heap_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedPrefixStorageBounds.price_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/SharedCompletionWidths.lean
+'ThinMatrix.SharedCompletionWidths.span_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedCompletionWidths.span_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedCompletionWidths.price_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedCompletionWidths.covers' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnBandUniformFit.lean
+'ThinMatrix.GraphOwnBandUniformFit.selected_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandUniformFit.power_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
 
 lean/HalfSourceParameters.lean
 'ThinMatrix.HalfSourceParameters.TEnclosure' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -6073,6 +6232,123 @@ lean/HalfSourceBandVolume.lean
 'ThinMatrix.HalfSourceBandVolume.root_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.HalfSourceBandVolume.completion_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
 
+lean/HalfSourceActualVolumes.lean
+'ThinMatrix.HalfSourceActualVolumes.good_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceActualVolumes.groups_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceActualVolumes.groups_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceActualVolumes.roots_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceActualVolumes.roots_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceActualVolumes.groups_completion_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceActualVolumes.roots_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceActualVolumes.groups_bands_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceActualVolumes.roots_bands_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnBandShapeBounds.lean
+'ThinMatrix.GraphOwnBandShapeBounds.support' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandShapeBounds.group_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandShapeBounds.powers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandShapeBounds.fits' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/SharedPreparedWidths.lean
+'ThinMatrix.SharedPreparedWidths.cells_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedPreparedWidths.field_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SharedPreparedWidths.retained_power_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnBandStorage.lean
+'ThinMatrix.GraphOwnBandStorage.scale_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandStorage.recursive_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandStorage.root_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBandStorage.all_roots_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphCallbackStorage.lean
+'ThinMatrix.GraphCallbackStorage.types_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphCallbackStorage.grid_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphCallbackStorage.payload_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphCallbackOutputStorage.lean
+'ThinMatrix.GraphCallbackOutputStorage.bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphFoldedCountCorrect.lean
+'ThinMatrix.GraphFoldedCountCorrect.original_semantic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphFoldedCountCorrect.modCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphFoldedCountCorrect.finite_modCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphFoldedCountCorrect.finite_nonnegative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphFoldedCountCorrect.finite_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnLowIdentity.lean
+'ThinMatrix.GraphOwnLowIdentity.physical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnLowIdentity.channels' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnLowIdentity.family' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnLowCollection.lean
+'ThinMatrix.GraphOwnLowCollection.value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnLowCollection.correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnLowCollection.bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnLowCollection.control' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnRootProduct.lean
+'ThinMatrix.GraphOwnRootProduct.card_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnRootProduct.correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnRootProduct.bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnRootProduct.control' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphSelectedNormalize.lean
+'ThinMatrix.GraphSelectedNormalize.correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedNormalize.bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedNormalize.bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedNormalize.control' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnLowProgram.lean
+'ThinMatrix.GraphOwnLowProgram.channel_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnLowProgram.correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnLowProgram.channel_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnLowProgram.channel_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnLowProduction.lean
+'ThinMatrix.GraphOwnLowProduction.dimension_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnLowProduction.root_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnLowProduction.correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/SelectedHighQueries.lean
+'ThinMatrix.SelectedHighQueries.route_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedHighQueries.routed_matches' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedHighQueries.lookup_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedHighQueries.lookup_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedHighQueries.lookup_matches' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedHighQueries.query_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedHighQueries.query_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedHighQueries.stored_matches' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedHighQueries.ids_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedHighQueries.routed_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedHighQueries.total' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/RetainedHighSources.lean
+'ThinMatrix.RetainedHighSources.side_get' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.RetainedHighSources.side_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.RetainedHighSources.prepare_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.RetainedHighSources.bank_get' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.RetainedHighSources.bank_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.RetainedHighSources.pair_matches' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.RetainedHighSources.pair_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphRetainedHigh.lean
+'ThinMatrix.GraphRetainedHigh.raw_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphRetainedHigh.raw_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphRetainedHigh.raw_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphRetainedHigh.left_encoder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphRetainedHigh.right_encoder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphRetainedHigh.boxes_match' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphRetainedHigh.boxes_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphRetainedHigh.bank_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphSelectedHigh.lean
+'ThinMatrix.GraphSelectedHigh.table_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedHigh.query_ids' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedHigh.query_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedHigh.query_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedHigh.query_matches' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedHigh.routed_matches' depends on axioms: [propext, Classical.choice, Quot.sound]
+
 lean/HalfSourceHighVolume.lean
 Try this:
   [apply] ring_nf
@@ -6103,73 +6379,329 @@ lean/GraphHighPreparation.lean
 'ThinMatrix.GraphHighPreparation.execute_work' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.GraphHighPreparation.execute_get' depends on axioms: [propext, Classical.choice, Quot.sound]
 
+lean/GraphSharedSourceProduction.lean
+'ThinMatrix.GraphSharedSourceProduction.low_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSharedSourceProduction.high_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSharedSourceProduction.work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSharedSourceProduction.low_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSharedSourceProduction.high_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphHalfSourceSetup.lean
+'ThinMatrix.GraphHalfSourceSetup.physical_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceSetup.bands_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceSetup.low_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceSetup.high_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceSetup.targets_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceSetup.shape_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceSetup.channels_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceSetup.weights_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceSetup.requests_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceSetup.requests_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
 lean/GraphHighScalarSchedule.lean
 'ThinMatrix.GraphHighScalarSchedule.family_work' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.GraphHighScalarSchedule.total_selected' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.GraphHighScalarSchedule.execute_work' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.GraphHighScalarSchedule.selected_row' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-lean/GraphOwnBandRouter.lean
-'ThinMatrix.GraphOwnBandRouter.accepts_old' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphOwnBandRouter.key_eq_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphOwnBandRouter.ids_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphOwnBandRouter.total' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphOwnBandRouter.cost' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphOwnBandRouter.original_masks' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphOwnBandRouter.encode_decode' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphOwnBandRouter.group_total' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphOwnBandRouter.project_get' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphOwnBandRouter.project_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphOwnBandRouter.project_control' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphOwnBandRouter.transport_get' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphOwnBandRouter.transport_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean/SelectedScalarRows.lean
+'ThinMatrix.SelectedScalarRows.indices' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedScalarRows.value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedScalarRows.bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedScalarRows.bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.SelectedScalarRows.control' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-lean/GraphOwnBandRoutingTotals.lean
-'ThinMatrix.GraphOwnBandRoutingTotals.total_selected' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean/GraphHighScalarCollection.lean
+'ThinMatrix.GraphHighScalarCollection.total' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHighScalarCollection.coverage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHighScalarCollection.correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHighScalarCollection.bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHighScalarCollection.control' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-lean/GraphOwnRoutingTotals.lean
-'ThinMatrix.GraphOwnRoutingTotals.total_selected' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphOwnRoutingTotals.transpose_ids' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean/GraphHighScalarResult.lean
+'ThinMatrix.GraphHighScalarResult.work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHighScalarResult.prepared_ids' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHighScalarResult.gather_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHighScalarResult.value' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-lean/GraphRootInvariance.lean
-'ThinMatrix.GraphRootInvariance.root_length_independent' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphRootInvariance.length_independent' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean/GraphHighScalarCanonical.lean
+'ThinMatrix.GraphHighScalarCanonical.scalar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHighScalarCanonical.correct' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-lean/SelectedRootProduct.lean
-'ThinMatrix.SelectedRootProduct.execute_control' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedRootProduct.term_value' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedRootProduct.dot_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedRootProduct.term_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedRootProduct.term_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedRootProduct.term_control' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedRootProduct.execute_value' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedRootProduct.agrees' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedRootProduct.execute_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedRootProduct.execute_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean/GraphHighBlockProduction.lean
+'ThinMatrix.GraphHighBlockProduction.correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHighBlockProduction.table_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHighBlockProduction.work' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-lean/SelectedRootRows.lean
-'ThinMatrix.SelectedRootRows.readBlock_get' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedRootRows.readBlock_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedRootRows.entry_value' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedRootRows.execute_get' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedRootRows.execute_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedRootRows.execute_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SelectedRootRows.execute_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean/GraphSelectedIncidences.lean
+'ThinMatrix.GraphSelectedIncidences.get' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedIncidences.semantic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedIncidences.modCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedIncidences.nonnegative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedIncidences.bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedIncidences.bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedIncidences.control' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-lean/GraphSelectedRootProduct.lean
-'ThinMatrix.GraphSelectedRootProduct.decode_root' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.GraphSelectedRootProduct.entry_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean/GraphSelectedTable.lean
+'ThinMatrix.GraphSelectedTable.get' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedTable.correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedTable.count_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedTable.wrap_bits_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphSelectedTable.work' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-lean/HalfSourceActualVolumes.lean
-'ThinMatrix.HalfSourceActualVolumes.good_count' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceActualVolumes.groups_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceActualVolumes.groups_le' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceActualVolumes.roots_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceActualVolumes.roots_le' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceActualVolumes.groups_completion_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceActualVolumes.roots_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceActualVolumes.groups_bands_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceActualVolumes.roots_bands_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean/GraphHalfSourceExecution.lean
+'ThinMatrix.GraphHalfSourceExecution.low_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceExecution.high_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceExecution.correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceExecution.modCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceExecution.count_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceExecution.produce_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourcePrimeParameters.lean
+'ThinMatrix.HalfSourcePrimeParameters.program_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePrimeParameters.eventually_good' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePrimeParameters.eventually_program_isSome' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourcePrimeParameters.eventually_program_apspCap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+lean/HalfSourceParameterExecution.lean
+'ThinMatrix.HalfSourceParameterExecution.prepare_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceParameterExecution.validate_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceParameterExecution.prepareEncoded_value' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourceParameterExecution.configurationDecoded_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourceParameterExecution.execute_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceParameterExecution.execute_steps' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceParameterExecution.validate_registers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceParameterExecution.decodePrepared_price' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourceParameterExecution.registerWidth_le_log' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourceParameterExecution.execute_finite_price' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourceParameterExecution.execute_bitSteps_eventually' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourceParameterExecution.execute_apspCap_eventually' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+lean/HalfSourceParameterMetadata.lean
+'ThinMatrix.HalfSourceParameterMetadata.metadata_pool_eq_sort' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourceParameterMetadata.metadata_pool_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceParameterMetadata.success_pool' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceParameterMetadata.successfulLabels_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceParameterMetadata.successfulLabels_get_mem' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourceParameterMetadata.successfulLabels_injective' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourceParameterMetadata.metadata_pool_length_price' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+lean/HalfSourceAPSPHost.lean
+'ThinMatrix.HalfSourceAPSPHost.retained_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPHost.prepare_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPHost.correct_refines_direct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPHost.run_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPHost.run_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPHost.run_calls_faithful' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPHost.run_oracleWork' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPHost.run_query_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceLogGeometry.lean
+'ThinMatrix.HalfSourceLogGeometry.dimension_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLogGeometry.indexConstant_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLogGeometry.innerPower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLogGeometry.cyclic_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLogGeometry.cyclic_log' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLogGeometry.size_from_log' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLogGeometry.cyclic_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLogGeometry.outer_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLogGeometry.outer_log' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLogGeometry.outer_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLogGeometry.uniformly_large' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourcePlanExecution.lean
+'ThinMatrix.HalfSourcePlanExecution.preparePlan_m' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePlanExecution.preparePlan_L' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePlanExecution.preparePlan_t' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePlanExecution.preparePlan_lowWidth_common' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourcePlanExecution.preparePlan_sites' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePlanExecution.preparePlan_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceDispatch.lean
+'ThinMatrix.HalfSourceDispatch.folded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceDispatch.cyclic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceDispatch.plan_m' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceDispatch.canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceDispatch.actual_phase' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceDispatch.setup_sites' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphHalfSourceBackend.lean
+'ThinMatrix.GraphHalfSourceBackend.positive_modCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceBackend.positive_count_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceBackend.concreteTable_modCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceBackend.concreteTable_count_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceBackend.concreteOracle_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceBackend.concreteOracle_countsBound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.GraphHalfSourceBackend.concreteTable_of_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceBackend.run_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceRawCosts.lean
+'ThinMatrix.HalfSourceRawCosts.rawTerm_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRawCosts.innerExponent_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRawCosts.degree_exponent_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRawCosts.inner_power_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRawCosts.rawTerm_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceComputedCosts.lean
+'ThinMatrix.HalfSourceComputedCosts.candidate_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceComputedCosts.actual_rawTerm_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceComputedCosts.actual_stage_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceComputedCosts.actual_rawSum_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceComputedCosts.allPhaseLedgerBigO' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceComputedCosts.phaseRawSum_charged' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceComputedCosts.callFamily_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceComputedCosts.callFamilyBigO' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceBackendAggregation.lean
+'ThinMatrix.HalfSourceBackendAggregation.pool_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceBackendAggregation.rounds_log' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceBackendAggregation.solve_backend_le_ledger' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+lean/HalfSourceControllerWidths.lean
+'ThinMatrix.HalfSourceControllerWidths.eightScale_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceControllerWidths.computed_pool_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceControllerWidths.computed_controller_width' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+lean/HalfSourceCallbackBudget.lean
+'ThinMatrix.HalfSourceCallbackBudget.unit_poly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCallbackBudget.computed_primes_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCallbackBudget.computed_controller_price' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourceCallbackBudget.callbackUnit_poly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCallbackBudget.computed_callback_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+lean/HalfSourceControllerBudget.lean
+'ThinMatrix.HalfSourceControllerBudget.computed_referenceControllerBudget_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+lean/HalfSourceCallbackCosts.lean
+'ThinMatrix.HalfSourceCallbackCosts.callback_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCallbackCosts.overhead_bigO' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourcePreparedSetup.lean
+'ThinMatrix.HalfSourcePreparedSetup.computed_label_sizes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePreparedSetup.fromPrimes_setupControl_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourcePreparedSetup.fromPrimes_setup_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphHalfSourcePreparedCosts.lean
+'ThinMatrix.GraphHalfSourcePreparedCosts.setup_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourcePreparedCosts.prepared_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourcePreparedCosts.setup_bigO' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourcePreparedCosts.price_bigO' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceAPSPCosts.lean
+'_private.lean.HalfSourceAPSPCosts.0.ThinMatrix.HalfSourceAPSPCosts.prepared_price_from_setup' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.lean.HalfSourceAPSPCosts.0.ThinMatrix.HalfSourceAPSPCosts.preparationFamily_correct' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.lean.HalfSourceAPSPCosts.0.ThinMatrix.HalfSourceAPSPCosts.run_eq_family' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.lean.HalfSourceAPSPCosts.0.ThinMatrix.HalfSourceAPSPCosts.family_price_from_setup' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.lean.HalfSourceAPSPCosts.0.ThinMatrix.HalfSourceAPSPCosts.concrete_prepared_work_bigO_of_combined_price' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourceAPSPCosts.hostAllowance_bigO' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPCosts.run_hostBits_bigO' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPCosts.callback_resources_bigO_of_uniform_price' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourceAPSPCosts.run_work_bigO_of_combined_price' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+lean/HalfSourceAPSPTransport.lean
+'ThinMatrix.HalfSourceAPSPTransport.prepared_setupBits_original' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourceAPSPTransport.prepared_setupControl_original' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourceAPSPTransport.prepared_work_original' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTransport.prepared_answerWrites_original' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourceAPSPTransport.callback_setupBits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTransport.callback_setupControl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTransport.callback_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTransport.callback_answerWrites' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTransport.lifted_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTransport.lifted_answerWrites' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTransport.prepareFromSetup_of_some' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTransport.prepared_success_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTransport.prepared_oracle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTransport.prepared_setupBits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTransport.prepared_setupControl' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceHostSetupTransport.lean
+'ThinMatrix.HalfSourceHostSetupTransport.setup_and_callback_le_original' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+lean/GraphHalfSourceHostCosts.lean
+'ThinMatrix.GraphHalfSourceHostCosts.selector_extra' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceHostCosts.setup_allowance_bigO' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceHostCosts.finalPrice_bigO' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceHostCosts.finalPrice_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceHostCosts.combined_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceHostCosts.combined_price_at' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceHostCosts.finalPrice_eventually_nonneg' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.lean.GraphHalfSourceHostCosts.0.ThinMatrix.GraphHalfSourceHostCosts.addressed_work_of_combined' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+lean/GraphHalfSourceNormalizeCost.lean
+'ThinMatrix.GraphHalfSourceNormalizeCost.low_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceNormalizeCost.high_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceNormalizeCost.bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceNormalizeCost.control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceNormalizeCost.produce_work' depends on axioms: [propext, Classical.choice, Quot.sound]
 
 lean/HalfSourcePrefixVolume.lean
 'ThinMatrix.HalfSourcePrefixVolume.controlUnit_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -6206,17 +6738,6 @@ lean/HalfSourceBatchCopyVolume.lean
 'ThinMatrix.HalfSourceBatchCopyVolume.batch_control' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.HalfSourceBatchCopyVolume.actual_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.HalfSourceBatchCopyVolume.actual_control' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/HalfSourceCapSetup.lean
-'ThinMatrix.HalfSourceCapSetup.dimension_value' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceCapSetup.root_value' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceCapSetup.execute_value' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceCapSetup.four_size' depends on axioms: [propext, Quot.sound]
-'ThinMatrix.HalfSourceCapSetup.dimension_price' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceCapSetup.root_loop_price' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceCapSetup.root_price' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceCapSetup.rounded_width' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceCapSetup.execute_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
 
 lean/HalfSourceAdaptiveWidths.lean
 'ThinMatrix.HalfSourceAdaptiveWidths.cap_size' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -6277,6 +6798,250 @@ lean/HalfSourceAdaptivePolynomials.lean
 'ThinMatrix.HalfSourceAdaptivePolynomials.unit_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.HalfSourceAdaptivePolynomials.canonical_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
 
+lean/HalfSourceHighPolynomials.lean
+'ThinMatrix.HalfSourceHighPolynomials.encoder_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighPolynomials.box_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighPolynomials.setup_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighPolynomials.width_inputs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighPolynomials.canonical_units' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceHighQueryCost.lean
+'ThinMatrix.HalfSourceHighQueryCost.query_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighQueryCost.reads_pos' depends on axioms: [propext]
+'ThinMatrix.HalfSourceHighQueryCost.row_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighQueryCost.exponent_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighQueryCost.row_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceSelectedRootCost.lean
+'ThinMatrix.HalfSourceSelectedRootCost.add_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelectedRootCost.product_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelectedRootCost.dot_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelectedRootCost.scalar_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelectedRootCost.scalar_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelectedRootCost.rows_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphHalfSourceNormalizeWidth.lean
+'ThinMatrix.GraphHalfSourceNormalizeWidth.cell_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceNormalizeWidth.cell_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceNormalizeWidth.normalized_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceNormalizeWidth.good_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceNormalizeWidth.channel_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceNormalizeWidth.translation_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceNormalizeWidth.root_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceNormalizeWidth.weighted_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceNormalizeWidth.low_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceNormalizeWidth.high_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphHalfSourceOutputCost.lean
+'ThinMatrix.GraphHalfSourceOutputCost.incidence_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceOutputCost.extra_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphHalfSourceOutputCost.produce_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourcePointwiseHost.lean
+'ThinMatrix.HalfSourcePointwiseHost.core_work_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePointwiseHost.run_work_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePointwiseHost.run_work_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphHalfSourceWork.lean
+'ThinMatrix.GraphHalfSourceWork.run_work_of_phasePrices' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnBankCopyCosts.lean
+'ThinMatrix.GraphOwnBankCopyCosts.root_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBankCopyCosts.root_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBankCopyCosts.banks_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBankCopyCosts.banks_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnBankCopyRate.lean
+'ThinMatrix.GraphOwnBankCopyRate.natural' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnBankCopyRate.rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnBandCompleteRate.lean
+'ThinMatrix.GraphOwnBandCompleteRate.exists_complete_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/GraphOwnRoutingTotals.lean
+'ThinMatrix.GraphOwnRoutingTotals.total_selected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.GraphOwnRoutingTotals.transpose_ids' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourcePublicFit.lean
+'ThinMatrix.HalfSourcePublicFit.bands_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePublicFit.eventually_fits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePublicFit.width_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePublicFit.fit_width_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceDispatchFit.lean
+'ThinMatrix.HalfSourceDispatchFit.widths' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceDispatchFit.eventually_fits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceDispatchFit.fit_width_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceAddressGeometry.lean
+'ThinMatrix.HalfSourceAddressGeometry.shape_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAddressGeometry.scale_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAddressGeometry.payload_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAddressGeometry.recursive_field_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceInputMetadata.lean
+'ThinMatrix.HalfSourceInputMetadata.input_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceInputMetadata.metadata' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceInputMetadata.blocks_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceInputMetadata.metadata_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceInputMetadata.widths_log' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceDispatchCosts.lean
+'ThinMatrix.HalfSourceDispatchCosts.setup_sites' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceDispatchCosts.metadata_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceDispatchCosts.formation_phase' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceHighGraphCost.lean
+'ThinMatrix.HalfSourceHighGraphCost.side_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighGraphCost.tables_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighGraphCost.budget_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceHighBandCost.lean
+'ThinMatrix.HalfSourceHighBandCost.bands_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighBandCost.budget_bands' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighBandCost.actual' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceEmptyRootCost.lean
+'ThinMatrix.HalfSourceEmptyRootCost.tile_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceEmptyRootCost.channel_box_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceEmptyRootCost.count_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceHighScheduleCost.lean
+'ThinMatrix.HalfSourceHighScheduleCost.budget_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighScheduleCost.band_pairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighScheduleCost.budget_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighScheduleCost.actual' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceHighResultCost.lean
+'ThinMatrix.HalfSourceHighResultCost.budget_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighResultCost.budget_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceHighBlockCost.lean
+'ThinMatrix.HalfSourceHighBlockCost.constant_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighBlockCost.actual' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighBlockCost.preprocessing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighBlockCost.budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceAdaptiveBandCost.lean
+'ThinMatrix.HalfSourceAdaptiveBandCost.cap_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAdaptiveBandCost.cap_completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAdaptiveBandCost.volume_bands' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAdaptiveBandCost.work_bands' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceRoutedQueryCost.lean
+'ThinMatrix.HalfSourceRoutedQueryCost.support_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRoutedQueryCost.cap_query_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRoutedQueryCost.channel_query_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRoutedQueryCost.routed_volume' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRoutedQueryCost.physical_columns' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceCompletionVolume.lean
+'ThinMatrix.HalfSourceCompletionVolume.query_partition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCompletionVolume.cap_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCompletionVolume.own_padding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCompletionVolume.repetitions_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceCompletionTotal.lean
+'ThinMatrix.HalfSourceCompletionTotal.constant_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCompletionTotal.total_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCompletionTotal.channel_q1' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceLowProductCosts.lean
+'ThinMatrix.HalfSourceLowProductCosts.channel_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLowProductCosts.channel_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLowProductCosts.root_magnitude' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLowProductCosts.rows_bound_of_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceLowCollectionCosts.lean
+'ThinMatrix.HalfSourceLowCollectionCosts.actual_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceLowExtraPolynomials.lean
+'ThinMatrix.HalfSourceLowExtraPolynomials.product_extra' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLowExtraPolynomials.family_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLowExtraPolynomials.family_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLowExtraPolynomials.accumulation_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLowExtraPolynomials.collection_extra' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceLowExtraVolume.lean
+'ThinMatrix.HalfSourceLowExtraVolume.channel_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLowExtraVolume.channel_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLowExtraVolume.canonical_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLowExtraVolume.extra_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceLowRootSum.lean
+'ThinMatrix.HalfSourceLowRootSum.transpose_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLowRootSum.sum_children' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceLowTypeVolume.lean
+'ThinMatrix.HalfSourceLowTypeVolume.channel_keys' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLowTypeVolume.counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLowTypeVolume.support_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLowTypeVolume.groups_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLowTypeVolume.canonical_volume' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceLowTypeVolume.total' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceLowProductionCost.lean
+'ThinMatrix.HalfSourceLowProductionCost.exists_production_rate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+lean/HalfSourceLowRoundedRate.lean
+'ThinMatrix.HalfSourceLowRoundedRate.bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourcePublicWidths.lean
+'ThinMatrix.HalfSourcePublicWidths.fields' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePublicWidths.widths' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePublicWidths.bound_log' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourcePublicWidths.grid_fit' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceRawAbsorption.lean
+'ThinMatrix.HalfSourceRawAbsorption.total_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRawAbsorption.term_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRawAbsorption.nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRawAbsorption.source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRawAbsorption.low' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRawAbsorption.high' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRawAbsorption.target' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRawAbsorption.writes' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceHighExecutionRate.lean
+'ThinMatrix.HalfSourceHighExecutionRate.actual' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceHighExecutionRate.eventual' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceActualRaw.lean
+'ThinMatrix.HalfSourceActualRaw.eq_phase' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceLowExecutionRate.lean
+'ThinMatrix.HalfSourceLowExecutionRate.exists_execution_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceLowPhaseRate.lean
+'ThinMatrix.HalfSourceLowPhaseRate.exists_phase_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceOutputPhaseRate.lean
+'ThinMatrix.HalfSourceOutputPhaseRate.coefficient_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceOutputPhaseRate.polynomial_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceOutputPhaseRate.bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceBackendCostAssembly.lean
+'ThinMatrix.HalfSourceBackendCostAssembly.low_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceBackendCostAssembly.setup_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceBackendCostAssembly.metadata_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceBackendCostAssembly.positive_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceBackendCostAssembly.price_log' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceBackendCostAssembly.metadata_phase' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceBackendCostAssembly.low_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceBackendCostAssembly.price_log' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceBackendCostAssembly.phase_prices' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourcePhaseAlgebra.lean
+'ThinMatrix.HalfSourcePhaseAlgebra.source_target' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceAssemblyAlgebra.lean
+'ThinMatrix.HalfSourceAssemblyAlgebra.sum_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceSetupTransfer.lean
+'ThinMatrix.HalfSourceSetupTransfer.source' depends on axioms: [propext, Classical.choice, Quot.sound]
+
 lean/HalfSourceAdaptiveGraphCost.lean
 'ThinMatrix.HalfSourceAdaptiveGraphCost.volume_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.HalfSourceAdaptiveGraphCost.family_price' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -6289,11 +7054,29 @@ lean/HalfSourceAdaptiveActualCost.lean
 'ThinMatrix.HalfSourceAdaptiveActualCost.magnitude' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.HalfSourceAdaptiveActualCost.execute_work' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-lean/HalfSourceAdaptiveBandCost.lean
-'ThinMatrix.HalfSourceAdaptiveBandCost.cap_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceAdaptiveBandCost.cap_completion' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceAdaptiveBandCost.volume_bands' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceAdaptiveBandCost.work_bands' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean/HalfSourceEncodedProduction.lean
+'ThinMatrix.HalfSourceEncodedProduction.uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceEncodedProduction.actual' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceFoldedSetupCost.lean
+'ThinMatrix.HalfSourceFoldedSetupCost.exponent_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceFoldedSetupCost.band_formation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceFoldedSetupCost.cost_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceFoldedSetupCost.bank_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceFoldedSetupCost.actual_bank_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceRootSetupCost.lean
+'ThinMatrix.HalfSourceRootSetupCost.keys' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRootSetupCost.key_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRootSetupCost.budget_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRootSetupCost.budget_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRootSetupCost.budget_bands' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceRootRuntime.lean
+'ThinMatrix.HalfSourceRootRuntime.cost_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRootRuntime.cost_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRootRuntime.bank_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRootRuntime.actual_bank_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
 
 lean/HalfSourceSourceCosts.lean
 'ThinMatrix.HalfSourceSourceCosts.directSource_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -6312,6 +7095,117 @@ lean/HalfSourceBinarySourceCosts.lean
  Classical.choice,
  Quot.sound]
 
+lean/HalfSourceSelectorPolynomials.lean
+'ThinMatrix.HalfSourceSelectorPolynomials.score_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelectorPolynomials.score_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelectorPolynomials.update_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelectorPolynomials.choice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelectorPolynomials.translation_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceSelectorSetup.lean
+'ThinMatrix.HalfSourceSelectorSetup.J_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelectorSetup.candidate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelectorSetup.select' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelectorSetup.raw_tables' depends on axioms: [propext, Quot.sound]
+'ThinMatrix.HalfSourceSelectorSetup.build' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelectorSetup.picks' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceSelectorTotal.lean
+'ThinMatrix.HalfSourceSelectorTotal.translation_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelectorTotal.budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSelectorTotal.actual' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceDirectSetup.lean
+'ThinMatrix.HalfSourceDirectSetup.shape_selector_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceDirectSetup.eventual_budget_fit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceDirectSetup.actual' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceCapPolynomial.lean
+'ThinMatrix.HalfSourceCapPolynomial.budget_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCapPolynomial.budget_direct' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceEncodedBandCost.lean
+'ThinMatrix.HalfSourceEncodedBandCost.group_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceEncodedBandCost.budget_bands' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceSharedSourceBudget.lean
+'ThinMatrix.HalfSourceSharedSourceBudget.copies' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSharedSourceBudget.block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSharedSourceBudget.actual' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceSharedSourceRate.lean
+'ThinMatrix.HalfSourceSharedSourceRate.constant_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSharedSourceRate.volume_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSharedSourceRate.polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceSharedSourceRate.budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceTargetSetupCost.lean
+'ThinMatrix.HalfSourceTargetSetupCost.formation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceTargetSetupCost.targets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceTargetSetupCost.execute' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceTargetPolynomial.lean
+'ThinMatrix.HalfSourceTargetPolynomial.weights' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceTargetPolynomial.key_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceTargetPolynomial.router' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceTargetPolynomial.extras' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceTargetVolume.lean
+'ThinMatrix.HalfSourceTargetVolume.volume_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceTargetVolume.band_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceTargetVolume.raw' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceTargetVolume.small_volume' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceTargetActualCost.lean
+'ThinMatrix.HalfSourceTargetActualCost.budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceTargetActualCost.actual' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceSetupPhaseRate.lean
+'ThinMatrix.HalfSourceSetupPhaseRate.exists_setup_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceBackendPhaseRate.lean
+'ThinMatrix.HalfSourceBackendPhaseRate.exists_phase_prices' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceRetainedHeap.lean
+'ThinMatrix.HalfSourceRetainedHeap.linear_fields' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRetainedHeap.heap_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRetainedHeap.address_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRetainedHeap.address_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRetainedHeap.field_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRetainedHeap.scores_width' depends on axioms: [propext, Quot.sound]
+'ThinMatrix.HalfSourceRetainedHeap.score_fields' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRetainedHeap.indexed_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceRunAddress.lean
+'ThinMatrix.HalfSourceRunAddress.hostSlots_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRunAddress.output_in_payload' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRunAddress.phase_layout' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRunAddress.callback_layout' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRunAddress.completeHeap_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRunAddress.callbackHeap_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRunAddress.preparation_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRunAddress.prepared_setup' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceRunAddress.eventual_addresses' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+lean/HalfSourceAPSPTheorem.lean
+'ThinMatrix.HalfSourceAPSPTheorem.scheme_num' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTheorem.scheme_den' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTheorem.scheme_z' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTheorem.scheme_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTheorem.phase_prices' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTheorem.addressPrice_eq_selectedPrice' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ThinMatrix.HalfSourceAPSPTheorem.one_le_addressPrice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTheorem.addressPrice_poly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTheorem.run_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTheorem.run_work_bigO' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTheorem.correctness_and_work' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTheorem.eventual_addresses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceAPSPTheorem.correctness_work_and_addresses' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
 lean/HalfSourceBinarySourceRuntime.lean
 'ThinMatrix.HalfSourceBinarySourceRuntime.cost_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.HalfSourceBinarySourceRuntime.bank_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -6319,197 +7213,13 @@ lean/HalfSourceBinarySourceRuntime.lean
  Classical.choice,
  Quot.sound]
 
-lean/HalfSourceRoutedQueryCost.lean
-'ThinMatrix.HalfSourceRoutedQueryCost.support_le' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceRoutedQueryCost.cap_query_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceRoutedQueryCost.channel_query_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceRoutedQueryCost.routed_volume' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceRoutedQueryCost.physical_columns' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/HalfSourceCompletionVolume.lean
-'ThinMatrix.HalfSourceCompletionVolume.query_partition' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceCompletionVolume.cap_power' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceCompletionVolume.own_padding' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceCompletionVolume.repetitions_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/HalfSourceRawCosts.lean
-'ThinMatrix.HalfSourceRawCosts.rawTerm_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceRawCosts.innerExponent_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceRawCosts.degree_exponent_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceRawCosts.inner_power_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceRawCosts.rawTerm_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/HalfSourceComputedCosts.lean
-'ThinMatrix.HalfSourceComputedCosts.candidate_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceComputedCosts.actual_rawTerm_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceComputedCosts.actual_stage_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceComputedCosts.actual_rawSum_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceComputedCosts.allPhaseLedgerBigO' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceComputedCosts.phaseRawSum_charged' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceComputedCosts.callFamily_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceComputedCosts.callFamilyBigO' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/HalfSourceEmptyRootCost.lean
-'ThinMatrix.HalfSourceEmptyRootCost.tile_le' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceEmptyRootCost.channel_box_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceEmptyRootCost.count_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/HalfSourceFoldedSetupCost.lean
-'ThinMatrix.HalfSourceFoldedSetupCost.exponent_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceFoldedSetupCost.band_formation' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceFoldedSetupCost.cost_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceFoldedSetupCost.bank_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceFoldedSetupCost.actual_bank_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/HalfSourceHighPolynomials.lean
-'ThinMatrix.HalfSourceHighPolynomials.encoder_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceHighPolynomials.box_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceHighPolynomials.setup_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceHighPolynomials.width_inputs' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceHighPolynomials.canonical_units' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/HalfSourceHighGraphCost.lean
-'ThinMatrix.HalfSourceHighGraphCost.side_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceHighGraphCost.tables_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceHighGraphCost.budget_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/HalfSourceHighBandCost.lean
-'ThinMatrix.HalfSourceHighBandCost.bands_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceHighBandCost.budget_bands' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceHighBandCost.actual' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/HalfSourceLogGeometry.lean
-'ThinMatrix.HalfSourceLogGeometry.dimension_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceLogGeometry.indexConstant_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceLogGeometry.innerPower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceLogGeometry.cyclic_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceLogGeometry.cyclic_log' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceLogGeometry.size_from_log' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceLogGeometry.cyclic_size' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceLogGeometry.outer_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceLogGeometry.outer_log' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceLogGeometry.outer_size' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceLogGeometry.uniformly_large' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/HalfSourcePrimeParameters.lean
-'ThinMatrix.HalfSourcePrimeParameters.program_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourcePrimeParameters.eventually_good' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourcePrimeParameters.eventually_program_isSome' depends on axioms: [propext,
- Classical.choice,
- Quot.sound]
-'ThinMatrix.HalfSourcePrimeParameters.eventually_program_apspCap' depends on axioms: [propext,
- Classical.choice,
- Quot.sound]
-
-lean/HalfSourceParameterExecution.lean
-'ThinMatrix.HalfSourceParameterExecution.prepare_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceParameterExecution.validate_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceParameterExecution.prepareEncoded_value' depends on axioms: [propext,
- Classical.choice,
- Quot.sound]
-'ThinMatrix.HalfSourceParameterExecution.configurationDecoded_eq' depends on axioms: [propext,
- Classical.choice,
- Quot.sound]
-'ThinMatrix.HalfSourceParameterExecution.execute_value' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceParameterExecution.execute_steps' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceParameterExecution.validate_registers' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceParameterExecution.decodePrepared_price' depends on axioms: [propext,
- Classical.choice,
- Quot.sound]
-'ThinMatrix.HalfSourceParameterExecution.registerWidth_le_log' depends on axioms: [propext,
- Classical.choice,
- Quot.sound]
-'ThinMatrix.HalfSourceParameterExecution.execute_finite_price' depends on axioms: [propext,
- Classical.choice,
- Quot.sound]
-'ThinMatrix.HalfSourceParameterExecution.execute_bitSteps_eventually' depends on axioms: [propext,
- Classical.choice,
- Quot.sound]
-'ThinMatrix.HalfSourceParameterExecution.execute_apspCap_eventually' depends on axioms: [propext,
- Classical.choice,
- Quot.sound]
-
-lean/HalfSourceParameterMetadata.lean
-'ThinMatrix.HalfSourceParameterMetadata.metadata_pool_eq_sort' depends on axioms: [propext,
- Classical.choice,
- Quot.sound]
-'ThinMatrix.HalfSourceParameterMetadata.metadata_pool_length' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceParameterMetadata.success_pool' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceParameterMetadata.successfulLabels_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceParameterMetadata.successfulLabels_get_mem' depends on axioms: [propext,
- Classical.choice,
- Quot.sound]
-'ThinMatrix.HalfSourceParameterMetadata.successfulLabels_injective' depends on axioms: [propext,
- Classical.choice,
- Quot.sound]
-'ThinMatrix.HalfSourceParameterMetadata.metadata_pool_length_price' depends on axioms: [propext,
- Classical.choice,
- Quot.sound]
-
-lean/HalfSourceRootSetupCost.lean
-'ThinMatrix.HalfSourceRootSetupCost.keys' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceRootSetupCost.key_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceRootSetupCost.budget_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceRootSetupCost.budget_real' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceRootSetupCost.budget_bands' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/HalfSourceRootRuntime.lean
-'ThinMatrix.HalfSourceRootRuntime.cost_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceRootRuntime.cost_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceRootRuntime.bank_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceRootRuntime.actual_bank_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/HalfSourceSelectedRootCost.lean
-'ThinMatrix.HalfSourceSelectedRootCost.add_size' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceSelectedRootCost.product_size' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceSelectedRootCost.dot_width' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceSelectedRootCost.scalar_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceSelectedRootCost.scalar_control' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.HalfSourceSelectedRootCost.rows_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/OriginalRowCollection.lean
-'ThinMatrix.OriginalRowCollection.tag_length' depends on axioms: [propext, Quot.sound]
-'ThinMatrix.OriginalRowCollection.flatten_length' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.OriginalRowCollection.flatten_mem' depends on axioms: [propext, Quot.sound]
-'ThinMatrix.OriginalRowCollection.correct' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.OriginalRowCollection.selected_cover' depends on axioms: [propext]
-'ThinMatrix.OriginalRowCollection.bits' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.OriginalRowCollection.control' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean/HalfSourceCountExecution.lean
+'ThinMatrix.HalfSourceCountExecution.value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCountExecution.count_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceCountExecution.price' depends on axioms: [propext, Classical.choice, Quot.sound]
 
 lean/SelectedWindowCompletion.lean
 'ThinMatrix.SelectedWindowCompletion.correct' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/SharedAddressedStorage.lean
-'ThinMatrix.SharedAddressedStorage.batch_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SharedAddressedStorage.batch_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SharedAddressedStorage.bit_heap_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SharedAddressedStorage.address_width' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/SharedCompletionProgramRate.lean
-'ThinMatrix.SharedCompletionProgramRate.exists_schedule_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/SharedPrefixStorage.lean
-'ThinMatrix.SharedPrefixStorage.grouped_cells' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SharedPrefixStorage.trace_cells' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SharedPrefixStorage.matrix_cells' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SharedPrefixStorage.bank_scalars' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SharedPrefixStorage.bank_cells' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SharedPrefixStorage.root_child_cells' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SharedPrefixStorage.root_output_cells' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/SharedPrefixStorageBounds.lean
-'ThinMatrix.SharedPrefixStorageBounds.scale_facts' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SharedPrefixStorageBounds.bank_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SharedPrefixStorageBounds.window_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SharedPrefixStorageBounds.root_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SharedPrefixStorageBounds.heap_width' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SharedPrefixStorageBounds.price_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-lean/SharedCompletionWidths.lean
-'ThinMatrix.SharedCompletionWidths.span_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SharedCompletionWidths.span_size' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SharedCompletionWidths.price_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ThinMatrix.SharedCompletionWidths.covers' depends on axioms: [propext, Classical.choice, Quot.sound]
 
 lean/ToomCyclic.lean
 'ThinMatrix.ToomCyclic.input_natDegree_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -6524,6 +7234,6 @@ lean/ToomCyclicBit.lean
 'ThinMatrix.ToomCyclicBit.foldArray_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ThinMatrix.ToomCyclicBit.multiply_fixed_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
 
-PASS: 502 modules; 4848 scoped declarations checked; only standard Lean axioms.
-Source/configuration SHA-256: f1a93c88a816e1d76fa9c953e3a074170ce9a1978f9eb0a6bab6c5dde34b2a57
+PASS: 612 modules; 5290 scoped declarations checked; only standard Lean axioms.
+Source/configuration SHA-256: 9d5e9865f2e599654af2082098a609a237ed2208d99adbb14648695b9527b04b
 See lean/README.md for the exact formalization scope and remaining obligations.

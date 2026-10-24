@@ -38,6 +38,30 @@ def sumRows {C : ℕ} : List (Bool × Vector Cell C) → Run (Vector Cell C)
         ⟨next.value,rest.bitSteps+next.bitSteps,rest.control+next.control+8⟩
       else ⟨rest.value,rest.bitSteps,rest.control+8⟩
 
+private def sumRowsStep {C : ℕ} (row : Bool × Vector Cell C) (rest : Run (Vector Cell C)) : Run (Vector Cell C) :=
+  if row.1 then
+    let next := addVectors row.2 rest.value
+    ⟨next.value,rest.bitSteps+next.bitSteps,rest.control+next.control+8⟩
+  else ⟨rest.value,rest.bitSteps,rest.control+8⟩
+
+private def sumRowsTail {C : ℕ} (rows : List (Bool × Vector Cell C)) : Run (Vector Cell C) :=
+  rows.reverse.foldl (fun rest row => sumRowsStep row rest) ⟨Vector.replicate C zero,0,3*C+2⟩
+
+private theorem sumRows_foldr {C : ℕ} (rows : List (Bool × Vector Cell C)) :
+    rows.foldr sumRowsStep ⟨Vector.replicate C zero,0,3*C+2⟩=sumRows rows := by
+  induction rows with
+  | nil => rfl
+  | cons row rows ih =>
+      rw [List.foldr_cons,ih]
+      rcases row with ⟨b,v⟩
+      rfl
+
+@[csimp] theorem sumRows_eq_tail : @sumRows=@sumRowsTail := by
+  funext C rows
+  rw [←sumRows_foldr]
+  exact (List.foldr_eq_foldl_reverse ..)
+
+
 theorem sumRows_view {C : ℕ} (xs : List (Bool × Vector Cell C)) (c : Fin C) :
     view ((sumRows xs).value.get c) = (xs.map (fun x => if x.1 then view (x.2.get c) else 0)).sum := by
   induction xs with

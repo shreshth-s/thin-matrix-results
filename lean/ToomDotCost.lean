@@ -248,6 +248,3 @@ theorem interpolateCounted_bit_cost_uniform (M h R W : ℕ)
 #print axioms interpolateCounted_bit_cost_uniform
 
 end ThinMatrix.ToomBitCost
-
-
-

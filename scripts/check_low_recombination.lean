@@ -251,7 +251,8 @@ def checkPlan {L m : Nat} (shape : ThinMatrixBackend.ShapePlan L m)
   (cubes L).all (fun Q => (cubes m).all fun h =>
     (readPick plan.value.picks (cubeSupport Q) h).val==firstRef shape plan.value.shifts (cubeSupport Q) h) &&
   plan.value.shifts.toArray.size==(if m==0 then 1 else 64*m^3) &&
-  decide (plan.bitSteps≤2^L*ExactHalfWeightTable.candidateBitBudget L)
+  decide (plan.bitSteps≤HalfSourceRetainedTranslations.arithmeticBudget m+
+    2^L*ExactHalfWeightTable.candidateBitBudget L)
 
 def rawDatum (a j seed A : Nat) : Int :=
   if (3*a+j+seed)%3==0 then A else if (a+2*j+seed)%3==1 then -(A:Int) else 0

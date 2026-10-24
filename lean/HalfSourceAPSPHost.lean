@@ -1,0 +1,231 @@
+import HalfSourceParameterMetadata
+import BinaryAPSPHostTotalCosts
+import BinaryTriangleExecution
+
+/-! Executable new-parameter APSP host with an explicit supplied binary
+backend factory. The parameter execution and metadata are retained once;
+all setup and host counters remain literal. Correctness follows from the
+supplied backend's count correctness. No improved runtime is asserted by
+this composition module until its concrete backend costs are discharged. -/
+namespace ThinMatrix.HalfSourceAPSPHost
+open BinaryAPSPCaller
+set_option maxHeartbeats 3000000
+set_option maxRecDepth 100000
+attribute [local irreducible] HalfSourceBatchFit.block HalfSourceBatchFit.R HalfSourceBatchFit.S
+
+def cap (n W : ℕ) : ℕ := 192*n*W+40
+
+def castParameters {h h' U : ℕ} (he : h=h') (p : CompleteAPSP.Parameters h U) :
+    CompleteAPSP.Parameters h' U := he ▸ p
+
+theorem castParameters_pool {h h' U : ℕ} (he : h=h') (p : CompleteAPSP.Parameters h U) :
+    (castParameters he p).pool=p.pool := by cases he; rfl
+
+theorem castParameters_data {h h' U : ℕ} (he : h=h') (p : CompleteAPSP.Parameters h U) :
+    (castParameters he p).pool=p.pool ∧ (castParameters he p).P=p.P ∧
+      (castParameters he p).lam=p.lam ∧ (castParameters he p).k=p.k ∧
+      (castParameters he p).M=p.M ∧ (castParameters he p).stages=p.stages := by
+  cases he
+  exact ⟨rfl,rfl,rfl,rfl,rfl,rfl⟩
+
+def castLabels {h h' U : ℕ} (he : h=h') (p : CompleteAPSP.Parameters h U)
+    (labels : Vector ℕ p.pool.card) : Vector ℕ (castParameters he p).pool.card := by
+  cases he
+  exact labels
+
+theorem castLabels_spec {h h' U : ℕ} (he : h=h') (p : CompleteAPSP.Parameters h U)
+    (labels : Vector ℕ p.pool.card) (hl : labels=EndToEndAPSP.primeVector p.pool) :
+    castLabels he p labels=EndToEndAPSP.primeVector (castParameters he p).pool := by
+  cases he
+  exact hl
+
+theorem retained_block {n U : ℕ} (setup : HalfSourceParameterExecution.Execution n U)
+    (hsetup : setup=HalfSourceParameterExecution.execute n U) :
+    setup.metadata.block=HalfSourceBatchFit.block n := by
+  rw [hsetup,HalfSourceParameterExecution.execute_metadata]
+  exact (ParameterExecution.decodeData_correct (HalfSourceParameterExecution.prepare n U).value).1.trans
+    (HalfSourceParameterExecution.prepare_correct n U).1
+
+structure BackendFactory where
+  Payload : ℕ → ℕ → Type
+  backend : ∀ n h _addressPrice : ℕ, 0 < h → BinaryTriangleExecution.Backend n h (Payload n h)
+
+variable (factory : BackendFactory)
+
+abbrev SuccessPayload (n h : ℕ) :=
+  BinaryTriangleExecution.CallbackPayload n h (factory.Payload n h)
+
+abbrev Payload (n : ℕ) :=
+  Sum (BinaryTriangleExecution.DirectPayload n) (Sigma (SuccessPayload factory n))
+
+def liftSuccess {n h : ℕ} (addressPrice : ℕ) (O : Oracle n (SuccessPayload factory n h)) : Oracle n (Payload factory n) :=
+  fun A B T =>
+    let output := O A B T
+    { answers := output.answers
+      payload := Sum.inr ⟨h,output.payload⟩
+      work := output.work+4*(addressPrice+1)
+      answerWrites := output.answerWrites }
+
+def fallback (n addressPrice : ℕ) : Oracle n (Payload factory n) := fun A B T =>
+  let output := BinaryTriangleExecution.directOracle n A B T
+  { answers := output.answers
+    payload := Sum.inl output.payload
+    work := output.payload.bitSteps+(addressPrice+1)*output.payload.controlSites+4*(addressPrice+1)
+    answerWrites := output.answerWrites }
+
+structure SuccessfulSetup (factory : BackendFactory) (n U h addressPrice : ℕ) where
+  positive : 0<h
+  parameters : CompleteAPSP.Parameters h U
+  labels : Vector ℕ parameters.pool.card
+  label_spec : labels=EndToEndAPSP.primeVector parameters.pool
+  callback : BinaryTriangleExecution.PreparedOracle n h (factory.Payload n h)
+  callback_spec : callback=BinaryTriangleExecution.prepareOracleFromPrimes (factory.backend n h addressPrice positive) parameters labels label_spec addressPrice
+
+/-- Generic index transport keeps numerical parameter definitions out of the
+kernel reduction needed to assemble a successful setup. -/
+def makeSuccessful {n U oldh : ℕ} (h addressPrice : ℕ) (he : oldh=h) (hh : 0<h)
+    (original : CompleteAPSP.Parameters oldh U) (originalLabels : Vector ℕ original.pool.card)
+    (hlabels : originalLabels=EndToEndAPSP.primeVector original.pool) :
+    SuccessfulSetup factory n U h addressPrice :=
+  let parameters := castParameters he original
+  let labels := castLabels he original originalLabels
+  have hl : labels=EndToEndAPSP.primeVector parameters.pool := castLabels_spec he original originalLabels hlabels
+  let callback := BinaryTriangleExecution.prepareOracleFromPrimes (factory.backend n h addressPrice hh) parameters labels hl addressPrice
+  ⟨hh,parameters,labels,hl,callback,rfl⟩
+
+
+structure Preparation (factory : BackendFactory) (n W addressPrice : ℕ) where
+  setup : HalfSourceParameterExecution.Execution n (cap n W)
+  success : Option (Sigma (fun h => SuccessfulSetup factory n (cap n W) h addressPrice))
+  oracle : Oracle n (Payload factory n)
+  setupBits : ℕ
+  setupControl : ℕ
+
+/-- Public cap multiplication/addition are charged once, independently of
+the graph coefficient serialization performed by the binary host. -/
+def publicSetupBits (n W : ℕ) : ℕ := 1024*(n.size+W.size+10)^2
+
+def prepareFromSetup {n : ℕ} (W addressPrice : ℕ)
+    (setup : HalfSourceParameterExecution.Execution n (cap n W))
+    (hsetup : setup=HalfSourceParameterExecution.execute n (cap n W)) : Preparation factory n W addressPrice :=
+  match hp : setup.value with
+  | none =>
+    { setup := setup,success := none,oracle := fallback factory n addressPrice
+      setupBits := setup.bitSteps+publicSetupBits n W,setupControl := 64 }
+  | some original =>
+    let h := setup.metadata.block
+    have he : HalfSourceBatchFit.block n=h := (retained_block setup hsetup).symm
+    have hh : 0<h := by rw [←he]; exact HalfSourceBatchFit.block_pos n
+    let labels := HalfSourceParameterMetadata.successfulLabels setup hsetup original hp
+    let success := makeSuccessful factory h addressPrice he hh original labels
+      (HalfSourceParameterMetadata.successfulLabels_eq setup hsetup original hp)
+    { setup := setup
+      success := some ⟨h,success⟩
+      oracle := liftSuccess factory addressPrice success.callback.oracle
+      setupBits := setup.bitSteps+publicSetupBits n W+success.callback.setupBits
+      setupControl := setup.metadata.pool.length+success.callback.setupControl+64 }
+
+/-- There is one parameter execution, before the adaptive oracle lambda. -/
+def prepare (n W addressPrice : ℕ) : Preparation factory n W addressPrice :=
+  let setup := HalfSourceParameterExecution.execute n (cap n W)
+  prepareFromSetup factory W addressPrice setup rfl
+
+def OracleCorrect {n : ℕ} (O : Oracle n (Payload factory n)) : Prop :=
+  ∀ A B T i j, StoredMinPlusAPSP.decode (O A B T).answers i j=true ↔
+    ∃ k, BinaryCell.view (StoredMinPlusAPSP.decode A i k)+
+      BinaryCell.view (StoredMinPlusAPSP.decode B k j)+
+      BinaryCell.view (StoredMinPlusAPSP.decode T i j)=0
+
+theorem successful_correct {n U h addressPrice : ℕ} (success : SuccessfulSetup factory n U h addressPrice) :
+    OracleCorrect factory (liftSuccess factory addressPrice success.callback.oracle) := by
+  intro A B T i j
+  simp only [liftSuccess]
+  rw [success.callback_spec]
+  exact BinaryTriangleExecution.prepareOracleFromPrimes_correct success.positive (factory.backend n h addressPrice success.positive) success.parameters
+    success.labels success.label_spec addressPrice A B T i j
+
+theorem prepareFromSetup_correct {n : ℕ} (W addressPrice : ℕ)
+    (setup : HalfSourceParameterExecution.Execution n (cap n W))
+    (hsetup : setup=HalfSourceParameterExecution.execute n (cap n W)) :
+    OracleCorrect factory (prepareFromSetup factory W addressPrice setup hsetup).oracle := by
+  intro A B T i j
+  unfold prepareFromSetup
+  split
+  · exact BinaryTriangleExecution.directOracle_correct n A B T i j
+  · exact successful_correct factory _ A B T i j
+
+theorem prepare_correct (n W addressPrice : ℕ) : OracleCorrect factory (prepare factory n W addressPrice).oracle :=
+  prepareFromSetup_correct factory W addressPrice _ rfl
+
+/-- The native oracle is a proof-only specification. It is not executed by
+the stored-bit program. -/
+theorem correct_refines_direct {n : ℕ} (O : Oracle n (Payload factory n)) (hO : OracleCorrect factory O) :
+    BinaryAPSPCaller.Refines O (EndToEndAPSP.directCallback n) := by
+  intro A B T
+  apply Vector.ext
+  intro i hi
+  apply Vector.ext
+  intro j hj
+  apply Bool.eq_iff_iff.mpr
+  change StoredMinPlusAPSP.decode (O A B T).answers ⟨i,hi⟩ ⟨j,hj⟩=true ↔
+    StoredMinPlusAPSP.decode (EndToEndAPSP.directCallback n
+      (viewTable A) (viewTable B) (viewTable T)).answers ⟨i,hi⟩ ⟨j,hj⟩=true
+  exact (hO A B T ⟨i,hi⟩ ⟨j,hj⟩).trans
+    (by simpa only [viewTable_get] using (EndToEndAPSP.directCallback_correct n
+      (viewTable A) (viewTable B) (viewTable T) ⟨i,hi⟩ ⟨j,hj⟩).symm)
+
+structure Execution (factory : BackendFactory) (n W addressPrice : ℕ) where
+  preparation : Preparation factory n W addressPrice
+  core : BinaryAPSPCaller.Execution n (Option Cell) (Payload factory n)
+  work : ℕ
+
+/-- Setup and all produced payloads/resources are retained from the same
+execution. Returned callback work includes the payload-lifting overhead. -/
+def run {n : ℕ} (w : StoredMinPlusAPSP.OptionalTable n) (W addressPrice : ℕ) :
+    Execution factory n W addressPrice :=
+  let preparation := prepare factory n W addressPrice
+  let core := BinaryAPSPCaller.run preparation.oracle w W
+  ⟨preparation,core,preparation.setupBits+(addressPrice+1)*(preparation.setupControl+8)+
+    core.hostBits+core.oracleWork+core.answerWrites⟩
+
+theorem run_correct {n : ℕ} (w : StoredMinPlusAPSP.OptionalTable n) (W addressPrice : ℕ)
+    (hw : APSPReduction.EdgeBound (StoredMinPlusAPSP.decode w) W)
+    (hno : APSPReduction.NoNegativeCycles (StoredMinPlusAPSP.decode w)) :
+    APSPReduction.IsAPSP (StoredMinPlusAPSP.decode w)
+      (StoredMinPlusAPSP.decode (viewOptional (run factory w W addressPrice).core.value)) :=
+  BinaryAPSPCaller.run_correct (prepare factory n W addressPrice).oracle (EndToEndAPSP.directCallback n)
+    (correct_refines_direct factory _ (prepare_correct factory n W addressPrice))
+    (EndToEndAPSP.directCallback_correct n) w W hw hno
+
+theorem run_work {n : ℕ} (w : StoredMinPlusAPSP.OptionalTable n) (W addressPrice : ℕ) :
+    (run factory w W addressPrice).work=(run factory w W addressPrice).preparation.setupBits+
+      (addressPrice+1)*((run factory w W addressPrice).preparation.setupControl+8)+
+      (run factory w W addressPrice).core.hostBits+(run factory w W addressPrice).core.oracleWork+
+      (run factory w W addressPrice).core.answerWrites := rfl
+
+theorem run_calls_faithful {n : ℕ} (w : StoredMinPlusAPSP.OptionalTable n) (W addressPrice : ℕ) :
+    ∀ c∈(run factory w W addressPrice).core.calls,c.Faithful (run factory w W addressPrice).preparation.oracle :=
+  BinaryAPSPCaller.run_calls_faithful _ w W
+
+theorem run_oracleWork {n : ℕ} (w : StoredMinPlusAPSP.OptionalTable n) (W addressPrice : ℕ) :
+    (run factory w W addressPrice).core.oracleWork=BinaryAPSPCaller.callWork (run factory w W addressPrice).core.calls :=
+  BinaryAPSPCaller.run_oracleWork _ w W
+
+theorem run_query_bound {n : ℕ} (w : StoredMinPlusAPSP.OptionalTable n) (W addressPrice : ℕ)
+    (hw : APSPReduction.EdgeBound (StoredMinPlusAPSP.decode w) W)
+    (c : BinaryAPSPCaller.Call n (Payload factory n)) (hc : c∈(run factory w W addressPrice).core.calls) :
+    APSPAlgorithm.SymmetricQueryBound c.query ((64*n*W+13 : ℕ) : ℤ) :=
+  BinaryAPSPCaller.run_query_bound (prepare factory n W addressPrice).oracle (EndToEndAPSP.directCallback n)
+    (correct_refines_direct factory _ (prepare_correct factory n W addressPrice))
+    (EndToEndAPSP.directCallback_correct n) w W hw c hc
+
+#print axioms retained_block
+#print axioms prepare_correct
+#print axioms correct_refines_direct
+#print axioms run_correct
+#print axioms run_work
+#print axioms run_calls_faithful
+#print axioms run_oracleWork
+#print axioms run_query_bound
+
+end ThinMatrix.HalfSourceAPSPHost

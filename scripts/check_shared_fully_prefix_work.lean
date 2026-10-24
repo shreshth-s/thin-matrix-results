@@ -96,4 +96,3 @@ def main : IO Unit := do
     checked := checked+(← check 1 1 1 2 2 2 2 seed true)
   IO.println s!"PASS: {checked} full scheduled/scattered prefix/block outputs against independent raw tensors and the production row; original IDs, duplicate requests, empty cases, aggregate padded complete bit/control/address volume, one-time setup and scatter counters."
   IO.println "SCOPE: addressed prefix-batch schedule and shared setup with original-index scatter; actual recursive/padding/recovery binary addresses included; bounded indexed-array controls, global graph/window integration and full APSP counter domination remain."
-

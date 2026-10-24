@@ -1,0 +1,102 @@
+PASS: 71/71 current finite Lean fixtures accounted for.
+68 unchanged passing fixtures reused; 3 targeted rechecks passed.
+This is a provenance-checked merge, not a new simultaneous 71-fixture run.
+Final kernel audit: 612 modules; 5290 scoped declarations; standard Lean axioms only.
+Source/configuration SHA-256: 9d5e9865f2e599654af2082098a609a237ed2208d99adbb14648695b9527b04b
+Lean 4.31.0; 61 main fixtures + 10 #eval fixtures; four workers per run; inherited LEAN_PATH removed.
+Initial working copy: /private/tmp/thin-matrix-results-sync-20261021
+Final recheck working copy: /private/tmp/thin-matrix-results-sync-20261021
+Runtime warnings-as-errors: False.
+
+The initial run remains 68 PASS / 3 FAIL. Its failed records were not relabeled.
+Two fixture-only budget expectations were corrected to include translation arithmeticBudget:
+  scripts/check_exact_half_sources.lean
+  scripts/check_low_recombination.lean
+The binary fixture output was correct in the initial run; the runner incorrectly expected
+raw translations(0).length=1. The correct raw length is 0; the later shifts wrapper has length 1.
+Targeted rechecks used the initial complete proof audit plus a strict exact-fixture-only gate;
+the distinct fresh final kernel audit is complete and verified before this merge.
+No Lean proof or configuration source changed between snapshots.
+
+Reproduction: runner-initial.py and runner-corrected.py preserve the exact harnesses.
+provenance.json retains both exact invocations, inventories, snapshots, kernel hashes and original summaries.
+Use the published repository revision matching the source digest above, pinned dependencies,
+and the recorded commands. A full current run may use runner-corrected.py with a fresh matching kernel log.
+Original logs remain untouched. runtime-stdout.log/runtime-stderr.log contain every selected result.
+initial-failures.log retains all three original failed outputs and recorded rejection reasons.
+The initial failure snapshots and final corrected snapshot are distinguished explicitly.
+
+Finite executable fixtures supplement the separately checked Lean theorem; no practical APSP timing claim.
+
+Selected fixture results (elapsed seconds belong to individual runs):
+PASS      5.179s  reused unchanged  scripts/check_addressed_costs.lean
+PASS      5.368s  reused unchanged  scripts/check_addressed_matrix.lean
+PASS      5.765s  reused unchanged  scripts/check_addressed_price.lean
+PASS      5.179s  reused unchanged  scripts/check_addressed_recursion.lean
+PASS      5.229s  reused unchanged  scripts/check_addressed_work.lean
+PASS      4.572s  reused unchanged  scripts/check_auto_retained_root.lean
+PASS     15.042s  reused unchanged  scripts/check_binary_grouped.lean
+PASS      9.754s  reused unchanged  scripts/check_binary_residual.lean
+PASS     14.134s  reused unchanged  scripts/check_complete_residual.lean
+PASS     94.356s  reused unchanged  scripts/check_cropped_high.lean
+PASS      3.283s  reused unchanged  scripts/check_cw_block_extraction.lean
+PASS      3.473s  reused unchanged  scripts/check_cw_entropy_rate.lean
+PASS      4.969s  reused unchanged  scripts/check_cw_hash_counting.lean
+PASS      3.826s  reused unchanged  scripts/check_cw_interpolation.lean
+PASS      5.854s  reused unchanged  scripts/check_cw_polynomial.lean
+PASS      4.539s  reused unchanged  scripts/check_cw_type_regularity.lean
+PASS      9.247s  reused unchanged  scripts/check_cyclic_window.lean
+PASS    240.457s  reused unchanged  scripts/check_distinguished_root.lean
+PASS      3.950s  reused unchanged  scripts/check_equal_copy_recursion.lean
+PASS   2182.259s  rechecked         scripts/check_exact_half_sources.lean
+PASS      3.628s  reused unchanged  scripts/check_folded_band_schedule.lean
+PASS    301.728s  reused unchanged  scripts/check_fully_retained_root_batch.lean
+PASS    405.269s  reused unchanged  scripts/check_fully_retained_root_prices.lean
+PASS     11.820s  reused unchanged  scripts/check_graph_own_band_prices.lean
+PASS      7.078s  reused unchanged  scripts/check_graph_own_band_production.lean
+PASS      6.250s  reused unchanged  scripts/check_graph_own_band_routing.lean
+PASS      5.712s  reused unchanged  scripts/check_graph_own_band_runtime.lean
+PASS      9.358s  reused unchanged  scripts/check_graph_own_routing.lean
+PASS     18.046s  reused unchanged  scripts/check_grouped_completion.lean
+PASS     17.541s  reused unchanged  scripts/check_grouped_preparation.lean
+PASS     53.352s  rechecked         scripts/check_half_source_binary.lean
+PASS      5.442s  reused unchanged  scripts/check_half_source_binary_suffix.lean
+PASS      8.542s  reused unchanged  scripts/check_half_source_cap_setup.lean
+PASS      4.896s  reused unchanged  scripts/check_half_source_count.lean
+PASS      5.429s  reused unchanged  scripts/check_half_source_suffix.lean
+PASS     12.330s  reused unchanged  scripts/check_high_scalar_result.lean
+PASS      4.954s  reused unchanged  scripts/check_high_scalar_schedule.lean
+PASS      6.116s  reused unchanged  scripts/check_low_high_join.lean
+PASS     53.776s  rechecked         scripts/check_low_recombination.lean
+PASS      5.743s  reused unchanged  scripts/check_matrix_addresses.lean
+PASS     38.996s  reused unchanged  scripts/check_modular_behrend.lean
+PASS      5.356s  reused unchanged  scripts/check_original_row_collection.lean
+PASS      6.462s  reused unchanged  scripts/check_padded_recursion.lean
+PASS      9.789s  reused unchanged  scripts/check_physical_low_high.lean
+PASS     11.835s  reused unchanged  scripts/check_prefix_completion.lean
+PASS     72.813s  reused unchanged  scripts/check_prefix_encoding.lean
+PASS     22.962s  reused unchanged  scripts/check_prefix_schedule.lean
+PASS      7.680s  reused unchanged  scripts/check_residual_families.lean
+PASS     21.765s  reused unchanged  scripts/check_retained_high_sources.lean
+PASS      7.552s  reused unchanged  scripts/check_retained_recursion.lean
+PASS    165.297s  reused unchanged  scripts/check_retained_root_batch.lean
+PASS     26.340s  reused unchanged  scripts/check_root_completion.lean
+PASS     79.287s  reused unchanged  scripts/check_root_products.lean
+PASS     10.296s  reused unchanged  scripts/check_root_windows.lean
+PASS     16.669s  reused unchanged  scripts/check_routed_prefix_batch.lean
+PASS      5.612s  reused unchanged  scripts/check_selected_high_queries.lean
+PASS      7.725s  reused unchanged  scripts/check_selected_normalization.lean
+PASS     22.225s  reused unchanged  scripts/check_selected_root_product.lean
+PASS      6.216s  reused unchanged  scripts/check_selected_root_rows.lean
+PASS     13.021s  reused unchanged  scripts/check_shared_addressed.lean
+PASS      5.090s  reused unchanged  scripts/check_shared_completion_tile.lean
+PASS     89.814s  reused unchanged  scripts/check_shared_fully_prefix_schedule.lean
+PASS     89.783s  reused unchanged  scripts/check_shared_fully_prefix_work.lean
+PASS     91.581s  reused unchanged  scripts/check_shared_prefix_prices.lean
+PASS     22.061s  reused unchanged  scripts/check_shared_prefix_schedule.lean
+PASS     15.186s  reused unchanged  scripts/check_shared_prefix_setup.lean
+PASS     10.557s  reused unchanged  scripts/check_shared_rectangular.lean
+PASS      9.302s  reused unchanged  scripts/check_shared_selector_costs.lean
+PASS     12.221s  reused unchanged  scripts/check_shifted_low.lean
+PASS    108.624s  reused unchanged  scripts/check_window_shared_completion.lean
+PASS     10.216s  reused unchanged  scripts/check_window_transforms.lean

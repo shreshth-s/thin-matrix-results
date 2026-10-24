@@ -1,0 +1,3 @@
+# Preserve exact captured output and patch context, including whitespace.
+*.log -whitespace
+*.patch -whitespace

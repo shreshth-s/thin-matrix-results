@@ -5,6 +5,8 @@ This is separate from the standard-library numerical/finite Python suite.
 See lean/README.md for the statements covered and the remaining proof gaps.
 """
 from pathlib import Path
+import argparse
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 import hashlib
 import json
 import re
@@ -99,6 +101,15 @@ def source_snapshot(root: Path) -> dict[str, str]:
         "scripts/check_selected_root_rows.lean",
         "scripts/check_fully_retained_root_prices.lean",
         "scripts/check_original_row_collection.lean",
+        "scripts/check_auto_retained_root.lean",
+        "scripts/check_shared_completion_tile.lean",
+        "scripts/check_graph_own_band_production.lean",
+        "scripts/check_graph_own_band_prices.lean",
+        "scripts/check_high_scalar_schedule.lean",
+        "scripts/check_half_source_count.lean",
+        "scripts/check_selected_normalization.lean",
+        "scripts/check_graph_own_band_runtime.lean",
+        "scripts/check_high_scalar_result.lean",
     )]
     return {
         str(path.relative_to(root)): hashlib.sha256(path.read_bytes()).hexdigest()
@@ -107,6 +118,12 @@ def source_snapshot(root: Path) -> dict[str, str]:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--jobs", type=int, default=1,
+                        help="maximum independent Lean checks to run concurrently (default: 1)")
+    args = parser.parse_args()
+    if args.jobs < 1:
+        parser.error("--jobs must be a positive integer")
     root = Path(__file__).resolve().parents[1]
     manifest = json.loads((root / "lake-manifest.json").read_text())
     packages = {package["name"]: package for package in manifest["packages"]}
@@ -153,18 +170,31 @@ def main() -> None:
     build = root / ".lake" / "build" / "lib" / "lean"
     build.mkdir(parents=True, exist_ok=True)
     allowed_axioms = {"propext", "Classical.choice", "Quot.sound"}
-    checked = 0
-    for path in paths:
-        print(f"\n{path.relative_to(root)}", flush=True)
-        result = subprocess.run(
+    names = {path.stem for path in paths}
+    dependencies = {
+        path.stem: {
+            name
+            for line in path.read_text().splitlines()
+            if (match := re.match(r"^(?:public\s+)?import\s+([^\n]+)", line))
+            for name in match[1].split()
+            if name in names
+        }
+        for path in paths
+    }
+
+    def compile_module(path: Path) -> subprocess.CompletedProcess:
+        return subprocess.run(
             [lake, "env", "lean", "-DwarningAsError=true",
              "-o", str(build / (path.stem + ".olean")), str(path)],
             cwd=root, capture_output=True, text=True,
         )
-        print(result.stdout, end="", flush=True)
-        if result.stderr:
+
+    def audit_result(path: Path, result: subprocess.CompletedProcess) -> int:
+        if result.returncode:
+            print(f"\nFAILED {path.relative_to(root)}", flush=True)
+            print(result.stdout, end="", flush=True)
             print(result.stderr, end="", flush=True)
-        result.check_returncode()
+            result.check_returncode()
         reports = re.findall(r"depends on axioms: \[([^\]]*)\]", result.stdout)
         reports += [""] * result.stdout.count("does not depend on any axioms")
         declarations = len(re.findall(r"^[ \t]*#print axioms ", path.read_text(), re.MULTILINE))
@@ -174,7 +204,41 @@ def main() -> None:
             axioms = {name.strip() for name in report.split(",") if name.strip()}
             if not axioms <= allowed_axioms:
                 raise SystemExit(f"Unapproved axiom dependency: {sorted(axioms - allowed_axioms)}")
-        checked += declarations
+        return declarations
+
+    # A module starts only after all local imports have passed both compilation
+    # and the axiom audit in this run. Emit results in deterministic topological
+    # order even when independent branches finish out of order.
+    pending = list(paths)
+    completed: set[str] = set()
+    buffered: dict[str, subprocess.CompletedProcess] = {}
+    running = {}
+    checked, next_output = 0, 0
+    with ThreadPoolExecutor(max_workers=args.jobs) as executor:
+        while pending or running:
+            for path in list(pending):
+                if len(running) >= args.jobs:
+                    break
+                if dependencies[path.stem] <= completed:
+                    running[executor.submit(compile_module, path)] = path
+                    pending.remove(path)
+            if not running:
+                raise SystemExit("No schedulable module; local import graph is inconsistent.")
+            done, _ = wait(running, return_when=FIRST_COMPLETED)
+            for future in done:
+                path = running.pop(future)
+                result = future.result()
+                checked += audit_result(path, result)
+                completed.add(path.stem)
+                buffered[path.stem] = result
+            while next_output < len(paths) and paths[next_output].stem in buffered:
+                path = paths[next_output]
+                result = buffered.pop(path.stem)
+                print(f"\n{path.relative_to(root)}", flush=True)
+                print(result.stdout, end="", flush=True)
+                if result.stderr:
+                    print(result.stderr, end="", flush=True)
+                next_output += 1
     if source_snapshot(root) != snapshot:
         raise SystemExit("Sources changed during verification; rerun on a frozen snapshot.")
     digest = hashlib.sha256(json.dumps(snapshot, sort_keys=True).encode()).hexdigest()

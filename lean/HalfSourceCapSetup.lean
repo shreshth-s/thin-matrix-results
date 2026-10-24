@@ -56,7 +56,7 @@ theorem dimension_price (m k : ℕ) :
     omega
 
 theorem root_loop_price (m k : ℕ) :
-    (rootLoop 11 50 (dimension m).value ((decode (dimension m).value).value+1) (input 0)).bitSteps  ≤ 
+    (rootLoop 11 50 (dimension m).value ((decode (dimension m).value).value+1) (input 0)).bitSteps  ≤
       (4^m+2)*71*(unit (width m k)+1) := by
   have hf : ∀ z  ≤  4^m+1, z.size ≤ width m k := by
     intro z hz

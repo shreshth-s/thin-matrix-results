@@ -1,0 +1,568 @@
+
+===== scripts/check_addressed_costs.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 89a0b26f30d19bd0657b03eee46564ec69a7aa297f2b8e3f11f43dab46ed37b5
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_addressed_costs.lean"]
+Exit: 0; seconds: 5.179; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_addressed_matrix.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 4b14567807f9e33903115ffd00a9d93ccb004b190dc1a9cf94f0cedd7531766a
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_addressed_matrix.lean"]
+Exit: 0; seconds: 5.368; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_addressed_price.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: f9d221366d514e9e68d19a3d69dad3c44607359f1ae54f2eb0f8eeb3a2b4a822
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_addressed_price.lean"]
+Exit: 0; seconds: 5.765; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_addressed_recursion.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 84ed01ec5a57b36b3e19e51c3bc4b78f3912668e14e811f042b6502332f6f91b
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_addressed_recursion.lean"]
+Exit: 0; seconds: 5.179; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_addressed_work.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: f3871be588b61d7f03381d66c13ccbe616928edb60fac2fbb5d5db0eda48ab1c
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_addressed_work.lean"]
+Exit: 0; seconds: 5.229; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_auto_retained_root.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 8e97aae8267a1a0e7a317eaadaf333b2eb67cdda8220dc8f8f40e6ed8d21d063
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_auto_retained_root.lean"]
+Exit: 0; seconds: 4.572; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_binary_grouped.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 6f3878a20351327a681f33d742566b79850da9c35c2233188edd6cb0ca29b255
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_binary_grouped.lean"]
+Exit: 0; seconds: 15.042; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_binary_residual.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: ff6cc7e1cfdd4fe713f3ff5397508bb9e1aa525126338d1c723368b29801626d
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_binary_residual.lean"]
+Exit: 0; seconds: 9.754; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_complete_residual.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: df7d59c64716fb98e834dd256bcd22bd05d9f324a0c09d7c468cfc7e50fd99fa
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_complete_residual.lean"]
+Exit: 0; seconds: 14.134; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_cropped_high.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 6c52a8abfffb8f5a7361292cf511cdc830d52551b6f1aa9589610dc206554d22
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_cropped_high.lean"]
+Exit: 0; seconds: 94.356; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_cw_block_extraction.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 7aa3e35b4fd7bc5122d8da9ef59d88cef8a794714f91eadf0fd94f8b91ad27ea
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_cw_block_extraction.lean"]
+Exit: 0; seconds: 3.283; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_cw_entropy_rate.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 5601dba155d1b0436022aa975c48f308a19ed867d31d91e3d2c2245cc5b5007f
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_cw_entropy_rate.lean"]
+Exit: 0; seconds: 3.473; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_cw_hash_counting.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: e21c34c051522a2a6a97aaad815027c255d0735bde9d7598c63df78f6a61ed09
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_cw_hash_counting.lean"]
+Exit: 0; seconds: 4.969; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_cw_interpolation.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: c228cbfe222a1e57c026e8fa91b12900b64215f20f22de27823672ad55df2efe
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_cw_interpolation.lean"]
+Exit: 0; seconds: 3.826; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_cw_polynomial.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 96e6808779ffcbbc06e2e766498e539b9e001854d4b854844940cb1dd1f9b792
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_cw_polynomial.lean"]
+Exit: 0; seconds: 5.854; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_cw_type_regularity.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 373a4242431a6dca92fb62650ffc93c9e7fbf18c2375b44c66f146cc1d8bcb49
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_cw_type_regularity.lean"]
+Exit: 0; seconds: 4.539; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_cyclic_window.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 8038295ac04f640c0066f717f172c5be26562a344cce115bdd5eb778be4c4b38
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_cyclic_window.lean"]
+Exit: 0; seconds: 9.247; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_distinguished_root.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: fdd8b25f13b56e0a9199d7af334305c83bd7b0f965f0475b3727ace01f1829b0
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_distinguished_root.lean"]
+Exit: 0; seconds: 240.457; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_equal_copy_recursion.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 11af20dd7b4ff3bcb36d8fbef9dd20d59a3327aaa099844664f94e8584fbb845
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_equal_copy_recursion.lean"]
+Exit: 0; seconds: 3.95; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_exact_half_sources.lean | rechecked | PASS | stderr =====
+Source SHA-256: 7e3cf7e928f0780c391a0c943d671a4896dad7367b876786e9b2583d4706ad4f
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_exact_half_sources.lean"]
+Exit: 0; seconds: 2182.259; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_folded_band_schedule.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 4133c0616e37ca714425157d928cc216bc8816edfe5a25f4b71b752e5e57d9dd
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_folded_band_schedule.lean"]
+Exit: 0; seconds: 3.628; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_fully_retained_root_batch.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 7be0d4ce1217a3c8841f57d48a5f01cc70dfbb040654e5373a8a35b6de0d6bed
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_fully_retained_root_batch.lean"]
+Exit: 0; seconds: 301.728; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_fully_retained_root_prices.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 9b7cb1617e3b9eff8f356160d26eeda3277caca4096d2740a2df7f046baaa7d7
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_fully_retained_root_prices.lean"]
+Exit: 0; seconds: 405.269; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_graph_own_band_prices.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: fe335488a61c19d6fe1295a1eb7b2a158569113a776002bb211e895b7fb3f293
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_graph_own_band_prices.lean"]
+Exit: 0; seconds: 11.82; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_graph_own_band_production.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 038398a8388292305b58cdd48d85944e78a0bce1ca0542532245331afcc9cd58
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_graph_own_band_production.lean"]
+Exit: 0; seconds: 7.078; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_graph_own_band_routing.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 2d150d884b97257d173527b89a9fc40a0d73725f7f05b9c48af1203e6611dddb
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_graph_own_band_routing.lean"]
+Exit: 0; seconds: 6.25; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_graph_own_band_runtime.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: e9415408ae6076d6538c642f13fe54bb84f1ce12f0f68645b71d1d9dad01390a
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_graph_own_band_runtime.lean"]
+Exit: 0; seconds: 5.712; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_graph_own_routing.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: e65e086cc4cafd19ea3e05df8003f6c942e653024da648f45cdd8ed2dfae4ee3
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_graph_own_routing.lean"]
+Exit: 0; seconds: 9.358; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_grouped_completion.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: b3a8732e5d40d7f0b7b745a087551eac16eb524fd153e4e7bc38988ffc10386e
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_grouped_completion.lean"]
+Exit: 0; seconds: 18.046; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_grouped_preparation.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: fa1aa5ec5790ba6ef377e094ab009ca21dd4a0c8f7685b773e6db3cc4345ad0e
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_grouped_preparation.lean"]
+Exit: 0; seconds: 17.541; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_half_source_binary.lean | rechecked | PASS | stderr =====
+Source SHA-256: b514d7f77ff1584291b18325114bd40cbe17ad43bf4e00632d210d82b23ea09b
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_half_source_binary.lean"]
+Exit: 0; seconds: 53.352; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_half_source_binary_suffix.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 9e52f9517c95c0859a294cf9a1d8ff20455f584ac5d8e087decb5717a0c8ca36
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_half_source_binary_suffix.lean"]
+Exit: 0; seconds: 5.442; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_half_source_cap_setup.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 5dd4bfbcb192a6c839a60e4024ae1f044cc16646ec5885471b3ec23d1aa835af
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_half_source_cap_setup.lean"]
+Exit: 0; seconds: 8.542; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_half_source_count.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 51e420a493d8f0c04cdf002f5d4d48d5797b3b262df9ba12e13d36b7cfd14a2b
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_half_source_count.lean"]
+Exit: 0; seconds: 4.896; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_half_source_suffix.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 9148ed33671e14da3c52f374cdf6178cec1ab0a08910f3a059a190808a2f84b7
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_half_source_suffix.lean"]
+Exit: 0; seconds: 5.429; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_high_scalar_result.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: dff68b7e9deb8039cae6b4eada87d25b796b6f5d9f2663fef6b819337908338d
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_high_scalar_result.lean"]
+Exit: 0; seconds: 12.33; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_high_scalar_schedule.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 75c146a84b0ce117de1409da88aa80e07ed872381dec0e5f8d7b5168989ab588
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_high_scalar_schedule.lean"]
+Exit: 0; seconds: 4.954; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_low_high_join.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 527312cba9021d070115655421d2291ce719a4708b822e9f2b3c051a8ab4a2d1
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_low_high_join.lean"]
+Exit: 0; seconds: 6.116; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_low_recombination.lean | rechecked | PASS | stderr =====
+Source SHA-256: b50929e243705dd99aa28e900add6dec91589fb76e023f558af87986d43ccdc3
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_low_recombination.lean"]
+Exit: 0; seconds: 53.776; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_matrix_addresses.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: fe591b77ad110a384061d47697e94836053bc3926f86c39106049e17c8d03e7f
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_matrix_addresses.lean"]
+Exit: 0; seconds: 5.743; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_modular_behrend.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: d601a00e2f28c781296b41672b40f6f3bf03aebbdb61fac1714ef8ed35c52a9a
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_modular_behrend.lean"]
+Exit: 0; seconds: 38.996; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_original_row_collection.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 78f5bea32deaa64fb80900e0630abfe989dd23bdb378839a335aa228456ad177
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_original_row_collection.lean"]
+Exit: 0; seconds: 5.356; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_padded_recursion.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 361473380ead0c0f8bb519426171003425bed772aee0af6e3cf2217e7cfcb89f
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_padded_recursion.lean"]
+Exit: 0; seconds: 6.462; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_physical_low_high.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: f397914590d840f733e5a4c2cf2c0e28436c2adf8076b12bfed8fc7ef2c5291c
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "scripts/check_physical_low_high.lean"]
+Exit: 0; seconds: 9.789; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_prefix_completion.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 48c488d37234db6dbedba4d509aa434ac4d78ea815e3e4f220ca74559ef46a12
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_prefix_completion.lean"]
+Exit: 0; seconds: 11.835; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_prefix_encoding.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: c65445af88463a39a9b01d280d52f345dde02b554df6fedafbe82ff039a567c9
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_prefix_encoding.lean"]
+Exit: 0; seconds: 72.813; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_prefix_schedule.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 773c7881cc4fbbfe892df8a925c349b997c2eadcc6ee92e3286643725da1af11
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_prefix_schedule.lean"]
+Exit: 0; seconds: 22.962; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_residual_families.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 64f366234906250e632a8eba2592b66176c30867a07ad8d397207628badc55d8
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_residual_families.lean"]
+Exit: 0; seconds: 7.68; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_retained_high_sources.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 027fb9c590ee14162ed8be01e6be7be09d9057af780431b1541a3bee70120fdc
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_retained_high_sources.lean"]
+Exit: 0; seconds: 21.765; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_retained_recursion.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 668407594c59d71e661911dba2eb32fdc2f04e52e5de938184b0cc00be2941d9
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_retained_recursion.lean"]
+Exit: 0; seconds: 7.552; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_retained_root_batch.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 54c7c671b7d5a74ebc70ddf4392daec4128f6433b180490816cb7035d6628bbb
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_retained_root_batch.lean"]
+Exit: 0; seconds: 165.297; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_root_completion.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 3cb6d8b5e90d7e09dbc310d53f087ef044d8c45cf6f73c58297781f63999b5d2
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_root_completion.lean"]
+Exit: 0; seconds: 26.34; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_root_products.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 72cc493f8f3315cf118cb82b85145d3a1d31f45ecc95231ee343ed0eda3a8970
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_root_products.lean"]
+Exit: 0; seconds: 79.287; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_root_windows.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 4bd3373747785e401d42be4917d900f5850dcb40235c79bf4e944af62fffba6d
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_root_windows.lean"]
+Exit: 0; seconds: 10.296; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_routed_prefix_batch.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: b8363f7b197ff13437e9d9fb0d87fc3277c19d5884f7d8c79128a1879b7cf3f7
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_routed_prefix_batch.lean"]
+Exit: 0; seconds: 16.669; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_selected_high_queries.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 76ecec22de9f69f1f7e07dfdf014707c7f3c591ecc53b039d22c54ee76995ce1
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_selected_high_queries.lean"]
+Exit: 0; seconds: 5.612; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_selected_normalization.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: c19cd8c05f1ac478314a7aba87a01bd6ce98c9c30ce5ca58e8b674509effb45a
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_selected_normalization.lean"]
+Exit: 0; seconds: 7.725; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_selected_root_product.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 969d6df950c14a348a21bbd56a478edfb2876b8d07e96a4ecf7d89bdf8127bb4
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_selected_root_product.lean"]
+Exit: 0; seconds: 22.225; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_selected_root_rows.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: ff9404446a427b22085c66d5ddc034b6838f442675a0a5d34cc1b9f99c2766d7
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_selected_root_rows.lean"]
+Exit: 0; seconds: 6.216; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_shared_addressed.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: fc295f5b03475a8cee2a7250f0e7d1deaba5475db8c935459ad3cef7f5958a14
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shared_addressed.lean"]
+Exit: 0; seconds: 13.021; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_shared_completion_tile.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: fb921979352101b26484060e3f76128f407d7fadae8408ab0371e28bebe3eeaf
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shared_completion_tile.lean"]
+Exit: 0; seconds: 5.09; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_shared_fully_prefix_schedule.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 1f1ebbf2880e9dcfdb486bba55282f1fbbcdf95ebb31770800bd4739acd65941
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shared_fully_prefix_schedule.lean"]
+Exit: 0; seconds: 89.814; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_shared_fully_prefix_work.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: c72e18c22f388c152326135fa2950f1206df14b81264f9eb7f3ba2f43bb99b46
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shared_fully_prefix_work.lean"]
+Exit: 0; seconds: 89.783; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_shared_prefix_prices.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: a7620b49ec2469c0b65f14984165098fd5a999d18840beb58f753f8381042c48
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shared_prefix_prices.lean"]
+Exit: 0; seconds: 91.581; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_shared_prefix_schedule.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: d63808b28da7ff1692fce18adfcfb216a8c38a6d7cda7c7d104d1e5c99591c2b
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shared_prefix_schedule.lean"]
+Exit: 0; seconds: 22.061; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_shared_prefix_setup.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 06087d959d59e82babf188205fe537c5daf6b60fe41bbf4cb92cae2df166313c
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shared_prefix_setup.lean"]
+Exit: 0; seconds: 15.186; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_shared_rectangular.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 88156f3181c0996b634b9d657ee89ce3a4391856ef1adf5480f1625f3179847a
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shared_rectangular.lean"]
+Exit: 0; seconds: 10.557; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_shared_selector_costs.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: c892b25b9db4fdd07ba8be0c2c880d6d4954b230622732e5cf54d528a20894f3
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shared_selector_costs.lean"]
+Exit: 0; seconds: 9.302; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_shifted_low.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: b0470296783931c80eeb704f1e3eebedf53a607a9152193ad214e4ffcb293c9d
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_shifted_low.lean"]
+Exit: 0; seconds: 12.221; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_window_shared_completion.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: dc2ccdce3abe7c0e1167809fcc73fe8db59120b73ce12214c8b1d58a8462ee2a
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_window_shared_completion.lean"]
+Exit: 0; seconds: 108.624; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----
+
+===== scripts/check_window_transforms.lean | reused unchanged | PASS | stderr =====
+Source SHA-256: 30fe6698c0d493ee60a2062f6043007debacb75236535ff10786bd5b4fac2c85
+Command: ["/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake", "env", "lean", "--run", "scripts/check_window_transforms.lean"]
+Exit: 0; seconds: 10.216; output SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+----- captured output begins -----
+
+----- captured output ends -----

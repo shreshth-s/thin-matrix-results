@@ -351,4 +351,3 @@ theorem squared_hostBits_le {n : ℕ} {Payload : Type} (hn : 0<n)
 #print axioms squared_hostBits_le
 
 end ThinMatrix.BinaryAPSPHostStages
-

@@ -715,7 +715,3 @@ theorem encodeRawSource_readBase_bound (L m t q A : ℕ) (b : Bool)
 #print axioms encodeRawSource_table_bound
 #print axioms encodeRawSource_readBase_bound
 end ThinMatrix.BinaryHighCost
-
-
-
-

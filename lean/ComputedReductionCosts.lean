@@ -407,4 +407,3 @@ end ThinMatrix.ComputedReductionCosts
 #print axioms ThinMatrix.ComputedReductionCosts.callCost_batch_le_chargedCost
 #print axioms ThinMatrix.ComputedReductionCosts.callCost_batch_le_chargedCost_pool
 #print axioms ThinMatrix.ComputedReductionCosts.callCost_batch_bigO
-

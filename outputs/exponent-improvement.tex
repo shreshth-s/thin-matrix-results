@@ -82,7 +82,10 @@ row. Over $\mathbb F_2$ the fixed-bucket construction gives deterministic
 We also derive deterministic and real-input corollaries, a wider thin-matrix
 regime, and the displayed bounds that the source's further reductions inherit. Exact rational interval certificates check every numerical inequality
 used in the stated bounds. These are mathematical derivations for independent
-review, not a claim of literature priority or proof-assistant certification.
+review, with no claim of literature priority. A separate Lean development
+proves the deterministic integer APSP bound $O(n^{2.9926862626})$ in its
+stated binary-arithmetic and bounded indexed-array/control work model;
+the other results are outside that formalization.
 \end{abstract}
 
 \section{Results and scope}
@@ -5991,7 +5994,13 @@ notes the tight all-edges APSP transfer. Accordingly these results improve
 its displayed guarantees; no claim is made that the ideas are unknown to
 the authors or new to the literature. The derivations have been checked
 algebraically and computationally during this work, but have not been
-independently peer reviewed or formalized in Lean.
+independently peer reviewed. The separate
+\href{https://github.com/shreshth-s/thin-matrix-results/blob/main/lean/HalfSourceAPSPTheorem.lean}{Lean APSP endpoint}
+proves correctness, complete charged work at exponent $2.9926862626$, and
+eventual address-price sufficiency within the reserved retained layout in its binary-arithmetic and bounded
+indexed-array/control model. Native-runtime and compiler-to-RAM certification
+remain separate, and the other results in this note are outside this
+formalization.
 
 \begin{thebibliography}{9}
 \bibitem{AW26} Josh Alman and Virginia Vassilevska Williams.

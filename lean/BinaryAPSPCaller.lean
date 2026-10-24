@@ -705,4 +705,3 @@ theorem run_query_bound {n : ℕ} {Payload NativePayload : Type} (O : Oracle n P
 #print axioms encodeGraph_price
 
 end ThinMatrix.BinaryAPSPCaller
-

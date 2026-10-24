@@ -26,7 +26,7 @@ theorem max_fraction (m cn co : ℕ) : max ((cn:ℝ)/m) ((co:ℝ)/m)=(max cn co:
 
 theorem rare_ratio_upper (m cn co : ℕ) (hm : 32  ≤  m)
     (ht : cn+co < OptimizedFoldedPlan.channelLength m) :
-    ((m/2-max cn co:ℕ):ℝ)/(OptimizedFoldedPlan.ordinaryLength m-m:ℕ)  ≤ 
+    ((m/2-max cn co:ℕ):ℝ)/(OptimizedFoldedPlan.ordinaryLength m-m:ℕ)  ≤
       probability (max ((cn:ℝ)/m) ((co:ℝ)/m)) := by
   let k := OptimizedFoldedPlan.ordinaryLength m-m
   let a : ℝ := max ((cn:ℝ)/m) ((co:ℝ)/m)

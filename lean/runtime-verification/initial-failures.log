@@ -1,0 +1,148 @@
+
+===== ORIGINAL FAILED RECORD: scripts/check_exact_half_sources.lean =====
+{
+  "assertion": "exit_zero_and_anchored_PASS_without_failure_diagnostics",
+  "assertion_passed": false,
+  "command": [
+    "/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake",
+    "env",
+    "lean",
+    "--run",
+    "scripts/check_exact_half_sources.lean"
+  ],
+  "expected_output_seen": true,
+  "failure_diagnostics": [
+    "uncaught exception: FAIL: zero-dimensional selector and empty source words"
+  ],
+  "lean_arguments": [
+    "--run",
+    "scripts/check_exact_half_sources.lean"
+  ],
+  "mode": "main",
+  "pass_lines": [
+    "PASS: inverse-weight table against independent subset/parity enumeration, L=0, m=0",
+    "PASS: inverse-weight table against independent subset/parity enumeration, L=1, m=0",
+    "PASS: inverse-weight table against independent subset/parity enumeration, L=1, m=1",
+    "PASS: inverse-weight table against independent subset/parity enumeration, L=2, m=0",
+    "PASS: inverse-weight table against independent subset/parity enumeration, L=2, m=1",
+    "PASS: inverse-weight table against independent subset/parity enumeration, L=2, m=2",
+    "PASS: inverse-weight table against independent subset/parity enumeration, L=3, m=0",
+    "PASS: inverse-weight table against independent subset/parity enumeration, L=3, m=1",
+    "PASS: inverse-weight table against independent subset/parity enumeration, L=3, m=2",
+    "PASS: inverse-weight table against independent subset/parity enumeration, L=3, m=3"
+  ],
+  "passed": false,
+  "path": "scripts/check_exact_half_sources.lean",
+  "returncode": 1,
+  "seconds": 3.633,
+  "sha256": "cce3dca003426e364295ed531583ddabfb13681dff17782e257e35a64d34e537",
+  "source_options": [
+    "maxRecDepth 100000",
+    "maxHeartbeats 0"
+  ],
+  "stderr": "/private/tmp/runtime-audit-612/results/check_exact_half_sources.stderr.log",
+  "stdout": "/private/tmp/runtime-audit-612/results/check_exact_half_sources.stdout.log",
+  "timeout": false,
+  "warning_lines": 0
+}
+----- original stdout -----
+PASS: inverse-weight table against independent subset/parity enumeration, L=0, m=0
+PASS: inverse-weight table against independent subset/parity enumeration, L=1, m=0
+PASS: inverse-weight table against independent subset/parity enumeration, L=1, m=1
+PASS: inverse-weight table against independent subset/parity enumeration, L=2, m=0
+PASS: inverse-weight table against independent subset/parity enumeration, L=2, m=1
+PASS: inverse-weight table against independent subset/parity enumeration, L=2, m=2
+PASS: inverse-weight table against independent subset/parity enumeration, L=3, m=0
+PASS: inverse-weight table against independent subset/parity enumeration, L=3, m=1
+PASS: inverse-weight table against independent subset/parity enumeration, L=3, m=2
+PASS: inverse-weight table against independent subset/parity enumeration, L=3, m=3
+
+----- original stderr -----
+uncaught exception: FAIL: zero-dimensional selector and empty source words
+
+
+===== ORIGINAL FAILED RECORD: scripts/check_half_source_binary.lean =====
+{
+  "assertion": "printed_tuple_true_and_zero_dimension_length_one",
+  "assertion_passed": false,
+  "command": [
+    "/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake",
+    "env",
+    "lean",
+    "scripts/check_half_source_binary.lean"
+  ],
+  "expected_output_seen": false,
+  "failure_diagnostics": [],
+  "lean_arguments": [
+    "scripts/check_half_source_binary.lean"
+  ],
+  "mode": "eval",
+  "pass_lines": [],
+  "passed": false,
+  "path": "scripts/check_half_source_binary.lean",
+  "returncode": 0,
+  "seconds": 58.109,
+  "sha256": "b514d7f77ff1584291b18325114bd40cbe17ad43bf4e00632d210d82b23ea09b",
+  "source_options": [
+    "maxRecDepth 100000",
+    "maxHeartbeats 0"
+  ],
+  "stderr": "/private/tmp/runtime-audit-612/results/check_half_source_binary.stderr.log",
+  "stdout": "/private/tmp/runtime-audit-612/results/check_half_source_binary.stdout.log",
+  "timeout": false,
+  "warning_lines": 0
+}
+----- original stdout -----
+(true, 1419026751, 6167353)
+0
+'ThinMatrix.HalfSourceBinarySelection.translations_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThinMatrix.HalfSourceBinarySelection.translations_arithmetic_price' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+----- original stderr -----
+
+
+===== ORIGINAL FAILED RECORD: scripts/check_low_recombination.lean =====
+{
+  "assertion": "exit_zero_and_anchored_PASS_without_failure_diagnostics",
+  "assertion_passed": false,
+  "command": [
+    "/private/tmp/thin-matrix-lean-toolchain/lean-4.31.0-darwin_aarch64/bin/lake",
+    "env",
+    "lean",
+    "--run",
+    "scripts/check_low_recombination.lean"
+  ],
+  "expected_output_seen": true,
+  "failure_diagnostics": [
+    "uncaught exception: FAIL: actual masked Walsh source stores against subset/parity reference; zero and ordinary residual dimensions"
+  ],
+  "lean_arguments": [
+    "--run",
+    "scripts/check_low_recombination.lean"
+  ],
+  "mode": "main",
+  "pass_lines": [
+    "PASS: each shared integer degree run occurs exactly once, m=0..8"
+  ],
+  "passed": false,
+  "path": "scripts/check_low_recombination.lean",
+  "returncode": 1,
+  "seconds": 5.845,
+  "sha256": "b5e5e6304f3157409bc6dd6ecd4bcecb0d21f54308d6524924ecd66ba2f51a6e",
+  "source_options": [
+    "maxRecDepth 100000",
+    "maxHeartbeats 0"
+  ],
+  "stderr": "/private/tmp/runtime-audit-612/results/check_low_recombination.stderr.log",
+  "stdout": "/private/tmp/runtime-audit-612/results/check_low_recombination.stdout.log",
+  "timeout": false,
+  "warning_lines": 0
+}
+----- original stdout -----
+PASS: each shared integer degree run occurs exactly once, m=0..8
+
+----- original stderr -----
+uncaught exception: FAIL: actual masked Walsh source stores against subset/parity reference; zero and ordinary residual dimensions
+

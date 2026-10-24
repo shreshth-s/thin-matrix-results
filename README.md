@@ -83,18 +83,14 @@ arithmetic, deterministic certification, parameter setup, and APSP reductions
 are connected in this statement. See [lean/README.md](lean/README.md) for the
 execution model and reproduction instructions.
 
-The extension to `2.9926862626` is in progress. In addition to the new source
-and modular-count identities, Lean now constructs exact rational rectangular
-matrix-power decompositions at aspect `(861/500,1,15)` and rank exponent
-`16.7220001`. The proof includes equal-copy recursion, strict finite-base
-selection, and common-denominator and coefficient-height bounds. The retained
-recursive evaluator now has correctness and arithmetic/control recurrences;
-its binary implementation has derived intermediate widths, bit costs and exact
-denominator recovery. Ordinary matrix coordinates at tensor-power dimensions
-are connected to the actual CW base. Arbitrary-size padding, exact cropping
-and integer size bounds are now proved. Complete size-selection/address pricing,
-efficient graph batches and the full APSP execution-cost proof remain unfinished;
-see [the latest scope](lean/EXACT_HALF_ROADMAP.md#padded-matrix-execution-checkpoint).
+The extension to `2.9926862626` is in progress. The frozen Lean check now
+covers 416 modules and 4,337 declaration reports. It includes the exact
+rectangular base construction, retained binary recursion, compatible
+middle-block batches, stable occurrence routing, reused prefix matrix banks,
+adaptive suffix selection, the independent rounded batch fit and all 61
+numerical phase checks. Connecting the actual optimized backend costs to the
+final APSP caller remains unfinished. The complete theorem remains
+`2.99294792`; see [the current scope](lean/EXACT_HALF_ROADMAP.md#routed-shared-batch-and-parameter-checkpoint).
 
 ## Caveats
 

@@ -72,6 +72,16 @@ def source_snapshot(root: Path) -> dict[str, str]:
         "scripts/check_retained_recursion.lean", "outputs/check_retained_recursion.py",
         "scripts/check_padded_recursion.lean",
         "scripts/check_matrix_addresses.lean", "scripts/check_shared_rectangular.lean",
+        "scripts/check_routed_prefix_batch.lean",
+        "scripts/check_prefix_schedule.lean",
+        "scripts/check_graph_own_routing.lean",
+        "scripts/check_window_shared_completion.lean",
+        "scripts/check_shared_addressed.lean",
+        "scripts/check_shared_prefix_setup.lean",
+        "scripts/check_shared_prefix_schedule.lean",
+        "scripts/check_addressed_recursion.lean",
+        "scripts/check_half_source_suffix.lean",
+        "scripts/check_half_source_binary_suffix.lean",
     )]
     return {
         str(path.relative_to(root)): hashlib.sha256(path.read_bytes()).hexdigest()

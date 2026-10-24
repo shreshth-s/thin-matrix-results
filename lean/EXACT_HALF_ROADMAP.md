@@ -16,18 +16,18 @@ and bounded indexed-control model; native Lean evaluation is not that model.
 
 The current `BinaryAlignedAPSPTheorem.correctness_and_work` proves
 `299294792/100000000`. Its transitive local import closure contains 129
-modules and **none of the 230 modules recorded as exact-half extensions**.
+modules and **none of the 281 modules recorded as exact-half extensions**.
 Thus no exact-half result is currently on the closed theorem's proof path.
 The existing graph/controller correctness framework is reusable, but its
 concrete callback and cost specialization still use the old backend. All
-230 extension modules remain outside that closure. The full local import graph is recorded in
+281 extension modules remain outside that closure. The full local import graph is recorded in
 `exact-half-dependency-audit.json`; import closure is an overapproximation of
 declaration dependencies, and exclusion is decisive for this audit.
 
-The current result is in [Shared rectangular completion
-checkpoint](#shared-rectangular-completion-checkpoint). It adds charged binary
-depth selection and address codecs, a uniform scalar bound for the actual CW
-program, and retained row/column chunks with exact grouped completion.
+The current result is in [Routed shared-batch and parameter
+checkpoint](#routed-shared-batch-and-parameter-checkpoint). It adds production
+prefix matrix banks, compatible blocks, stable request routing, adaptive
+prefix selection, rounded batch fit and the exact numerical phase ledger.
 Earlier checkpoint sections below retain their historical scope and pending obligations.
 
 ## Current proof boundaries
@@ -38,11 +38,11 @@ Earlier checkpoint sections below retain their historical scope and pending obli
 | Exact-half sources and retained graph preparation | Constructed good maps, rational/binary translation list, first-valid list indices, original-coordinate masks, cropped sources and the complete embedding are proved. Retained translation numerator arithmetic and character-state costs have been added. | Lift shared setup out of repeated schedules and close all remaining construction, selector, address and control costs on that executed path. |
 | Rectangular base mathematics | The CW degeneration, independent-copy extraction, quantitative density/entropy bounds, positive fixed base and equal-copy rank conversion are proved. | The fixed positive-scale base is proved symbolically; it has not been materialized in runtime fixtures. The asymptotic program must retain this fixed base outside variable-size graph schedules. |
 | Retained rectangular execution | The actual CW base now gives `CWBinaryScalarBound.exists_uniform_scalar_program`, including binary depth selection, arbitrary matrix dimensions, retained scalar arithmetic and exact recovery. Binary product and tensor-power address codecs have proved values and costs. | Refine every actual indexed access to the codecs, derive global retained-storage/address bounds, and combine address/control work with the scalar theorem. |
-| Shared graph batches and rounded costs | `RectangularBatch` retains input chunks outside the Cartesian product and proves every original output. `SharedGroupedCompletion` proves selector sums, request order and complete output columns. The finite chunk-count inequality explicitly requires independent long-side fit. | Connect the adapter to the production `PrefixCompletionProgram` matrix bank and window scheduler, assemble compatible middle-block columns, prove their rounded independent fit, efficient request routing, optimized entropy bounds and every aggregate phase charge. |
+| Shared graph batches and rounded costs | Production prefix matrix banks and window completion use compatible middle-block columns. Stable own-request routing preserves duplicates and transposed IDs. Adaptive prefix selection, rounded independent batch fit, parameter setup and all 61 phase inequalities are proved. | Finish complete addressed execution and actual aggregate source/query costs, then connect the optimized graph backend to the analytic seven-term ledger. |
 | Full APSP caller | The older concrete backend and adaptive theorem are closed at `2.99294792`. | Instantiate the caller with the improved backend and derive its complete `2.9926862626` cost from original graph hypotheses. None of the extension modules is yet in the closed theorem's import closure. |
 
 The current remaining obligations are listed at the end of the
-[shared rectangular completion checkpoint](#shared-rectangular-completion-checkpoint).
+[routed shared-batch and parameter checkpoint](#routed-shared-batch-and-parameter-checkpoint).
 
 ## Original completion sequence (historical)
 
@@ -2177,3 +2177,32 @@ mathematical manuscript, its numerical witnesses and the published main
 branches have not been changed by this local checkpoint.
 
 Frozen verification for this checkpoint: 365 modules, 3,875 axiom reports, only standard Lean axioms. Both new Lean runtime fixtures and the full numerical/finite Python suites in the results and research repositories passed. Source/configuration SHA-256: `62c3838b62e284166edaca506c5cd5eea57b08ec8af8dd5b9dd97fba201a4611`.
+
+## Routed shared-batch and parameter checkpoint
+
+The frozen verification passed **416 modules and 4,337 axiom reports**, using
+only `propext`, `Classical.choice` and `Quot.sound`. Source/configuration
+SHA-256: `3cb6f842ac3e6a8e16586eb1e4337258821d272bad05a61d1c3998021dd4238b`.
+
+This checkpoint connects compatible middle-block columns to retained prefix
+matrix banks and window completion. Stable routing preserves original
+occurrence indices, including duplicates, and proves that each request
+belongs to exactly one own band/mask group. Both orientations have matching
+occurrence lists after transposition. Matrix banks are prepared for reuse
+across opposite bands. Binary chunk, table and recursive address programs
+have explicit value and cost theorems. Adaptive prefix lengths are chosen
+before window partitioning.
+
+The actual rounded candidate plan, original grid geometry and independent
+long-side batch fit are proved. The exact-half witness satisfies all 61
+strict numerical checks, and the rounded seven-term analytic cost ledger has
+the requested exponent. These statements do not assert that the unfinished
+optimized graph program already satisfies that ledger.
+
+Remaining work is to assemble the address-priced rectangular execution with
+the retained sources, route and pair completed roots, reuse HIGH encodings,
+prove every aggregate executed backend cost, and instantiate the adaptive
+APSP caller. The closed theorem remains **2.99294792**; the requested
+**2.9926862626** theorem is unfinished. Its 129-module import closure contains
+none of the 281 extension modules. No canonical mathematical result or
+numerical witness changed at this checkpoint.

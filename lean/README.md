@@ -447,7 +447,7 @@ numerical interval-generator inputs. The successful transcript is
 dependency downloads are excluded from the repository. The stored compiler
 transcript normalizes trailing whitespace; diagnostics and axiom reports are retained.
 
-The recorded frozen-source run compiled 365 modules and checked 3,875 axiom
+The recorded frozen-source run compiled 416 modules and checked 4,337 axiom
 reports, all containing only the standard axioms above. The transcript records
 the source/configuration hash; `sources.json` records the same digest.
 
@@ -2301,3 +2301,32 @@ mathematical manuscript, its numerical witnesses and the published main
 branches have not been changed by this local checkpoint.
 
 Frozen verification for this checkpoint: 365 modules, 3,875 axiom reports, only standard Lean axioms. Both new Lean runtime fixtures and the full numerical/finite Python suites in the results and research repositories passed. Source/configuration SHA-256: `62c3838b62e284166edaca506c5cd5eea57b08ec8af8dd5b9dd97fba201a4611`.
+
+## Routed shared-batch and parameter checkpoint
+
+The frozen verification passed **416 modules and 4,337 axiom reports**, using
+only `propext`, `Classical.choice` and `Quot.sound`. Source/configuration
+SHA-256: `3cb6f842ac3e6a8e16586eb1e4337258821d272bad05a61d1c3998021dd4238b`.
+
+This checkpoint connects compatible middle-block columns to retained prefix
+matrix banks and window completion. Stable routing preserves original
+occurrence indices, including duplicates, and proves that each request
+belongs to exactly one own band/mask group. Both orientations have matching
+occurrence lists after transposition. Matrix banks are prepared for reuse
+across opposite bands. Binary chunk, table and recursive address programs
+have explicit value and cost theorems. Adaptive prefix lengths are chosen
+before window partitioning.
+
+The actual rounded candidate plan, original grid geometry and independent
+long-side batch fit are proved. The exact-half witness satisfies all 61
+strict numerical checks, and the rounded seven-term analytic cost ledger has
+the requested exponent. These statements do not assert that the unfinished
+optimized graph program already satisfies that ledger.
+
+Remaining work is to assemble the address-priced rectangular execution with
+the retained sources, route and pair completed roots, reuse HIGH encodings,
+prove every aggregate executed backend cost, and instantiate the adaptive
+APSP caller. The closed theorem remains **2.99294792**; the requested
+**2.9926862626** theorem is unfinished. Its 129-module import closure contains
+none of the 281 extension modules. No canonical mathematical result or
+numerical witness changed at this checkpoint.
